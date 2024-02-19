@@ -1,0 +1,21 @@
+# Development Dockerfile
+FROM golang:alpine as builder
+
+WORKDIR /server
+COPY go.mod go.sum ./
+RUN go mod download && go mod verify
+
+# Copy image and build the go server
+COPY . .
+RUN go build -v -o /usr/local/bin/server ./cmd/server
+
+# Enable Delve for debugging
+RUN go get -u github.com/go-delve/delve/cmd/dlv
+
+# Final image for development
+FROM alpine
+WORKDIR /server
+COPY --from=builder /usr/local/bin/server .
+COPY --from=builder /go/bin/dlv /usr/local/bin/
+
+CMD ["./server"]
