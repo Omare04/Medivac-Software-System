@@ -1,20 +1,21 @@
 version: '3'
-  services: 
-    desktop-client:
-      build: 
-        context: './desktop-client'
-        dockerfile: 'Dockerfile.dev'
-      ports: 
-        - "5173:5173"
-      volumes: 
-        - "./desktop-client/node_modules"
-        - .:/desktop-client 
-    server: 
-      build: 
-        context: './server'
-        dockerfile: "Dockerfile.dev"
-      ports:
-        - "8080:8080"
-      volumes: 
-        - ./:/go/src/github.com/Omare04/medApp.git
-      command: go run cmd/server/main.go
+services: 
+  desktop-client:
+    build: 
+      context: './desktop-client'
+      dockerfile: 'Dockerfile.dev'
+    ports: 
+      - "5173:5173"
+    volumes: 
+      - ./desktop-client:/desktop-client
+      - /desktop-client/node_modules
+
+    # server: 
+    #   build: 
+    #     context: './server'
+    #     dockerfile: "Dockerfile.dev"
+    #   ports:
+    #     - "8080:8080"
+    #   volumes: 
+    #     - ./:/go/src/github.com/Omare04/medApp.git
+    #   command: go run cmd/server/main.go
