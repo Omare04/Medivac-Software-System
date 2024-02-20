@@ -1,13 +1,12 @@
-import { useState } from 'react'
-
+import { useState } from "react";
+import Home from "./Pages/Home";
 
 function App() {
-
   return (
     <>
-        hiasasaadasd
+      <Home />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
