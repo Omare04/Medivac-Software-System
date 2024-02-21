@@ -5,22 +5,54 @@ import {
   StyledNavItem,
   StyledHeaderLogo,
 } from "./HeaderStyled";
-import { User } from "react-feather";
 import { Map } from "react-feather";
+import { AiOutlineShop, AiOutlineFileSearch } from "react-icons/ai";
+import { TbUsers } from "react-icons/tb";
+import { GoChecklist } from "react-icons/go";
+import { LiaAmbulanceSolid } from "react-icons/lia";
+import { GiPlanePilot } from "react-icons/gi";
+import { TbUser } from "react-icons/tb";
+import { FaUser } from "react-icons/fa";
+
+const universalStyle = {
+  size: 16,
+  style: { paddingRight: "6px", strokeWidth: 1.2 },
+};
 
 function Header() {
   return (
     <>
       <StyledHeader>
-        <StyledHeaderLogo size ={32}/>
+        <StyledHeaderLogo size={45} />
         <StyledNavItem>
-          <Map size={20} style={{ paddingRight: "10px", strokeWidth: 1.2 }} />
+          {/* <Map {...universalStyle} /> */}
           Map
         </StyledNavItem>
-        <StyledNavItem>Route</StyledNavItem>
-        <StyledNavItem>Route</StyledNavItem>
+        <StyledNavItem>
+          {/* <TbUsers {...universalStyle} /> */}
+          Personele
+        </StyledNavItem>
+        <StyledNavItem>
+          {/* <AiOutlineShop {...universalStyle} /> */}
+          Stock
+        </StyledNavItem>
+        <StyledNavItem>
+          {/* <AiOutlineFileSearch {...universalStyle} /> */}
+          Requests
+        </StyledNavItem>
+        <StyledNavItem>
+          {/* <GoChecklist
+            {...universalStyle}
+            style={{ ...universalStyle.style, strokeWidth: 0.5 }}
+          /> */}
+          Checklists
+        </StyledNavItem>
+        <StyledNavItem style = {{}}>
+          {/* <LiaAmbulanceSolid {...universalStyle} /> */}
+          Logistics
+        </StyledNavItem>
         <StyledAccountNavItem>
-          <User size={25} />
+        <FaUser size = {17}/>
         </StyledAccountNavItem>
       </StyledHeader>
     </>
