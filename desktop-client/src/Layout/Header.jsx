@@ -4,8 +4,7 @@ import {
   StyledHeader,
   StyledNavItem,
   StyledHeaderLogo,
-} from "./HeaderStyled";
-import { Map } from "react-feather";
+} from "../styles/HeaderStyles";
 import { AiOutlineShop, AiOutlineFileSearch } from "react-icons/ai";
 import { TbUsers } from "react-icons/tb";
 import { GoChecklist } from "react-icons/go";
@@ -23,7 +22,7 @@ function Header() {
   return (
     <>
       <StyledHeader>
-        <StyledHeaderLogo size={45} />
+        <StyledHeaderLogo size={100} />
         <StyledNavItem>
           {/* <Map {...universalStyle} /> */}
           Map
@@ -50,6 +49,10 @@ function Header() {
         <StyledNavItem style = {{}}>
           {/* <LiaAmbulanceSolid {...universalStyle} /> */}
           Logistics
+        </StyledNavItem>
+        <StyledNavItem style = {{}}>
+          {/* <LiaAmbulanceSolid {...universalStyle} /> */}
+          Orders
         </StyledNavItem>
         <StyledAccountNavItem>
         <FaUser size = {17}/>

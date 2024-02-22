@@ -41,7 +41,6 @@ export const StyledAccountNavItem = styled.div`
 
 //HEADER NAV ITEMS
 
-
 export const StyledNavItem = styled.div`
   position: relative;
   display: flex;
@@ -68,7 +67,7 @@ export const StyledNavItem = styled.div`
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 34%; /* Adjust this value to control the height of the borders */
     bottom: 34%; /* Adjust this value to control the height of the borders */
