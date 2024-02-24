@@ -8,22 +8,53 @@ import {
 import { StatsTab } from "../components/HomeComponents/HomeStatistics";
 import { Divider, Flex } from "@chakra-ui/react";
 import DrugRequestsHomeComponents from "../components/HomeComponents/DrugRequestsHomeComponents";
+import { dividerColorLight } from "../Colors";
+import OrderComponentsHome from "../components/HomeComponents/OrderComponentsHome";
+import {
+  DrugRequestTitle,
+  OrderHomeTitle,
+  StyledLinkIcon,
+} from "../styles/RequestsOrderStyles";
+import styled from "styled-components";
+import MissionTableComponent from "../components/TableComponents/MissionTable";
+import FunctionalFooter from "../Layout/FunctionalFooter";
+import HorizontalBarChartMission from "../components/StatComponents/StatComponents";
 
-function Home() {
+const TitleContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-right: 20px;
+  padding-left: 20px;
+`;
+
+export function Home() {
   return (
     <>
-      <Header />
       <Flex justifyContent="space-between" height="100%">
-        <HomeWrapperLeft>aa</HomeWrapperLeft>
+        <HomeWrapperLeft>
+          <MissionTableComponent />
+        </HomeWrapperLeft>
         <HomeWrapperRight>
           <StatsTab />
-          <Divider color="red" mt={4} borderColor={"red"} />
-
+          <TitleContainer>
+            <DrugRequestTitle>Requests & Orders</DrugRequestTitle>
+          </TitleContainer>
           <BoxWrapper>
             <DrugRequestsHomeComponents />
           </BoxWrapper>
+          {/* <TitleContainer style={{ marginTop: "20px" }}>
+            Monthly Flight Volume
+          </TitleContainer> */}
+          {/* <HorizontalBarChartMission></HorizontalBarChartMission> */}
+          {/* <DrugRequestTitle style={{ paddingLeft: "20px", paddingTop: "15px" }}>
+            Orders
+          </DrugRequestTitle>
+          <BoxWrapper>
+        <OrderComponentsHome />
+        </BoxWrapper> */}
         </HomeWrapperRight>
       </Flex>
+      <FunctionalFooter />
     </>
   );
 }

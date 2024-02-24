@@ -20,8 +20,9 @@ import {
   UnorderedList,
   Text,
 } from "@chakra-ui/react";
-import { StyledLinkLogo } from "../../styles/HomeLayout";
+import { StyledLinkLogo, StyledSeeMoreEntries } from "../../styles/HomeLayout";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
+import { buttonBlue, dividerColor } from "../../Colors";
 
 const theme = extendTheme({
   styles: {
@@ -29,7 +30,7 @@ const theme = extendTheme({
       ".chakra-stat .chakra-stat-label, .chakra-stat .chakra-stat-number, .chakra-stat .chakra-stat-help-text":
         {
           marginInlineStart: "0px",
-          paddingLeft: "0px",
+          paddingLeft: "10px",
         },
     },
   },
@@ -38,7 +39,7 @@ const theme = extendTheme({
 function MedicalEquipmentStats() {
   return (
     <>
-      <Box w="60%">
+      <Box w="50%">
         <ChakraProvider theme={theme}>
           <StatGroup>
             <Stat>
@@ -47,10 +48,12 @@ function MedicalEquipmentStats() {
                   Equipment
                 </StatLabel>
               </Flex>
-              <StatNumber fontSize="4xl" pb={9}>
+              <StatNumber fontSize="4xl" pb={6}>
                 120
               </StatNumber>
-              <StatHelpText color={"red"}>23 Expired</StatHelpText>
+              <StatHelpText color={"red"} mb={0.5}>
+                23 Expired
+              </StatHelpText>
               <StatHelpText color={"green"}>23 Approaching exp</StatHelpText>
             </Stat>
           </StatGroup>
@@ -63,67 +66,56 @@ function MedicalEquipmentStats() {
 function StockEntries() {
   return (
     <>
-      <UnorderedList listStyleType={"none"} w={"100%"} fontSize={14.3}>
-        <Flex alignItems="center" justifyContent="space-between">
-          <ListItem>
-            <ListIcon as={AiOutlinePlusCircle} color="green.500" />
-            Xerox
-          </ListItem>
-          <Text>Qty: 3</Text>
-        </Flex>
-        <Flex alignItems="center" justifyContent="space-between">
-          <ListItem>
-            <ListIcon as={AiOutlineMinusCircle} color="red.500" />
-            Fentanyl 2 ui
-          </ListItem>
-          <Text>Qty: 1</Text>
-        </Flex>
-        <Flex alignItems="center" justifyContent="space-between">
-          <ListItem>
-            <ListIcon as={AiOutlineMinusCircle} color="red.500" />
-            Fentanyl 2 ui
-          </ListItem>
-          <Text>Qty: 1</Text>
-        </Flex>
-        <Flex alignItems="center" justifyContent="space-between">
-          <ListItem>
-            <ListIcon as={AiOutlineMinusCircle} color="red.500" />
-            Fentanyl 2 ui
-          </ListItem>
-          <Text>Qty: 1</Text>
-        </Flex>
-        <Flex alignItems="center" justifyContent="space-between">
-          <ListItem>
-            <ListIcon as={AiOutlineMinusCircle} color="red.500" />
-            Fentanyl 2 ui
-          </ListItem>
-          <Text>Qty: 1</Text>
-        </Flex>
-        <Flex alignItems="center" justifyContent="space-between">
-          <ListItem>
-            <ListIcon as={AiOutlineMinusCircle} color="red.500" />
-            Fentanyl 2 ui
-          </ListItem>
-          <Text>Qty: 1</Text>
-        </Flex>
-        <Flex alignItems="center" justifyContent="space-between">
-          <ListItem>
-            <ListIcon as={AiOutlineMinusCircle} color="red.500" />
-            Fentanyl 2 ui
-          </ListItem>
-          <Text>Qty: 1</Text>
-        </Flex>
-        <Flex alignItems="center" justifyContent="space-between">
-          <ListItem>
-            <ListIcon as={AiOutlinePlusCircle} color="green.500" />
-            Xerox
-          </ListItem>
-          <Text>Qty: 3</Text>
-        </Flex>
-      </UnorderedList>
+      <Stat mr={0}>
+        <StatLabel
+          fontSize="sm"
+          color={"grey"}
+          mr={0}
+          mb={2}
+          pb={1}
+          style={{ borderBottom: `1px solid ${dividerColor}` }}
+        >
+          Recent Entries
+        </StatLabel>
+        <UnorderedList listStyleType={"none"} w={"100%"} ml={0}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <ListItem>
+              <ListIcon as={AiOutlinePlusCircle} color="green.500" />
+
+              <span style={{ fontSize: "13px", paddingLeft: "0px" }}>6</span>
+            </ListItem>
+            <Text fontSize={13}>(02/04/2024)</Text>
+          </Flex>
+          <Flex alignItems="center" justifyContent="space-between">
+            <ListItem>
+              <ListIcon as={AiOutlineMinusCircle} color="red.500" />
+              <span style={{ fontSize: "13px", paddingLeft: "0px" }}>3</span>
+            </ListItem>
+            <Text fontSize={13}>(02/04/2024)</Text>
+          </Flex>
+          {/* <StyledSeeMoreEntries>
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: " center",
+                color: `${buttonBlue}`,
+                fontSize: "14px",
+              }}
+            >
+              see more
+            </span>
+          </StyledSeeMoreEntries> */}
+        </UnorderedList>
+      </Stat>
     </>
   );
 }
+
+function renderStockEntries() {
+  return <></>;
+}
+
 export function StatsTab() {
   const handleTabChange = (index) => {
     // Handle tab change logic if needed
@@ -131,17 +123,19 @@ export function StatsTab() {
   };
 
   return (
-    <ChakraProvider>
+    <ChakraProvider pr={0}>
       <Tabs
         position="relative"
         variant="unstyled"
         colorScheme="blue"
         onChange={handleTabChange}
+        pr={0}
       >
-        <TabList pt={3}>
+        <TabList pt={3} pl={1}>
           <Tab
             _hover={{ color: "gray.600", borderBottom: "2px solid blue.500" }}
             _active={{ color: "blue.500", borderBottom: "2px solid blue.500" }}
+            fontSize={14}
           >
             Medical Equipment
           </Tab>
@@ -149,6 +143,7 @@ export function StatsTab() {
             pl={25}
             _hover={{ color: "gray.600", borderBottom: "2px solid blue.500" }}
             _active={{ color: "blue.500", borderBottom: "2px solid blue.500" }}
+            fontSize={14}
           >
             Pharmaceuticals
           </Tab>
@@ -160,11 +155,19 @@ export function StatsTab() {
           borderRadius="1px"
         />
         <TabPanels>
-          <TabPanel pl={0} pt={5} display={"flex"}>
+          <TabPanel pt={5} pl={5} borderRadius={10} display={"flex"}>
             <MedicalEquipmentStats />
             <StockEntries />
           </TabPanel>
-          <TabPanel>
+
+          <TabPanel
+            pl={0}
+            pt={5}
+            mr={3}
+            p={5}
+            borderRadius={10}
+            display={"flex"}
+          >
             <p>Pharmaceuticals</p>
           </TabPanel>
         </TabPanels>

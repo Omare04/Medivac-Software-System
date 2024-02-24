@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { GiAirplane } from "react-icons/gi";
+import { PiBellSimpleFill } from "react-icons/pi";
+import { whiteContranstOnActive, whiteContranstOnHover } from "../Colors";
 
 //HEADER
 export const StyledHeaderWrapper = styled.div``;
@@ -25,7 +27,6 @@ export const StyledAccountNavItem = styled.div`
   padding-left: 26px;
   margin-left: 5px;
   padding-right: 26px;
-  margin-left: auto;
 
   &:hover {
     background-color: #313139;
@@ -39,8 +40,35 @@ export const StyledAccountNavItem = styled.div`
   }
 `;
 
-//HEADER NAV ITEMS
+//NOTIFICATION BELL & Account item wrapper
+export const StyledRightSideNavItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: 100%;
+  padding-left: 26px;
+  margin-left: 5px;
+  margin-left: auto;
+`;
 
+export const StyledBellIcon = styled(PiBellSimpleFill)`
+  font-size: 19px;
+  margin-right: 20px;
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${whiteContranstOnHover};
+  }
+
+  &:active {
+    color: ${whiteContranstOnActive};
+  }
+`;
+
+//HEADER NAV ITEMS
 export const StyledNavItem = styled.div`
   position: relative;
   display: flex;
@@ -69,10 +97,10 @@ export const StyledNavItem = styled.div`
   &::after {
     content: "";
     position: absolute;
-    top: 34%; /* Adjust this value to control the height of the borders */
-    bottom: 34%; /* Adjust this value to control the height of the borders */
-    width: 0.7px; /* Adjust this value to control the width of the borders */
-    background-color: #434352; /* Adjust the border color as needed */
+    top: 34%;
+    bottom: 34%;
+    width: 0.7px;
+    background-color: #434352;
   }
 
   &::before {
@@ -85,7 +113,6 @@ export const StyledNavItem = styled.div`
 `;
 
 //STYLED HEADER LOGO
-
 export const StyledHeaderLogo = styled(GiAirplane)`
   stroke-width: 2;
   color: #46afcf;

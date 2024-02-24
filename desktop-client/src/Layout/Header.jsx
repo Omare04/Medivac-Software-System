@@ -3,7 +3,9 @@ import {
   StyledAccountNavItem,
   StyledHeader,
   StyledNavItem,
+  StyledRightSideNavItem,
   StyledHeaderLogo,
+  StyledBellIcon,
 } from "../styles/HeaderStyles";
 import { AiOutlineShop, AiOutlineFileSearch } from "react-icons/ai";
 import { TbUsers } from "react-icons/tb";
@@ -12,6 +14,9 @@ import { LiaAmbulanceSolid } from "react-icons/lia";
 import { GiPlanePilot } from "react-icons/gi";
 import { TbUser } from "react-icons/tb";
 import { FaUser } from "react-icons/fa";
+import { PiBellSimpleFill } from "react-icons/pi";
+import { HeaderNavData } from "./HeaderNavData";
+import { Link } from "react-router-dom";
 
 const universalStyle = {
   size: 16,
@@ -22,41 +27,14 @@ function Header() {
   return (
     <>
       <StyledHeader>
-        <StyledHeaderLogo size={100} />
-        <StyledNavItem>
-          {/* <Map {...universalStyle} /> */}
-          Map
-        </StyledNavItem>
-        <StyledNavItem>
-          {/* <TbUsers {...universalStyle} /> */}
-          Personele
-        </StyledNavItem>
-        <StyledNavItem>
-          {/* <AiOutlineShop {...universalStyle} /> */}
-          Stock
-        </StyledNavItem>
-        <StyledNavItem>
-          {/* <AiOutlineFileSearch {...universalStyle} /> */}
-          Requests
-        </StyledNavItem>
-        <StyledNavItem>
-          {/* <GoChecklist
-            {...universalStyle}
-            style={{ ...universalStyle.style, strokeWidth: 0.5 }}
-          /> */}
-          Checklists
-        </StyledNavItem>
-        <StyledNavItem style = {{}}>
-          {/* <LiaAmbulanceSolid {...universalStyle} /> */}
-          Logistics
-        </StyledNavItem>
-        <StyledNavItem style = {{}}>
-          {/* <LiaAmbulanceSolid {...universalStyle} /> */}
-          Orders
-        </StyledNavItem>
-        <StyledAccountNavItem>
-        <FaUser size = {17}/>
-        </StyledAccountNavItem>
+        <Link to={"/"}>
+          <StyledHeaderLogo size={100} />
+        </Link>
+        {HeaderNavData.map((value, index) => (
+          <Link to={value.route}>
+            <StyledNavItem key={index}>{value.title}</StyledNavItem>
+          </Link>
+        ))}
       </StyledHeader>
     </>
   );
