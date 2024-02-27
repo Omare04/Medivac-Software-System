@@ -14,44 +14,15 @@ import { dividerColorLight } from "../../Colors";
 
 const key = "Composed Table";
 
-const nodes = [
-  {
-    id: "0",
-    name: "Shopping List",
-    tasks: "9",
-    deadline: new Date(2020, 1, 15),
-    type: "TASK",
-    isComplete: true,
-    nodes: 3,
-  },
-  {
-    id: "0",
-    name: "a",
-    tasks: "9",
-    deadline: new Date(2020, 1, 15),
-    type: "TASK",
-    isComplete: true,
-    nodes: 3,
-  },
-  {
-    id: "0",
-    name: "Shopping List",
-    tasks: "9",
-    deadline: new Date(2020, 1, 15),
-    type: "TASK",
-    isComplete: true,
-    nodes: 3,
-  },
-  {
-    id: "0",
-    name: "Shopping List",
-    tasks: "9",
-    deadline: new Date(2020, 1, 15),
-    type: "TASK",
-    isComplete: true,
-    nodes: 3,
-  },
-];
+class MedicalStock{
+  constructor(id, name, type, pn, date) {
+    this.id = id;
+    this.name = name;
+    this.type = type;
+    this.pn = pn;
+    this.date = date;
+  }
+}
 
 function MedicalStockTable() {
   let data = { nodes };
@@ -106,9 +77,10 @@ function MedicalStockTable() {
   };
 
   const COLUMNS = [
-    { label: "Task", renderCell: (item) => item.name },
+    { label: "Product Name", renderCell: (item) => item.name },
+    { label: "Product Type", renderCell: (item) => item.type },
     {
-      label: "Deadline",
+      label: "Date Entered",
       renderCell: (item) =>
         item.deadline.toLocaleDateString("en-US", {
           year: "numeric",
@@ -116,12 +88,6 @@ function MedicalStockTable() {
           day: "2-digit",
         }),
     },
-    { label: "Type", renderCell: (item) => item.type },
-    {
-      label: "Complete",
-      renderCell: (item) => item.isComplete.toString(),
-    },
-    { label: "Tasks", renderCell: (item) => item.nodes?.length },
   ];
 
   return (
