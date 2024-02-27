@@ -9,7 +9,7 @@ import {
   StyledSearch,
   StyledSearchIcon,
   StyledSearchBox,
-} from "../../styles/MissionTableStyles";
+} from "../../styles/TableStyles/MissionTableStyles";
 import { Center, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { IoMdSearch } from "react-icons/io";
 import { MdCompareArrows } from "react-icons/md";

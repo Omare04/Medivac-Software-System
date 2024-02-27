@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import MedicalStockTable from "../../Appcomponents/TableComponents/StockTable";
+import {StyledTableWrapper} from "../../styles/TableStyles/StockTableStyles";
 
 function MedicalEquipmentStock() {
   return (
-    <div>MedicalEquipmentStock</div>
-  )
+    <>
+      <StyledTableWrapper>
+        <MedicalStockTable />
+      </StyledTableWrapper>
+    </>
+  );
 }
 
-export default MedicalEquipmentStock
+export default MedicalEquipmentStock;

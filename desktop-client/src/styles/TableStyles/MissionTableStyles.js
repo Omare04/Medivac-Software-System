@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { IoMdSearch } from "react-icons/io";
 import { Input } from "@chakra-ui/react";
-import { dividerColor, dividerColorLight } from "../Colors";
+import { dividerColor, dividerColorLight } from "../../Colors";
 
 export const MissionTableWrapper = styled.table`
   width: 100%;
@@ -68,6 +68,7 @@ export const StyledSearch = styled.input`
   padding: 5px;
   color: #434343;
   background-color: ${dividerColorLight};
+  border: none; 
   border-radius: 3px;
 
   &::placeholder {

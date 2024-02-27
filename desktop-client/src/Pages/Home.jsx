@@ -5,20 +5,20 @@ import {
   HomeWrapperLeft,
   BoxWrapper,
 } from "../styles/HomeLayout";
-import { StatsTab } from "../components/HomeComponents/HomeStatistics";
+import { StatsTab } from "../Appcomponents/HomeComponents/HomeStatistics";
 import { Divider, Flex } from "@chakra-ui/react";
-import DrugRequestsHomeComponents from "../components/HomeComponents/DrugRequestsHomeComponents";
+import DrugRequestsHomeComponents from "../Appcomponents/HomeComponents/DrugRequestsHomeComponents";
 import { dividerColorLight } from "../Colors";
-import OrderComponentsHome from "../components/HomeComponents/OrderComponentsHome";
+import OrderComponentsHome from "../Appcomponents/HomeComponents/OrderComponentsHome";
 import {
   DrugRequestTitle,
   OrderHomeTitle,
   StyledLinkIcon,
 } from "../styles/RequestsOrderStyles";
 import styled from "styled-components";
-import MissionTableComponent from "../components/TableComponents/MissionTable";
+import MissionTableComponent from "../Appcomponents/TableComponents/MissionTable";
 import FunctionalFooter from "../Layout/FunctionalFooter";
-import HorizontalBarChartMission from "../components/StatComponents/StatComponents";
+import HorizontalBarChartMission from "../Appcomponents/StatComponents/StatComponents";
 
 const TitleContainer = styled.div`
   display: flex;
