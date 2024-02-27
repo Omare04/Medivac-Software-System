@@ -1,4 +1,4 @@
-module github.com/Omare04/medApp.git/StockManagementServices/middleware
+module github.com/Omare04/medApp/tree/main/StockManagementServices/middleware
 
 go 1.17
 

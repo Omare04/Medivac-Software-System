@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/Omare04/medApp/StockManagementServices/middleware"
-	// "github.com/gofiber/fiber/v2"
+    "github.com/Omare04/medApp/tree/main/StockManagementServices/middleware"
 )
+
 
 func main() {
 
