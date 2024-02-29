@@ -1,21 +1,24 @@
 version: '3'
-services: 
+services:
+  postgres: 
+    image: 'postgres:latest'
+    environment:
+      - POSTGRES_PASSWORD=
+
   desktop-client:
     build: 
       context: './desktop-client'
       dockerfile: 'Dockerfile.dev'
     ports: 
       - "5173:5173"
-    # volumes: 
-    #   - ./desktop-client:/desktop-client
-    #   - /desktop-client/node_modules
 
-    # server: 
-    #   build: 
-    #     context: './server'
-    #     dockerfile: "Dockerfile.dev"
-    #   ports:
-    #     - "8080:8080"
-    #   volumes: 
-    #     - ./:/go/src/github.com/Omare04/medApp.git
-    #   command: go run cmd/server/main.go
+  stock-management-service: 
+    build: 
+      context: './stock-management-service'
+      dockerfile: "Dockerfile.dev"
+    ports:
+      - "3000:3000"
+    environment:
+      - POSTGRES_PASSWORD=your_db_password
+      - POSTGRES_DB=your_db_name
+      - POSTGRES_USER=your_db_user 
