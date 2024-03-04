@@ -26,7 +26,7 @@ import { IoMedicalSharp } from "react-icons/io5";
 import { MdMedicalServices } from "react-icons/md";
 
 export const StockServiceApi = axios.create({
-  baseURL: "http://localhost:3000", // Set your API base URL here
+  baseURL: "/stock-management-service", // Set your API base URL here
   timeout: 5000, // Set a timeout if needed
 });
 
@@ -36,13 +36,13 @@ function Personle() {
 
   async function fetchValues() {
     const values = await StockServiceApi.get("/hi");
-    console.log(values.data);
+    console.log(values);
     // setState([values.data])
   }
 
-  // useEffect(() => {
-  //   // fetchValues()
-  // }, [])
+  useEffect(() => {
+    fetchValues()
+  }, [])
 
   return (
     <>

@@ -5,11 +5,12 @@ WORKDIR '/desktop-client'
 COPY ./package.json ./
 RUN npm install 
 COPY . . 
-EXPOSE 80
 
+CMD ["npm", "run", "dev"]
 #Production stage 
-FROM nginx:alpine 
-COPY --from=builder /desktop-client/dist /usr/share/nginx/html
 
-EXPOSE 80
+FROM nginx:alpine 
+EXPOSE 5173
+COPY ./nginx/default.conf /etc/ngix/conf.d/default.conf
+COPY --from=builder /desktop-client/dist /usr/share/nginx/html
 CMD ["nginx", "-g", "daemon off;"]
