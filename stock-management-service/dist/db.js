@@ -9,10 +9,10 @@ const path_1 = __importDefault(require("path"));
 // Load environment variables from .env file in the config folder
 dotenv_1.default.config({ path: path_1.default.resolve(__dirname, '../config/.env') });
 const pool = new pg_1.Pool({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_DATABASE,
-    password: process.env.DB_PASSWORD,
+    user: "postgres",
+    host: "postgres",
+    database: "medivacappDB",
+    password: "Omardomingues1",
     port: parseInt(process.env.DB_PORT || '5432', 10)
 });
 exports.default = pool;

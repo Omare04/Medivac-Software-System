@@ -1,3 +1,5 @@
 Medical_Evac_App_Plan
 .env
-docker-compose
+*.yml
+.env.psql-service
+.env.stock-management-service

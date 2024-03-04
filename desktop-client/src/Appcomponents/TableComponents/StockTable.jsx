@@ -11,10 +11,11 @@ import {
   StyledTableFilterBar,
 } from "../../styles/TableStyles/MissionTableStyles";
 import { dividerColorLight } from "../../Colors";
+import { useTree } from "@table-library/react-table-library/tree";
 
 const key = "Composed Table";
 
-class MedicalStock{
+class MedicalStock {
   constructor(id, name, type, pn, date) {
     this.id = id;
     this.name = name;
@@ -24,15 +25,68 @@ class MedicalStock{
   }
 }
 
+const nodes = [
+  {
+    id: "0",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "0",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "0",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "1",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "2",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "3",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+];
+
 function MedicalStockTable() {
   let data = { nodes };
+
+  const tree = useTree(data, {
+    onChange: onTreeChange,
+  });
+
+  function onTreeChange(action, state) {
+    console.log(action, state);
+  }
 
   const theme = useTheme([
     getTheme(),
     {
       HeaderRow: `
-        background-color: #7b7b7b;
-        color: white;
+        background-color: ${dividerColorLight};
+        color: #000000;
         font-weight: 200; 
       `,
       Row: `
@@ -79,10 +133,11 @@ function MedicalStockTable() {
   const COLUMNS = [
     { label: "Product Name", renderCell: (item) => item.name },
     { label: "Product Type", renderCell: (item) => item.type },
+    { label: "Pn", renderCell: (item) => item.pn },
     {
       label: "Date Entered",
       renderCell: (item) =>
-        item.deadline.toLocaleDateString("en-US", {
+        item.date.toLocaleDateString("en-US", {
           year: "numeric",
           month: "2-digit",
           day: "2-digit",
@@ -107,7 +162,7 @@ function MedicalStockTable() {
         </StyledSearchBox>
       </StyledTableFilterBar>
       <br />
-      <CompactTable columns={COLUMNS} data={data} theme={theme} />
+      <CompactTable columns={COLUMNS} data={data} theme={theme} tree={tree} />
       <br />
     </>
   );

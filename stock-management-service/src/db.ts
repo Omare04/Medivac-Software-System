@@ -6,10 +6,10 @@ import path from 'path';
 dotenv.config({ path: path.resolve(__dirname, '../config/.env') });
 
 const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST ,
-  database: process.env.DB_DATABASE ,
-  password: process.env.DB_PASSWORD,
+  user: "postgres",
+  host: "postgres" ,
+  database: "medivacappDB" ,
+  password: "Omardomingues1",
   port: parseInt(process.env.DB_PORT || '5432', 10)
 });
 
