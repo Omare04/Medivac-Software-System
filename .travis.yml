@@ -3,13 +3,13 @@ services:
   - docker
 
 before_install: 
-  - docker build -t omare23/medApp -f ./desktop-client/Dockerfile.dev ./desktop-client 
+  - docker build -t omare23/medapp -f ./desktop-client/Dockerfile.dev ./desktop-client 
 
 script: 
-  - docker run omare23/medApp npm test -- --coverage
+  - docker run omare23/medapp npm test -- --coverage
 
 after_success: 
   - docker build -t omare23/med-desktop-client ./dekstop-client
   - docker build -t omare23/med-nginx ./nginx
   - docker build -t omare23/med-stock-management-service ./stock-management-service
-
+#Login to the docker CLI
