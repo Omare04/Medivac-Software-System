@@ -9,7 +9,7 @@ script:
   - docker run omare23/medapp npm test -- --coverage
 
 after_success: 
-  - docker build -t omare23/med-desktop-client ./dekstop-client
+  - docker build -t omare23/med-desktop-client ./desktop-client
   - docker build -t omare23/med-nginx ./nginx
   - docker build -t omare23/med-stock-management-service ./stock-management-service
 #Login to the docker CLI
