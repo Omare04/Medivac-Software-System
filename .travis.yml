@@ -13,3 +13,8 @@ after_success:
   - docker build -t omare23/med-nginx ./nginx
   - docker build -t omare23/med-stock-management-service ./stock-management-service
 #Login to the docker CLI
+  - echo "$DOCKER_PASSWORD" | -u docker login "$DOCKER_ID" --password-std
+#Then once logged in push those images to the docker hub 
+  - docker push omare23/med-desktop-client 
+  - docker push omare23/med-nginx
+  - docker push omare23/med-stock-management-service
