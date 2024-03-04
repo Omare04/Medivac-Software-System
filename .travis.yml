@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+
+before_install: 
+  - docker build -t omare23/medApp -f ./desktop-client/Dockerfile.dev ./desktop-client 
+
+script: 
+  - docker run omare23/medApp npm test -- --coverage
+
+after_success: 
+  - docker build -t omare23/med-desktop-client ./dekstop-client
+  - docker build -t omare23/med-nginx ./nginx
+  - docker build -t omare23/med-stock-management-service ./stock-management-service
+

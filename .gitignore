@@ -1,6 +1,6 @@
 # .gitignore
 Medical_Evac_App_Plan
 .env
-*.yml
+.yml
 .env.psql-service
 .env.stock-management-service
