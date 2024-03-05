@@ -197,7 +197,7 @@ function AccordianItemComponent() {
               fontWeight={300}
             >
               <Box color={"black"}>
-                Dr.Joe Biden
+                Dr.Bouazza laed
                 <Stack direction={"row"} fontSize={13} color={"red"}>
                   <Badge colorScheme="red"> Doctor</Badge>
                 </Stack>

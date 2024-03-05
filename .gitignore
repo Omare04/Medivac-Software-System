@@ -3,4 +3,6 @@ Medical_Evac_App_Plan
 .env
 .yml
 .env.psql-service
+.env.pgadmin-service
 .env.stock-management-service
+node_modules

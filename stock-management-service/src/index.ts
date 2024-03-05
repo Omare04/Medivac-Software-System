@@ -6,7 +6,7 @@ import cors from 'cors'
 
 const app = express();
 app.use(cors())
-const port = 5000;
+const port = 3000;
 
 app.get('/hi', async (req, res) => {
     try {

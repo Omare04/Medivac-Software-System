@@ -10,10 +10,13 @@ services:
     depends_on:
       - stock-management-service
       - desktop-client
+      - postgres 
+
   postgres: 
     image: 'postgres:13'  
     env_file:
       - .env.psql-service
+
   desktop-client:
     build: 
       context: './desktop-client'
@@ -23,17 +26,32 @@ services:
     volumes:
       - /desktop-client/node_modules
       - ./desktop-client:/desktop-client
-  stock-management-service:
-      build:
-        context: './stock-management-service'
-        dockerfile: "Dockerfile.dev"
-      ports:
-        - "5000:5000"
-      env_file:
-        - .env.stock-management-service
-      depends_on:
-        - postgres
-      volumes:
-        - /stock-management-service/node_modules
-        - ./stock-management-service:/stock-management-service
 
+  stock-management-service:
+    build:
+      context: './stock-management-service'
+      dockerfile: "Dockerfile.dev"
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.stock-management-service
+    depends_on:
+      - postgres
+    volumes:
+      - /stock-management-service/node_modules
+      - ./stock-management-service:/stock-management-service
+
+  pgadmin:
+    image: 'dpage/pgadmin4:latest'
+    env_file:
+      - .env.pgadmin-service
+    ports:
+      - "5050:5050"
+    depends_on:
+      - postgres  
+
+# Kill all containers
+# docker stop $(docker ps -q)
+
+# run docker-compose on quite mode
+# docker-compose up --quiet-pull -d

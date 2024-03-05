@@ -12,5 +12,6 @@ CMD ["npm", "run", "dev"]
 FROM nginx:alpine 
 EXPOSE 5173
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+#/dist ?
 COPY --from=builder /desktop-client/dist /usr/share/nginx/html
 CMD ["nginx", "-g", "daemon off;"]
