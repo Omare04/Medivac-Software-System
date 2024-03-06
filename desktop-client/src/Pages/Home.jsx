@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import React from "react";
 import Header from "../Layout/Header";
 import {
@@ -5,20 +6,21 @@ import {
   HomeWrapperLeft,
   BoxWrapper,
 } from "../styles/HomeLayout";
-import { StatsTab } from "../Appcomponents/HomeComponents/HomeStatistics";
+import { StatsTab } from "../Components/HomeComponents/HomeStatistics";
 import { Divider, Flex } from "@chakra-ui/react";
-import DrugRequestsHomeComponents from "../Appcomponents/HomeComponents/DrugRequestsHomeComponents";
+import DrugRequestsHomeComponents from "../Components/HomeComponents/DrugRequestsHomeComponents";
 import { dividerColorLight } from "../Colors";
-import OrderComponentsHome from "../Appcomponents/HomeComponents/OrderComponentsHome";
+import OrderComponentsHome from "../Components/HomeComponents/OrderComponentsHome";
 import {
   DrugRequestTitle,
   OrderHomeTitle,
   StyledLinkIcon,
 } from "../styles/RequestsOrderStyles";
 import styled from "styled-components";
-import MissionTableComponent from "../Appcomponents/TableComponents/MissionTable";
+import MissionTableComponent from "../Components/TableComponents/MissionTable";
 import FunctionalFooter from "../Layout/FunctionalFooter";
-import HorizontalBarChartMission from "../Appcomponents/StatComponents/StatComponents";
+import HorizontalBarChartMission from "../Components/StatComponents/StatComponents";
+import { StockServiceApi } from "./Personele/Personele";
 
 const TitleContainer = styled.div`
   display: flex;
@@ -28,6 +30,15 @@ const TitleContainer = styled.div`
 `;
 
 export function Home() {
+  useEffect(() => {
+    StockServiceApi.get("/hi")
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
   return (
     <>
       <Flex justifyContent="space-between" height="100%">

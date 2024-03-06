@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../Layout/Header";
-import MapComponent from "../Appcomponents/MapComponents/Map";
-import MapSideBar from "../Appcomponents/MapComponents/MapSideBar";
+import MapComponent from "../Components/MapComponents/Map";
+import MapSideBar from "../Components/MapComponents/MapSideBar";
 
 function Map() {
   return (

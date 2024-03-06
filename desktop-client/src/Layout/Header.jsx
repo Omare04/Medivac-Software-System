@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  StyledAccountNavItem,
   StyledHeader,
   StyledNavItem,
   StyledRightSideNavItem,
@@ -19,6 +18,26 @@ import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { GiAirplaneDeparture } from "react-icons/gi";
 import styled from "styled-components";
+import { Avatar, WrapItem } from "@chakra-ui/react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  UnorderedList,
+  ListItem,
+  PopoverCloseButton,
+  PopoverAnchor,
+  Button,
+  Icon,
+  Portal,
+} from "@chakra-ui/react";
+import { dividerColorLight } from "../Colors";
+import { MdOutlineManageAccounts } from "react-icons/md";
+import { MdOutlineSettings } from "react-icons/md";
 
 const universalStyle = {
   size: 16,
@@ -64,6 +83,25 @@ const StyledNavItemLinks = styled(Link)`
   }
 `;
 
+const personeleLinks = [
+  {
+    title: "Account",
+    route: "/getMedicalPersonele",
+    icon: (
+      <MdOutlineManageAccounts
+        style={{ fontSize: "18px", marginRight: "5px" }}
+      />
+    ),
+  },
+  {
+    title: "Settings",
+    route: "/getMedicalDoctors",
+    icon: (
+      <MdOutlineSettings style={{ fontSize: "18px", marginRight: "5px" }} />
+    ),
+  },
+];
+
 function Header() {
   return (
     <>
@@ -71,17 +109,94 @@ function Header() {
         <StyledHeaderLogoLink to={"/"}>
           <GiAirplaneDeparture size={30} />
         </StyledHeaderLogoLink>
-
         {HeaderNavData.map((value, index) => (
           <StyledNavItemLinks to={value.route}>
             {value.title}
           </StyledNavItemLinks>
         ))}
-        <StyledRightSideNavItem>
-          <StyledBellIcon />
-          <StyledAccountNavItem>
-            <FaUser style={{ color: "white" }} />
-          </StyledAccountNavItem>
+        <StyledRightSideNavItem >
+          <Popover>
+            <PopoverTrigger>
+              <Icon boxSize = {7} mr={15} mt={1} display={"flex"} alignItems={"center"}>
+                <StyledBellIcon />
+              </Icon>
+            </PopoverTrigger>
+            <Portal>
+              <PopoverContent minHeight={20}>
+                <PopoverHeader>
+                  Notifications
+                </PopoverHeader>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverBody>
+                  This is the meat
+                </PopoverBody>
+              </PopoverContent>
+            </Portal>
+          </Popover>
+          <Popover>
+            <PopoverTrigger>
+              <WrapItem pr={6} pl={3} cursor={"pointer"}>
+                <Avatar
+                  name="Dan Abrahmov"
+                  src="https://bit.ly/dan-abramov"
+                  size={"sm"}
+                />
+              </WrapItem>
+            </PopoverTrigger>
+            <Portal>
+              <PopoverContent width={250}>
+                <PopoverArrow />
+                <PopoverHeader mt={1} mb={1}>
+                  Hello Omar
+                </PopoverHeader>
+                <PopoverCloseButton />
+                <PopoverBody>
+                  <UnorderedList
+                    listStyleType={"none"}
+                    ml={0}
+                    pl={0}
+                    mb={1}
+                    mt={1}
+                    overflow={"auto"}
+                  >
+                    {personeleLinks.map((item, key) => (
+                      <ListItem
+                        key={key}
+                        mt={1}
+                        pb={1}
+                        cursor={"pointer"}
+                        whiteSpace="pre-wrap"
+                        overflow="hidden"
+                        textOverflow="ellipsis"
+                        fontWeight={400}
+                        fontSize={15}
+                        transition="all 0.1s"
+                        _hover={{
+                          color: "#6d6d6d",
+                        }}
+                        _active={{
+                          color: "#7e7e7e",
+                        }}
+                        display={"flex"}
+                        alignItems={"center"}
+                        justifyContent={"flex-start"}
+                        borderBottom={`1px solid ${dividerColorLight}`}
+                      >
+                        {item.icon}
+                        {item.title}
+                      </ListItem>
+                    ))}
+                  </UnorderedList>
+                </PopoverBody>
+                <PopoverFooter>
+                  <Button colorScheme="red" width={"100%"}>
+                    Log Out
+                  </Button>
+                </PopoverFooter>
+              </PopoverContent>
+            </Portal>
+          </Popover>
         </StyledRightSideNavItem>
       </StyledHeader>
     </>

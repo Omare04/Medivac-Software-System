@@ -1,5 +1,5 @@
 FROM nginx
 
-#basically saying take your ./default.conf file and override the default conf file in ngix 
-#this is because our file has cus
+#basically saying take your ./default.conf file and override the default conf file in nginx 
+#this is because our file has custom config for the reverse proxy
 COPY ./default.conf /etc/nginx/conf.d/default.conf

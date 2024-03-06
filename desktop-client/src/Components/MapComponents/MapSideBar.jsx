@@ -27,7 +27,6 @@ import { RiPlaneFill } from "react-icons/ri";
 function MapSideBar() {
   return (
     <SideNavWrapper>
-    
       {/* <StyledTableFilterBar
         style={{
           height: " 30px",
@@ -66,7 +65,7 @@ function MapSideBarCardItem() {
           overflow: "auto",
         }}
       >
-        <Accordion allowToggle pt={0} mb={0}>
+        <Accordion allowToggle pt={0} mb={0} >
           <AccordianItemComponent colorProp={"#323297"} />
           <AccordianItemComponent colorProp={"#bb2222"} />
           <AccordianItemComponent colorProp={"#399732"} />
@@ -80,15 +79,14 @@ function AccordianItemComponent({ colorProp }) {
   return (
     <>
       <AccordionItem mb={0}>
-        <h2 style={{ margin: "0px" }}>
           <AccordionButton
             backgroundColor={"#1e1e25"}
             border={"none"}
-            pl={8}
+            pl={3}
             borderLeft={`4px solid ${colorProp}`}
             cursor={"pointer"}
-            pt={10}
-            pb={10}
+            // pt={10}
+            // pb={10}
           >
             <Flex
               as="span"
@@ -98,28 +96,35 @@ function AccordianItemComponent({ colorProp }) {
               color={dividerColorLight}
               fontSize={16}
             >
-              <Box>
-                <RiPlaneFill color = {colorProp} style={{paddingRight: "8px"}}/>
+              <Box
+                display={"flex"}
+                alignItems={"center"}
+                justifyContent={"flex-start"}
+              >
+                <RiPlaneFill
+                  color={colorProp}
+                  style={{ paddingRight: "8px" }}
+                  size={30}
+                />
                 CNTKC
               </Box>
-              <Box fontSize={11} marginTop={5} color={dividerColor}>
+              <Box fontSize={11} color={dividerColor}>
                 Recent: AOM012K
               </Box>
             </Flex>
             <AccordionIcon color={dividerColorLight} fontSize={19} />
           </AccordionButton>
-        </h2>
         <AccordionPanel
-          pb={4}
-          mb={7}
-          pl={10}
+
+          // mb={7}
+          pl={4}
           borderLeft={`4px solid ${colorProp}`}
         >
           <Box
             fontSize={13}
-            pt={5}
-            pb={5}
-            color={"#dcdcdc"}
+            pt={2}
+            pb={2}
+
             backgroundColor={"#4949493d"}
             display={"flex"}
             alignItems={"center"}
@@ -129,9 +134,9 @@ function AccordianItemComponent({ colorProp }) {
           </Box>
           <Box
             fontSize={12.5}
-            marginTop={5}
-            pb={7}
-            pt={5}
+
+            pb={2}
+            pt={2}
             color={dividerColor}
             display={"flex"}
             justifyContent={"space-between"}
@@ -142,9 +147,8 @@ function AccordianItemComponent({ colorProp }) {
           </Box>
           <Box
             fontSize={12.5}
-            marginTop={5}
-            pb={7}
-            pt={5}
+            pb={2}
+            pt={2}
             color={dividerColor}
             display={"flex"}
             justifyContent={"space-between"}
@@ -155,9 +159,8 @@ function AccordianItemComponent({ colorProp }) {
           </Box>
           <Box
             fontSize={12.5}
-            marginTop={5}
-            pb={7}
-            pt={5}
+            pb={2}
+            pt={2}
             color={dividerColor}
             display={"flex"}
             justifyContent={"space-between"}
@@ -168,9 +171,8 @@ function AccordianItemComponent({ colorProp }) {
           </Box>
           <Box
             fontSize={12.5}
-            marginTop={5}
-            pb={7}
-            pt={5}
+            pb={2}
+            pt={2}
             color={dividerColor}
             display={"flex"}
             justifyContent={"space-between"}
@@ -181,9 +183,8 @@ function AccordianItemComponent({ colorProp }) {
           </Box>
           <Box
             fontSize={12.5}
-            marginTop={5}
-            pb={7}
-            pt={5}
+            pb={2}
+            pt={2}
             color={dividerColor}
             display={"flex"}
             justifyContent={"space-between"}

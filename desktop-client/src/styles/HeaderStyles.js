@@ -15,30 +15,6 @@ export const StyledHeader = styled.div`
   height: 50px;
 `;
 
-//ACCOUNT NAV
-export const StyledAccountNavItem = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  cursor: pointer;
-  transition: all 0.18s ease-in-out;
-  height: 100%;
-  padding-left: 26px;
-  margin-left: 5px;
-  padding-right: 26px;
-
-  &:hover {
-    background-color: #313139;
-    color: #cccccc;
-    transform: scale(1);
-  }
-
-  &:active {
-    background-color: #2b2b32cc;
-    transform: scale(0.99);
-  }
-`;
 
 //NOTIFICATION BELL & Account item wrapper
 export const StyledRightSideNavItem = styled.div`
@@ -47,14 +23,12 @@ export const StyledRightSideNavItem = styled.div`
   justify-content: center;
   color: white;
   height: 100%;
-  padding-left: 26px;
-  margin-left: 5px;
   margin-left: auto;
 `;
 
 export const StyledBellIcon = styled(PiBellSimpleFill)`
   font-size: 19px;
-  margin-right: 20px;
+  /* margin-right: 20px; */
   cursor: pointer;
   color: #fff;
   transition: color 0.2s ease;

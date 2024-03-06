@@ -1,6 +1,6 @@
 import React from "react";
 import { FunctionalFooterWrapper } from "../styles/FooterStyles";
-import { IconButton } from "../Appcomponents/InputComponents/ButtonComponents";
+import { IconButton } from "../Components/InputComponents/ButtonComponents";
 import { FaPlus } from "react-icons/fa6";
 import { IoMap } from "react-icons/io5";
 

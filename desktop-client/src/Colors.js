@@ -1,4 +1,6 @@
-export const dividerColor = "#d2d2d2";
+export const dividerColor = "#d2d2d2";            
+export const dividerColorHover = "#c0c0c0";        
+export const dividerColorActive = "#a8a8a8";       
 
 export const dividerColorLight = "#fafafa";
 

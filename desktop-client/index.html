@@ -7,7 +7,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel ="stylesheet" href= "global.css" />
+    <link rel="stylesheet" href="global.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>medapp</title>
@@ -16,7 +16,7 @@
     style="
       padding: 0px;
       margin: 0px;
-      background-color: rgb(255, 255, 255);
+      /* background-color: rgb(255, 255, 255); */
       font-family: 'Inter', sans-serif;
       height: 100%;
       width: 100%;
@@ -25,6 +25,10 @@
     "
   >
     <div id="root" style="font-weight: normal; height: 100%"></div>
-    <script type="module" src="./src/main.jsx"></script>
+    <script type="module">
+      import.meta.env.MODE === "production"
+        ? import("/src/main.jsx")
+        : import("http://localhost:5173/src/main.jsx");
+    </script>
   </body>
 </html>

@@ -6,7 +6,7 @@ export const SideNavWrapper = styled.div`
   min-height: 100%;
   width: 380px;
   align-items: flex-start;
-  color: white;
+  color: white; 
   padding: 10px;
   padding-right: 10px;
   padding-left: 0px;

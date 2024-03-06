@@ -19,7 +19,7 @@ services:
   desktop-client:
     build: 
       context: './desktop-client'
-      dockerfile: 'Dockerfile'
+      dockerfile: 'Dockerfile.dev'
     ports: 
       - "5173:5173"
     volumes:

@@ -9,7 +9,7 @@ import React, {
 import { Home } from "../Pages/Home";
 import Map from "../Pages/Map";
 import MedicalEquipmentStock from "../Pages/Stock/MedicalEquipmentStock";
-import Personle from "../Pages/Personle";
+import Personele from "../Pages/Personele/Personele";
 
 export function ProtectedRoutes() {
   return (
@@ -18,7 +18,7 @@ export function ProtectedRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/Map" element={<Map />} />
         <Route path="/stock" element={<MedicalEquipmentStock />} />
-        <Route path="/personele" element={<Personle />} />
+        <Route path="/personele" element={<Personele />} />
       </Routes>
     </>
   );
