@@ -19,6 +19,9 @@ app.get('/hi', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+app.get('/', (req, res) => {
+    res.send("hi");
+});
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server is running on ${port}`);
 });

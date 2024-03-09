@@ -18,6 +18,10 @@ function DrugRequestsHomeComponents() {
         <DrugRequestCard type={"Pharmaceuticals"} Title={"Clinical Manager"} />
         <DrugRequestCard type={"PO"} Title={"PO022470"} />
         <DrugRequestCard type={"Medical Equipment"} Title={"Clinical Manager"}/>
+        <DrugRequestCard type={"Medical Equipment"} Title={"Clinical Manager"}/>
+        <DrugRequestCard type={"Medical Equipment"} Title={"Clinical Manager"}/>
+        <DrugRequestCard type={"Medical Equipment"} Title={"Clinical Manager"}/>
+        <DrugRequestCard type={"Medical Equipment"} Title={"Clinical Manager"}/>
         <DrugRequestCard type={"Pharmaceuticals"} Title={"Clinical Manager"} />
         {/* <DrugRequestCard type={"Medical Equipment"} /> */}
       </DrugRequestCardWrapper>

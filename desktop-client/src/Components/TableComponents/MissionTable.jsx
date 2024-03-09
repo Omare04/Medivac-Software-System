@@ -46,21 +46,19 @@ const columnHeaders = [
 
 function MissionTableComponent() {
   return (
-    <div
-      style={{
-        paddingTop: "20px",
-      }}
-    >
+    <>
       <TableFilterBar></TableFilterBar>
-      <MissionTable />
-    </div>
+      <div style={{ overflow: "auto", height: "100%", marginTop: "10px" }}>
+        <MissionTable />
+      </div>
+    </>
   );
 }
 
 function mapTableRows() {
   const rows = [];
 
-  for (let index = 0; index < 19; index++) {
+  for (let index = 0; index < 35; index++) {
     rows.push(
       <MissionTableRow key={index}>
         <MissionTableData
@@ -97,14 +95,13 @@ function MissionTable() {
   return (
     <>
       <MissionTableWrapper>
-        <MissionTableRow>
-          {columnHeaders.map((data) => (
-            <MissionTableHeader key={data}>{data}</MissionTableHeader>
-          ))}
-        </MissionTableRow>
+        {/* <MissionTableRow> */}
+        {columnHeaders.map((data) => (
+          <MissionTableHeader key={data}>{data}</MissionTableHeader>
+        ))}
+        {/* </MissionTableRow> */}
         {mapTableRows()}
       </MissionTableWrapper>
-
     </>
   );
 }

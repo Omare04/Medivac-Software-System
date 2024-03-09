@@ -70,7 +70,6 @@ function StockEntries() {
         <StatLabel
           fontSize="sm"
           color={"grey"}
-          mr={0}
           mb={2}
           pb={1}
           style={{ borderBottom: `1px solid ${dividerColor}` }}
@@ -81,7 +80,6 @@ function StockEntries() {
           <Flex alignItems="center" justifyContent="space-between">
             <ListItem>
               <ListIcon as={AiOutlinePlusCircle} color="green.500" />
-
               <span style={{ fontSize: "13px", paddingLeft: "0px" }}>6</span>
             </ListItem>
             <Text fontSize={13}>(02/04/2024)</Text>
@@ -123,7 +121,7 @@ export function StatsTab() {
   };
 
   return (
-    <ChakraProvider pr={0}>
+    <ChakraProvider pr={0} pl={0}>
       <Tabs
         position="relative"
         variant="unstyled"
@@ -131,7 +129,7 @@ export function StatsTab() {
         onChange={handleTabChange}
         pr={0}
       >
-        <TabList pt={3} pl={1}>
+        <TabList>
           <Tab
             _hover={{ color: "gray.600", borderBottom: "2px solid blue.500" }}
             _active={{ color: "blue.500", borderBottom: "2px solid blue.500" }}
@@ -155,19 +153,12 @@ export function StatsTab() {
           borderRadius="1px"
         />
         <TabPanels>
-          <TabPanel pt={5} pl={5} borderRadius={10} display={"flex"}>
+          <TabPanel pl={0} pr={0} borderRadius={10} display={"flex"}>
             <MedicalEquipmentStats />
             <StockEntries />
           </TabPanel>
 
-          <TabPanel
-            pl={0}
-            pt={5}
-            mr={3}
-            p={5}
-            borderRadius={10}
-            display={"flex"}
-          >
+          <TabPanel pl={0} mr={3} p={5} borderRadius={10} display={"flex"}>
             <p>Pharmaceuticals</p>
           </TabPanel>
         </TabPanels>

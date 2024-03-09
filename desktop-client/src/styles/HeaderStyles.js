@@ -8,13 +8,15 @@ export const StyledHeaderWrapper = styled.div``;
 
 export const StyledHeader = styled.div`
   display: flex;
+  position: sticky;
+  z-index: 1000;
+  top: 0;
   align-items: center;
   justify-content: flex-start;
   background-color: #2e2e38;
   width: 100%;
   height: 50px;
 `;
-
 
 //NOTIFICATION BELL & Account item wrapper
 export const StyledRightSideNavItem = styled.div`

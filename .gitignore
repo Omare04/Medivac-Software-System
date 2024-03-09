@@ -1,4 +1,5 @@
 # .gitignore
+node_modules
 Medical_Evac_App_Plan
 .env
 .yml

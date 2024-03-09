@@ -8,8 +8,8 @@ export const HeaderNavData = [
       index: 0,
     },
     {
-      title: "Personele",
-      route: "/personele",
+      title: "Missions",
+      route: "/Missions",
       index: 1,
     },
     {
@@ -18,8 +18,8 @@ export const HeaderNavData = [
       index: 2,
     },
     {
-      title: "Requests",
-      route: "/requests",
+      title: "Personele",
+      route: "/personele",
       index: 3,
     },
     {

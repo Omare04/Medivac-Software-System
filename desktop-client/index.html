@@ -21,14 +21,10 @@
       height: 100%;
       width: 100%;
       font-weight: normal;
-      overflow: hidden;
+      overflow: auto;
     "
   >
     <div id="root" style="font-weight: normal; height: 100%"></div>
-    <script type="module">
-      import.meta.env.MODE === "production"
-        ? import("/src/main.jsx")
-        : import("http://localhost:5173/src/main.jsx");
-    </script>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

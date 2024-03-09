@@ -25,8 +25,6 @@ import { StockServiceApi } from "./Personele/Personele";
 const TitleContainer = styled.div`
   display: flex;
   justify-content: center;
-  padding-right: 20px;
-  padding-left: 20px;
 `;
 
 export function Home() {
@@ -41,15 +39,23 @@ export function Home() {
   }, []);
   return (
     <>
-      <Flex justifyContent="space-between" height="100%">
+      <Flex
+        justifyContent="space-between"
+        height="calc(100% - (40px))"
+        id="home-wrapper-root"
+        alignItems="stretch"
+        // p={5}
+      >
         <HomeWrapperLeft>
           <MissionTableComponent />
         </HomeWrapperLeft>
         <HomeWrapperRight>
           <StatsTab />
+
           <TitleContainer>
             <DrugRequestTitle>Requests & Orders</DrugRequestTitle>
           </TitleContainer>
+
           <BoxWrapper>
             <DrugRequestsHomeComponents />
           </BoxWrapper>
@@ -64,8 +70,8 @@ export function Home() {
         <OrderComponentsHome />
         </BoxWrapper> */}
         </HomeWrapperRight>
+        <FunctionalFooter />
       </Flex>
-      <FunctionalFooter />
     </>
   );
 }

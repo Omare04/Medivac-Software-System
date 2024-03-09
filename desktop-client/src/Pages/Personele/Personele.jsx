@@ -29,7 +29,8 @@ import { MdMedicalServices } from "react-icons/md";
 import StyledLinkButton from "../../styles/ButtonStyles/TransparentLinks";
 import { IoMdSearch } from "react-icons/io";
 import { CreatePersoneleRolesModal } from "../../Components/Modals/PersoneleModals";
-import PersoneleTasks from "./PersoneleTasks";
+import PersoneleCalendar from "./PersoneleCalendar";
+import { PiUsersThreeBold } from "react-icons/pi";
 
 export const StockServiceApi = axios.create({
   baseURL: "/stock-management-service", // Set your API base URL here
@@ -90,42 +91,49 @@ function Personele() {
 
   return (
     <>
-      <p
-        style={{
-          fontWeight: "350",
-          borderBottom: `1px solid #ededed`,
-          paddingBottom: "10px",
-          marginTop: "18px",
-          width: "90%",
-          marginLeft: "50px",
-          color: "#5f5f5f",
-          fontSize: "22px",
-        }}
-      >
-        Personele
-      </p>
       <div
-        style={{
-          marginTop: "20px",
-          display: "flex",
-          width: "100%",
-          height: "80%",
-          marginLeft: "50px",
-        }}
+        id="personele-root-wrapper"
+        style={{ height: "calc(100% - (60px))", padding: "10px" }}
       >
-        <div
+        <p
           style={{
+            fontWeight: "350",
+            borderBottom: `1px solid #ededed`,
+            paddingBottom: "10px",
+            width: "95%",
+            color: "#5f5f5f",
+            fontSize: "22px",
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
             alignItems: "center",
           }}
         >
-          <PersoneleListComponent />
-          <CreatePersoneleRolesModal />
+          <PiUsersThreeBold style={{ marginRight: "15px" }} size={30} />
+          Personele
+        </p>
+        <div
+          style={{
+            marginTop: "20px",
+            display: "flex",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              alignItems: "center",
+              height: "100%",
+            }}
+          >
+            <PersoneleListComponent />
+            <CreatePersoneleRolesModal />
+          </div>
+
+          <PersoneleAccordion />
+          <PersoneleCalendar />
         </div>
-        <PersoneleAccordion />
-        <PersoneleTasks />
       </div>
     </>
   );
@@ -150,7 +158,7 @@ function PersoneleListComponent() {
           <ListItem
             key={key}
             pb={3}
-            mr={20}
+            pr={20}
             mt={key === 0 ? 0 : 15}
             cursor={"pointer"}
             whiteSpace="pre-wrap"
@@ -185,7 +193,8 @@ function PersoneleAccordion() {
       <div
         id="map-card-item-wrapper"
         style={{
-          width: "30%",
+          width: "40%",
+          height: "100%",
           marginLeft: "20px",
           borderLeft: `1px solid #ededed`,
           paddingLeft: "10px",
@@ -193,7 +202,7 @@ function PersoneleAccordion() {
           flexDirection: "column",
         }}
       >
-        <InputGroup pr={3} pb={2} width={"100%"}>
+        <InputGroup pr={3} width={"100%"}>
           <InputLeftElement pointerEvents="none" height={"33px"}>
             <IoMdSearch />
           </InputLeftElement>
@@ -246,7 +255,6 @@ function AccordianItemComponent() {
           pl={4}
           cursor={"pointer"}
           pt={1}
-          pb={1.1}
         >
           <Flex
             as="span"
@@ -258,7 +266,7 @@ function AccordianItemComponent() {
             fontWeight={350}
           >
             <Box color={"black"}>
-              <WrapItem pb={2} display={"flex"} alignItems={"center"}>
+              <WrapItem display={"flex"} alignItems={"center"}>
                 <Avatar
                   size={"sm"}
                   name="Dan Abrahmov"
@@ -279,7 +287,7 @@ function AccordianItemComponent() {
           <AccordionIcon color={"grey"} fontSize={19} />
         </AccordionButton>
 
-        <AccordionPanel pl={5} pb={1}>
+        <AccordionPanel pl={5}>
           <Box
             fontSize={12.5}
             pb={1}

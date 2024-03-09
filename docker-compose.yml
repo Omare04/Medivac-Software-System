@@ -6,7 +6,7 @@ services:
       dockerfile: 'Dockerfile.dev'
       context: './nginx'
     ports: 
-      - '80:80'  
+      - '3050:80'  
     depends_on:
       - stock-management-service
       - desktop-client
@@ -19,9 +19,7 @@ services:
   desktop-client:
     build: 
       context: './desktop-client'
-      dockerfile: 'Dockerfile.dev'
-    ports: 
-      - "5173:5173"
+      dockerfile: 'Dockerfile'
     volumes:
       - /desktop-client/node_modules
       - ./desktop-client:/desktop-client
@@ -30,8 +28,6 @@ services:
     build:
       context: './stock-management-service'
       dockerfile: "Dockerfile.dev"
-    ports:
-      - "3000:3000"
     env_file:
       - .env.stock-management-service
     depends_on:
@@ -54,3 +50,6 @@ services:
 
 # run docker-compose on quite mode
 # docker-compose up --quiet-pull -d
+
+#Listen in on active ports:
+# netstat -anvp tcp | awk 'NR<3 || /LISTEN/'

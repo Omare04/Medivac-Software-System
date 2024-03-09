@@ -6,33 +6,32 @@ import { dividerColor, dividerColorLight } from "../../Colors";
 export const MissionTableWrapper = styled.table`
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
-  margin-top: 5px;
-  height: 100%;
+  padding-right: 125px; 
+  overflow-y: auto;
 `;
 
 export const MissionTableHeader = styled.th`
+  position: sticky;
+  top: 0;
   background-color: #f2f2f2;
   padding-top: 5px;
   text-align: left;
   font-weight: 485;
   font-size: 15px;
-  border: 1px solid #eeeeee;
-  height: 100%;
+  /* height: 100%; */
 `;
 
 export const MissionTableRow = styled.tr`
   &:nth-child(even) {
     background-color: ${dividerColorLight};
   }
-  height: 100%;
+  /* height: 100%; */
   border: 1px solid #eeeeee;
 `;
 
 export const MissionTableData = styled.td`
   padding: 4px;
   font-size: 14px;
-  height: 100%;
 `;
 
 //FILTER BAR
@@ -40,7 +39,6 @@ export const MissionTableData = styled.td`
 export const StyledTableFilterBar = styled.div`
   display: flex;
   align-items: center;
-  padding: 3px;
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
   width: 100%;
@@ -68,7 +66,7 @@ export const StyledSearch = styled.input`
   padding: 5px;
   color: #434343;
   background-color: ${dividerColorLight};
-  border: none; 
+  border: none;
   border-radius: 3px;
 
   &::placeholder {

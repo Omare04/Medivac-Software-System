@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build --config ./config/vite.config.js",
     "test": "jest",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "dev": "vite --config ./config/vite.config.js",
@@ -14,6 +14,9 @@
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@fullcalendar/core": "^6.1.11",
+    "@fullcalendar/daygrid": "^6.1.11",
+    "@fullcalendar/react": "^6.1.11",
     "@table-library/react-table-library": "^4.1.7",
     "axios": "^1.6.7",
     "class-variance-authority": "^0.7.0",

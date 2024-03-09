@@ -5,6 +5,8 @@ import { buttonBlue } from "../Colors";
 
 //HOME COMPONENTS
 export const DrugRequestCardWrapper = styled.ul`
+  overflow-y: scroll;
+  height: 100%;
   list-style-type: none;
   width: 100%;
 `;
