@@ -110,27 +110,29 @@ function Header() {
           <GiAirplaneDeparture size={30} />
         </StyledHeaderLogoLink>
         {HeaderNavData.map((value, index) => (
-          <StyledNavItemLinks to={value.route}>
+          <StyledNavItemLinks to={value.route} key={index}>
             {value.title}
           </StyledNavItemLinks>
         ))}
-        <StyledRightSideNavItem >
+        <StyledRightSideNavItem>
           <Popover>
             <PopoverTrigger>
-              <Icon boxSize = {7} mr={15} mt={1} display={"flex"} alignItems={"center"}>
+              <Icon
+                boxSize={7}
+                mr={15}
+                mt={1}
+                display={"flex"}
+                alignItems={"center"}
+              >
                 <StyledBellIcon />
               </Icon>
             </PopoverTrigger>
             <Portal>
               <PopoverContent minHeight={20}>
-                <PopoverHeader>
-                  Notifications
-                </PopoverHeader>
+                <PopoverHeader>Notifications</PopoverHeader>
                 <PopoverArrow />
                 <PopoverCloseButton />
-                <PopoverBody>
-                  This is the meat
-                </PopoverBody>
+                <PopoverBody>This is the meat</PopoverBody>
               </PopoverContent>
             </Portal>
           </Popover>
