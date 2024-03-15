@@ -19,6 +19,7 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { FaSearch, FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 const key = "Composed Table";
 import { usePagination } from "@table-library/react-table-library/pagination";
 
@@ -103,6 +104,97 @@ const nodes = [
     type: "Cardiology",
     pn: 12314124,
   },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
 ];
 
 function MedicalStockTable() {
@@ -111,7 +203,7 @@ function MedicalStockTable() {
   const pagination = usePagination(data, {
     state: {
       page: 0,
-      size: 20,
+      size: 15,
     },
     onChange: onPaginationChange,
   });
@@ -124,7 +216,9 @@ function MedicalStockTable() {
     console.log(action, state);
   }
 
-  const [horizontalSpacing, setHorizontalSpacing] = React.useState(DEFAULT_OPTIONS.horizontalSpacing);
+  const [horizontalSpacing, setHorizontalSpacing] = React.useState(
+    DEFAULT_OPTIONS.horizontalSpacing
+  );
   const [verticalSpacing, setVerticalSpacing] = React.useState(5);
   const [striped, setStriped] = React.useState(DEFAULT_OPTIONS.striped);
   const [hasFooter, setFooter] = React.useState(false);
@@ -135,8 +229,7 @@ function MedicalStockTable() {
     verticalSpacing,
     striped,
   });
-  
-  
+
   const customTheme = useTheme([
     getTheme(),
     {
@@ -165,7 +258,7 @@ function MedicalStockTable() {
       `,
     },
   ]);
-  
+
   const theme = useTheme([mantineTheme]);
 
   const [search, setSearch] = useState("");
@@ -197,24 +290,33 @@ function MedicalStockTable() {
 
   return (
     <>
-      <div>
-        <Stack spacing={0} pb={3} pt={1}>
+      <div
+        style={{
+          width: "100%",
+          borderRadius: "3px",
+          background: "white",
+          overflow: "auto",
+          padding: "5px"
+        }}
+      >
+        <Stack spacing={0} pb={3}>
           <InputGroup>
             <InputLeftElement
-              
               pointerEvents="none"
               children={<FaSearch style={{ color: "#96989a" }} />}
             />
             <Input
+              background={"white"}
               placeholder="Search Task"
               value={search}
               onChange={handleSearch}
               borderRadius={"sm"}
             />
+            <IconButton aria-label="Search database" icon={<FaPlus />} ml={2} />
           </InputGroup>
         </Stack>
 
-        <Box p={1} borderWidth="1px" borderRadius="sm">
+        <Box borderWidth="1px" borderRadius="sm" width={"100%"} overflow="auto">
           <CompactTable
             columns={COLUMNS}
             data={data}
@@ -223,7 +325,7 @@ function MedicalStockTable() {
           />
         </Box>
         <br />
-        <HStack justify="flex-end" height="0px" width="100%">
+        <HStack justify="flex-end"  width="100%">
           <IconButton
             aria-label="previous page"
             icon={<FaChevronLeft size={13} />}
