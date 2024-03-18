@@ -30,10 +30,8 @@ const personeleLinks = [
   {
     title: "Suppliers",
     route: "/getMedicalPersonele",
-    icon: <FaTruck size={20} style={{ marginRight: "10px" }} />,
-    subRoutes: {
-
-    }
+    icon: <FaTruck size={17} style={{ marginRight: "10px" }} />,
+    subRoutes: {},
   },
 ];
 
@@ -67,19 +65,19 @@ function OrderPageMain() {
           id="order_page_left_wrapper"
           style={{
             height: "100%",
-            background: buttonBlue,
+            background: "#eeeeee86",
+            color: "black",
             marginRight: "10px",
             borderRadius: "3px",
           }}
         >
-          <Accordion w={"230px"} allowToggle>
+          <Accordion w={"200px"} allowToggle>
             {personeleLinks.map((item, key) => (
               <AccordionItem
                 key={key}
                 cursor={"pointer"}
                 whiteSpace="pre-wrap"
                 overflow="hidden"
-                color={"white"}
                 textOverflow="ellipsis"
                 fontWeight={400}
                 fontSize={15}
@@ -89,7 +87,7 @@ function OrderPageMain() {
                 }}
                 borderBottom={"none"}
               >
-                <AccordionButton p={3}>
+                <AccordionButton p={3} fontSize={"15px"} color={"black"}>
                   <Box
                     display={"flex"}
                     alignItems={"center"}

@@ -9,6 +9,7 @@ const nodes = [
     po: "123",
     date: new Date(2020, 1, 15),
     status: "Pending",
+    country: "UK",
     supplier: "INC INC",
     quantity: 34,
   },
@@ -16,6 +17,7 @@ const nodes = [
     po: "456",
     date: new Date(2020, 3, 20),
     status: "Delivered",
+    country: "UK",
     supplier: "ABC Corp",
     quantity: 20,
   },
@@ -23,6 +25,7 @@ const nodes = [
     po: "789",
     date: new Date(2020, 5, 10),
     status: "On The Way",
+    country: "UK",
     supplier: "XYZ Corp",
     quantity: 50,
   },
@@ -30,6 +33,95 @@ const nodes = [
     po: "101",
     date: new Date(2020, 7, 5),
     status: "Pending",
+    country: "UK",
+    supplier: "DEF Inc",
+    quantity: 15,
+  },
+  {
+    po: "101",
+    date: new Date(2020, 7, 5),
+    status: "Pending",
+    country: "UK",
+    supplier: "DEF Inc",
+    quantity: 15,
+  },
+  {
+    po: "101",
+    date: new Date(2020, 7, 5),
+    status: "Pending",
+    country: "UK",
+    supplier: "DEF Inc",
+    quantity: 15,
+  },
+  {
+    po: "101",
+    date: new Date(2020, 7, 5),
+    status: "Pending",
+    country: "UK",
+    supplier: "DEF Inc",
+    quantity: 15,
+  },
+  {
+    po: "101",
+    date: new Date(2020, 7, 5),
+    status: "Pending",
+    country: "UK",
+    supplier: "DEF Inc",
+    quantity: 15,
+  },
+  {
+    po: "101",
+    date: new Date(2020, 7, 5),
+    status: "Pending",
+    country: "UK",
+    supplier: "DEF Inc",
+    quantity: 15,
+  },
+  {
+    po: "101",
+    date: new Date(2020, 7, 5),
+    status: "Pending",
+    country: "UK",
+    supplier: "DEF Inc",
+    quantity: 15,
+  },
+  {
+    po: "101",
+    date: new Date(2020, 7, 5),
+    status: "Pending",
+    country: "UK",
+    supplier: "DEF Inc",
+    quantity: 15,
+  },
+  {
+    po: "101",
+    date: new Date(2020, 7, 5),
+    status: "Pending",
+    country: "UK",
+    supplier: "DEF Inc",
+    quantity: 15,
+  },
+  {
+    po: "101",
+    date: new Date(2020, 7, 5),
+    status: "Pending",
+    country: "UK",
+    supplier: "DEF Inc",
+    quantity: 15,
+  },
+  {
+    po: "101",
+    date: new Date(2020, 7, 5),
+    status: "Pending",
+    country: "UK",
+    supplier: "DEF Inc",
+    quantity: 15,
+  },
+  {
+    po: "101",
+    date: new Date(2020, 7, 5),
+    status: "Pending",
+    country: "UK",
     supplier: "DEF Inc",
     quantity: 15,
   },
@@ -54,13 +146,6 @@ function PharamceuticalOrders() {
           <Button colorScheme="blue" leftIcon={<IoAddOutline size={25} />}>
             Create New Order
           </Button>
-          <Tabs>
-            <TabList>
-              <Tab>Pending</Tab>
-              <Tab>Delivered</Tab>
-              <Tab>On Route</Tab>
-            </TabList>
-          </Tabs>
         </div>
         <OrderTable nodes={nodes} />
       </div>
