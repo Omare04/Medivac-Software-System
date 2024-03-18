@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { dividerColorLight } from "../../Colors";
+import { buttonBlue, dividerColorLight } from "../../Colors";
 import { useTree } from "@table-library/react-table-library/tree";
 import { CompactTable } from "@table-library/react-table-library/compact";
 import { useTheme } from "@table-library/react-table-library/theme";
@@ -17,6 +17,9 @@ import {
   HStack,
   Button,
   IconButton,
+  Tooltip,
+  Tag,
+  Checkbox,
 } from "@chakra-ui/react";
 import { FaSearch, FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
@@ -24,6 +27,8 @@ import { usePagination } from "@table-library/react-table-library/pagination";
 import { IoShareOutline } from "react-icons/io5";
 import { FaRegEye } from "react-icons/fa";
 import { Badge } from "@chakra-ui/react";
+import { FaChevronDown } from "react-icons/fa";
+import { useRowSelect } from "@table-library/react-table-library/select";
 
 const exportRow = (OID) => {
   //Export order
@@ -106,10 +111,39 @@ export function OrderTable({ nodes }) {
     ),
   };
 
+  const select = useRowSelect(data, {
+    onChange: onSelectChange,
+  });
+
+  function onSelectChange(action, state) {
+    console.log(action, state);
+  }
+
   const COLUMNS = [
     {
       label: "Order ID / PO",
-      renderCell: (item) => item.po,
+      renderCell: (item) => (
+        <>
+          <strong style={{ textDecoration: "underline" }}>#{item.po}</strong>
+        </>
+      ),
+      select: {
+        renderHeaderCellSelect: () => (
+          <Checkbox
+            colorScheme="#EBF8FF"
+            isChecked={select.state.all}
+            isIndeterminate={!select.state.all && !select.state.none}
+            onChange={select.fns.onToggleAll}
+          />
+        ),
+        renderCellSelect: (item) => (
+          <Checkbox
+            colorScheme={buttonBlue}
+            isChecked={select.state.ids.includes(item.id)}
+            onChange={() => select.fns.onToggleById(item.id)}
+          />
+        ),
+      },
     },
     {
       label: "Date/Time",
@@ -123,28 +157,70 @@ export function OrderTable({ nodes }) {
     {
       label: "Status",
       renderCell: (item) => (
-        <Badge
-          colorScheme={
-            item.status === "Delivered"
-              ? "green"
-              : item.status === "Pending"
-              ? "yellow"
-              : "blue"
+        <Tooltip
+          label={
+            <>
+              <div style={{ borderBottom: "1px solid grey" }}>
+                {item.status}
+              </div>
+              {item.status == "Delivered"
+                ? "Order Delivered On: "
+                : "Order Created: "}
+              {item.date.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+              })}
+            </>
           }
-          p={1}
         >
-          {item.status}
-        </Badge>
+          <Badge
+            cursor={"pointer"}
+            colorScheme={
+              item.status === "Delivered"
+                ? "green"
+                : item.status === "Pending"
+                ? "yellow"
+                : "blue"
+            }
+            p={1}
+          >
+            {item.status}
+          </Badge>
+        </Tooltip>
       ),
     },
     {
       label: "Supplier",
-      renderCell: (item) => item.supplier,
+      renderCell: (item) => (
+        <>
+          <Tooltip
+            label={
+              <>
+                <div style={{ borderBottom: "1px solid grey" }}>
+                  {item.supplier}
+                </div>
+                {item.address}
+              </>
+            }
+          >
+            <Tag size={"sm"} variant="solid" color="white" cursor={"pointer"}>
+              <span style={{ paddingRight: "5px" }}> {item.supplier} </span>
+              <span
+                style={{ paddingLeft: "5px", borderLeft: "1px solid #c9c9c9" }}
+              >
+                {item.country}
+              </span>
+            </Tag>
+          </Tooltip>
+        </>
+      ),
     },
     {
       label: "Items",
       renderCell: (item) => item.quantity,
     },
+    { label: "Payment Terms", renderCell: (item) => item.quantity },
     {
       label: "",
       renderCell: (item) => (
@@ -160,9 +236,24 @@ export function OrderTable({ nodes }) {
             onClick={() => {
               exportRow(item.po);
             }}
-            size={20}
+            size={30}
+            style={{
+              borderRadius: "5px",
+              background: buttonBlue,
+              padding: "6px",
+              color: "white",
+            }}
           />
-          <FaRegEye size={20} style={{ marginLeft: "15px" }} />
+          <FaRegEye
+            size={30}
+            style={{
+              borderRadius: "5px",
+              marginLeft: "15px",
+              background: "grey",
+              padding: "6px",
+              color: "white",
+            }}
+          />
         </div>
       ),
       width: "10%", // Adjust the width here
@@ -202,10 +293,11 @@ export function OrderTable({ nodes }) {
             data={data}
             theme={theme}
             pagination={pagination}
+            select={select}
           />
         </Box>
         <br />
-        <HStack justify="flex-end" width="100%">
+        <HStack justify="flex-end" width="100%" position={"sticky"}>
           <IconButton
             aria-label="previous page"
             icon={<FaChevronLeft size={13} />}
