@@ -1,4 +1,4 @@
-# Medivac Mission Management and Deployment project overview
+# Medivac Mission Management and Deployment project overview 🛩️ 💊
 
 This project is a comprehensive platform designed to streamline all aspects of medivac missions, including stock management, personnel coordination, purchase order management, and patient data handling. It enables efficient tracking of medical supplies and equipment, facilitates scheduling and management of personnel roles and availability, and allows operators to generate and manage purchase orders seamlessly. Doctors can store and access patient data and medical documentation, ensuring global accessibility for effective patient care. Optionally, a built-in flight tracker provides real-time updates on flight status, enhancing operational efficiency and enabling timely responses to medical emergencies.
 
