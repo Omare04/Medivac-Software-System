@@ -20,7 +20,7 @@ import styled from "styled-components";
 import MissionTableComponent from "../Components/TableComponents/MissionTable";
 import FunctionalFooter from "../Layout/FunctionalFooter";
 import HorizontalBarChartMission from "../Components/StatComponents/StatComponents";
-import { StockServiceApi } from "./Personele/Personele";
+import { StockServiceApi } from "./Personele/Personnel";
 
 const TitleContainer = styled.div`
   display: flex;

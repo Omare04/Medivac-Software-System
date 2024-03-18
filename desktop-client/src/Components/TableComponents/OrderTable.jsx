@@ -21,182 +21,15 @@ import {
 import { FaSearch, FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { usePagination } from "@table-library/react-table-library/pagination";
+import { IoShareOutline } from "react-icons/io5";
+import { FaRegEye } from "react-icons/fa";
+import { Badge } from "@chakra-ui/react";
 
-class MedicalStock {
-  constructor(id, name, type, pn, date) {
-    this.id = id;
-    this.name = name;
-    this.type = type;
-    this.pn = pn;
-    this.date = date;
-  }
-}
+const exportRow = (OID) => {
+  //Export order
+};
 
-const nodes = [
-  {
-    id: "0",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "1",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "2",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "3",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "4",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "5",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "6",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "7",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-];
-
-function MedicalStockTable() {
+export function OrderTable({ nodes }) {
   let data = { nodes };
 
   const pagination = usePagination(data, {
@@ -218,6 +51,7 @@ function MedicalStockTable() {
   const [horizontalSpacing, setHorizontalSpacing] = React.useState(
     DEFAULT_OPTIONS.horizontalSpacing
   );
+
   const [verticalSpacing, setVerticalSpacing] = React.useState(5);
   const [striped, setStriped] = React.useState(DEFAULT_OPTIONS.striped);
   const [hasFooter, setFooter] = React.useState(false);
@@ -233,28 +67,28 @@ function MedicalStockTable() {
     getTheme(),
     {
       HeaderRow: `
-      background-color: ${dividerColorLight};
-      color: #000000;
-      `,
+            background-color: ${dividerColorLight};
+            color: #000000;
+            `,
       Row: `
-      background-color: #ffffff;
-      color: #383838; 
-      cursor: pointer; 
-      transition: background-color 0.3s ease; 
-      
-      &:nth-of-type(even) {
-        background-color: ${dividerColorLight};
-      }
-      
-      &:hover {
-        color: #383838; 
-        background-color: ${dividerColorLight};
-      }
-      
-      &:hover:nth-of-type(even) {
-        background-color: #ffffff;
-      }
-      `,
+            background-color: #ffffff;
+            color: #383838; 
+            cursor: pointer; 
+            transition: background-color 0.3s ease; 
+            
+            &:nth-of-type(even) {
+              background-color: ${dividerColorLight};
+            }
+            
+            &:hover {
+              color: #383838; 
+              background-color: ${dividerColorLight};
+            }
+            
+            &:hover:nth-of-type(even) {
+              background-color: #ffffff;
+            }
+            `,
     },
   ]);
 
@@ -268,22 +102,70 @@ function MedicalStockTable() {
 
   data = {
     nodes: data.nodes.filter((item) =>
-      item.name.toLowerCase().includes(search.toLowerCase())
+      item.po.toLowerCase().includes(search.toLowerCase())
     ),
   };
 
   const COLUMNS = [
-    { label: "Product Name", renderCell: (item) => item.name },
-    { label: "Product Type", renderCell: (item) => item.type },
-    { label: "Pn", renderCell: (item) => item.pn },
     {
-      label: "Date Entered",
+      label: "Order ID / PO",
+      renderCell: (item) => item.po,
+    },
+    {
+      label: "Date/Time",
       renderCell: (item) =>
         item.date.toLocaleDateString("en-US", {
           year: "numeric",
           month: "2-digit",
           day: "2-digit",
         }),
+    },
+    {
+      label: "Status",
+      renderCell: (item) => (
+        <Badge
+          colorScheme={
+            item.status === "Delivered"
+              ? "green"
+              : item.status === "Pending"
+              ? "yellow"
+              : "blue"
+          }
+          p={1}
+        >
+          {item.status}
+        </Badge>
+      ),
+    },
+    {
+      label: "Supplier",
+      renderCell: (item) => item.supplier,
+    },
+    {
+      label: "Items",
+      renderCell: (item) => item.quantity,
+    },
+    {
+      label: "",
+      renderCell: (item) => (
+        <div
+          style={{
+            // width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+          }}
+        >
+          <IoShareOutline
+            onClick={() => {
+              exportRow(item.po);
+            }}
+            size={20}
+          />
+          <FaRegEye size={20} style={{ marginLeft: "15px" }} />
+        </div>
+      ),
+      width: "10%", // Adjust the width here
     },
   ];
 
@@ -295,7 +177,7 @@ function MedicalStockTable() {
           borderRadius: "3px",
           background: "white",
           overflow: "auto",
-          padding: "5px"
+          paddingBottom: "15px",
         }}
       >
         <Stack spacing={0} pb={3}>
@@ -311,7 +193,6 @@ function MedicalStockTable() {
               onChange={handleSearch}
               borderRadius={"sm"}
             />
-            <IconButton aria-label="Search database" icon={<FaPlus />} ml={2} />
           </InputGroup>
         </Stack>
 
@@ -324,7 +205,7 @@ function MedicalStockTable() {
           />
         </Box>
         <br />
-        <HStack justify="flex-end"  width="100%">
+        <HStack justify="flex-end" width="100%">
           <IconButton
             aria-label="previous page"
             icon={<FaChevronLeft size={13} />}
@@ -365,4 +246,4 @@ function MedicalStockTable() {
   );
 }
 
-export default MedicalStockTable;
+export default OrderTable;

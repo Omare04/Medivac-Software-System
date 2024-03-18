@@ -7,34 +7,34 @@ export const HeaderNavData = [
       route: "/Map",
       index: 0,
     },
+    // {
+    //   title: "Missions",
+    //   route: "/Missions",
+    //   index: 1,
+    // },
     {
-      title: "Missions",
-      route: "/Missions",
-      index: 1,
-    },
-    {
-      title: "Stock",
-      route: "/stock",
+      title: "Inventory",
+      route: "/Inventory",
       index: 2,
     },
     {
-      title: "Personele",
-      route: "/personele",
+      title: "Personnel",
+      route: "/personnel",
       index: 3,
-    },
-    {
-      title: "Checklists",
-      route: "/checklists",
-      index: 4,
-    },
-    {
-      title: "Logistics",
-      route: "/logistics",
-      index: 5,
     },
     {
       title: "Orders",
       route: "/orders",
+      index: 4,
+    },
+    {
+      title: "Checklists",
+      route: "/checklists",
+      index: 5,
+    },
+    {
+      title: "Logistics",
+      route: "/logistics",
       index: 6,
     },
   ];

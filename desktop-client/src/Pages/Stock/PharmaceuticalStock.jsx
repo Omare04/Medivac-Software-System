@@ -1,9 +1,12 @@
-import React from 'react'
-
+import React from "react";
+import OrderTable from "../../Components/TableComponents/OrderTable";
+const nodes = [];
 function PharmaceuticalStock() {
   return (
-    <div>PharmaceuticalStock</div>
-  )
+    <div>
+      
+    </div>
+  );
 }
 
-export default PharmaceuticalStock
+export default PharmaceuticalStock;
