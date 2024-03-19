@@ -61,7 +61,7 @@ function OrderPageMain() {
           height: "calc(100% - (60px))",
         }}
       >
-        <div
+        {/* <div
           id="order_page_left_wrapper"
           style={{
             height: "100%",
@@ -103,7 +103,7 @@ function OrderPageMain() {
               </AccordionItem>
             ))}
           </Accordion>
-        </div>
+        </div> */}
         <div
           id="order_page_right_wrapper"
           style={{ height: "100%", width: "100%" }}

@@ -1,0 +1,97 @@
+"filename", "language", "JavaScript", "JavaScript JSX", "JSON", "CSS", "Docker", "HTML", "YAML", "Markdown", "Go Module File", "Properties", "Go", "Go Checksum File", "JSON with Comments", "TypeScript", "Python", "comment", "blank", "total"
+"/Users/omarelmasaoudi/Desktop/medapp/.github/workflows/main.yml", "YAML", 0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 38
+"/Users/omarelmasaoudi/Desktop/medapp/.travis.yml", "YAML", 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 30, 13, 58
+"/Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/Dockerfile", "Docker", 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 5, 17
+"/Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/Personele-Services/MedicalDoctor.go", "Go", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/go.mod", "Go Module File", 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 2, 7
+"/Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/go.sum", "Go Checksum File", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/main.go", "Go", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 5, 8, 20
+"/Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/middleware/authMiddleware.go", "Go", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 5, 19
+"/Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/middleware/go.mod", "Go Module File", 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 3, 6
+"/Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/middleware/go.sum", "Go Checksum File", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 3
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/Dockerfile", "Docker", 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 8, 24
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/config/env.mjs", "JavaScript", 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 7
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/config/jest.config.cjs", "JavaScript", 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 6
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/config/vite.config.js", "JavaScript", 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 17
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/dist/assets/index-CulDdrOF.js", "JavaScript", 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/dist/assets/index-oYcq1cPv.css", "CSS", 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/dist/assets/main-BnTBRzNv.js", "JavaScript", 830, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 81, 106, 1017
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/dist/assets/main-HupOsEJb.css", "CSS", 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/dist/index.html", "HTML", 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 31
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/extra/.eslintrc.cjs", "JavaScript", 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 22
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/extra/README.md", "Markdown", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/global.css", "CSS", 0, 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 24
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/index.html", "HTML", 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 31
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/nginx/default.conf", "Properties", 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 1, 9
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/package-lock.json", "JSON", 0, 0, 10621, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10622
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/package.json", "JSON", 0, 0, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 49
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/App.jsx", "JavaScript JSX", 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 19
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Colors.js", "JavaScript", 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 13
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/ChecklistComponents/StockCheckLists.jsx", "JavaScript JSX", 0, 85, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 90
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/HomeComponents/DrugRequestsHomeComponents.jsx", "JavaScript JSX", 0, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 75
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/HomeComponents/HomeStatistics.jsx", "JavaScript JSX", 0, 147, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 8, 169
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/HomeComponents/OrderComponentsHome.jsx", "JavaScript JSX", 0, 44, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 48
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/InputComponents/ButtonComponents.jsx", "JavaScript JSX", 0, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 54
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/InputComponents/DropdownComponents.jsx", "JavaScript JSX", 0, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8, 63
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/MapComponents/Map.jsx", "JavaScript JSX", 0, 31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 7, 42
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/MapComponents/MapSideBar.jsx", "JavaScript JSX", 0, 169, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 8, 202
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/Modals/PersoneleModals.jsx", "JavaScript JSX", 0, 51, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 56
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/StatComponents/MissionStatComponents.jsx", "JavaScript JSX", 0, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 54
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/StatComponents/StatComponents.jsx", "JavaScript JSX", 0, 44, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 47
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/TableComponents/EntryRemovalTable.jsx", "JavaScript JSX", 0, 228, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 11, 256
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/TableComponents/MissionTable.jsx", "JavaScript JSX", 0, 197, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 9, 208
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/TableComponents/OrderTable.jsx", "JavaScript JSX", 0, 228, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 20, 250
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/TableComponents/StockTable.jsx", "JavaScript JSX", 0, 349, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 369
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Layout/FunctionalFooter.jsx", "JavaScript JSX", 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 23
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Layout/Header.jsx", "JavaScript JSX", 0, 202, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 209
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Layout/HeaderNavData.jsx", "JavaScript JSX", 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 3, 41
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Home.jsx", "JavaScript JSX", 0, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 6, 80
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Map.jsx", "JavaScript JSX", 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 29
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Missions.jsx", "JavaScript JSX", 0, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 68
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Orders/CreatePharmaOrder.jsx", "JavaScript JSX", 0, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 39
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Orders/MedicalEquipmentOrders.jsx", "JavaScript JSX", 0, 145, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 149
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Orders/OrderPageMain.jsx", "JavaScript JSX", 0, 141, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 146
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Orders/PharamceuticalOrders.jsx", "JavaScript JSX", 0, 68, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 72
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Personele/PersoneleCalendar.jsx", "JavaScript JSX", 0, 61, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 10, 76
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Personele/Personnel.jsx", "JavaScript JSX", 0, 325, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 20, 356
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Registration/SignIn.jsx", "JavaScript JSX", 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 9
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Registration/register.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Stock/MedicalEquipmentStock.jsx", "JavaScript JSX", 0, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 107
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Stock/PharmaceuticalStock.jsx", "JavaScript JSX", 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 13
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/helper/AuthWrapper.jsx", "JavaScript JSX", 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 35
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/main.jsx", "JavaScript JSX", 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 13
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/ButtonStyles/TransparentLinks.js", "JavaScript", 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 34
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/ChartStyles.js", "JavaScript", 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/FooterStyles.js", "JavaScript", 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 15
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/HeaderStyles.js", "JavaScript", 79, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 14, 98
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/HomeLayout.js", "JavaScript", 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 42
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/MapStyles/SidebarMapNavs.js", "JavaScript", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 26
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/RequestsOrderStyles.js", "JavaScript", 75, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 13, 91
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/TableStyles/MissionTableStyles.js", "JavaScript", 92, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 17, 115
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/TableStyles/StockTableStyles.js", "JavaScript", 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 10
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/tests/component.test.js", "JavaScript", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/tests/sum.test.js", "JavaScript", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3
+"/Users/omarelmasaoudi/Desktop/medapp/docker-compose.yml", "YAML", 0, 0, 0, 0, 0, 0, 43, 0, 0, 0, 0, 0, 0, 0, 0, 6, 7, 56
+"/Users/omarelmasaoudi/Desktop/medapp/file_service/ExportPartPOService.js", "JavaScript", 207, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 39, 252
+"/Users/omarelmasaoudi/Desktop/medapp/file_service/ExportTableService.js", "JavaScript", 168, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 36, 209
+"/Users/omarelmasaoudi/Desktop/medapp/file_service/PurchaseOrderService.js", "JavaScript", 311, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 63, 385
+"/Users/omarelmasaoudi/Desktop/medapp/map-service/main.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 3, 8, 25
+"/Users/omarelmasaoudi/Desktop/medapp/mobile-client/Dockerfile", "Docker", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/omarelmasaoudi/Desktop/medapp/nginx/Dockerfile", "Docker", 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3
+"/Users/omarelmasaoudi/Desktop/medapp/nginx/default.conf", "Properties", 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 0, 8, 30
+"/Users/omarelmasaoudi/Desktop/medapp/stock-management-service/Dockerfile", "Docker", 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 9
+"/Users/omarelmasaoudi/Desktop/medapp/stock-management-service/dist/db.js", "JavaScript", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 19
+"/Users/omarelmasaoudi/Desktop/medapp/stock-management-service/dist/index.js", "JavaScript", 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 28
+"/Users/omarelmasaoudi/Desktop/medapp/stock-management-service/dist/routes/EntryExitHistory.js", "JavaScript", 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 107, 1, 109
+"/Users/omarelmasaoudi/Desktop/medapp/stock-management-service/dist/routes/MedicalEquipmentStock.js", "JavaScript", 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 14
+"/Users/omarelmasaoudi/Desktop/medapp/stock-management-service/dist/routes/MedicalStock.js", "JavaScript", 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2
+"/Users/omarelmasaoudi/Desktop/medapp/stock-management-service/dist/routes/PharmaStock.js", "JavaScript", 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 201, 1, 203
+"/Users/omarelmasaoudi/Desktop/medapp/stock-management-service/package-lock.json", "JSON", 0, 0, 1093, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1094
+"/Users/omarelmasaoudi/Desktop/medapp/stock-management-service/package.json", "JSON", 0, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 29
+"/Users/omarelmasaoudi/Desktop/medapp/stock-management-service/src/db.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 1, 4, 17
+"/Users/omarelmasaoudi/Desktop/medapp/stock-management-service/src/index.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 0, 0, 7, 29
+"/Users/omarelmasaoudi/Desktop/medapp/stock-management-service/src/routes/EntryExitHistory.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 107, 22, 129
+"/Users/omarelmasaoudi/Desktop/medapp/stock-management-service/src/routes/MedicalEquipmentStock.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 6, 16
+"/Users/omarelmasaoudi/Desktop/medapp/stock-management-service/src/routes/PharmaStock.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 201, 32, 233
+"/Users/omarelmasaoudi/Desktop/medapp/stock-management-service/tsconfig.json", "JSON with Comments", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 1, 14
+"Total", "-", 1992, 3154, 11790, 19, 29, 60, 88, 0, 8, 30, 21, 2, 13, 44, 14, 897, 708, 18869
