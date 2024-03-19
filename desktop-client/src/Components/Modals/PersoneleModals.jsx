@@ -12,9 +12,16 @@ import {
 } from "@chakra-ui/react";
 import { FaUserPlus } from "react-icons/fa";
 import StyledLinkButton from "../../styles/ButtonStyles/TransparentLinks";
-
+import {
+  InputUnitNumber,
+  InputUnit,
+  InputUnitSelect,
+} from "../../Pages/Orders/MedicalEquipmentOrders";
 export function CreatePersoneleRolesModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [roleName, setRoleName] = useState("");
+  const [access, setAccess] = useState("");
 
   return (
     <>
@@ -23,7 +30,31 @@ export function CreatePersoneleRolesModal() {
         <ModalContent borderRadius={2}>
           <ModalHeader fontWeight={420}>Create Role</ModalHeader>
           <ModalCloseButton borderRadius={2} />
-          <ModalBody pb={6}>{/* Your modal content */}</ModalBody>
+          <ModalBody pb={6}>
+            <div
+              style={{
+                display: "flex",
+                gap: "25px",
+                width: "100%",
+                marginBottom: "10px",
+                flexDirection: "column",
+              }}
+            >
+              <InputUnit
+                title={"Role Name"}
+                type={"input"}
+                value={roleName}
+                onChange={(e) => setItemName(e.target.value)}
+              />
+              <InputUnitSelect
+                title={"Access Rights"}
+                value={access}
+                onChange={(e) => setAccess(e.target.value)}
+                items={["View Only", "Admin", "Editor"]}
+              />
+              {"Add a dynamic Select to assign users to that role"}
+            </div>
+          </ModalBody>
 
           <ModalFooter>
             <Button

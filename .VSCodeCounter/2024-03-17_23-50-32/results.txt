@@ -1,0 +1,184 @@
+Date : 2024-03-17 23:50:32
+Directory : /Users/omarelmasaoudi/Desktop/medapp
+Total : 95 files,  17264 codes, 897 comments, 708 blanks, all 18869 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |          4 |     11,790 |          0 |          4 |     11,794 |
+| JavaScript JSX     |         34 |      3,154 |        106 |        208 |      3,468 |
+| JavaScript         |         27 |      1,992 |        429 |        330 |      2,751 |
+| YAML               |          3 |         88 |         36 |         28 |        152 |
+| HTML               |          2 |         60 |          0 |          2 |         62 |
+| TypeScript         |          5 |         44 |        309 |         71 |        424 |
+| Properties         |          2 |         30 |          0 |          9 |         39 |
+| Docker             |          5 |         29 |          8 |         17 |         54 |
+| Go                 |          3 |         21 |          5 |         14 |         40 |
+| CSS                |          3 |         19 |          1 |          8 |         28 |
+| Python             |          1 |         14 |          3 |          8 |         25 |
+| JSON with Comments |          1 |         13 |          0 |          1 |         14 |
+| Go Module File     |          2 |          8 |          0 |          5 |         13 |
+| Go Checksum File   |          2 |          2 |          0 |          2 |          4 |
+| Markdown           |          1 |          0 |          0 |          1 |          1 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                             | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                |         95 |     17,264 |        897 |        708 |     18,869 |
+| . (Files)                                                                                                        |          2 |         58 |         36 |         20 |        114 |
+| .github                                                                                                          |          1 |         30 |          0 |          8 |         38 |
+| .github/workflows                                                                                                |          1 |         30 |          0 |          8 |         38 |
+| GOLANGEXTRA                                                                                                      |          8 |         41 |          7 |         26 |         74 |
+| GOLANGEXTRA (Files)                                                                                              |          4 |         22 |          7 |         16 |         45 |
+| GOLANGEXTRA/Personele-Services                                                                                   |          1 |          0 |          0 |          1 |          1 |
+| GOLANGEXTRA/middleware                                                                                           |          3 |         19 |          0 |          9 |         28 |
+| desktop-client                                                                                                   |         62 |     15,166 |        211 |        416 |     15,793 |
+| desktop-client (Files)                                                                                           |          5 |     10,726 |          7 |         17 |     10,750 |
+| desktop-client/config                                                                                            |          3 |         22 |          2 |          6 |         30 |
+| desktop-client/dist                                                                                              |          5 |        869 |         81 |        110 |      1,060 |
+| desktop-client/dist (Files)                                                                                      |          1 |         30 |          0 |          1 |         31 |
+| desktop-client/dist/assets                                                                                       |          4 |        839 |         81 |        109 |      1,029 |
+| desktop-client/extra                                                                                             |          2 |         21 |          0 |          2 |         23 |
+| desktop-client/nginx                                                                                             |          1 |          8 |          0 |          1 |          9 |
+| desktop-client/src                                                                                               |         44 |      3,514 |        121 |        280 |      3,915 |
+| desktop-client/src (Files)                                                                                       |          3 |         33 |          2 |         10 |         45 |
+| desktop-client/src/Components                                                                                    |         15 |      1,796 |         68 |        119 |      1,983 |
+| desktop-client/src/Components/ChecklistComponents                                                                |          1 |         85 |          1 |          4 |         90 |
+| desktop-client/src/Components/HomeComponents                                                                     |          3 |        261 |         15 |         16 |        292 |
+| desktop-client/src/Components/InputComponents                                                                    |          2 |        103 |          2 |         12 |        117 |
+| desktop-client/src/Components/MapComponents                                                                      |          2 |        200 |         29 |         15 |        244 |
+| desktop-client/src/Components/Modals                                                                             |          1 |         51 |          0 |          5 |         56 |
+| desktop-client/src/Components/StatComponents                                                                     |          2 |         94 |          0 |          7 |        101 |
+| desktop-client/src/Components/TableComponents                                                                    |          4 |      1,002 |         21 |         60 |      1,083 |
+| desktop-client/src/Layout                                                                                        |          3 |        255 |          5 |         13 |        273 |
+| desktop-client/src/Pages                                                                                         |         13 |      1,045 |         31 |         69 |      1,145 |
+| desktop-client/src/Pages (Files)                                                                                 |          3 |        151 |         12 |         14 |        177 |
+| desktop-client/src/Pages/Orders                                                                                  |          4 |        390 |          0 |         16 |        406 |
+| desktop-client/src/Pages/Personele                                                                               |          2 |        386 |         16 |         30 |        432 |
+| desktop-client/src/Pages/Registration                                                                            |          2 |          7 |          0 |          3 |         10 |
+| desktop-client/src/Pages/Stock                                                                                   |          2 |        111 |          3 |          6 |        120 |
+| desktop-client/src/helper                                                                                        |          1 |         33 |          0 |          2 |         35 |
+| desktop-client/src/styles                                                                                        |          9 |        352 |         15 |         67 |        434 |
+| desktop-client/src/styles (Files)                                                                                |          5 |        203 |          9 |         37 |        249 |
+| desktop-client/src/styles/ButtonStyles                                                                           |          1 |         27 |          0 |          7 |         34 |
+| desktop-client/src/styles/MapStyles                                                                              |          1 |         22 |          0 |          4 |         26 |
+| desktop-client/src/styles/TableStyles                                                                            |          2 |        100 |          6 |         19 |        125 |
+| desktop-client/tests                                                                                             |          2 |          6 |          0 |          0 |          6 |
+| file_service                                                                                                     |          3 |        686 |         22 |        138 |        846 |
+| map-service                                                                                                      |          1 |         14 |          3 |          8 |         25 |
+| mobile-client                                                                                                    |          1 |          0 |          0 |          1 |          1 |
+| nginx                                                                                                            |          2 |         24 |          0 |          9 |         33 |
+| stock-management-service                                                                                         |         15 |      1,245 |        618 |         82 |      1,945 |
+| stock-management-service (Files)                                                                                 |          4 |      1,141 |          0 |          5 |      1,146 |
+| stock-management-service/dist                                                                                    |          6 |         60 |        309 |          6 |        375 |
+| stock-management-service/dist (Files)                                                                            |          2 |         44 |          1 |          2 |         47 |
+| stock-management-service/dist/routes                                                                             |          4 |         16 |        308 |          4 |        328 |
+| stock-management-service/src                                                                                     |          5 |         44 |        309 |         71 |        424 |
+| stock-management-service/src (Files)                                                                             |          2 |         34 |          1 |         11 |         46 |
+| stock-management-service/src/routes                                                                              |          3 |         10 |        308 |         60 |        378 |
++------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                                         | language           | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| /Users/omarelmasaoudi/Desktop/medapp/.github/workflows/main.yml                                                  | YAML               |         30 |          0 |          8 |         38 |
+| /Users/omarelmasaoudi/Desktop/medapp/.travis.yml                                                                 | YAML               |         15 |         30 |         13 |         58 |
+| /Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/Dockerfile                                                      | Docker             |         10 |          2 |          5 |         17 |
+| /Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/Personele-Services/MedicalDoctor.go                             | Go                 |          0 |          0 |          1 |          1 |
+| /Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/go.mod                                                          | Go Module File     |          5 |          0 |          2 |          7 |
+| /Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/go.sum                                                          | Go Checksum File   |          0 |          0 |          1 |          1 |
+| /Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/main.go                                                         | Go                 |          7 |          5 |          8 |         20 |
+| /Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/middleware/authMiddleware.go                                    | Go                 |         14 |          0 |          5 |         19 |
+| /Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/middleware/go.mod                                               | Go Module File     |          3 |          0 |          3 |          6 |
+| /Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/middleware/go.sum                                               | Go Checksum File   |          2 |          0 |          1 |          3 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/Dockerfile                                                   | Docker             |         10 |          6 |          8 |         24 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/config/env.mjs                                               | JavaScript         |          4 |          0 |          3 |          7 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/config/jest.config.cjs                                       | JavaScript         |          4 |          1 |          1 |          6 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/config/vite.config.js                                        | JavaScript         |         14 |          1 |          2 |         17 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/dist/assets/index-CulDdrOF.js                                | JavaScript         |          7 |          0 |          1 |          8 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/dist/assets/index-oYcq1cPv.css                               | CSS                |          1 |          0 |          1 |          2 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/dist/assets/main-BnTBRzNv.js                                 | JavaScript         |        830 |         81 |        106 |      1,017 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/dist/assets/main-HupOsEJb.css                                | CSS                |          1 |          0 |          1 |          2 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/dist/index.html                                              | HTML               |         30 |          0 |          1 |         31 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/extra/.eslintrc.cjs                                          | JavaScript         |         21 |          0 |          1 |         22 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/extra/README.md                                              | Markdown           |          0 |          0 |          1 |          1 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/global.css                                                   | CSS                |         17 |          1 |          6 |         24 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/index.html                                                   | HTML               |         30 |          0 |          1 |         31 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/nginx/default.conf                                           | Properties         |          8 |          0 |          1 |          9 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/package-lock.json                                            | JSON               |     10,621 |          0 |          1 |     10,622 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/package.json                                                 | JSON               |         48 |          0 |          1 |         49 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/App.jsx                                                  | JavaScript JSX     |         16 |          0 |          3 |         19 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Colors.js                                                | JavaScript         |          8 |          0 |          5 |         13 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/ChecklistComponents/StockCheckLists.jsx       | JavaScript JSX     |         85 |          1 |          4 |         90 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/HomeComponents/DrugRequestsHomeComponents.jsx | JavaScript JSX     |         70 |          1 |          4 |         75 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/HomeComponents/HomeStatistics.jsx             | JavaScript JSX     |        147 |         14 |          8 |        169 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/HomeComponents/OrderComponentsHome.jsx        | JavaScript JSX     |         44 |          0 |          4 |         48 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/InputComponents/ButtonComponents.jsx          | JavaScript JSX     |         50 |          0 |          4 |         54 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/InputComponents/DropdownComponents.jsx        | JavaScript JSX     |         53 |          2 |          8 |         63 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/MapComponents/Map.jsx                         | JavaScript JSX     |         31 |          4 |          7 |         42 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/MapComponents/MapSideBar.jsx                  | JavaScript JSX     |        169 |         25 |          8 |        202 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/Modals/PersoneleModals.jsx                    | JavaScript JSX     |         51 |          0 |          5 |         56 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/StatComponents/MissionStatComponents.jsx      | JavaScript JSX     |         50 |          0 |          4 |         54 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/StatComponents/StatComponents.jsx             | JavaScript JSX     |         44 |          0 |          3 |         47 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/TableComponents/EntryRemovalTable.jsx         | JavaScript JSX     |        228 |         17 |         11 |        256 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/TableComponents/MissionTable.jsx              | JavaScript JSX     |        197 |          2 |          9 |        208 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/TableComponents/OrderTable.jsx                | JavaScript JSX     |        228 |          2 |         20 |        250 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/TableComponents/StockTable.jsx                | JavaScript JSX     |        349 |          0 |         20 |        369 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Layout/FunctionalFooter.jsx                              | JavaScript JSX     |         20 |          0 |          3 |         23 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Layout/Header.jsx                                        | JavaScript JSX     |        202 |          0 |          7 |        209 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Layout/HeaderNavData.jsx                                 | JavaScript JSX     |         33 |          5 |          3 |         41 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Home.jsx                                           | JavaScript JSX     |         63 |         11 |          6 |         80 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Map.jsx                                            | JavaScript JSX     |         25 |          0 |          4 |         29 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Missions.jsx                                       | JavaScript JSX     |         63 |          1 |          4 |         68 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Orders/CreatePharmaOrder.jsx                       | JavaScript JSX     |         36 |          0 |          3 |         39 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Orders/MedicalEquipmentOrders.jsx                  | JavaScript JSX     |        145 |          0 |          4 |        149 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Orders/OrderPageMain.jsx                           | JavaScript JSX     |        141 |          0 |          5 |        146 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Orders/PharamceuticalOrders.jsx                    | JavaScript JSX     |         68 |          0 |          4 |         72 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Personele/PersoneleCalendar.jsx                    | JavaScript JSX     |         61 |          5 |         10 |         76 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Personele/Personnel.jsx                            | JavaScript JSX     |        325 |         11 |         20 |        356 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Registration/SignIn.jsx                            | JavaScript JSX     |          7 |          0 |          2 |          9 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Registration/register.jsx                          | JavaScript JSX     |          0 |          0 |          1 |          1 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Stock/MedicalEquipmentStock.jsx                    | JavaScript JSX     |        101 |          3 |          3 |        107 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Stock/PharmaceuticalStock.jsx                      | JavaScript JSX     |         10 |          0 |          3 |         13 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/helper/AuthWrapper.jsx                                   | JavaScript JSX     |         33 |          0 |          2 |         35 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/main.jsx                                                 | JavaScript JSX     |          9 |          2 |          2 |         13 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/ButtonStyles/TransparentLinks.js                  | JavaScript         |         27 |          0 |          7 |         34 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/ChartStyles.js                                    | JavaScript         |          1 |          0 |          2 |          3 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/FooterStyles.js                                   | JavaScript         |         13 |          0 |          2 |         15 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/HeaderStyles.js                                   | JavaScript         |         79 |          5 |         14 |         98 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/HomeLayout.js                                     | JavaScript         |         35 |          1 |          6 |         42 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/MapStyles/SidebarMapNavs.js                       | JavaScript         |         22 |          0 |          4 |         26 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/RequestsOrderStyles.js                            | JavaScript         |         75 |          3 |         13 |         91 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/TableStyles/MissionTableStyles.js                 | JavaScript         |         92 |          6 |         17 |        115 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/TableStyles/StockTableStyles.js                   | JavaScript         |          8 |          0 |          2 |         10 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/tests/component.test.js                                      | JavaScript         |          3 |          0 |          0 |          3 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/tests/sum.test.js                                            | JavaScript         |          3 |          0 |          0 |          3 |
+| /Users/omarelmasaoudi/Desktop/medapp/docker-compose.yml                                                          | YAML               |         43 |          6 |          7 |         56 |
+| /Users/omarelmasaoudi/Desktop/medapp/file_service/ExportPartPOService.js                                         | JavaScript         |        207 |          6 |         39 |        252 |
+| /Users/omarelmasaoudi/Desktop/medapp/file_service/ExportTableService.js                                          | JavaScript         |        168 |          5 |         36 |        209 |
+| /Users/omarelmasaoudi/Desktop/medapp/file_service/PurchaseOrderService.js                                        | JavaScript         |        311 |         11 |         63 |        385 |
+| /Users/omarelmasaoudi/Desktop/medapp/map-service/main.py                                                         | Python             |         14 |          3 |          8 |         25 |
+| /Users/omarelmasaoudi/Desktop/medapp/mobile-client/Dockerfile                                                    | Docker             |          0 |          0 |          1 |          1 |
+| /Users/omarelmasaoudi/Desktop/medapp/nginx/Dockerfile                                                            | Docker             |          2 |          0 |          1 |          3 |
+| /Users/omarelmasaoudi/Desktop/medapp/nginx/default.conf                                                          | Properties         |         22 |          0 |          8 |         30 |
+| /Users/omarelmasaoudi/Desktop/medapp/stock-management-service/Dockerfile                                         | Docker             |          7 |          0 |          2 |          9 |
+| /Users/omarelmasaoudi/Desktop/medapp/stock-management-service/dist/db.js                                         | JavaScript         |         17 |          1 |          1 |         19 |
+| /Users/omarelmasaoudi/Desktop/medapp/stock-management-service/dist/index.js                                      | JavaScript         |         27 |          0 |          1 |         28 |
+| /Users/omarelmasaoudi/Desktop/medapp/stock-management-service/dist/routes/EntryExitHistory.js                    | JavaScript         |          1 |        107 |          1 |        109 |
+| /Users/omarelmasaoudi/Desktop/medapp/stock-management-service/dist/routes/MedicalEquipmentStock.js               | JavaScript         |         13 |          0 |          1 |         14 |
+| /Users/omarelmasaoudi/Desktop/medapp/stock-management-service/dist/routes/MedicalStock.js                        | JavaScript         |          1 |          0 |          1 |          2 |
+| /Users/omarelmasaoudi/Desktop/medapp/stock-management-service/dist/routes/PharmaStock.js                         | JavaScript         |          1 |        201 |          1 |        203 |
+| /Users/omarelmasaoudi/Desktop/medapp/stock-management-service/package-lock.json                                  | JSON               |      1,093 |          0 |          1 |      1,094 |
+| /Users/omarelmasaoudi/Desktop/medapp/stock-management-service/package.json                                       | JSON               |         28 |          0 |          1 |         29 |
+| /Users/omarelmasaoudi/Desktop/medapp/stock-management-service/src/db.ts                                          | TypeScript         |         12 |          1 |          4 |         17 |
+| /Users/omarelmasaoudi/Desktop/medapp/stock-management-service/src/index.ts                                       | TypeScript         |         22 |          0 |          7 |         29 |
+| /Users/omarelmasaoudi/Desktop/medapp/stock-management-service/src/routes/EntryExitHistory.ts                     | TypeScript         |          0 |        107 |         22 |        129 |
+| /Users/omarelmasaoudi/Desktop/medapp/stock-management-service/src/routes/MedicalEquipmentStock.ts                | TypeScript         |         10 |          0 |          6 |         16 |
+| /Users/omarelmasaoudi/Desktop/medapp/stock-management-service/src/routes/PharmaStock.ts                          | TypeScript         |          0 |        201 |         32 |        233 |
+| /Users/omarelmasaoudi/Desktop/medapp/stock-management-service/tsconfig.json                                      | JSON with Comments |         13 |          0 |          1 |         14 |
+| Total                                                                                                            |                    |     17,264 |        897 |        708 |     18,869 |
++------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
