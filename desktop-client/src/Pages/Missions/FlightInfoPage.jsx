@@ -1,0 +1,262 @@
+import React, { useState } from "react";
+import {
+  InputUnit,
+  InputUnitSelect,
+  InputUnitNumber,
+} from "../Orders/MedicalEquipmentOrders";
+import { dividerColorLight, dividerColor } from "../../Colors";
+import { IoAirplaneSharp } from "react-icons/io5";
+import {
+  InputComponentIcon,
+  InputComponentSelectRight,
+} from "../../Components/InputComponents/InputComponents";
+import { FaPlaneArrival, FaClock, FaPlaneDeparture } from "react-icons/fa";
+
+const timeZones = [
+  "UTC",
+  "GMT",
+  "EST",
+  "CST",
+  "MST",
+  "PST",
+  "AEDT",
+  "AEST",
+  "JST",
+  "CET",
+  "EET",
+  "IST",
+  "PST",
+  "PDT",
+  "AST",
+  "HST",
+];
+
+function FlightInfoPage() {
+  // State variables for flight information
+  const [cityOfOrigin, setCityOfOrigin] = useState("");
+  const [countryOfOrigin, setCountryOfOrigin] = useState("");
+  const [cityOfDestination, setCityOfDestination] = useState("");
+  const [countryOfDestination, setCountryOfDestination] = useState("");
+  const [airportOfDeparture, setAirportOfDeparture] = useState("");
+  const [airportOfArrival, setAirportOfArrival] = useState("");
+  const [eta, setETA] = useState("");
+  const [flightHours, setFlightHours] = useState(0);
+  const [numberOfStops, setNumberOfStops] = useState(0);
+  const [stopsInformation, setStopsInformation] = useState([]);
+  const [scheduledStopoverTimes, setScheduledStopoverTimes] = useState("");
+  const [typeOfTransfer, setTypeOfTransfer] = useState("");
+
+  // Handlers for input changes
+  const handleCityOfOriginChange = (event) => {
+    setCityOfOrigin(event.target.value);
+  };
+
+  const handleCountryOfOriginChange = (event) => {
+    setCountryOfOrigin(event.target.value);
+  };
+
+  const handleCityOfDestinationChange = (event) => {
+    setCityOfDestination(event.target.value);
+  };
+
+  const handleCountryOfDestinationChange = (event) => {
+    setCountryOfDestination(event.target.value);
+  };
+
+  const handleAirportOfDepartureChange = (event) => {
+    setAirportOfDeparture(event.target.value);
+  };
+
+  const handleAirportOfArrivalChange = (event) => {
+    setAirportOfArrival(event.target.value);
+  };
+
+  const handleETAChange = (event) => {
+    setETA(event.target.value);
+  };
+
+  const handleFlightHoursChange = (value) => {
+    setFlightHours(value);
+  };
+
+  const handleNumberOfStopsChange = (value) => {
+    setNumberOfStops(value);
+  };
+
+  const handleStopsInformationChange = (event, index) => {
+    const newStopsInformation = [...stopsInformation];
+    newStopsInformation[index] = event.target.value;
+    setStopsInformation(newStopsInformation);
+  };
+
+  const handleScheduledStopoverTimesChange = (event) => {
+    setScheduledStopoverTimes(event.target.value);
+  };
+
+  const handleTypeOfTransferChange = (event) => {
+    setTypeOfTransfer(event.target.value);
+  };
+
+  return (
+    <>
+      {/* Flight Information Header */}
+      <div
+        style={{
+          fontSize: "25px",
+          borderBottom: `1px solid ${dividerColorLight}`,
+          width: "100%",
+          paddingBottom: "5px",
+          marginBottom: "30px",
+          marginTop: "10px",
+          display: "flex",
+          alignItems: "center",
+          gap: "15px",
+        }}
+      >
+        <IoAirplaneSharp />
+        Flight Information
+      </div>
+
+      {/* Destination */}
+      <div style={{ marginBottom: "30px" }}>
+        <h3
+          style={{
+            fontSize: "18px",
+            borderBottom: `1px solid ${dividerColorLight}`,
+            marginBottom: "15px",
+            fontWeight: "bold",
+          }}
+        >
+          Destination
+        </h3>
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+          <InputUnit
+            title={"City of Origin"}
+            type="text"
+            value={cityOfOrigin}
+            onChange={handleCityOfOriginChange}
+          />
+          <InputUnit
+            title={"Country of Origin"}
+            type="text"
+            value={countryOfOrigin}
+            onChange={handleCountryOfOriginChange}
+          />
+          <InputUnit
+            title={"City of Destination"}
+            type="text"
+            value={cityOfDestination}
+            onChange={handleCityOfDestinationChange}
+          />
+          <InputUnit
+            title={"Country of Destination"}
+            type="text"
+            value={countryOfDestination}
+            onChange={handleCountryOfDestinationChange}
+          />
+        </div>
+      </div>
+
+      {/* Plane Details */}
+      <div style={{ marginBottom: "30px" }}>
+        <h3
+          style={{
+            fontSize: "18px",
+            borderBottom: `1px solid ${dividerColorLight}`,
+            marginBottom: "15px",
+            fontWeight: "bold",
+          }}
+        >
+          Plane Details
+        </h3>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+          <InputComponentIcon
+            icon={<FaPlaneDeparture />}
+            title={"Airport of Departure"}
+            type="text"
+            value={airportOfDeparture}
+            onChange={handleAirportOfDepartureChange}
+          />
+          <InputComponentIcon
+            icon={<FaPlaneArrival />}
+            title={"Airport of Arrival"}
+            type="text"
+            value={airportOfArrival}
+            onChange={handleAirportOfArrivalChange}
+          />
+          <InputComponentSelectRight
+            icon={<FaClock />}
+            placeholder={"ETA"}
+            title={"ETA"}
+            type="text"
+            value={eta}
+            selectItems={timeZones}
+            selectPlaceHolder={"TZ"}
+            onChange={handleETAChange}
+          />
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+            <InputUnitNumber
+              title={"Number of Flight Hours"}
+              value={flightHours}
+              onChange={handleFlightHoursChange}
+            />
+            <InputUnitNumber
+              title={"Number of Stops"}
+              value={numberOfStops}
+              onChange={handleNumberOfStopsChange}
+            />
+            {numberOfStops > 0 &&
+              Array.from({ length: numberOfStops }, (_, index) => (
+                <InputUnit
+                  key={index}
+                  title={`Stop ${index + 1}`}
+                  type="text"
+                  value={stopsInformation[index] || ""}
+                  onChange={(event) =>
+                    handleStopsInformationChange(event, index)
+                  }
+                />
+              ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Other Details */}
+      <div style={{ marginBottom: "30px" }}>
+        <h2
+          style={{
+            fontSize: "18px",
+            borderBottom: `1px solid ${dividerColorLight}`,
+            marginBottom: "15px",
+            fontWeight: "bold",
+          }}
+        >
+          Medivac Flight Details
+        </h2>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+          <InputUnit
+            title={"Scheduled Stopover Times"}
+            type="text"
+            value={scheduledStopoverTimes}
+            onChange={handleScheduledStopoverTimesChange}
+          />
+          <InputUnitSelect
+            title={"Type of Transfer"}
+            value={typeOfTransfer}
+            onChange={handleTypeOfTransferChange}
+            items={[
+              "Bed -> Bed",
+              "Wing -> Wing",
+              "Bed -> Airport",
+              "Airport -> Airport",
+              "Airport -> Bed",
+            ]}
+          />
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default FlightInfoPage;

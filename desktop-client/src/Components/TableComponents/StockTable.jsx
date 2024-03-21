@@ -17,11 +17,13 @@ import {
   HStack,
   Button,
   IconButton,
+  Badge,
+  Checkbox,
 } from "@chakra-ui/react";
 import { FaSearch, FaChevronRight, FaChevronLeft } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa";
+import { AddToStockModal } from "../Modals/AddStockModal";
 import { usePagination } from "@table-library/react-table-library/pagination";
-
+import { useRowSelect } from "@table-library/react-table-library/select";
 class MedicalStock {
   constructor(id, name, type, pn, date) {
     this.id = id;
@@ -211,10 +213,6 @@ function MedicalStockTable() {
     console.log(action, state);
   }
 
-  function onTreeChange(action, state) {
-    console.log(action, state);
-  }
-
   const [horizontalSpacing, setHorizontalSpacing] = React.useState(
     DEFAULT_OPTIONS.horizontalSpacing
   );
@@ -261,6 +259,7 @@ function MedicalStockTable() {
   const theme = useTheme([mantineTheme]);
 
   const [search, setSearch] = useState("");
+  const [addStockModalState, setAddStockModalState] = useState(false);
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
@@ -272,9 +271,54 @@ function MedicalStockTable() {
     ),
   };
 
+  const select = useRowSelect(data, {
+    onChange: onSelectChange,
+  });
+
+  function onSelectChange(action, state) {
+    console.log(action, state);
+  }
+
   const COLUMNS = [
-    { label: "Product Name", renderCell: (item) => item.name },
-    { label: "Product Type", renderCell: (item) => item.type },
+    {
+      label: "Product Name",
+      renderCell: (item) => item.name,
+      select: {
+        renderHeaderCellSelect: () => (
+          <Checkbox
+            colorScheme="#181d1f"
+            isChecked={select.state.all}
+            isIndeterminate={!select.state.all && !select.state.none}
+            onChange={select.fns.onToggleAll}
+          />
+        ),
+        renderCellSelect: (item) => (
+          <Checkbox
+            colorScheme={buttonBlue}
+            isChecked={select.state.ids.includes(item.id)}
+            onChange={() => select.fns.onToggleById(item.id)}
+          />
+        ),
+      },
+    },
+    {
+      label: "Product Type",
+      renderCell: (item) => (
+        <Badge
+          cursor={"pointer"}
+          colorScheme={
+            item.type === "Cardiology"
+              ? "red"
+              : item.type === "Pending"
+              ? "yellow"
+              : "blue"
+          }
+          p={1}
+        >
+          {item.type}
+        </Badge>
+      ),
+    },
     { label: "Pn", renderCell: (item) => item.pn },
     {
       label: "Date Entered",
@@ -295,7 +339,7 @@ function MedicalStockTable() {
           borderRadius: "3px",
           background: "white",
           overflow: "auto",
-          padding: "5px"
+          padding: "5px",
         }}
       >
         <Stack spacing={0} pb={3}>
@@ -311,7 +355,7 @@ function MedicalStockTable() {
               onChange={handleSearch}
               borderRadius={"sm"}
             />
-            <IconButton aria-label="Search database" icon={<FaPlus />} ml={2} />
+            <AddToStockModal />
           </InputGroup>
         </Stack>
 
@@ -324,7 +368,7 @@ function MedicalStockTable() {
           />
         </Box>
         <br />
-        <HStack justify="flex-end"  width="100%">
+        <HStack justify="flex-end" width="100%">
           <IconButton
             aria-label="previous page"
             icon={<FaChevronLeft size={13} />}

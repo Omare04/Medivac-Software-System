@@ -1,16 +1,14 @@
 import React from "react";
 import { FunctionalFooterWrapper } from "../styles/FooterStyles";
 import { IconButton } from "../Components/InputComponents/ButtonComponents";
-import { FaPlus } from "react-icons/fa6";
 import { IoMap } from "react-icons/io5";
+import AddMissionPage from "../Pages/Missions/AddMissionPage";
 
 function FunctionalFooter() {
+
   return (
     <FunctionalFooterWrapper>
-      <IconButton
-        Title={"Create Mission"}
-        Icon={<FaPlus style={{ marginRight: "7px" }} />}
-      />
+      <AddMissionPage />
       <IconButton
         Title={"View Map"}
         Icon={<IoMap style={{ marginRight: "10px" }} />}
