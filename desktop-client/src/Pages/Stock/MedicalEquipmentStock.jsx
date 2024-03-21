@@ -68,7 +68,7 @@ function MedicalEquipmentStock() {
           }}
         >
           <MedicalStockTable />
-          <div
+          {/* <div
             style={{
               margin: " 0px 0px 10px 10px",
               width: "100%",
@@ -117,7 +117,7 @@ function MedicalEquipmentStock() {
             >
               <StockCheckList />
             </div>
-          </div>
+          </div> */}
         </div>
         <Drawer
           onClose={onClose}

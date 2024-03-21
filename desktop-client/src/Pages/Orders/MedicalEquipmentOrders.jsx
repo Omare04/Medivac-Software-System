@@ -225,7 +225,7 @@ export function InputUnitNumber({ title, value, onChange }) {
   );
 }
 
-function OrderItemsTable({ items }) {
+export function OrderItemsTable({ items }) {
   useEffect(() => {
     console.log(items);
   }, [items]);

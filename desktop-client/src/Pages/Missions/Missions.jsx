@@ -1,8 +1,8 @@
 import React from "react";
-import MissionTableComponent from "../Components/TableComponents/MissionTable";
+import MissionTableComponent from "../../Components/TableComponents/MissionTable";
 import styled from "styled-components";
-import HorizontalBarChartMission from "../Components/StatComponents/StatComponents";
-import { MissionsByAircraftStat } from "../Components/StatComponents/MissionStatComponents";
+import HorizontalBarChartMission from "../../Components/StatComponents/StatComponents";
+import { MissionsByAircraftStat } from "../../Components/StatComponents/MissionStatComponents";
 import {
   Stat,
   StatLabel,
@@ -10,7 +10,7 @@ import {
   StatHelpText,
   StatArrow,
 } from "@chakra-ui/react";
-import { dividerColorLight } from "../Colors";
+import { dividerColorLight } from "../../Colors";
 
 const TitleContainer = styled.div`
   display: flex;

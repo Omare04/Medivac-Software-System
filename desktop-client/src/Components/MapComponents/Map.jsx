@@ -1,41 +1,51 @@
-import React from "react";
-import { useEffect } from "react";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-import { FaPlane } from "react-icons/fa6";
-import { renderToString } from "react-dom/server";
-import ReactDOMServer from "react-dom/server";
+import { useEffect, useState } from "react";
+import { Map } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
-function MapComponent() {
+export default function MapContent() {
+  const [vp, setVp] = useState({});
+  const [spinning, setSpinning] = useState(true);
+
   useEffect(() => {
-    // Check if map container is already initialized
-    const existingMap = L.DomUtil.get("map");
-    if (!existingMap) {
-      // If not initialized, create a new map
-      const map = L.map("map").setView([51.505, -0.09], 13);
-
-      // Add a tile layer to the map (you can use other tile providers)
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap contributors",
-      }).addTo(map);
-
-      const marker = L.marker([51.505, -0.09], { icon: AircraftIcon });
-      marker.addTo(map);
+    // console.log(navigator.geolocation);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+      console.log("error");
     }
-  }, []); // Empty dependency array ensures the useEffect runs only once during component mount
+  }, []);
+
+  function success(position) {
+    return new Promise((resolve) => {
+      setVp({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        zoom: 6,
+      });
+      setSpinning(false);
+    });
+  }
+
+  function error() {
+    console.log("Cant retrieve location ");
+  }
 
   return (
     <>
-      <div id="map" style={{ height: "95vh", width: "100%", overflow: "none" }}>
-        {/* Set position: relative on the map container */}
-      </div>
+      <Map
+        {...vp}
+        scrollZoom={true}
+        dragRotate={true}
+        mapboxAccessToken="pk.eyJ1Ijoib21hcmUzMyIsImEiOiJjbHJsYWhzdm8wbHF2Mmltb2VncWpqaWtmIn0.H9Q2CJnv_k0ULjcoO1A9DA"
+        width="100%"
+        height="100%"
+        mapStyle="mapbox://styles/omare33/clrmfrxak004901nl0ils693i"
+        attributionControl={false}
+        customAttribution={{ iconColor: "red" }}
+        onViewportChange={(newViewport) => setVp(newViewport)}
+      >
+      </Map>
+      {/* <Spin spinning={spinning} fullscreen /> */}
     </>
   );
 }
-
-const AircraftIcon = L.divIcon({
-  className: "aircraft-marker",
-  html: ReactDOMServer.renderToString(<FaPlane size={33} color="red" />),
-});
-
-export default MapComponent;

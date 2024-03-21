@@ -10,6 +10,7 @@ import {
   ModalFooter,
   Button,
   Text,
+  IconButton,
 } from "@chakra-ui/react";
 import { FaUserPlus } from "react-icons/fa";
 import StyledLinkButton from "../../styles/ButtonStyles/TransparentLinks";
@@ -19,13 +20,17 @@ import {
   InputUnitSelect,
 } from "../../Pages/Orders/MedicalEquipmentOrders";
 import Select from "react-select";
+import { FaPlus } from "react-icons/fa";
 import makeAnimated from "react-select/animated";
 
-export function CreatePersoneleRolesModal() {
+export function AddToStockModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [roleName, setRoleName] = useState("");
+  const [itemName, setItemName] = useState("");
+  const [pn, setPn] = useState("");
   const [access, setAccess] = useState("");
+  const [productType, setProductType] = useState("");
+  const [qty, setQty] = useState(0);
 
   //Dynamically retrieve user
   const options = [
@@ -43,7 +48,7 @@ export function CreatePersoneleRolesModal() {
       <Modal closeOnOverlayClick={true} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay onClick={onClose} />
         <ModalContent borderRadius={2}>
-          <ModalHeader fontWeight={420}>Create Role</ModalHeader>
+          <ModalHeader fontWeight={420}>Add Item</ModalHeader>
           <ModalCloseButton borderRadius={2} />
           <ModalBody pb={6}>
             <div
@@ -56,32 +61,28 @@ export function CreatePersoneleRolesModal() {
               }}
             >
               <InputUnit
-                title={"Role Name"}
+                title={"Item Name"}
                 type={"input"}
-                value={roleName}
-                onChange={(e) => setRoleName(e.target.value)}
+                value={itemName}
+                onChange={(e) => setItemName(e.target.value)}
+              />
+              <InputUnit
+                title={"PN"}
+                type={"input"}
+                value={pn}
+                onChange={(e) => setPn(e.target.value)}
               />
               <InputUnitSelect
-                title={"Access Rights"}
-                value={access}
-                onChange={(e) => setAccess(e.target.value)}
+                title={"Product Type"}
+                value={productType}
+                onChange={(e) => setProductType(e.target.value)}
                 items={["View Only", "Admin", "Editor"]}
               />
-              <div>
-                <Text>Add Users</Text>
-                <Select
-                  closeMenuOnSelect={false}
-                  components={animatedComponents}
-                  isMulti
-                  options={options}
-                  styles={{
-                    control: (baseStyles, state) => ({
-                      ...baseStyles,
-                      borderColor: "#e2e8f0",
-                    }),
-                  }}
-                />
-              </div>
+              <InputUnitNumber
+                title={"Quantity"}
+                value={qty}
+                onChange={(e) => setQty(e)}
+              />
             </div>
           </ModalBody>
 
@@ -102,14 +103,14 @@ export function CreatePersoneleRolesModal() {
         </ModalContent>
       </Modal>
 
-      <StyledLinkButton
+      <IconButton
+        aria-label="Search database"
+        icon={<FaPlus />}
+        ml={2}
         onClick={() => {
           onOpen();
         }}
-      >
-        <FaUserPlus style={{ paddingRight: "10px" }} size={30} />
-        Create Role
-      </StyledLinkButton>
+      />
     </>
   );
 }

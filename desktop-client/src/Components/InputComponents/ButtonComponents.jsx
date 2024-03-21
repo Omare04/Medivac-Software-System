@@ -8,15 +8,12 @@ const StyledButton = styled.button`
   padding-left: 20px;
   padding-right: 20px;
   height: 100%;
-  width: 180px; 
+  width: 180px;
   font-weight: 450;
   cursor: pointer;
   background-color: ${footerColor};
   color: #fff; /* Text color, adjust as needed */
   transition: background-color 0.1s ease;
-
-
-
 
   &:hover {
     background-color: #3498ad; /* Change color on hover */
@@ -29,10 +26,9 @@ const StyledButton = styled.button`
   &:focus {
     outline: none;
   }
-
 `;
 
-export function IconButton({ Title, Icon }) {
+export function IconButton({ Title, Icon, onClickFunc }) {
   const [selectedValue, setSelectedValue] = useState(null);
 
   const dropdownVal = (value) => {
@@ -44,6 +40,7 @@ export function IconButton({ Title, Icon }) {
       <StyledButton
         name="product"
         onChange={(e) => dropdownVal(e.target.value)}
+        onClick={onClickFunc}
       >
         {Icon}
         {Title}

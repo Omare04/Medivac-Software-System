@@ -4,7 +4,6 @@ export const SideNavWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  width: 380px;
   align-items: flex-start;
   color: white; 
   padding: 10px;
