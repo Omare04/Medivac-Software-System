@@ -1,13 +1,15 @@
+import React from "react";
 import {
   Input,
   InputGroup,
   Stack,
   InputLeftElement,
   Text,
-  Select,
   InputLeftAddon,
   InputRightAddon,
 } from "@chakra-ui/react";
+import { Select as ChakraSelect } from "@chakra-ui/react";
+import Select from "react-select";
 
 export function InputComponentIcon({
   icon,
@@ -61,7 +63,7 @@ export function InputComponentSelectRight({
             borderLeftColor={"white"}
           />
           {/* <div> */}
-          <Select
+          <ChakraSelect
             placeholder={selectPlaceHolder}
             width="40%"
             borderTopLeftRadius="0"
@@ -72,9 +74,38 @@ export function InputComponentSelectRight({
                 {item}
               </option>
             ))}
-          </Select>
+          </ChakraSelect>
           {/* </div> */}
         </InputGroup>
+      </div>
+    </>
+  );
+}
+
+export function MultiSelectComponent({
+  selectOptions,
+  placeholder,
+  title,
+  selectedOptions,
+  setSelectedOptions,
+}) {
+  const handleChange = (selectedValues) => {
+    setSelectedOptions(selectedValues);
+  };
+
+  return (
+    <>
+      <div>
+        <Text>{title}</Text>
+        <Select
+          isMulti
+          name="colors"
+          className="basic-multi-select"
+          classNamePrefix={placeholder}
+          options={selectOptions}
+          value={selectedOptions}
+          onChange={handleChange}
+        />
       </div>
     </>
   );
