@@ -105,12 +105,10 @@ function FlightInfoPage() {
           fontSize: "25px",
           borderBottom: `1px solid ${dividerColorLight}`,
           width: "100%",
-          paddingBottom: "5px",
-          marginBottom: "30px",
           marginTop: "10px",
           display: "flex",
           alignItems: "center",
-          gap: "15px",
+          gap: "10px",
         }}
       >
         <IoAirplaneSharp />
@@ -118,7 +116,7 @@ function FlightInfoPage() {
       </div>
 
       {/* Destination */}
-      <div style={{ marginBottom: "30px" }}>
+      <div style={{}}>
         <h3
           style={{
             fontSize: "18px",
@@ -159,7 +157,7 @@ function FlightInfoPage() {
       </div>
 
       {/* Plane Details */}
-      <div style={{ marginBottom: "30px" }}>
+      <div>
         <h3
           style={{
             fontSize: "18px",
@@ -223,7 +221,7 @@ function FlightInfoPage() {
       </div>
 
       {/* Other Details */}
-      <div style={{ marginBottom: "30px" }}>
+      <div>
         <h2
           style={{
             fontSize: "18px",

@@ -27,6 +27,7 @@ import FlightInfoPage from "./FlightInfoPage";
 import CrewInfoPage from "./CrewInfoPage";
 import PatientInfoPage from "./PatientInfoPage";
 import { buttonBlue } from "../../Colors";
+import DrugsEquipmentPage from "./DrugsEquipmentPage";
 
 function RenderPages({ page }) {
   switch (page) {
@@ -35,6 +36,8 @@ function RenderPages({ page }) {
     case 1:
       return <CrewInfoPage />;
     case 2:
+      return <DrugsEquipmentPage />;
+    case 3:
       return <PatientInfoPage />;
     default:
       return null; // Handle invalid page case
@@ -83,10 +86,10 @@ function AddMissionPage() {
               height: "100%",
             }}
           >
-            <div>
+            {/* <div> */}
               {" "}
               <RenderPages page={page} />
-            </div>
+            {/* </div> */}
 
             <div
               style={{
