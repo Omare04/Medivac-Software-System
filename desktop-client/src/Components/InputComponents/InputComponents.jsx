@@ -27,6 +27,7 @@ export function InputComponentIcon({
         <InputGroup>
           <InputLeftElement pointerEvents="none">{icon}</InputLeftElement>
           <Input
+            background={"white"}
             placeholder={placeholder}
             type={type}
             value={value}

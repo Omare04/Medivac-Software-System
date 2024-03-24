@@ -9,6 +9,7 @@ import { dividerColorLight, dividerColor, buttonBlue } from "../../Colors";
 import {
   InputComponentTextArea,
   MultiSelectComponent,
+  InputComponentIcon,
 } from "../../Components/InputComponents/InputComponents";
 import {
   Button,
@@ -23,6 +24,10 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 import { CompanionTable } from "../../Components/TableComponents/CreateMissionTables";
+import { FaHashtag, FaPhoneAlt } from "react-icons/fa";
+import { IoMdTime } from "react-icons/io";
+import { BiPlusMedical } from "react-icons/bi";
+import { IoPerson } from "react-icons/io5";
 
 function PatientInfoPage() {
   const [companions, setCompanions] = useState([]);
@@ -38,7 +43,7 @@ function PatientInfoPage() {
     <>
       <div
         id="Patient_info_page_root_wrapper"
-        style={{ padding: "10px", paddingBottom: "40px" }}
+        style={{ padding: "10px", paddingBottom: "40px", }}
       >
         <div
           id={"Patient-Info-Page-Wrapper"}
@@ -47,37 +52,99 @@ function PatientInfoPage() {
             // flexWrap: "wrap",
             width: "100%",
             // justifyContent: "center",
-            gap: "15px",
-            paddingBottom: "30px",
+            // paddingBottom: "30px",
+            background: dividerColorLight,
           }}
         >
-          <PatientInfoComponent
-            companion={false}
-            ComponentTitle={"Patient Info"}
-            onAddCompanion={handleAddCompanion}
-          />
-          <PatientInfoComponent
-            companion={true}
-            ComponentTitle={"Companion Info"}
-            onAddCompanion={handleAddCompanion}
-          />
+          <div
+            className="patient_info_wrapepr"
+            style={{
+              display: "flex",
+              height: "100%",
+              width: "60%",
+              gap: "55px",
+              paddingBottom: "30px",
+            }}
+          >
+            <PatientInfoComponent
+              companion={false}
+              ComponentTitle={"Patient Info"}
+              onAddCompanion={handleAddCompanion}
+            />
+          </div>
+          <DoctorsNotesComponents tableItems={companions} />
         </div>
-        <DoctorsNotesComponents tableItems={companions} />
+        <div
+          className="companion_wrapper"
+          style={{
+            display: "flex",
+            width: "100%",
+            gap: "5px",
+            paddingTop: "30px",
+            overflow:"auto"
+          }}
+        >
+          <div
+            className="companion_info_wrapper"
+            style={{
+              display: "flex",
+              borderRadius: "5px",
+              height: "100%",
+              width: "50%",
+              gap: "55px",
+              paddingBottom: "30px",
+              background: dividerColorLight,
+            }}
+          >
+            <PatientInfoComponent
+              companion={true}
+              ComponentTitle={"Companion Info"}
+              onAddCompanion={handleAddCompanion}
+            />
+          </div>
+          <div
+            style={{
+              width: "100%",
+              background: dividerColorLight,
+              padding: "20px",
+              overflowY: "auto",
+              borderRadius: "5px",
+            }}
+          >
+            <CompanionTable items={companions} />
+          </div>
+        </div>
       </div>
     </>
   );
 }
 
 function PatientInfoComponent({ companion, ComponentTitle, onAddCompanion }) {
-  const [name, setName] = useState("");
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
   const [nationality, setNationality] = useState("");
   const [documentNumber, setDocumentNumber] = useState("");
   const [visaNumber, setVisaNumber] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [fileNumber, setFileNumber] = useState("");
+  const [emergencyContactName, setEmergencyContactName] = useState("");
+  const [emergencyContactNumber, setEmergencyContactNumber] = useState("");
 
-  const handleNameChange = (event) => {
-    setName(event.target.value);
+  // State and onchange handler for Emergency Contact Number input
+  const handleEmergencyContactNumberChange = (event) => {
+    setEmergencyContactNumber(event.target.value);
+  };
+
+  const handleEmergencyContactNameChange = (event) => {
+    setEmergencyContactName(event.target.value);
+  };
+
+  const handleFnameChange = (event) => {
+    setFname(event.target.value);
+  };
+
+  const handleLnameChange = (event) => {
+    setLname(event.target.value);
   };
 
   const handleNationalityChange = (event) => {
@@ -102,22 +169,28 @@ function PatientInfoComponent({ companion, ComponentTitle, onAddCompanion }) {
 
   const handleAddCompanion = () => {
     const newCompanion = {
-      name,
+      fname,
+      lname,
       nationality,
       documentNumber,
       visaNumber,
       dateOfBirth,
       fileNumber,
+      emergencyContactName,
+      emergencyContactNumber,
     };
 
     onAddCompanion(newCompanion);
 
-    setName("");
+    setLname("");
+    setFname("");
     setNationality("");
     setDocumentNumber("");
     setVisaNumber("");
     setDateOfBirth("");
     setFileNumber("");
+    setEmergencyContactName("")
+    setEmergencyContactNumber("")
   };
 
   return (
@@ -140,33 +213,76 @@ function PatientInfoComponent({ companion, ComponentTitle, onAddCompanion }) {
             fontWeight: "500",
             display: "flex",
             alignItems: "center",
+            gap: "10px",
           }}
         >
-          {ComponentTitle}
+          <IoPerson color="#464646" /> {ComponentTitle}
         </h2>
-        <InputUnit title={"Name"} value={name} onChange={handleNameChange} />
-        <InputUnitSelect
-          title={"Nationality"}
-          value={nationality}
-          onChange={handleNationalityChange}
-          items={["Canada", "Morocco"]}
-        />
-        <InputUnit
-          title={"Document Number"}
-          value={documentNumber}
-          onChange={handleDocumentNumberChange}
-        />
-        <InputUnit
-          title={"Visa Number"}
-          value={visaNumber}
-          onChange={handleVisaNumberChange}
-        />
+        <div
+          style={{ display: "flex", gap: "25px", width: "100%" }}
+          id="patient_name_wrapper"
+        >
+          <InputUnit
+            title={"First Name"}
+            value={fname}
+            onChange={handleFnameChange}
+          />
+          <InputUnit
+            title={"Last Name"}
+            value={lname}
+            onChange={handleLnameChange}
+          />
+        </div>
         <InputUnit
           title={"Date Of Birth"}
           value={dateOfBirth}
           type={"date"}
           onChange={handleDateOfBirthChange}
         />
+        <InputUnitSelect
+          title={"Nationality"}
+          value={nationality}
+          onChange={handleNationalityChange}
+          items={["Canada", "Morocco"]}
+        />
+        <div
+          className="document_info_wrapper"
+          style={{ display: "flex", gap: "25px", width: "100%" }}
+        >
+          <InputUnit
+            title={"Document Number"}
+            value={documentNumber}
+            onChange={handleDocumentNumberChange}
+          />
+          <InputUnit
+            title={"Visa Number"}
+            value={visaNumber}
+            onChange={handleVisaNumberChange}
+          />
+        </div>
+
+        <div
+          className="contact_info_wrapper"
+          style={{
+            display: "flex",
+            gap: "25px",
+            width: "100%",
+            paddingTop: "7px",
+          }}
+        >
+          <InputUnit
+            title={"Emergency Contact Name"}
+            value={emergencyContactName}
+            onChange={handleEmergencyContactNameChange}
+          />
+          <InputComponentIcon
+            title={"Emergency Contact Number"}
+            icon={<FaPhoneAlt />}
+            type={"number"}
+            value={emergencyContactNumber}
+            onChange={handleEmergencyContactNumberChange}
+          />
+        </div>
         {companion ? (
           <>
             <Button
@@ -178,13 +294,7 @@ function PatientInfoComponent({ companion, ComponentTitle, onAddCompanion }) {
               Add
             </Button>
           </>
-        ) : (
-          <InputUnit
-            title={"File Number"}
-            value={fileNumber}
-            onChange={handleFileNumberChange}
-          />
-        )}
+        ) : null}
       </div>
     </>
   );
@@ -217,9 +327,13 @@ function DoctorsNotesComponents({ tableItems }) {
   const [reasonForHospitalisation, setReasonForHospitalisation] = useState("");
   const [reasonForMedicalEvacuation, setReasonForMedicalEvacuation] =
     useState("");
+  const [fileNumber, setFileNumber] = useState("");
 
   const handleNotesChange = (event) => {
     setNotes(event.target.value);
+  };
+  const handleFileNumberChange = (event) => {
+    setFileNumber(event.target.value);
   };
 
   return (
@@ -227,6 +341,7 @@ function DoctorsNotesComponents({ tableItems }) {
       <div
         style={{
           width: "100%",
+          height: "100%",
           display: "flex",
           gap: "20px",
           padding: "20px",
@@ -235,6 +350,18 @@ function DoctorsNotesComponents({ tableItems }) {
           flexDirection: "column",
         }}
       >
+        <h2
+          style={{
+            fontSize: "20px",
+            borderBottom: `1px solid #ebebeb`,
+            fontWeight: "500",
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+          }}
+        >
+          <BiPlusMedical color="#464646" /> Medical Information
+        </h2>
         <div
           style={{
             width: "100%",
@@ -264,7 +391,8 @@ function DoctorsNotesComponents({ tableItems }) {
               type={"date"}
               onChange={(event) => setDateOfAdmission(event.target.value)}
             />
-            <InputUnit
+            <InputComponentIcon
+              icon={<IoMdTime />}
               title={"Duration Of hospitalization"}
               value={durationOfHospitalization}
               onChange={(event) =>
@@ -285,12 +413,6 @@ function DoctorsNotesComponents({ tableItems }) {
                 setReasonForMedicalEvacuation(event.target.value)
               }
             />
-            <InputComponentTextArea
-              title={"Doctors Notes"}
-              value={notes}
-              onChange={handleNotesChange}
-              placeholder={"Doctors Notes"}
-            />
           </div>
 
           <div
@@ -301,9 +423,19 @@ function DoctorsNotesComponents({ tableItems }) {
               flexDirection: "column",
             }}
           >
-            <div style={{ paddingBottom: "10px" }}>
-              <CompanionTable items={tableItems} />
-            </div>
+            <InputComponentTextArea
+              title={"Doctors Notes"}
+              value={notes}
+              onChange={handleNotesChange}
+              placeholder={"Doctors Notes"}
+            />
+            <InputComponentIcon
+              title={"File Number"}
+              icon={<FaHashtag />}
+              type={"number"}
+              value={fileNumber}
+              onChange={handleFileNumberChange}
+            />
             <FileUploadComponent title={"Medical Documents"} />
           </div>
         </div>

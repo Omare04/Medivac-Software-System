@@ -102,37 +102,51 @@ export const RenderAddedDrugsEquipmentTable = ({ items, setItems }) => {
 export const CompanionTable = ({ items, removeRow }) => {
   return (
     <>
-      <h2
-        style={{
-          fontSize: "20px",
-          borderBottom: `1px solid #ebebeb`,
-          fontWeight: "500",
-          marginBottom: "10px",
-          display: "flex",
-          alignItems: "center",
-        }}
+      <TableContainer
+        borderRadius={"5px"}
+        height={"100%"}
+        overflowY={"auto"}
       >
-        Companions
-      </h2>
-      <TableContainer background={"#f2f2f2"} borderRadius={"5px"}>
-        <Table variant="simple">
+        <h2
+          style={{
+            fontSize: "20px",
+
+            fontWeight: "500",
+            marginBottom: "10px",
+            paddingBottom: "10px",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            // background: dividerColorLight,
+            padding: "10px"
+          }}
+        >
+          Companions
+        </h2>
+        <Table variant="simple" background={dividerColorLight} overflow={"auto"}>
           <Thead>
             <Tr>
-              <Th>Name</Th>
+              <Th>First Name</Th>
+              <Th>Last Name</Th>
               <Th>Nationality</Th>
               <Th>Document Number</Th>
               <Th>Visa Number</Th>
               <Th>Date Of Birth</Th>
+              <Th>Date Of Emergency Contact Name</Th>
+              <Th>Date Of Emergency Contact Number</Th>
             </Tr>
           </Thead>
           <Tbody>
             {items.map((item, index) => (
               <Tr key={index}>
-                <Td>{item.name}</Td>
+                <Td>{item.fname}</Td>
+                <Td>{item.lname}</Td>
                 <Td>{item.nationality}</Td>
                 <Td>{item.documentNumber}</Td>
                 <Td>{item.visaNumber}</Td>
                 <Td>{item.dateOfBirth}</Td>
+                <Td>{item.emergencyContactName}</Td>
+                <Td>{item.emergencyContactNumber}</Td>
                 <Td>
                   <FaTrash />
                 </Td>
