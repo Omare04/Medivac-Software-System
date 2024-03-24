@@ -6,6 +6,7 @@ import {
   InputLeftElement,
   Text,
   InputLeftAddon,
+  Textarea,
   InputRightAddon,
 } from "@chakra-ui/react";
 import { Select as ChakraSelect } from "@chakra-ui/react";
@@ -107,6 +108,28 @@ export function MultiSelectComponent({
           onChange={handleChange}
         />
       </div>
+    </>
+  );
+}
+
+export function InputComponentTextArea({
+  title,
+  placeholder,
+  type,
+  value,
+  onChange,
+}) {
+  return (
+    <>
+      <Text>{title}</Text>
+      <Textarea
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        resize={"none"}
+        height={"82%"}
+        background={"white"}
+      />
     </>
   );
 }

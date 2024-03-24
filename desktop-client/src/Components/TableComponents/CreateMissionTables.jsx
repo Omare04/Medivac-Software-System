@@ -13,20 +13,13 @@ import {
   Tag,
 } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
+import { dividerColor, dividerColorLight } from "../../Colors";
 
 export function CreateMissionTables() {
   return <div>CreateMissionTables</div>;
 }
 
 export const RenderAddedDrugsEquipmentTable = ({ items, setItems }) => {
-  useEffect(() => {
-    console.log(items);
-  }, [items]);
-
-  const handleSubmitOrder = () => {
-    console.log("Order submitted");
-  };
-
   const handleIncreaseQuantity = (index) => {
     const updatedItems = [...items];
     updatedItems[index].quantity += 1;
@@ -93,6 +86,78 @@ export const RenderAddedDrugsEquipmentTable = ({ items, setItems }) => {
             ))}
           </Tbody>
         </Table>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+          }}
+        ></div>
+      </TableContainer>
+    </>
+  );
+};
+
+export const CompanionTable = ({ items, removeRow }) => {
+  return (
+    <>
+      <h2
+        style={{
+          fontSize: "20px",
+          borderBottom: `1px solid #ebebeb`,
+          fontWeight: "500",
+          marginBottom: "10px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        Companions
+      </h2>
+      <TableContainer background={"#f2f2f2"} borderRadius={"5px"}>
+        <Table variant="simple">
+          <Thead>
+            <Tr>
+              <Th>Name</Th>
+              <Th>Nationality</Th>
+              <Th>Document Number</Th>
+              <Th>Visa Number</Th>
+              <Th>Date Of Birth</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {items.map((item, index) => (
+              <Tr key={index}>
+                <Td>{item.name}</Td>
+                <Td>{item.nationality}</Td>
+                <Td>{item.documentNumber}</Td>
+                <Td>{item.visaNumber}</Td>
+                <Td>{item.dateOfBirth}</Td>
+                <Td>
+                  <FaTrash />
+                </Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+        {items.length == 0 ? (
+          <>
+            <div
+              style={{
+                width: "100%",
+                padding: "50px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "22px",
+                color: "grey",
+                fontStyle: "italic",
+              }}
+            >
+              No Items Added
+            </div>
+          </>
+        ) : null}
         <div
           style={{
             width: "100%",
