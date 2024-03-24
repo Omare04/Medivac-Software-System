@@ -47,22 +47,66 @@ function PatientInfoPage() {
             // flexWrap: "wrap",
             width: "100%",
             // justifyContent: "center",
-            gap: "15px",
-            paddingBottom: "30px",
+            // paddingBottom: "30px",
+            background: dividerColorLight,
           }}
         >
-          <PatientInfoComponent
-            companion={false}
-            ComponentTitle={"Patient Info"}
-            onAddCompanion={handleAddCompanion}
-          />
-          <PatientInfoComponent
-            companion={true}
-            ComponentTitle={"Companion Info"}
-            onAddCompanion={handleAddCompanion}
-          />
+          <div
+            className="patient_info_wrapepr"
+            style={{
+              display: "flex",
+              height: "100%",
+              width: "60%",
+              gap: "55px",
+              paddingBottom: "30px",
+            }}
+          >
+            <PatientInfoComponent
+              companion={false}
+              ComponentTitle={"Patient Info"}
+              onAddCompanion={handleAddCompanion}
+            />
+          </div>
+          <DoctorsNotesComponents tableItems={companions} />
         </div>
-        <DoctorsNotesComponents tableItems={companions} />
+        <div
+          className="companion_wrapper"
+          style={{
+            display: "flex",
+            width: "100%",
+            gap: "5px",
+            paddingTop: "30px",
+          }}
+        >
+          <div
+            className="companion_info_wrapper"
+            style={{
+              display: "flex",
+              borderRadius: "5px",
+              height: "100%",
+              width: "50%",
+              gap: "55px",
+              paddingBottom: "30px",
+              background: dividerColorLight,
+            }}
+          >
+            <PatientInfoComponent
+              companion={true}
+              ComponentTitle={"Companion Info"}
+              onAddCompanion={handleAddCompanion}
+            />
+          </div>
+          <div
+            style={{
+              width: "100%",
+              background: dividerColorLight,
+              padding: "20px",
+              borderRadius: "5px",
+            }}
+          >
+            <CompanionTable items={companions} />
+          </div>
+        </div>
       </div>
     </>
   );
@@ -167,6 +211,11 @@ function PatientInfoComponent({ companion, ComponentTitle, onAddCompanion }) {
           type={"date"}
           onChange={handleDateOfBirthChange}
         />
+        <InputUnit
+          title={"Contact"}
+          value={visaNumber}
+          onChange={handleVisaNumberChange}
+        />
         {companion ? (
           <>
             <Button
@@ -227,6 +276,7 @@ function DoctorsNotesComponents({ tableItems }) {
       <div
         style={{
           width: "100%",
+          height: "100%",
           display: "flex",
           gap: "20px",
           padding: "20px",
@@ -235,6 +285,17 @@ function DoctorsNotesComponents({ tableItems }) {
           flexDirection: "column",
         }}
       >
+        <h2
+          style={{
+            fontSize: "20px",
+            borderBottom: `1px solid #ebebeb`,
+            fontWeight: "500",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          Medical Information
+        </h2>
         <div
           style={{
             width: "100%",
@@ -285,12 +346,6 @@ function DoctorsNotesComponents({ tableItems }) {
                 setReasonForMedicalEvacuation(event.target.value)
               }
             />
-            <InputComponentTextArea
-              title={"Doctors Notes"}
-              value={notes}
-              onChange={handleNotesChange}
-              placeholder={"Doctors Notes"}
-            />
           </div>
 
           <div
@@ -301,9 +356,12 @@ function DoctorsNotesComponents({ tableItems }) {
               flexDirection: "column",
             }}
           >
-            <div style={{ paddingBottom: "10px" }}>
-              <CompanionTable items={tableItems} />
-            </div>
+            <InputComponentTextArea
+              title={"Doctors Notes"}
+              value={notes}
+              onChange={handleNotesChange}
+              placeholder={"Doctors Notes"}
+            />
             <FileUploadComponent title={"Medical Documents"} />
           </div>
         </div>

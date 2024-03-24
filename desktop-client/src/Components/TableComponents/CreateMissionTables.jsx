@@ -102,19 +102,26 @@ export const RenderAddedDrugsEquipmentTable = ({ items, setItems }) => {
 export const CompanionTable = ({ items, removeRow }) => {
   return (
     <>
-      <h2
-        style={{
-          fontSize: "20px",
-          borderBottom: `1px solid #ebebeb`,
-          fontWeight: "500",
-          marginBottom: "10px",
-          display: "flex",
-          alignItems: "center",
-        }}
+      <TableContainer
+        background={"#f2f2f2"}
+        borderRadius={"5px"}
+        height={"100%"}
+        overflow={"auto"}
       >
-        Companions
-      </h2>
-      <TableContainer background={"#f2f2f2"} borderRadius={"5px"}>
+        <h2
+          style={{
+            fontSize: "20px",
+
+            fontWeight: "500",
+            marginBottom: "10px",
+            paddingBottom: "10px",
+            display: "flex",
+            alignItems: "center",
+            background: dividerColorLight
+          }}
+        >
+          Companions
+        </h2>
         <Table variant="simple">
           <Thead>
             <Tr>
