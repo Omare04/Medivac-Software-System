@@ -190,7 +190,12 @@ export function InputUnit({ title, type, value, onChange }) {
   return (
     <div>
       <Text>{title}</Text>
-      <Input type={type} value={value} onChange={onChange} />
+      <Input
+        background={"white"}
+        type={type}
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 }
@@ -199,7 +204,12 @@ export function InputUnitSelect({ title, value, onChange, items }) {
   return (
     <div>
       <Text>{title}</Text>
-      <Select placeholder="Select Option" value={value} onChange={onChange}>
+      <Select
+        placeholder="Select Option"
+        value={value}
+        onChange={onChange}
+        background={"white"}
+      >
         {items.map((item) => (
           <option key={item} value={item}>
             {item}

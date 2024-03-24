@@ -45,6 +45,7 @@ function FlightInfoPage() {
   const [stopsInformation, setStopsInformation] = useState([]);
   const [scheduledStopoverTimes, setScheduledStopoverTimes] = useState("");
   const [typeOfTransfer, setTypeOfTransfer] = useState("");
+  const [urgency, setUrgency] = useState("");
 
   // Handlers for input changes
   const handleCityOfOriginChange = (event) => {
@@ -97,160 +98,179 @@ function FlightInfoPage() {
     setTypeOfTransfer(event.target.value);
   };
 
+  const handleUrgencyTransferChange = (event) => {
+    setUrgency(event.target.value);
+  };
+
   return (
     <>
-      {/* Flight Information Header */}
       <div
-        style={{
-          fontSize: "25px",
-          borderBottom: `1px solid ${dividerColorLight}`,
-          width: "100%",
-          marginTop: "10px",
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-        }}
+        style={{ display: "flex", flexDirection: "column", paddingTop: "10px" }}
       >
-        <IoAirplaneSharp />
-        Flight Information
-      </div>
-
-      {/* Destination */}
-      <div style={{}}>
-        <h3
+        {/* Flight Information Header */}
+        <div
           style={{
-            fontSize: "18px",
+            fontSize: "25px",
             borderBottom: `1px solid ${dividerColorLight}`,
-            marginBottom: "15px",
-            fontWeight: "bold",
+            marginBottom: "30px",
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
           }}
         >
-          Destination
-        </h3>
-
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-          <InputUnit
-            title={"City of Origin"}
-            type="text"
-            value={cityOfOrigin}
-            onChange={handleCityOfOriginChange}
-          />
-          <InputUnit
-            title={"Country of Origin"}
-            type="text"
-            value={countryOfOrigin}
-            onChange={handleCountryOfOriginChange}
-          />
-          <InputUnit
-            title={"City of Destination"}
-            type="text"
-            value={cityOfDestination}
-            onChange={handleCityOfDestinationChange}
-          />
-          <InputUnit
-            title={"Country of Destination"}
-            type="text"
-            value={countryOfDestination}
-            onChange={handleCountryOfDestinationChange}
-          />
+          <IoAirplaneSharp />
+          Flight Information
         </div>
-      </div>
 
-      {/* Plane Details */}
-      <div>
-        <h3
-          style={{
-            fontSize: "18px",
-            borderBottom: `1px solid ${dividerColorLight}`,
-            marginBottom: "15px",
-            fontWeight: "bold",
-          }}
-        >
-          Plane Details
-        </h3>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-          <InputComponentIcon
-            icon={<FaPlaneDeparture />}
-            title={"Airport of Departure"}
-            type="text"
-            value={airportOfDeparture}
-            onChange={handleAirportOfDepartureChange}
-          />
-          <InputComponentIcon
-            icon={<FaPlaneArrival />}
-            title={"Airport of Arrival"}
-            type="text"
-            value={airportOfArrival}
-            onChange={handleAirportOfArrivalChange}
-          />
-          <InputComponentSelectRight
-            icon={<FaClock />}
-            placeholder={"ETA"}
-            title={"ETA"}
-            type="text"
-            value={eta}
-            selectItems={timeZones}
-            selectPlaceHolder={"TZ"}
-            onChange={handleETAChange}
-          />
+        {/* Destination */}
+        <div style={{ paddingBottom: "20px" }}>
+          <h3
+            style={{
+              fontSize: "18px",
+              borderBottom: `1px solid ${dividerColorLight}`,
+              marginBottom: "15px",
+              fontWeight: "bold",
+            }}
+          >
+            Destination
+          </h3>
+
           <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-            <InputUnitNumber
-              title={"Number of Flight Hours"}
-              value={flightHours}
-              onChange={handleFlightHoursChange}
+            <InputUnit
+              title={"City of Origin"}
+              type="text"
+              value={cityOfOrigin}
+              onChange={handleCityOfOriginChange}
             />
-            <InputUnitNumber
-              title={"Number of Stops"}
-              value={numberOfStops}
-              onChange={handleNumberOfStopsChange}
+            <InputUnit
+              title={"Country of Origin"}
+              type="text"
+              value={countryOfOrigin}
+              onChange={handleCountryOfOriginChange}
             />
-            {numberOfStops > 0 &&
-              Array.from({ length: numberOfStops }, (_, index) => (
-                <InputUnit
-                  key={index}
-                  title={`Stop ${index + 1}`}
-                  type="text"
-                  value={stopsInformation[index] || ""}
-                  onChange={(event) =>
-                    handleStopsInformationChange(event, index)
-                  }
-                />
-              ))}
+            <InputUnit
+              title={"City of Destination"}
+              type="text"
+              value={cityOfDestination}
+              onChange={handleCityOfDestinationChange}
+            />
+            <InputUnit
+              title={"Country of Destination"}
+              type="text"
+              value={countryOfDestination}
+              onChange={handleCountryOfDestinationChange}
+            />
           </div>
         </div>
-      </div>
 
-      {/* Other Details */}
-      <div>
-        <h2
-          style={{
-            fontSize: "18px",
-            borderBottom: `1px solid ${dividerColorLight}`,
-            marginBottom: "15px",
-            fontWeight: "bold",
-          }}
-        >
-          Medivac Flight Details
-        </h2>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-          <InputUnit
-            title={"Scheduled Stopover Times"}
-            type="text"
-            value={scheduledStopoverTimes}
-            onChange={handleScheduledStopoverTimesChange}
-          />
-          <InputUnitSelect
-            title={"Type of Transfer"}
-            value={typeOfTransfer}
-            onChange={handleTypeOfTransferChange}
-            items={[
-              "Bed -> Bed",
-              "Wing -> Wing",
-              "Bed -> Airport",
-              "Airport -> Airport",
-              "Airport -> Bed",
-            ]}
-          />
+        {/* Plane Details */}
+        <div style={{ paddingBottom: "20px" }}>
+          <h3
+            style={{
+              fontSize: "18px",
+              borderBottom: `1px solid ${dividerColorLight}`,
+              marginBottom: "15px",
+              fontWeight: "bold",
+            }}
+          >
+            Plane Details
+          </h3>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+            <InputComponentIcon
+              icon={<FaPlaneDeparture />}
+              title={"Airport of Departure"}
+              type="text"
+              value={airportOfDeparture}
+              onChange={handleAirportOfDepartureChange}
+            />
+            <InputComponentIcon
+              icon={<FaPlaneArrival />}
+              title={"Airport of Arrival"}
+              type="text"
+              value={airportOfArrival}
+              onChange={handleAirportOfArrivalChange}
+            />
+            <InputComponentSelectRight
+              icon={<FaClock />}
+              placeholder={"ETA"}
+              title={"ETA"}
+              type="text"
+              value={eta}
+              selectItems={timeZones}
+              selectPlaceHolder={"TZ"}
+              onChange={handleETAChange}
+            />
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+              <InputUnitNumber
+                title={"Number of Flight Hours"}
+                value={flightHours}
+                onChange={handleFlightHoursChange}
+              />
+              <InputUnitNumber
+                title={"Number of Stops"}
+                value={numberOfStops}
+                onChange={handleNumberOfStopsChange}
+              />
+              {numberOfStops > 0 &&
+                Array.from({ length: numberOfStops }, (_, index) => (
+                  <InputUnit
+                    key={index}
+                    title={`Stop ${index + 1}`}
+                    type="text"
+                    value={stopsInformation[index] || ""}
+                    onChange={(event) =>
+                      handleStopsInformationChange(event, index)
+                    }
+                  />
+                ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Other Details */}
+        <div style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+          <h2
+            style={{
+              fontSize: "18px",
+              borderBottom: `1px solid ${dividerColorLight}`,
+              marginBottom: "15px",
+              fontWeight: "bold",
+            }}
+          >
+            Medivac Flight Details
+          </h2>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+            <InputUnit
+              title={"Scheduled Stopover Times"}
+              type="text"
+              value={scheduledStopoverTimes}
+              onChange={handleScheduledStopoverTimesChange}
+            />
+            <InputUnitSelect
+              title={"Type of Transfer"}
+              value={typeOfTransfer}
+              onChange={handleTypeOfTransferChange}
+              items={[
+                "Bed -> Bed",
+                "Wing -> Wing",
+                "Bed -> Airport",
+                "Airport -> Airport",
+                "Airport -> Bed",
+              ]}
+            />
+            <InputUnitSelect
+              title={"Medivac Urgency"}
+              value={urgency}
+              onChange={handleUrgencyTransferChange}
+              items={[
+                "Moderate Urgency",
+                "Non Urgent",
+                "Moderate Urgency",
+                "Extreme Urgency",
+                "Non Urgent",
+              ]}
+            />
+          </div>
         </div>
       </div>
     </>
