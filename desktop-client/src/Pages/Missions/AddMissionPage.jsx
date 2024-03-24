@@ -49,11 +49,11 @@ function AddMissionPage() {
   const [page, setPage] = useState(0);
 
   const steps = [
-    { title: "First", description: "Flight Info" },
-    { title: "Second", description: "Crew Info" },
-    { title: "Third", description: "Drugs & Equipment" },
-    { title: "Fourth", description: "Patient Info" },
-    { title: "Fifth", description: "Summary" },
+    { title: "1", description: "Flight Info" },
+    { title: "2", description: "Crew Info" },
+    { title: "3", description: "Drugs & Equipment" },
+    { title: "4", description: "Patient Info" },
+    { title: "5", description: "Summary" },
   ];
   const { activeStep } = useSteps({
     index: 1,
@@ -115,7 +115,7 @@ function AddMissionPage() {
                         />
                       </StepIndicator>
 
-                      <Box flexShrink="0">
+                      <Box flexShrink="0" mt={5}>
                         <StepTitle>{step.title}</StepTitle>
                         <StepDescription>{step.description}</StepDescription>
                       </Box>
