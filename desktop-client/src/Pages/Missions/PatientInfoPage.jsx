@@ -24,11 +24,11 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 import { CompanionTable } from "../../Components/TableComponents/CreateMissionTables";
-import { FaHashtag, FaPhoneAlt } from "react-icons/fa";
 import { IoMdTime } from "react-icons/io";
-import { BiPlusMedical } from "react-icons/bi";
+import { BiPlusMedical, BiSolidPhone } from "react-icons/bi";
+import { PiHash } from "react-icons/pi";
 import { IoPerson } from "react-icons/io5";
-
+import { CountrySelectComponent } from "../../Components/InputComponents/InputComponents";
 function PatientInfoPage() {
   const [companions, setCompanions] = useState([]);
 
@@ -43,7 +43,7 @@ function PatientInfoPage() {
     <>
       <div
         id="Patient_info_page_root_wrapper"
-        style={{ padding: "10px", paddingBottom: "40px", }}
+        style={{ padding: "10px", paddingBottom: "40px" }}
       >
         <div
           id={"Patient-Info-Page-Wrapper"}
@@ -81,7 +81,7 @@ function PatientInfoPage() {
             width: "100%",
             gap: "5px",
             paddingTop: "30px",
-            overflow:"auto"
+            overflow: "auto",
           }}
         >
           <div
@@ -189,8 +189,8 @@ function PatientInfoComponent({ companion, ComponentTitle, onAddCompanion }) {
     setVisaNumber("");
     setDateOfBirth("");
     setFileNumber("");
-    setEmergencyContactName("")
-    setEmergencyContactNumber("")
+    setEmergencyContactName("");
+    setEmergencyContactNumber("");
   };
 
   return (
@@ -239,15 +239,19 @@ function PatientInfoComponent({ companion, ComponentTitle, onAddCompanion }) {
           type={"date"}
           onChange={handleDateOfBirthChange}
         />
-        <InputUnitSelect
+        <CountrySelectComponent
           title={"Nationality"}
           value={nationality}
           onChange={handleNationalityChange}
-          items={["Canada", "Morocco"]}
         />
         <div
           className="document_info_wrapper"
-          style={{ display: "flex", gap: "25px", width: "100%" }}
+          style={{
+            display: "flex",
+            gap: "25px",
+            width: "100%",
+            justifyContent: "flex-start",
+          }}
         >
           <InputUnit
             title={"Document Number"}
@@ -277,7 +281,7 @@ function PatientInfoComponent({ companion, ComponentTitle, onAddCompanion }) {
           />
           <InputComponentIcon
             title={"Emergency Contact Number"}
-            icon={<FaPhoneAlt />}
+            icon={<BiSolidPhone />}
             type={"number"}
             value={emergencyContactNumber}
             onChange={handleEmergencyContactNumberChange}
@@ -431,7 +435,7 @@ function DoctorsNotesComponents({ tableItems }) {
             />
             <InputComponentIcon
               title={"File Number"}
-              icon={<FaHashtag />}
+              icon={<PiHash />}
               type={"number"}
               value={fileNumber}
               onChange={handleFileNumberChange}

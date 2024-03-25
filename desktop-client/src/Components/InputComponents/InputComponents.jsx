@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Input,
   InputGroup,
@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { Select as ChakraSelect } from "@chakra-ui/react";
 import Select from "react-select";
+import ReactFlagsSelect from "react-flags-select";
 
 export function InputComponentIcon({
   icon,
@@ -79,6 +80,28 @@ export function InputComponentSelectRight({
           </ChakraSelect>
           {/* </div> */}
         </InputGroup>
+      </div>
+    </>
+  );
+}
+
+export function CountrySelectComponent({ value, onSelect, title }) {
+  const [selectedCountry, setSelectedCountry] = useState(value);
+  
+
+  const handleCountrySelect = (code) => {
+    setSelectedCountry(code);
+    onSelect(code);
+  };
+
+  return (
+    <>
+      <div id="country_select_component" style={{ width: "100%" }}>
+        <Text>{title}</Text>
+        <ReactFlagsSelect
+          selected={selectedCountry}
+          onSelect={handleCountrySelect}
+        />
       </div>
     </>
   );

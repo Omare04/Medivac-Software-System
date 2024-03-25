@@ -11,6 +11,7 @@ import {
   InputComponentSelectRight,
 } from "../../Components/InputComponents/InputComponents";
 import { FaPlaneArrival, FaClock, FaPlaneDeparture } from "react-icons/fa";
+import { CountrySelectComponent } from "../../Components/InputComponents/InputComponents";
 
 const timeZones = [
   "UTC",
@@ -135,31 +136,41 @@ function FlightInfoPage() {
             Destination
           </h3>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-            <InputUnit
-              title={"City of Origin"}
-              type="text"
-              value={cityOfOrigin}
-              onChange={handleCityOfOriginChange}
-            />
-            <InputUnit
-              title={"Country of Origin"}
-              type="text"
-              value={countryOfOrigin}
-              onChange={handleCountryOfOriginChange}
-            />
-            <InputUnit
-              title={"City of Destination"}
-              type="text"
-              value={cityOfDestination}
-              onChange={handleCityOfDestinationChange}
-            />
-            <InputUnit
-              title={"Country of Destination"}
-              type="text"
-              value={countryOfDestination}
-              onChange={handleCountryOfDestinationChange}
-            />
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "10px",
+              flexDirection: "column",
+            }}
+          >
+            <div
+              className="origin_wrapper"
+              style={{ display: "flex", gap: "10px" }}
+            >
+              <CountrySelectComponent
+                title={"City of Origin"}
+                value={countryOfOrigin}
+                onSelect={handleCountryOfOriginChange}
+              />
+            </div>
+            <div
+              className="destination"
+              style={{ display: "flex", gap: "10px" }}
+            >
+              <InputUnit
+                title={"City of Destination"}
+                type="text"
+                value={cityOfDestination}
+                onChange={handleCityOfDestinationChange}
+              />
+              <InputUnit
+                title={"Country of Destination"}
+                type="text"
+                value={countryOfDestination}
+                onChange={handleCountryOfDestinationChange}
+              />
+            </div>
           </div>
         </div>
 
