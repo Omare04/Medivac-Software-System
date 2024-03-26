@@ -239,7 +239,7 @@ function DrugsEquipmentPage() {
           fontSize: "25px",
           borderBottom: `1px solid ${dividerColorLight}`,
           width: "100%",
-          paddingBottom: "5px",
+          marginBottom: "15px",
           marginTop: "10px",
           display: "flex",
           alignItems: "center",

@@ -186,11 +186,12 @@ function DrawerBodyContent() {
   );
 }
 
-export function InputUnit({ title, type, value, onChange }) {
+export function InputUnit({ title, type, value, onChange, placeholder }) {
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <Text>{title}</Text>
       <Input
+        placeholder={placeholder}
         background={"white"}
         type={type}
         value={value}
@@ -202,7 +203,7 @@ export function InputUnit({ title, type, value, onChange }) {
 
 export function InputUnitSelect({ title, value, onChange, items }) {
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <Text>{title}</Text>
       <Select
         placeholder="Select Option"

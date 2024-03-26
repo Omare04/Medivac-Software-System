@@ -106,7 +106,12 @@ function FlightInfoPage() {
   return (
     <>
       <div
-        style={{ display: "flex", flexDirection: "column", paddingTop: "10px" }}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          paddingTop: "10px",
+          paddingBottom: "80px",
+        }}
       >
         {/* Flight Information Header */}
         <div

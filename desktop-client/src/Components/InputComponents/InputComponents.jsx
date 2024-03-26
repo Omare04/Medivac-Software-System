@@ -8,6 +8,8 @@ import {
   InputLeftAddon,
   Textarea,
   InputRightAddon,
+  Radio,
+  RadioGroup,
 } from "@chakra-ui/react";
 import { Select as ChakraSelect } from "@chakra-ui/react";
 import Select from "react-select";
@@ -23,7 +25,7 @@ export function InputComponentIcon({
 }) {
   return (
     <>
-      <div>
+      <div style={{ width: "100%" }}>
         <Text>{title}</Text>
         <InputGroup>
           <InputLeftElement pointerEvents="none">{icon}</InputLeftElement>
@@ -87,7 +89,6 @@ export function InputComponentSelectRight({
 
 export function CountrySelectComponent({ value, onSelect, title }) {
   const [selectedCountry, setSelectedCountry] = useState(value);
-  
 
   const handleCountrySelect = (code) => {
     setSelectedCountry(code);
@@ -154,6 +155,27 @@ export function InputComponentTextArea({
         height={"82%"}
         background={"white"}
       />
+    </>
+  );
+}
+
+export function InputComponentRadio({ title, value, onChange }) {
+  return (
+    <>
+      <div style={{ width: "100%" }}>
+        <Text>{title}</Text>
+        <RadioGroup
+          onChange={onChange}
+          value={value}
+          display={"flex"}
+          pt={2}
+        >
+          <Stack spacing={4} direction="row">
+            <Radio value="yes">Yes</Radio>
+            <Radio value="no">No</Radio>
+          </Stack>
+        </RadioGroup>
+      </div>
     </>
   );
 }
