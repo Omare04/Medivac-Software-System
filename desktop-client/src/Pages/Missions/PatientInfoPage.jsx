@@ -43,7 +43,7 @@ function PatientInfoPage() {
     <>
       <div
         id="Patient_info_page_root_wrapper"
-        style={{ padding: "10px", paddingBottom: "40px" }}
+        style={{ padding: "10px", paddingBottom: "70px" }}
       >
         <div
           id={"Patient-Info-Page-Wrapper"}

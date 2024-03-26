@@ -172,7 +172,7 @@ function CrewInfoPage() {
   };
 
   return (
-    <div style={{ padding: "5px", paddingBottom: "20px" }}>
+    <div style={{ padding: "5px", paddingBottom: "100px",}}>
       <div>
         <div className="card_info_wrapper" style={{}}>
           <h3
