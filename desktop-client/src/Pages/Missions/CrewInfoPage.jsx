@@ -172,7 +172,7 @@ function CrewInfoPage() {
   };
 
   return (
-    <div style={{ padding: "5px", paddingBottom: "100px",}}>
+    <div style={{ padding: "5px", paddingBottom: "100px" }}>
       <div>
         <div className="card_info_wrapper" style={{}}>
           <h3
@@ -264,7 +264,12 @@ function CrewInfoPage() {
   );
 }
 
-function RenderCrewInfoCard({ crew, added, handleAddToAddedMembers }) {
+export function RenderCrewInfoCard({
+  crew,
+  added,
+  handleAddToAddedMembers,
+  summary,
+}) {
   return (
     <Box gap={5} display={"flex"} flexWrap={"wrap"}>
       {crew.map((member, index) => (
@@ -287,7 +292,7 @@ function RenderCrewInfoCard({ crew, added, handleAddToAddedMembers }) {
                   {member.firstName + " " + member.lastName}
                 </Heading>
               </Box>
-              {added ? (
+              {summary ? null : added ? (
                 <Icon
                   as={FaTrash}
                   boxSize={4}

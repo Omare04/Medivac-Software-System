@@ -367,7 +367,7 @@ function DoctorOnArrivalInfo({ companion, ComponentTitle, onAddCompanion }) {
             value={emergencyContactNumber}
             onChange={handleEmergencyContactNumberChange}
           />
-          <InputComponentRadio title={"Emergency Contact Name"} />
+          <InputComponentRadio title={"Contactable ? "} />
         </div>
         {companion ? (
           <>
@@ -389,34 +389,17 @@ function DoctorOnArrivalInfo({ companion, ComponentTitle, onAddCompanion }) {
 function ArrivalAmbulanceComponent({ ComponentTitle }) {
   const [ambulanceType, setAmbulanceType] = useState("");
   const [estimatedTimeOfArrival, setEstimatedTimeOfArrival] = useState("");
-  const [selectedCountry, setSelectedCountry] = useState("");
-  const [selectedCity, setSelectedCity] = useState("");
-  const [address, setAddress] = useState("");
 
-  // State and onchange handler for Ambulance Type input
+  
   const handleAmbulanceTypeChange = (event) => {
     setAmbulanceType(event.target.value);
   };
 
-  // State and onchange handler for ETA input
+
   const handleETAChange = (event) => {
     setEstimatedTimeOfArrival(event.target.value);
   };
 
-  // State and onchange handler for Country input
-  const handleCountryChange = (event) => {
-    setSelectedCountry(event.target.value);
-  };
-
-  // State and onchange handler for City input
-  const handleCityChange = (event) => {
-    setSelectedCity(event.target.value);
-  };
-
-  // State and onchange handler for Address input
-  const handleAddressChange = (event) => {
-    setAddress(event.target.value);
-  };
 
   return (
     <>
@@ -459,29 +442,6 @@ function ArrivalAmbulanceComponent({ ComponentTitle }) {
             icon={<CiClock2 />}
             value={estimatedTimeOfArrival}
             onChange={handleETAChange}
-          />
-        </div>
-
-        <div
-          className="document_info_wrapper"
-          style={{
-            display: "flex",
-            gap: "25px",
-            width: "100%",
-            justifyContent: "flex-start",
-          }}
-        >
-          <CountrySelectComponent
-            title={"Country"}
-            value={selectedCountry}
-            onChange={handleCountryChange}
-          />
-
-          <InputUnitSelect
-            title={"City"}
-            value={selectedCity}
-            onChange={handleCityChange}
-            items={cities}
           />
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Drawer,
   DrawerBody,
@@ -31,6 +31,7 @@ import { buttonBlue } from "../../Colors";
 import DrugsEquipmentPage from "./DrugsEquipmentPage";
 import MissionSummaryPage from "./MissionSummaryPage";
 import { MdDone } from "react-icons/md";
+import { Progress } from "@chakra-ui/react";
 
 function RenderPages({ page }) {
   switch (page) {
@@ -54,6 +55,19 @@ function RenderPages({ page }) {
 function AddMissionPage() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [page, setPage] = useState(0);
+  const [showSpinner, setShowSpinner] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSpinner(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [page]);
+
+  useEffect(() => {
+    setShowSpinner(true);
+  }, [page]);
 
   const steps = [
     { title: "1", description: "Flight Info" },
@@ -95,7 +109,40 @@ function AddMissionPage() {
               height: "100%",
             }}
           >
-            <RenderPages page={page} />
+            {showSpinner && (
+              <div
+                id="spinner_title_wrapper"
+                style={{
+                  position: "fixed",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  width: "100vw",
+                  height: "100vh",
+                }}
+              >
+                <h2
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: "540",
+                    margin: "20px 0",
+                  }}
+                >
+                  {page == 5 ? "Generating Summary" : "Loading Content"}
+                </h2>
+                <Progress size="xs" isIndeterminate color={"blue"} w={"30%"} />
+              </div>
+            )}
+            {!showSpinner && (
+              <>
+                <RenderPages page={page} />
+              </>
+            )}
+
             <div
               style={{
                 display: "flex",
@@ -167,7 +214,7 @@ function AddMissionPage() {
                 {page == 5 ? (
                   <Button
                     colorScheme="whatsapp"
-                    rightIcon={<MdDone size={20}/>}
+                    rightIcon={<MdDone size={20} />}
                     ml={5}
                     w={"100%"}
                   >
