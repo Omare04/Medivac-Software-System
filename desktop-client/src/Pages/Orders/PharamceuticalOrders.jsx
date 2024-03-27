@@ -263,49 +263,72 @@ function DrawerBodyContent() {
           display: "flex",
           alignItems: "center",
           flexWrap: "wrap",
+          width: "100%",
           gap: "10px",
           marginBottom: "10px",
         }}
       >
-        <InputUnit
-          title={"Item Name"}
-          type={"input"}
-          value={itemName}
-          onChange={(e) => setItemName(e.target.value)}
-        />
-        <InputUnitSelect
-          title={"Supplier"}
-          value={supplier}
-          onChange={(e) => setSupplier(e.target.value)}
-          items={supplierArray}
-        />
-
-        <InputUnitSelect
-          title={"Product Type"}
-          value={productType}
-          onChange={(e) => setProductType(e.target.value)}
-          items={["hi"]}
-        />
-        <InputUnitNumber
-          title={"Quantity"}
-          value={quantity}
-          onChange={(newValue) => setQuantity(newValue)}
-        />
-
-        <InputUnit
-          title={"PN"}
-          type={"input"}
-          value={pn}
-          onChange={(e) => setPn(e.target.value)}
-        />
-        <Button
-          colorScheme="blue"
-          leftIcon={<FaPlus size={15} />}
-          mt={6}
-          onClick={handleAddItem}
+        <div
+          className="order_component_wrapper"
+          style={{
+            display: "flex",
+            // flexWrap: "wrap",
+            width: "100%",
+            gap: "10px",
+            marginBottom: "10px",
+          }}
         >
-          Add
-        </Button>
+          <InputUnit
+            title={"Item Name"}
+            type={"input"}
+            value={itemName}
+            onChange={(e) => setItemName(e.target.value)}
+          />
+          <InputUnitSelect
+            title={"Supplier"}
+            value={supplier}
+            onChange={(e) => setSupplier(e.target.value)}
+            items={supplierArray}
+          />
+
+          <InputUnitSelect
+            title={"Product Type"}
+            value={productType}
+            onChange={(e) => setProductType(e.target.value)}
+            items={["hi"]}
+          />
+        </div>
+        <div
+          className="order_component_wrapper"
+          style={{
+            display: "flex",
+            // flexWrap: "wrap",
+            width: "100%",
+            gap: "10px",
+            marginBottom: "10px",
+          }}
+        >
+          <InputUnitNumber
+            title={"Quantity"}
+            value={quantity}
+            onChange={(newValue) => setQuantity(newValue)}
+          />
+          <InputUnit
+            title={"PN"}
+            type={"input"}
+            value={pn}
+            onChange={(e) => setPn(e.target.value)}
+          />
+          <Button
+            colorScheme="blue"
+            leftIcon={<FaPlus size={15} />}
+            mt={6}
+            w={"30%"}
+            onClick={handleAddItem}
+          >
+            Add
+          </Button>
+        </div>
       </div>
       {error && <div style={{ color: "red" }}>{error}</div>}
       <OrderItemsTable items={orderItems} />

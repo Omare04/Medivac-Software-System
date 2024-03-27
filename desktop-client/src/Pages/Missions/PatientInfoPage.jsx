@@ -385,7 +385,7 @@ function DoctorsNotesComponents({ tableItems }) {
             <MultiSelectComponent
               selectOptions={patientStatusOptions}
               placeHolder={"Select"}
-              title={"Patients Status"}
+              title={"Patient Status"}
               selectedOptions={selectedStatus}
               setSelectedOptions={setSelectedStatus}
             />

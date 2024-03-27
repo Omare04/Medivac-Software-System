@@ -2,11 +2,7 @@ import React from "react";
 
 
 export const HeaderNavData = [
-    {
-      title: "Map",
-      route: "/Map",
-      index: 0,
-    },
+ 
     // {
     //   title: "Missions",
     //   route: "/Missions",
@@ -28,14 +24,10 @@ export const HeaderNavData = [
       index: 4,
     },
     {
-      title: "Checklists",
+      title: "Checklists & Requests",
       route: "/checklists",
       index: 5,
     },
-    {
-      title: "Logistics",
-      route: "/logistics",
-      index: 6,
-    },
+  
   ];
   

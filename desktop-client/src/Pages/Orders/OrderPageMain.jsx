@@ -50,7 +50,7 @@ function OrderPageMain() {
           fontSize: "22px",
         }}
       >
-        Medical Equipment Stock
+        Orders
       </div>
       <div
         id="order_page_root_wrapper"

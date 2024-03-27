@@ -30,7 +30,7 @@ const FileUploadComponent = ({ title }) => {
         files={files}
         onupdatefiles={handleFileUpload}
         allowMultiple={true} // Allow multiple files to be uploaded
-        maxFiles={3} // Limit the maximum number of files
+        maxFiles={9} // Limit the maximum number of files
         acceptedFileTypes={["image/*", "application/pdf"]} // Accept only certain file types
         maxFileSize="5MB" // Limit the maximum file size
       />

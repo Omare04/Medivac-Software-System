@@ -54,7 +54,7 @@ export function InputComponentSelectRight({
 }) {
   return (
     <>
-      <div>
+      <div style={{ width: "100%" }}>
         <Text>{title}</Text>
         <InputGroup size="md">
           <InputLeftAddon>{icon}</InputLeftAddon>
@@ -137,6 +137,34 @@ export function MultiSelectComponent({
   );
 }
 
+export function ReactSelectComponent({
+  selectOptions,
+  placeholder,
+  title,
+  selectedOptions,
+  setSelectedOptions,
+}) {
+  const handleChange = (selectedValues) => {
+    setSelectedOptions(selectedValues);
+  };
+
+  return (
+    <>
+      <div style={{ width: "100%" }}>
+        <Text>{title}</Text>
+        <Select
+          name="colors"
+          className="basic-multi-select"
+          classNamePrefix={placeholder}
+          options={selectOptions}
+          value={selectedOptions}
+          onChange={handleChange}
+        />
+      </div>
+    </>
+  );
+}
+
 export function InputComponentTextArea({
   title,
   placeholder,
@@ -164,12 +192,7 @@ export function InputComponentRadio({ title, value, onChange }) {
     <>
       <div style={{ width: "100%" }}>
         <Text>{title}</Text>
-        <RadioGroup
-          onChange={onChange}
-          value={value}
-          display={"flex"}
-          pt={2}
-        >
+        <RadioGroup onChange={onChange} value={value} display={"flex"} pt={2}>
           <Stack spacing={4} direction="row">
             <Radio value="yes">Yes</Radio>
             <Radio value="no">No</Radio>

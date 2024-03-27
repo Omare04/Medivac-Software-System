@@ -6,8 +6,15 @@ import {
   Tab,
   TabPanel,
   Progress,
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
 } from "@chakra-ui/react";
 import { dividerColorLight } from "../../Colors";
+import { FakeFlight, AddedCrew } from "./FakeSummaryData";
+import { RenderCrewInfoCard } from "./CrewInfoPage";
 
 function MissionSummaryPage() {
   const [showProgress, setShowProgress] = useState(true);
@@ -30,35 +37,7 @@ function MissionSummaryPage() {
           width: "100%",
         }}
       >
-        {showProgress ? (
-          <>
-            <div
-              id="spinner_title_wrapper"
-              style={{
-                display: "flex",
-                height: "100%",
-                width: "100%",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column",
-                paddingBottom: "100px",
-              }}
-            >
-              <h2
-                style={{
-                  fontSize: "20px",
-                  fontWeight: "540",
-                  margin: "20px 0",
-                }}
-              >
-                Generating Summary
-              </h2>
-              <Progress size="xs" isIndeterminate color={"blue"} w={"30%"} />
-            </div>
-          </>
-        ) : (
-          <MainSummaryContentComponent />
-        )}
+        <MainSummaryContentComponent />
       </div>
     </>
   );
@@ -113,10 +92,97 @@ function MainSummaryContentComponent() {
   );
 }
 
+const ulStyle = {
+  display: "flex",
+  justifyContent: "space-between",
+  paddingBottom: "15px",
+};
+
+const infoTitleStyle = {
+  marginRight: "auto",
+  // fontStyle: "italic",
+  fontWeight: "450",
+};
+
 function FlightInfoSummaryComponent() {
   return (
     <div id="flight-info" style={wrapperStyle}>
-      <p>Flight Information Content</p>
+      {/* <p>{FakeFlight[0].flightNo}</p> */}
+      <div
+        className="selected_crew_wrapper_summarypage"
+        style={{ display: "flex", width: "100%" }}
+      >
+        <div
+          id="medivac_flight_details"
+          style={{ addingBottom: "20px", width: "30%" }}
+        >
+          <h2
+            style={{
+              fontSize: "28px",
+              borderBottom: `1px solid #dbdbdb83`,
+              marginBottom: "15px",
+              paddingBottom: "8px",
+              fontWeight: "455",
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+            }}
+          >
+            Flight Information
+          </h2>
+          <UnorderedList
+            listStyleType={"none"}
+            ml={0}
+            background={"white"}
+            p={3}
+            borderRadius={"5px"}
+          >
+            <ListItem style={ulStyle}>
+              <span style={infoTitleStyle}>Flight Number:</span>
+              <span style={{ marginLeft: "auto" }}>
+                {FakeFlight[0].flightNo}
+              </span>
+            </ListItem>
+            <ListItem style={ulStyle}>
+              <span style={infoTitleStyle}>Aircraft:</span>
+              <span style={{ marginLeft: "auto" }}>
+                {FakeFlight[0].aircraft}
+              </span>
+            </ListItem>
+            <ListItem style={ulStyle}>
+              <span style={infoTitleStyle}>Block Time:</span>
+              <span style={{ marginLeft: "auto" }}>
+                {FakeFlight[0].blockTime}
+              </span>
+            </ListItem>
+            <ListItem style={ulStyle}>
+              <span style={infoTitleStyle}>Stop Over Time:</span>
+              <span style={{ marginLeft: "auto" }}>
+                {FakeFlight[0].stopOverTime}
+              </span>
+            </ListItem>
+            <ListItem style={ulStyle}>
+              <span style={infoTitleStyle}>Medivac Method:</span>
+              <span style={{ marginLeft: "auto" }}>
+                {FakeFlight[0].medivacDetails.method}
+              </span>
+            </ListItem>
+            <ListItem style={ulStyle}>
+              <span style={infoTitleStyle}>Medivac Type:</span>
+              <span style={{ marginLeft: "auto" }}>
+                {FakeFlight[0].medivacDetails.type}
+              </span>
+            </ListItem>
+            <ListItem style={ulStyle}>
+              <span style={infoTitleStyle}>Urgency:</span>
+              <span style={{ marginLeft: "auto" }}>
+                {FakeFlight[0].medivacDetails.urgency}
+              </span>
+            </ListItem>
+          </UnorderedList>
+        </div>
+        {/* <RenderCrewInfoCard crew={AddedCrew} added={true} summary={true} /> */}
+      </div>
     </div>
   );
 }

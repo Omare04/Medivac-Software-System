@@ -148,37 +148,48 @@ function DrawerBodyContent() {
           marginBottom: "10px",
         }}
       >
-        <InputUnit
-          title={"Item Name"}
-          type={"input"}
-          value={itemName}
-          onChange={(e) => setItemName(e.target.value)}
-        />
-        <InputUnitSelect
-          title={"Product Type"}
-          value={productType}
-          onChange={(e) => setProductType(e.target.value)}
-          items={types}
-        />
-        <InputUnitNumber
-          title={"Quantity"}
-          value={quantity}
-          onChange={(newValue) => setQuantity(newValue)}
-        />
-        <InputUnit
-          title={"PN"}
-          type={"input"}
-          value={pn}
-          onChange={(e) => setPn(e.target.value)}
-        />
-        <Button
-          colorScheme="blue"
-          leftIcon={<FaPlus size={15} />}
-          mt={6}
-          onClick={handleAddItem}
+        <div
+          className="order_component_wrapper"
+          style={{
+            display: "flex",
+            // flexWrap: "wrap",
+            gap: "10px",
+            marginBottom: "10px",
+          }}
         >
-          Add
-        </Button>
+          <InputUnit
+            title={"Item Name"}
+            type={"input"}
+            value={itemName}
+            onChange={(e) => setItemName(e.target.value)}
+          />
+          <InputUnitSelect
+            title={"Product Type"}
+            value={productType}
+            onChange={(e) => setProductType(e.target.value)}
+            items={types}
+          />
+          <InputUnitNumber
+            title={"Quantity"}
+            value={quantity}
+            onChange={(newValue) => setQuantity(newValue)}
+          />
+          <InputUnit
+            title={"PN"}
+            type={"input"}
+            value={pn}
+            onChange={(e) => setPn(e.target.value)}
+          />
+          <Button
+            colorScheme="blue"
+            leftIcon={<FaPlus size={15} />}
+            width={"30%"}
+            mt={6}
+            onClick={handleAddItem}
+          >
+            Add
+          </Button>
+        </div>
       </div>
       {error && <div style={{ color: "red" }}>{error}</div>}
       <OrderItemsTable items={orderItems} />
@@ -223,9 +234,14 @@ export function InputUnitSelect({ title, value, onChange, items }) {
 
 export function InputUnitNumber({ title, value, onChange }) {
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <Text>{title}</Text>
-      <NumberInput value={value} onChange={onChange} min={0}>
+      <NumberInput
+        value={value}
+        onChange={onChange}
+        min={0}
+        background={"white"}
+      >
         <NumberInputField />
         <NumberInputStepper>
           <NumberIncrementStepper />
