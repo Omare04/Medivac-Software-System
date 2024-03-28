@@ -92,11 +92,9 @@ function AddMissionPage() {
       <Drawer onClose={onClose} isOpen={isOpen} size={"full"}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerCloseButton color={"white"} />
+          <DrawerCloseButton  />
           <DrawerHeader
             borderBottomWidth="1px"
-            background={"#2e2e38"}
-            color={"white"}
             p={3}
             pl={5}
           >

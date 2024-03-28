@@ -22,11 +22,12 @@ export function InputComponentIcon({
   type,
   value,
   onChange,
+  isTitle,
 }) {
   return (
     <>
       <div style={{ width: "100%" }}>
-        <Text>{title}</Text>
+        {isTitle ? <Text>{title}</Text> : null}
         <InputGroup>
           <InputLeftElement pointerEvents="none">{icon}</InputLeftElement>
           <Input
@@ -143,6 +144,7 @@ export function ReactSelectComponent({
   title,
   selectedOptions,
   setSelectedOptions,
+  isTitle,
 }) {
   const handleChange = (selectedValues) => {
     setSelectedOptions(selectedValues);
@@ -150,15 +152,18 @@ export function ReactSelectComponent({
 
   return (
     <>
-      <div style={{ width: "100%" }}>
-        <Text>{title}</Text>
+      <div style={{ width: "100%", zIndex: 1000000 }}>
+        {isTitle ? <Text>{title}</Text> : null}
         <Select
           name="colors"
           className="basic-multi-select"
-          classNamePrefix={placeholder}
           options={selectOptions}
           value={selectedOptions}
           onChange={handleChange}
+          placeholder={placeholder}
+          components={{
+            IndicatorSeparator: () => null, 
+          }}
         />
       </div>
     </>

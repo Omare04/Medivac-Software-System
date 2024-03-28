@@ -6,7 +6,7 @@ import { dividerColor, dividerColorLight } from "../../Colors";
 export const MissionTableWrapper = styled.table`
   width: 100%;
   border-collapse: collapse;
-  padding-right: 125px; 
+  padding-right: 125px;
   overflow-y: auto;
 `;
 
@@ -27,6 +27,16 @@ export const MissionTableRow = styled.tr`
   }
   /* height: 100%; */
   border: 1px solid #eeeeee;
+  transition: all 0.1s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  &:active {
+    background-color: #eeeeee;
+  }
 `;
 
 export const MissionTableData = styled.td`

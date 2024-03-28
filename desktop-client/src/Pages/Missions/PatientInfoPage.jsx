@@ -29,6 +29,8 @@ import { BiPlusMedical, BiSolidPhone } from "react-icons/bi";
 import { PiHash } from "react-icons/pi";
 import { IoPerson } from "react-icons/io5";
 import { CountrySelectComponent } from "../../Components/InputComponents/InputComponents";
+
+
 function PatientInfoPage() {
   const [companions, setCompanions] = useState([]);
 
@@ -280,6 +282,7 @@ function PatientInfoComponent({ companion, ComponentTitle, onAddCompanion }) {
             onChange={handleEmergencyContactNameChange}
           />
           <InputComponentIcon
+            isTitle={true}
             title={"Emergency Contact Number"}
             icon={<BiSolidPhone />}
             type={"number"}
@@ -396,6 +399,7 @@ function DoctorsNotesComponents({ tableItems }) {
               onChange={(event) => setDateOfAdmission(event.target.value)}
             />
             <InputComponentIcon
+              isTitle={true}
               icon={<IoMdTime />}
               title={"Duration Of hospitalization"}
               value={durationOfHospitalization}
@@ -434,6 +438,7 @@ function DoctorsNotesComponents({ tableItems }) {
               placeholder={"Doctors Notes"}
             />
             <InputComponentIcon
+              isTitle={true}
               title={"File Number"}
               icon={<PiHash />}
               type={"number"}

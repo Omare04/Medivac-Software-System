@@ -11,16 +11,16 @@ const StyledButton = styled.button`
   width: 180px;
   font-weight: 450;
   cursor: pointer;
-  background-color: ${footerColor};
+  background-color: #E40134;
   color: #fff; /* Text color, adjust as needed */
-  transition: background-color 0.1s ease;
+  transition: background-color 0.15s ease;
 
   &:hover {
-    background-color: #3498ad; /* Change color on hover */
+    background-color: #cb0e0e; /* Change color on hover */
   }
 
   &:active {
-    background-color: #267c8c; /* Change color on click */
+    background-color: #fc0303; /* Change color on click */
   }
 
   &:focus {

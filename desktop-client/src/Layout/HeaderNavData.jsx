@@ -25,7 +25,7 @@ export const HeaderNavData = [
     },
     {
       title: "Checklists & Requests",
-      route: "/checklists",
+      route: "/checklistsRequests",
       index: 5,
     },
   
