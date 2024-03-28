@@ -28,7 +28,10 @@ import { IoMedicalSharp } from "react-icons/io5";
 import { MdMedicalServices } from "react-icons/md";
 import StyledLinkButton from "../../styles/ButtonStyles/TransparentLinks";
 import { IoMdSearch } from "react-icons/io";
-import { CreatePersoneleRolesModal } from "../../Components/Modals/PersoneleModals";
+import {
+  CreatePersoneleRolesModal,
+  CreatePersoneleEventModal,
+} from "../../Components/Modals/PersoneleModals";
 import PersoneleCalendar from "./PersoneleCalendar";
 import { PiUsersThreeBold } from "react-icons/pi";
 
@@ -93,9 +96,9 @@ function Personele() {
     <>
       <div
         id="personele-root-wrapper"
-        style={{ height: "calc(100% - (60px))", padding: "10px" }}
+        style={{ height: "100%", padding: "10px" }}
       >
-        <p
+        {/* <p
           style={{
             fontWeight: "350",
             borderBottom: `1px solid #ededed`,
@@ -109,10 +112,9 @@ function Personele() {
         >
           <PiUsersThreeBold style={{ marginRight: "15px" }} size={30} />
           Personele
-        </p>
+        </p> */}
         <div
           style={{
-            marginTop: "20px",
             display: "flex",
             width: "100%",
             height: "100%",
@@ -125,10 +127,22 @@ function Personele() {
               justifyContent: "space-between",
               alignItems: "center",
               height: "100%",
+              width: "15%",
             }}
           >
             <PersoneleListComponent />
-            <CreatePersoneleRolesModal />
+            <div
+              className="button_wrapper"
+              style={{
+                display: "flex",
+                width: "100%",
+                gap: "10px",
+                flexDirection: "column",
+              }}
+            >
+              <CreatePersoneleRolesModal />
+              <CreatePersoneleEventModal />
+            </div>
           </div>
 
           <PersoneleAccordion />
@@ -158,7 +172,7 @@ function PersoneleListComponent() {
           <ListItem
             key={key}
             pb={3}
-            pr={20}
+            pr={4}
             mt={key === 0 ? 0 : 15}
             cursor={"pointer"}
             whiteSpace="pre-wrap"
@@ -187,7 +201,19 @@ function PersoneleListComponent() {
 }
 
 ////////////////////////////////// ACCORDION ITEMS //////////////////////////////////
+
+const roles = ["Doctor", "First Officer", "Captain", "Nurse"];
+
+function getRandomRole() {
+  const randomIndex = Math.floor(Math.random() * roles.length);
+  return roles[randomIndex];
+}
+
 function PersoneleAccordion() {
+  const accordianItems = Array.from({ length: 15 }, (_, index) => ({
+    name: `Person ${index + 1}`,
+    role: getRandomRole(),
+  }));
   return (
     <>
       <div
@@ -202,7 +228,7 @@ function PersoneleAccordion() {
           flexDirection: "column",
         }}
       >
-        <InputGroup pr={3} width={"100%"}>
+        <InputGroup pr={3} width={"100%"} pb={2}>
           <InputLeftElement pointerEvents="none" height={"33px"}>
             <IoMdSearch />
           </InputLeftElement>
@@ -215,21 +241,13 @@ function PersoneleAccordion() {
         </InputGroup>
         <div style={{ flex: 1, overflow: "auto", width: "100%" }}>
           <Accordion allowToggle>
-            <AccordianItemComponent />
-            <AccordianItemComponent />
-            <AccordianItemComponent />
-            <AccordianItemComponent />
-            <AccordianItemComponent />
-            <AccordianItemComponent />
-            <AccordianItemComponent />
-            <AccordianItemComponent />
-            <AccordianItemComponent />
-            <AccordianItemComponent />
-            <AccordianItemComponent />
-            <AccordianItemComponent />
-            <AccordianItemComponent />
-            <AccordianItemComponent />
-            <AccordianItemComponent />
+            {accordianItems.map((item, index) => (
+              <AccordianItemComponent
+                key={index}
+                name={item.name}
+                role={item.role}
+              />
+            ))}
           </Accordion>
         </div>
       </div>
@@ -237,11 +255,12 @@ function PersoneleAccordion() {
   );
 }
 
-function AccordianItemComponent() {
-  // useEffect(() => {
-
-  // }, [])
-
+function AccordianItemComponent({ key, name, role }) {
+  const roleColors = {
+    Doctor: "blue",
+    Captain: "yellow",
+    Nurse: "red",
+  };
   return (
     <>
       <AccordionItem
@@ -276,9 +295,9 @@ function AccordianItemComponent() {
                   style={{ paddingLeft: "10px" }}
                   id="personele-name-and-badge-wrapper"
                 >
-                  Dr.Bouazza laed
+                  {name}
                   <Stack direction={"row"} fontSize={13} color={"red"}>
-                    <Badge colorScheme="blue"> Doctor</Badge>
+                    <Badge colorScheme={roleColors[role]}>{role}</Badge>
                   </Stack>
                 </div>
               </WrapItem>

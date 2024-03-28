@@ -35,7 +35,7 @@ import {
   Icon,
   Portal,
 } from "@chakra-ui/react";
-import { dividerColorLight } from "../Colors";
+import { dividerColor, dividerColorLight } from "../Colors";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { MdOutlineSettings } from "react-icons/md";
 
@@ -48,7 +48,7 @@ const StyledHeaderLogoLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #46afcf;
+  color: #e40134;
   cursor: pointer;
   transition: all 0.18s ease-in-out;
   height: 100%;
@@ -61,24 +61,21 @@ const StyledNavItemLinks = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #404040;
   cursor: pointer;
   transition: all 0.18s ease-in-out;
   height: 100%;
-  padding-left: 26px;
-  margin-left: 5px;
-  padding-right: 26px;
-  font-size: 14px;
+
   text-decoration: none;
-  font-weight: normal;
+  font-weight: 450;
   &:hover {
-    background-color: #313139;
-    color: #cccccc;
-    transform: scale(1); /* Adjust the scaling factor as needed */
+    background-color: #ececec;
+    font-weight: 500;
+    transform: scale(1);
   }
 
   &:active {
-    background-color: #2b2b32cc;
+    background-color: #ffffffcc;
     transform: scale(0.99); /* Adjust the scaling factor as needed */
   }
 `;
@@ -107,11 +104,25 @@ function Header() {
     <>
       <StyledHeader>
         <StyledHeaderLogoLink to={"/"}>
-          <GiAirplaneDeparture size={30} />
+          <img
+            src="../../../public/aomlogo.png"
+            style={{ height: "45px", width: "47px" }}
+          />
+          {/* <GiAirplaneDeparture size={30} /> */}
         </StyledHeaderLogoLink>
         {HeaderNavData.map((value, index) => (
           <StyledNavItemLinks to={value.route} key={index}>
-            {value.title}
+            <div
+              style={{
+                height: "50%",
+                paddingRight: "26px",
+                paddingLeft: "26px",
+                borderRight: `1px solid #dddddd`,
+                borderLeft: index === 0 ? `1px solid #dddddd` : null,
+              }}
+            >
+              {value.title}
+            </div>
           </StyledNavItemLinks>
         ))}
         <StyledRightSideNavItem>
@@ -120,7 +131,7 @@ function Header() {
               <Icon
                 boxSize={7}
                 mr={15}
-                mt={1}
+                mt={2}
                 display={"flex"}
                 alignItems={"center"}
               >
@@ -141,7 +152,7 @@ function Header() {
               <WrapItem pr={6} pl={3} cursor={"pointer"}>
                 <Avatar
                   name="Dan Abrahmov"
-                  src="https://bit.ly/dan-abramov"
+                  src="../../public/tarik_elmasaoudi.png"
                   size={"sm"}
                 />
               </WrapItem>

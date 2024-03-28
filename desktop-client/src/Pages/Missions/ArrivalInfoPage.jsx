@@ -366,6 +366,7 @@ function DoctorOnArrivalInfo({ companion, ComponentTitle, onAddCompanion }) {
             type={"number"}
             value={emergencyContactNumber}
             onChange={handleEmergencyContactNumberChange}
+            isTitle={true}
           />
           <InputComponentRadio title={"Contactable ? "} />
         </div>
@@ -438,6 +439,7 @@ function ArrivalAmbulanceComponent({ ComponentTitle }) {
             onChange={handleAmbulanceTypeChange}
           />
           <InputComponentIcon
+          isTitle={true}
             title={"ETA"}
             icon={<CiClock2 />}
             value={estimatedTimeOfArrival}

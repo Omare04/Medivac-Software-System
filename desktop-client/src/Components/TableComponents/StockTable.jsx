@@ -19,11 +19,19 @@ import {
   IconButton,
   Badge,
   Checkbox,
+  Icon,
 } from "@chakra-ui/react";
 import { FaSearch, FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { AddToStockModal } from "../Modals/AddStockModal";
 import { usePagination } from "@table-library/react-table-library/pagination";
 import { useRowSelect } from "@table-library/react-table-library/select";
+import {
+  ReactSelectComponent,
+  InputComponentIcon,
+} from "../InputComponents/InputComponents";
+import { AiFillMedicineBox } from "react-icons/ai";
+import { FaChevronDown } from "react-icons/fa";
+
 class MedicalStock {
   constructor(id, name, type, pn, date) {
     this.id = id;
@@ -39,7 +47,7 @@ const nodes = [
     id: "0",
     name: "Medicine A Xeroz",
     date: new Date(2020, 1, 15),
-    type: "Cardiology",
+    type: "Respiratory",
     pn: 12314124,
   },
   {
@@ -53,14 +61,14 @@ const nodes = [
     id: "2",
     name: "Medicine A Xeroz",
     date: new Date(2020, 1, 15),
-    type: "Cardiology",
+    type: "Neurological",
     pn: 12314124,
   },
   {
     id: "3",
     name: "Medicine A Xeroz",
     date: new Date(2020, 1, 15),
-    type: "Cardiology",
+    type: "Neurological",
     pn: 12314124,
   },
   {
@@ -74,7 +82,7 @@ const nodes = [
     id: "5",
     name: "Medicine A Xeroz",
     date: new Date(2020, 1, 15),
-    type: "Cardiology",
+    type: "Neurological",
     pn: 12314124,
   },
   {
@@ -123,7 +131,112 @@ const nodes = [
     id: "8",
     name: "Medicine A Xeroz",
     date: new Date(2020, 1, 15),
+    type: "Neurological",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Respiratory",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
     type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Respiratory",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Neurological",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Neurological",
     pn: 12314124,
   },
   {
@@ -194,6 +307,13 @@ const nodes = [
     name: "Medicine A Xeroz",
     date: new Date(2020, 1, 15),
     type: "Cardiology",
+    pn: 12314124,
+  },
+  {
+    id: "8",
+    name: "Medicine A Xeroz",
+    date: new Date(2020, 1, 15),
+    type: "Respiratory",
     pn: 12314124,
   },
 ];
@@ -204,7 +324,7 @@ function MedicalStockTable() {
   const pagination = usePagination(data, {
     state: {
       page: 0,
-      size: 15,
+      size: 30,
     },
     onChange: onPaginationChange,
   });
@@ -281,20 +401,24 @@ function MedicalStockTable() {
 
   const COLUMNS = [
     {
-      label: "Product Name",
+      label: (
+        <>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            Product Name
+            <Icon
+              as={FaChevronDown}
+              color="#181d1f"
+              boxSize={4}
+              ml={3}
+              style={{}}
+            />
+          </div>
+        </>
+      ),
       renderCell: (item) => item.name,
       select: {
-        renderHeaderCellSelect: () => (
-          <Checkbox
-            colorScheme="#181d1f"
-            isChecked={select.state.all}
-            isIndeterminate={!select.state.all && !select.state.none}
-            onChange={select.fns.onToggleAll}
-          />
-        ),
         renderCellSelect: (item) => (
           <Checkbox
-            colorScheme={buttonBlue}
             isChecked={select.state.ids.includes(item.id)}
             onChange={() => select.fns.onToggleById(item.id)}
           />
@@ -309,8 +433,8 @@ function MedicalStockTable() {
           colorScheme={
             item.type === "Cardiology"
               ? "red"
-              : item.type === "Pending"
-              ? "yellow"
+              : item.type === "Respiratory"
+              ? "green"
               : "blue"
           }
           p={1}
@@ -321,7 +445,20 @@ function MedicalStockTable() {
     },
     { label: "Pn", renderCell: (item) => item.pn },
     {
-      label: "Date Entered",
+      label: (
+        <>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            Date Entered
+            <Icon
+              as={FaChevronDown}
+              color="#181d1f"
+              boxSize={4}
+              ml={3}
+              style={{}}
+            />
+          </div>
+        </>
+      ),
       renderCell: (item) =>
         item.date.toLocaleDateString("en-US", {
           year: "numeric",
@@ -335,14 +472,13 @@ function MedicalStockTable() {
     <>
       <div
         style={{
-          width: "100%",
-          borderRadius: "3px",
-          background: "white",
-          overflow: "auto",
-          padding: "5px",
+          display: "flex",
+          flexDirection: "column",
+          width: "80%",
+          height: "100%",
         }}
       >
-        <Stack spacing={0} pb={3}>
+        <Stack spacing={0} pb={2} w={"100%"}>
           <InputGroup>
             <InputLeftElement
               pointerEvents="none"
@@ -350,60 +486,125 @@ function MedicalStockTable() {
             />
             <Input
               background={"white"}
-              placeholder="Search Task"
+              placeholder="Search Product Name"
               value={search}
               onChange={handleSearch}
               borderRadius={"sm"}
             />
-            <AddToStockModal />
+            <div
+              style={{
+                display: "flex",
+                width: "80%",
+                alignItems: "center",
+                paddingLeft: "10px",
+                height: "100%",
+              }}
+            >
+              <TableFilterBar />
+              <AddToStockModal />
+            </div>
           </InputGroup>
         </Stack>
 
-        <Box borderWidth="1px" borderRadius="sm" width={"100%"} overflow="auto">
-          <CompactTable
-            columns={COLUMNS}
-            data={data}
-            theme={theme}
-            pagination={pagination}
-          />
-        </Box>
-        <br />
-        <HStack justify="flex-end" width="100%">
-          <IconButton
-            aria-label="previous page"
-            icon={<FaChevronLeft size={13} />}
-            colorScheme="blue"
-            variant="ghost"
-            disabled={pagination.state.page === 0}
-            height="30px"
-            onClick={() => pagination.fns.onSetPage(pagination.state.page - 1)}
-          />
+        <div
+          style={{
+            width: "100%",
+            borderRadius: "3px",
+            background: "white",
+            overflow: "auto",
+            paddingRight: "5px",
+          }}
+        >
+          <Box
+            borderWidth="1px"
+            borderRadius="sm"
+            width={"100%"}
+            overflow="auto"
+          >
+            <CompactTable
+              columns={COLUMNS}
+              data={data}
+              theme={theme}
+              pagination={pagination}
+              layout={{ fixedHeader: true }}
+            />
+          </Box>
+          <br />
 
-          {pagination.state.getPages(data.nodes).map((_, index) => (
-            <Button
-              height="30px"
-              key={index}
+          {/* FOOTER */}
+        </div>
+        <Box display={"flex"} width="100%">
+          <HStack justify="flex-end" width="100%" pt={4}>
+            <IconButton
+              aria-label="previous page"
+              icon={<FaChevronLeft size={13} />}
               colorScheme="blue"
-              variant={pagination.state.page === index ? "solid" : "ghost"}
-              onClick={() => pagination.fns.onSetPage(index)}
-            >
-              {index + 1}
-            </Button>
-          ))}
+              variant="ghost"
+              disabled={pagination.state.page === 0}
+              height="30px"
+              onClick={() =>
+                pagination.fns.onSetPage(pagination.state.page - 1)
+              }
+            />
 
-          <IconButton
-            height="30px"
-            aria-label="next page"
-            icon={<FaChevronRight size={13} />}
-            colorScheme="blue"
-            variant="ghost"
-            disabled={
-              pagination.state.page + 1 ===
-              pagination.state.getTotalPages(data.nodes)
-            }
-            onClick={() => pagination.fns.onSetPage(pagination.state.page + 1)}
-          />
-        </HStack>
+            {pagination.state.getPages(data.nodes).map((_, index) => (
+              <Button
+                height="30px"
+                key={index}
+                colorScheme="blue"
+                variant={pagination.state.page === index ? "solid" : "ghost"}
+                onClick={() => pagination.fns.onSetPage(index)}
+              >
+                {index + 1}
+              </Button>
+            ))}
+
+            <IconButton
+              height="30px"
+              aria-label="next page"
+              icon={<FaChevronRight size={13} />}
+              colorScheme="blue"
+              variant="ghost"
+              disabled={
+                pagination.state.page + 1 ===
+                pagination.state.getTotalPages(data.nodes)
+              }
+              onClick={() =>
+                pagination.fns.onSetPage(pagination.state.page + 1)
+              }
+            />
+          </HStack>
+        </Box>
+      </div>
+    </>
+  );
+}
+
+function TableFilterBar() {
+  const [itemType, setItemType] = useState("");
+
+  return (
+    <>
+      <div style={{ width: "100%" }}>
+        <ReactSelectComponent
+          selectOptions={[
+            { value: "CNTKC", label: "CN-TKC" },
+            { value: "CNTKV", label: "CN-TKV" },
+            { value: "CNTMV", label: "CN-TMV" },
+            { value: "CNTKX", label: "CN-TKX" },
+          ]}
+          placeholder={
+            <span
+              style={{ display: "flex", alignItems: "center", gap: "10px" }}
+            >
+              <Icon as={AiFillMedicineBox} /> Product Type
+            </span>
+          }
+          title={"Product Type"}
+          selectedOptions={itemType}
+          setSelectedOptions={setItemType}
+          isTitle={false}
+        />
       </div>
     </>
   );

@@ -179,6 +179,7 @@ function FlightDetailsComponent() {
                   title={"Aircraft"}
                   selectedOptions={selectedAircraft}
                   setSelectedOptions={setSelectedAircraft}
+                  isTitle={true}
                 />
               </div>
               <div
@@ -187,6 +188,7 @@ function FlightDetailsComponent() {
               >
                 <InputComponentIcon
                   title={"Flight Number"}
+                  isTitle={true}
                   icon={<PiHash />}
                   type={"number"}
                   value={flightNumber}
@@ -247,6 +249,7 @@ function FlightDetailsComponent() {
               >
                 <InputComponentIcon
                   key={index}
+                  isTitle={true}
                   icon={<MdConnectingAirports size={25} />}
                   title={`Stop ${index + 1} Airport Code`}
                   type="text"
@@ -316,6 +319,7 @@ function MedivacDetailsComponent() {
             title={"Transfer Method"}
             selectedOptions={methodOfTransfer}
             setSelectedOptions={setMethodOfTransfer}
+            isTitle={true}
           />
           <ReactSelectComponent
             selectOptions={[
@@ -327,6 +331,7 @@ function MedivacDetailsComponent() {
             title={"Transfer Type"}
             selectedOptions={typeOfTransfer}
             setSelectedOptions={setTypeOfTransfer}
+            isTitle={true}
           />
         </div>
         <ReactSelectComponent
@@ -340,6 +345,7 @@ function MedivacDetailsComponent() {
           title={"Medivac Urgency"}
           selectedOptions={urgency}
           setSelectedOptions={setUrgency}
+          isTitle={true}
         />
       </div>
     </div>
@@ -428,6 +434,7 @@ function DestinationFormComponent() {
                 type="text"
                 value={airportOfDeparture}
                 onChange={handleAirportOfDepartureChange}
+                isTitle={true}
               />
               <InputUnit
                 title={"City of origin"}
@@ -441,6 +448,7 @@ function DestinationFormComponent() {
                 type="text"
                 value={airportOfArrival}
                 onChange={handleAirportOfArrivalChange}
+                isTitle={true}
               />
               <InputUnit
                 title={"City of Destination"}

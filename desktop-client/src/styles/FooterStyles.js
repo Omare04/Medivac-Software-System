@@ -5,7 +5,7 @@ export const FunctionalFooterWrapper = styled.footer`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-color: ${footerColor};
+  background-color: #E40134;
   width: 100%;
   height: 40px;
   position: fixed;

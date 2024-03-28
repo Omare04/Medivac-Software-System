@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   MissionTableData,
   MissionTableHeader,
@@ -25,9 +25,21 @@ import { IoEllipsisHorizontalSharp } from "react-icons/io5";
 import { StyledSeeMoreEntries } from "../../styles/HomeLayout";
 import { buttonBlue } from "../../Colors";
 import { FaTruckMedical } from "react-icons/fa6";
+import {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  Badge,
+  Button,
+  DrawerCloseButton,
+} from "@chakra-ui/react";
 
 const columnHeaders = [
   "",
+  "Status",
   "Flight NO.",
   "Date ",
   "ADEP",
@@ -55,12 +67,15 @@ function MissionTableComponent() {
   );
 }
 
-function mapTableRows() {
+function mapTableRows(openMissionDrawer) {
   const rows = [];
 
   for (let index = 0; index < 35; index++) {
+    const missionId = `AOM123-${index}`;
+    const status = Math.random() < 0.5 ? "Active" : "Done";
+
     rows.push(
-      <MissionTableRow key={index}>
+      <MissionTableRow key={index} onClick={() => openMissionDrawer(missionId)}>
         <MissionTableData
           style={{
             display: "flex",
@@ -70,7 +85,11 @@ function mapTableRows() {
         >
           <IoEllipsisHorizontalSharp />
         </MissionTableData>
-
+        <MissionTableData>
+          <Badge colorScheme={status === "Active" ? "green" : "red"}>
+            {status}
+          </Badge>
+        </MissionTableData>
         <MissionTableData>AOM123</MissionTableData>
         <MissionTableData>02/04/2024</MissionTableData>
         <MissionTableData>GMMN</MissionTableData>
@@ -92,6 +111,18 @@ function mapTableRows() {
 }
 
 function MissionTable() {
+  const [drawer, setDrawer] = useState(false);
+  const [missionId, setMissionId] = useState(null);
+
+  const openMissionDrawer = (missionId) => {
+    setMissionId(missionId);
+    setDrawer(true);
+  };
+
+  const closeMissionDrawer = () => {
+    setDrawer(false);
+  };
+
   return (
     <>
       <MissionTableWrapper>
@@ -100,8 +131,24 @@ function MissionTable() {
           <MissionTableHeader key={data}>{data}</MissionTableHeader>
         ))}
         {/* </MissionTableRow> */}
-        {mapTableRows()}
+        {mapTableRows(openMissionDrawer)}
       </MissionTableWrapper>
+      <Drawer
+        isOpen={drawer}
+        placement="right"
+        onClose={closeMissionDrawer}
+        size={"lg"}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>{missionId}</DrawerHeader>
+
+          <DrawerBody>Body</DrawerBody>
+
+          <DrawerFooter></DrawerFooter>
+        </DrawerContent>
+      </Drawer>
     </>
   );
 }

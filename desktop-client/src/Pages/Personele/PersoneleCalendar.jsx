@@ -43,15 +43,14 @@ const PersoneleCalendar = () => {
     }
   };
 
-
-
   return (
     <div
       style={{
-        width: "90%",
+        width: "80%",
         height: "100%",
         background: `${dividerColorLight}`,
         padding: "10px",
+        marginLeft: "10px",
         borderRadius: "5px",
       }}
     >

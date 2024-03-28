@@ -103,14 +103,18 @@ export function AddToStockModal() {
         </ModalContent>
       </Modal>
 
-      <IconButton
-        aria-label="Search database"
-        icon={<FaPlus />}
-        ml={2}
-        onClick={() => {
-          onOpen();
-        }}
-      />
+      <div style={{ display: "flex" }}>
+        <Button
+          aria-label="Add item"
+          leftIcon={<FaPlus />}
+          ml={2}
+          onClick={() => {
+            onOpen();
+          }}
+        >
+          Add Item
+        </Button>
+      </div>
     </>
   );
 }

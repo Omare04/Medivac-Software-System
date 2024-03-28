@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { GiAirplane } from "react-icons/gi";
 import { PiBellSimpleFill } from "react-icons/pi";
 import { whiteContranstOnActive, whiteContranstOnHover } from "../Colors";
+import { FaBell } from "react-icons/fa";
+import { dividerColorLight, dividerColor } from "../Colors";
 
 //HEADER
 export const StyledHeaderWrapper = styled.div``;
@@ -13,7 +15,8 @@ export const StyledHeader = styled.div`
   top: 0;
   align-items: center;
   justify-content: flex-start;
-  background-color: #2e2e38;
+  background-color: #f1f1f1;
+  color: "black";
   width: 100%;
   height: 50px;
 `;
@@ -23,16 +26,17 @@ export const StyledRightSideNavItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
   height: 100%;
   margin-left: auto;
 `;
 
-export const StyledBellIcon = styled(PiBellSimpleFill)`
-  font-size: 19px;
+export const StyledBellIcon = styled(FaBell)`
+  font-size: 16px;
   /* margin-right: 20px; */
+  color: "black";
+  background: "red";
   cursor: pointer;
-  color: #fff;
+  /* color: #fff; */
   transition: color 0.2s ease;
 
   &:hover {

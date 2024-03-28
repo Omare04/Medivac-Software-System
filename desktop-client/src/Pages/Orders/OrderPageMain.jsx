@@ -38,7 +38,7 @@ const personeleLinks = [
 function OrderPageMain() {
   return (
     <>
-      <div
+      {/* <div
         style={{
           fontWeight: "450",
           borderBottom: `1px solid #ededed`,
@@ -51,14 +51,14 @@ function OrderPageMain() {
         }}
       >
         Orders
-      </div>
+      </div> */}
       <div
         id="order_page_root_wrapper"
         style={{
           display: "flex",
           justifyContent: "flex-start",
           padding: "10px",
-          height: "calc(100% - (60px))",
+          height: "100%",
         }}
       >
         {/* <div

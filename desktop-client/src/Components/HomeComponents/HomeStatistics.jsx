@@ -36,6 +36,33 @@ const theme = extendTheme({
   },
 });
 
+function PharmaceuticalStats() {
+  return (
+    <>
+      <Box w="50%">
+        <ChakraProvider theme={theme}>
+          <StatGroup>
+            <Stat>
+              <Flex align="center">
+                <StatLabel fontSize="sm" color={"grey"} mr={2}>
+                  Drug Items
+                </StatLabel>
+              </Flex>
+              <StatNumber fontSize="4xl" pb={6}>
+                56
+              </StatNumber>
+              <StatHelpText color={"red"} mb={0.5}>
+                6 Expired
+              </StatHelpText>
+              <StatHelpText color={"#c5a025"}>16 Approaching exp</StatHelpText>
+            </Stat>
+          </StatGroup>
+        </ChakraProvider>
+      </Box>
+    </>
+  );
+}
+
 function MedicalEquipmentStats() {
   return (
     <>
@@ -52,9 +79,9 @@ function MedicalEquipmentStats() {
                 120
               </StatNumber>
               <StatHelpText color={"red"} mb={0.5}>
-                23 Expired
+                3 Expired
               </StatHelpText>
-              <StatHelpText color={"green"}>23 Approaching exp</StatHelpText>
+              <StatHelpText color={"#c5a025"}>2 Approaching exp</StatHelpText>
             </Stat>
           </StatGroup>
         </ChakraProvider>
@@ -63,7 +90,7 @@ function MedicalEquipmentStats() {
   );
 }
 
-function StockEntries() {
+function MedicalStockEntries() {
   return (
     <>
       <Stat mr={0}>
@@ -91,27 +118,98 @@ function StockEntries() {
             </ListItem>
             <Text fontSize={13}>(02/04/2024)</Text>
           </Flex>
-          {/* <StyledSeeMoreEntries>
+          <Flex alignItems="center" justifyContent="space-between">
+            <ListItem>
+              <ListIcon as={AiOutlinePlusCircle} color="green.500" />
+              <span style={{ fontSize: "13px", paddingLeft: "0px" }}>6</span>
+            </ListItem>
+            <Text fontSize={13}>(02/04/2024)</Text>
+          </Flex>
+          <StyledSeeMoreEntries>
+            <Flex alignItems="center" justifyContent="space-between">
+              <ListItem>
+                <ListIcon as={AiOutlineMinusCircle} color="red.500" />
+                <span style={{ fontSize: "13px", paddingLeft: "0px" }}>3</span>
+              </ListItem>
+              <Text fontSize={13}>(02/04/2024)</Text>
+            </Flex>
             <span
               style={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: " center",
-                color: `${buttonBlue}`,
+                color: `#4c79c2`,
                 fontSize: "14px",
               }}
             >
               see more
             </span>
-          </StyledSeeMoreEntries> */}
+          </StyledSeeMoreEntries>
         </UnorderedList>
       </Stat>
     </>
   );
 }
 
-function renderStockEntries() {
-  return <></>;
+function PharmaceuticalEntries() {
+  return (
+    <>
+      <Stat mr={0}>
+        <StatLabel
+          fontSize="sm"
+          color={"grey"}
+          mb={2}
+          pb={1}
+          style={{ borderBottom: `1px solid ${dividerColor}` }}
+        >
+          Recent Entries
+        </StatLabel>
+        <UnorderedList listStyleType={"none"} w={"100%"} ml={0}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <ListItem>
+              <ListIcon as={AiOutlinePlusCircle} color="green.500" />
+              <span style={{ fontSize: "13px", paddingLeft: "0px" }}>2</span>
+            </ListItem>
+            <Text fontSize={13}>(02/04/2024)</Text>
+          </Flex>
+          <Flex alignItems="center" justifyContent="space-between">
+            <ListItem>
+              <ListIcon as={AiOutlineMinusCircle} color="red.500" />
+              <span style={{ fontSize: "13px", paddingLeft: "0px" }}>3</span>
+            </ListItem>
+            <Text fontSize={13}>(02/04/2024)</Text>
+          </Flex>
+          <Flex alignItems="center" justifyContent="space-between">
+            <ListItem>
+              <ListIcon as={AiOutlinePlusCircle} color="green.500" />
+              <span style={{ fontSize: "13px", paddingLeft: "0px" }}>7</span>
+            </ListItem>
+            <Text fontSize={13}>(02/04/2024)</Text>
+          </Flex>
+          <StyledSeeMoreEntries>
+            <Flex alignItems="center" justifyContent="space-between">
+              <ListItem>
+                <ListIcon as={AiOutlineMinusCircle} color="red.500" />
+                <span style={{ fontSize: "13px", paddingLeft: "0px" }}>1</span>
+              </ListItem>
+              <Text fontSize={13}>(02/04/2024)</Text>
+            </Flex>
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: " center",
+                color: `#4c79c2`,
+                fontSize: "14px",
+              }}
+            >
+              see more
+            </span>
+          </StyledSeeMoreEntries>
+        </UnorderedList>
+      </Stat>
+    </>
+  );
 }
 
 export function StatsTab() {
@@ -155,11 +253,12 @@ export function StatsTab() {
         <TabPanels>
           <TabPanel pl={0} pr={0} borderRadius={10} display={"flex"}>
             <MedicalEquipmentStats />
-            <StockEntries />
+            <MedicalStockEntries />
           </TabPanel>
 
-          <TabPanel pl={0} mr={3} p={5} borderRadius={10} display={"flex"}>
-            <p>Pharmaceuticals</p>
+          <TabPanel pl={0} pr={0} borderRadius={10} display={"flex"}>
+            <PharmaceuticalStats />
+            <PharmaceuticalEntries />
           </TabPanel>
         </TabPanels>
       </Tabs>

@@ -51,7 +51,6 @@ export function Home() {
         </HomeWrapperLeft>
         <HomeWrapperRight>
           <StatsTab />
-
           <TitleContainer>
             <DrugRequestTitle>Requests & Orders</DrugRequestTitle>
           </TitleContainer>
@@ -63,12 +62,6 @@ export function Home() {
             Monthly Flight Volume
           </TitleContainer> */}
           {/* <HorizontalBarChartMission></HorizontalBarChartMission> */}
-          {/* <DrugRequestTitle style={{ paddingLeft: "20px", paddingTop: "15px" }}>
-            Orders
-          </DrugRequestTitle>
-          <BoxWrapper>
-        <OrderComponentsHome />
-        </BoxWrapper> */}
         </HomeWrapperRight>
         <FunctionalFooter />
       </Flex>

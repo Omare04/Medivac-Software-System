@@ -23,7 +23,7 @@ export const StyledLinkLogo = styled(FaExternalLinkAlt)`
 //DRUG REQUEST SECTION
 export const BoxWrapper = styled.div`
   overflow-y: auto;
-  height: 100%; 
+  height: 100%;
   width: 100%;
   border-radius: 5px;
 `;
@@ -32,10 +32,11 @@ export const StyledSeeMoreEntries = styled.div`
   background: linear-gradient(
     to bottom,
     rgba(169, 169, 169, 0),
-    rgba(227, 227, 227, 0.5)
+    rgba(227, 227, 227, 0.3)
   );
   z-index: 2;
   width: 100%;
   height: 100%;
   border-radius: 10px;
+  cursor: pointer;
 `;
