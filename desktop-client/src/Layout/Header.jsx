@@ -105,7 +105,7 @@ function Header() {
       <StyledHeader>
         <StyledHeaderLogoLink to={"/"}>
           <img
-            src="../../../public/aomlogo.png"
+            src="/aomlogo.png"
             style={{ height: "45px", width: "47px" }}
           />
           {/* <GiAirplaneDeparture size={30} /> */}
@@ -152,7 +152,7 @@ function Header() {
               <WrapItem pr={6} pl={3} cursor={"pointer"}>
                 <Avatar
                   name="Dan Abrahmov"
-                  src="../../public/tarik_elmasaoudi.png"
+                  src="/tarik_elmasaoudi.png"
                   size={"sm"}
                 />
               </WrapItem>
@@ -161,7 +161,7 @@ function Header() {
               <PopoverContent width={250}>
                 <PopoverArrow />
                 <PopoverHeader mt={1} mb={1}>
-                  Hello Omar
+                  Hello Tarik
                 </PopoverHeader>
                 <PopoverCloseButton />
                 <PopoverBody>

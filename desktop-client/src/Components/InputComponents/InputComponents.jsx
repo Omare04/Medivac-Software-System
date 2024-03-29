@@ -7,13 +7,13 @@ import {
   Text,
   InputLeftAddon,
   Textarea,
-  InputRightAddon,
   Radio,
+  Select,
   RadioGroup,
 } from "@chakra-ui/react";
 import { Select as ChakraSelect } from "@chakra-ui/react";
-import Select from "react-select";
 import ReactFlagsSelect from "react-flags-select";
+import { dividerColor, dividerColorLight } from "../../Colors";
 
 export function InputComponentIcon({
   icon,
@@ -145,6 +145,7 @@ export function ReactSelectComponent({
   selectedOptions,
   setSelectedOptions,
   isTitle,
+  customStyles,
 }) {
   const handleChange = (selectedValues) => {
     setSelectedOptions(selectedValues);
@@ -152,7 +153,7 @@ export function ReactSelectComponent({
 
   return (
     <>
-      <div style={{ width: "100%", zIndex: 1000000 }}>
+      <div style={{ width: "100%" }}>
         {isTitle ? <Text>{title}</Text> : null}
         <Select
           name="colors"
@@ -161,8 +162,9 @@ export function ReactSelectComponent({
           value={selectedOptions}
           onChange={handleChange}
           placeholder={placeholder}
+          styles={customStyles}
           components={{
-            IndicatorSeparator: () => null, 
+            IndicatorSeparator: () => null,
           }}
         />
       </div>
@@ -205,5 +207,37 @@ export function InputComponentRadio({ title, value, onChange }) {
         </RadioGroup>
       </div>
     </>
+  );
+}
+
+export function ChakraSelectComponentIcon({
+  icon,
+  selectPlaceHolder,
+  selectItems,
+}) {
+  return (
+    <div style={{ width: "100%" }}>
+      <InputGroup size="md">
+        <InputLeftAddon
+          children={icon}
+          background={dividerColorLight}
+          border={"none"}
+          color={"grey"}
+        />
+        <Select
+          placeholder={selectPlaceHolder}
+          background={dividerColorLight}
+          border={"none"}
+          // icon={icon}
+          borderLeftRadius={0}
+        >
+          {selectItems.map((item, index) => (
+            <option key={index} value={item}>
+              {item}
+            </option>
+          ))}
+        </Select>
+      </InputGroup>
+    </div>
   );
 }

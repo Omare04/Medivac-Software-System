@@ -40,7 +40,7 @@ export function ProtectedRoutes() {
             }}
           >
             <img
-              src="../../public/AOM_logo_horizontal.png"
+              src="/AOM_logo_horizontal.png"
               style={{
                 height: "85px",
                 width: "330px",

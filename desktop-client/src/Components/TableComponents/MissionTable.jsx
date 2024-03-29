@@ -38,7 +38,6 @@ import {
 } from "@chakra-ui/react";
 
 const columnHeaders = [
-  "",
   "Status",
   "Flight NO.",
   "Date ",
@@ -72,19 +71,11 @@ function mapTableRows(openMissionDrawer) {
 
   for (let index = 0; index < 35; index++) {
     const missionId = `AOM123-${index}`;
-    const status = Math.random() < 0.5 ? "Active" : "Done";
+    const status = Math.random() < 0.5 ? "Active" : "Complete";
 
     rows.push(
       <MissionTableRow key={index} onClick={() => openMissionDrawer(missionId)}>
-        <MissionTableData
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <IoEllipsisHorizontalSharp />
-        </MissionTableData>
+
         <MissionTableData>
           <Badge colorScheme={status === "Active" ? "green" : "red"}>
             {status}

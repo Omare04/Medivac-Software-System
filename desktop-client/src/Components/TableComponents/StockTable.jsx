@@ -28,6 +28,7 @@ import { useRowSelect } from "@table-library/react-table-library/select";
 import {
   ReactSelectComponent,
   InputComponentIcon,
+  ChakraSelectComponentIcon,
 } from "../InputComponents/InputComponents";
 import { AiFillMedicineBox } from "react-icons/ai";
 import { FaChevronDown } from "react-icons/fa";
@@ -45,276 +46,147 @@ class MedicalStock {
 const nodes = [
   {
     id: "0",
-    name: "Medicine A Xeroz",
+    name: "MRI Scanner",
     date: new Date(2020, 1, 15),
     type: "Respiratory",
     pn: 12314124,
+    qty: 1,
   },
   {
     id: "1",
-    name: "Medicine A Xeroz",
+    name: "X-ray Machine",
     date: new Date(2020, 1, 15),
     type: "Cardiology",
     pn: 12314124,
+    qty: 1,
   },
   {
     id: "2",
-    name: "Medicine A Xeroz",
+    name: "Ultrasound Machine",
     date: new Date(2020, 1, 15),
     type: "Neurological",
     pn: 12314124,
+    qty: 1,
   },
   {
     id: "3",
-    name: "Medicine A Xeroz",
+    name: "Defibrillator",
     date: new Date(2020, 1, 15),
     type: "Neurological",
     pn: 12314124,
+    qty: 1,
   },
   {
     id: "4",
-    name: "Medicine A Xeroz",
+    name: "ECG Machine",
     date: new Date(2020, 1, 15),
     type: "Cardiology",
     pn: 12314124,
+    qty: 1,
   },
   {
     id: "5",
-    name: "Medicine A Xeroz",
+    name: "Anesthesia Machine",
     date: new Date(2020, 1, 15),
     type: "Neurological",
     pn: 12314124,
+    qty: 1,
   },
   {
     id: "6",
-    name: "Medicine A Xeroz",
+    name: "Ventilator",
     date: new Date(2020, 1, 15),
     type: "Cardiology",
     pn: 12314124,
+    qty: 1,
   },
   {
     id: "7",
-    name: "Medicine A Xeroz",
+    name: "Infusion Pump",
     date: new Date(2020, 1, 15),
     type: "Cardiology",
     pn: 12314124,
+    qty: 1,
   },
   {
     id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
+    name: "Surgical Microscope",
     date: new Date(2020, 1, 15),
     type: "Neurological",
     pn: 12314124,
+    qty: 1,
   },
   {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Respiratory",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
+    id: "9",
+    name: "Blood Gas Analyzer",
     date: new Date(2020, 1, 15),
     type: "Cardiology",
     pn: 12314124,
+    qty: 1,
   },
   {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Respiratory",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
+    id: "9",
+    name: "Blood Gas Analyzer",
     date: new Date(2020, 1, 15),
     type: "Cardiology",
     pn: 12314124,
+    qty: 1,
   },
   {
-    id: "8",
-    name: "Medicine A Xeroz",
+    id: "9",
+    name: "Blood Gas Analyzer",
     date: new Date(2020, 1, 15),
     type: "Cardiology",
     pn: 12314124,
+    qty: 1,
   },
   {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Neurological",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
+    id: "9",
+    name: "Blood Gas Analyzer",
     date: new Date(2020, 1, 15),
     type: "Cardiology",
     pn: 12314124,
+    qty: 1,
   },
   {
-    id: "8",
-    name: "Medicine A Xeroz",
+    id: "9",
+    name: "Blood Gas Analyzer",
     date: new Date(2020, 1, 15),
     type: "Cardiology",
     pn: 12314124,
+    qty: 1,
   },
   {
-    id: "8",
-    name: "Medicine A Xeroz",
+    id: "9",
+    name: "Blood Gas Analyzer",
     date: new Date(2020, 1, 15),
     type: "Cardiology",
     pn: 12314124,
+    qty: 1,
   },
   {
-    id: "8",
-    name: "Medicine A Xeroz",
+    id: "9",
+    name: "Blood Gas Analyzer",
     date: new Date(2020, 1, 15),
     type: "Cardiology",
     pn: 12314124,
+    qty: 1,
   },
   {
-    id: "8",
-    name: "Medicine A Xeroz",
+    id: "9",
+    name: "Blood Gas Analyzer",
     date: new Date(2020, 1, 15),
     type: "Cardiology",
     pn: 12314124,
+    qty: 1,
   },
   {
-    id: "8",
-    name: "Medicine A Xeroz",
+    id: "9",
+    name: "Blood Gas Analyzer",
     date: new Date(2020, 1, 15),
     type: "Cardiology",
     pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Neurological",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-  },
-  {
-    id: "8",
-    name: "Medicine A Xeroz",
-    date: new Date(2020, 1, 15),
-    type: "Respiratory",
-    pn: 12314124,
+    qty: 1,
   },
 ];
 
@@ -330,35 +202,39 @@ function MedicalStockTable() {
   });
 
   function onPaginationChange(action, state) {
-    console.log(action, state);
+    // console.log(action, state);
   }
 
   const [horizontalSpacing, setHorizontalSpacing] = React.useState(
     DEFAULT_OPTIONS.horizontalSpacing
   );
-  const [verticalSpacing, setVerticalSpacing] = React.useState(5);
-  const [striped, setStriped] = React.useState(DEFAULT_OPTIONS.striped);
-  const [hasFooter, setFooter] = React.useState(false);
+  const [verticalSpacing, setVerticalSpacing] = React.useState(4);
+  const [striped, setStriped] = React.useState(true);
+  const [hasFooter, setFooter] = React.useState(true);
   const [caption, setCaption] = React.useState("");
 
   const mantineTheme = getTheme({
     horizontalSpacing,
     verticalSpacing,
-    striped,
+    // striped,
+    hasFooter,
   });
 
   const customTheme = useTheme([
     getTheme(),
     {
       HeaderRow: `
-      background-color: ${dividerColorLight};
-      color: #000000;
+      background-color: #f2f2f2;
+      position: sticky;
+      top: 0;
       `,
       Row: `
       background-color: #ffffff;
       color: #383838; 
+      height: 20px;
+      font-weight: 470;
       cursor: pointer; 
-      transition: background-color 0.3s ease; 
+      transition: background-color 0.1s ease; 
       
       &:nth-of-type(even) {
         background-color: ${dividerColorLight};
@@ -376,7 +252,7 @@ function MedicalStockTable() {
     },
   ]);
 
-  const theme = useTheme([mantineTheme]);
+  const theme = useTheme([customTheme]);
 
   const [search, setSearch] = useState("");
   const [addStockModalState, setAddStockModalState] = useState(false);
@@ -407,7 +283,6 @@ function MedicalStockTable() {
             Product Name
             <Icon
               as={FaChevronDown}
-              color="#181d1f"
               boxSize={4}
               ml={3}
               style={{}}
@@ -415,7 +290,11 @@ function MedicalStockTable() {
           </div>
         </>
       ),
-      renderCell: (item) => item.name,
+      renderCell: (item) => (
+        <>
+          <span style={{}}>{item.name}</span>
+        </>
+      ),
       select: {
         renderCellSelect: (item) => (
           <Checkbox
@@ -428,17 +307,7 @@ function MedicalStockTable() {
     {
       label: "Product Type",
       renderCell: (item) => (
-        <Badge
-          cursor={"pointer"}
-          colorScheme={
-            item.type === "Cardiology"
-              ? "red"
-              : item.type === "Respiratory"
-              ? "green"
-              : "blue"
-          }
-          p={1}
-        >
+        <Badge cursor={"pointer"} p={1}>
           {item.type}
         </Badge>
       ),
@@ -451,7 +320,6 @@ function MedicalStockTable() {
             Date Entered
             <Icon
               as={FaChevronDown}
-              color="#181d1f"
               boxSize={4}
               ml={3}
               style={{}}
@@ -466,6 +334,11 @@ function MedicalStockTable() {
           day: "2-digit",
         }),
     },
+
+    {
+      label: "Quantity",
+      renderCell: (item) => <>{item.qty}</>,
+    },
   ];
 
   return (
@@ -474,36 +347,37 @@ function MedicalStockTable() {
         style={{
           display: "flex",
           flexDirection: "column",
-          width: "80%",
+          width: "100%",
           height: "100%",
         }}
       >
         <Stack spacing={0} pb={2} w={"100%"}>
-          <InputGroup>
-            <InputLeftElement
-              pointerEvents="none"
-              children={<FaSearch style={{ color: "#96989a" }} />}
-            />
-            <Input
-              background={"white"}
-              placeholder="Search Product Name"
-              value={search}
-              onChange={handleSearch}
-              borderRadius={"sm"}
-            />
-            <div
-              style={{
-                display: "flex",
-                width: "80%",
-                alignItems: "center",
-                paddingLeft: "10px",
-                height: "100%",
-              }}
-            >
-              <TableFilterBar />
-              <AddToStockModal />
-            </div>
-          </InputGroup>
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              alignItems: "center",
+              paddingLeft: "10px",
+              height: "100%",
+            }}
+          >
+            <InputGroup>
+              <InputLeftElement
+                pointerEvents="none"
+                children={<FaSearch style={{ color: "#96989a" }} />}
+              />
+              <Input
+                borderColor={"white"}
+                background={dividerColorLight}
+                placeholder="Search Product Name"
+                value={search}
+                onChange={handleSearch}
+                borderRadius={"sm"}
+              />
+            </InputGroup>
+            <TableFilterBar />
+            <AddToStockModal />
+          </div>
         </Stack>
 
         <div
@@ -583,10 +457,25 @@ function MedicalStockTable() {
 function TableFilterBar() {
   const [itemType, setItemType] = useState("");
 
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      border: "none",
+      borderRadius: "4px",
+      background: dividerColorLight,
+      boxShadow: state.isFocused ? "0 0 0 1px #c4c4c4" : provided.boxShadow,
+      "&:active": {
+        boxShadow: "0 0 0 1px #c4c4c4",
+      },
+    }),
+  };
+
+  const options = ["Option 1", "Option 2", "Option 3"];
+
   return (
     <>
-      <div style={{ width: "100%" }}>
-        <ReactSelectComponent
+      <div style={{ width: "100%", display: "flex", gap: "10px" }}>
+        {/* <ReactSelectComponent
           selectOptions={[
             { value: "CNTKC", label: "CN-TKC" },
             { value: "CNTKV", label: "CN-TKV" },
@@ -604,6 +493,17 @@ function TableFilterBar() {
           selectedOptions={itemType}
           setSelectedOptions={setItemType}
           isTitle={false}
+          customStyles={customStyles}
+        /> */}
+        <ChakraSelectComponentIcon
+          icon={<Icon as={AiFillMedicineBox} />}
+          selectPlaceHolder="Select Type"
+          selectItems={options}
+        />
+        <ChakraSelectComponentIcon
+          icon={<Icon as={AiFillMedicineBox} />}
+          selectPlaceHolder="Select an option"
+          selectItems={options}
         />
       </div>
     </>

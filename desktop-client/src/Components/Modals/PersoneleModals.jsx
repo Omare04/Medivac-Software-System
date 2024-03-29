@@ -119,12 +119,11 @@ export function CreatePersoneleRolesModal() {
   );
 }
 
-export function CreatePersoneleEventModal() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
+export function CreatePersoneleEventModal({ isOpen, onClose }) {
   const [eventName, setEventName] = useState("");
   const [eventDescription, setEventDiscription] = useState("");
-  const [access, setAccess] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   const handleDescriptionChange = (event) => {
     setEventDiscription(event.target.value);
@@ -143,12 +142,18 @@ export function CreatePersoneleEventModal() {
 
   return (
     <>
-      <Modal closeOnOverlayClick={true} isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay onClick={onClose} />
+      <Modal
+        closeOnOverlayClick={true}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        <ModalOverlay onClick={onClose} w={"100%"} />
         <ModalContent borderRadius={2}>
-          <ModalHeader fontWeight={420}>Create Event</ModalHeader>
+          <ModalHeader fontWeight={420} w={"100%"}>
+            Create Event
+          </ModalHeader>
           <ModalCloseButton borderRadius={2} />
-          <ModalBody pb={6}>
+          <ModalBody pb={6} w={"100%"}>
             <div
               style={{
                 display: "flex",
@@ -163,6 +168,22 @@ export function CreatePersoneleEventModal() {
                   type={"input"}
                   value={eventName}
                   onChange={(e) => setEventName(e.target.value)}
+                />
+              </div>
+              <div style={{ paddingBottom: "15px" }}>
+                <InputUnit
+                  title={"Start Date"}
+                  type={"date"}
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                />
+              </div>
+              <div style={{ paddingBottom: "15px" }}>
+                <InputUnit
+                  title={"End Date"}
+                  type={"date"}
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
                 />
               </div>
               <div style={{ paddingBottom: "10px" }}>
@@ -208,14 +229,14 @@ export function CreatePersoneleEventModal() {
         </ModalContent>
       </Modal>
 
-      <StyledLinkButton
+      {/* <StyledLinkButton
         onClick={() => {
           onOpen();
         }}
       >
         <MdEvent style={{ paddingRight: "10px" }} size={30} />
         Create Event{" "}
-      </StyledLinkButton>
+      </StyledLinkButton> */}
     </>
   );
 }

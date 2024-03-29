@@ -1,0 +1,61 @@
+:root {
+  --primary-button-color: #f3f3f3;
+  --primary-button-font-color: #8a8a8a;
+  --primary-button-color-hover: #ececec;
+  --primary-button-color-active: #e6e6e6;
+}
+
+.fc-event:hover {
+  background-color: #215c99;
+  border-color: #215c99;
+}
+
+.fc-prev-button,
+.fc-next-button,
+.fc-CreateEventButton-button {
+  background-color: var(--primary-button-color) !important;
+  color: var(--primary-button-font-color) !important;
+  padding: 5px !important;
+  border: none !important;
+  transition: background-color 0.15s ease !important;
+}
+
+.fc-CreateEventButton-button {
+  border-radius: 5px !important;
+  padding: 6px 9px !important;
+}
+
+.fc-dayGridMonth-button {
+  background-color: var(--primary-button-color) !important;
+  color: var(--primary-button-font-color) !important;
+  padding: 5px 9px !important;
+  border: none !important;
+  border-radius: 5px !important;
+  transition: background-color 0.15s ease !important;
+}
+
+.fc-dayGridMonth-button:hover,
+.fc-prev-button:hover,
+.fc-next-button:hover,
+.fc-CreateEventButton-button:hover {
+  background-color: var(--primary-button-color-hover) !important;
+}
+
+.fc-dayGridMonth-button:active,
+.fc-prev-button:active,
+.fc-next-button:active,
+.fc-CustomEventButton-button:active {
+  border: none !important;
+  background-color: var(--primary-button-color-active) !important;
+}
+
+.fc-toolbar-title {
+  font-size: 1.45em !important;
+}
+
+.fc-header-toolbar {
+    background-color: rgba(183, 183, 183, 0.131);
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px !important;
+}

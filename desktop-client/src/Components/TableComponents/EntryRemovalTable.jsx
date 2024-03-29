@@ -21,6 +21,7 @@ import {
   ModalFooter,
 } from "@chakra-ui/react";
 import { AiOutlineExport } from "react-icons/ai";
+import { dividerColorLight } from "../../Colors";
 import {
   ReactSelectComponent,
   InputComponentIcon,
@@ -264,7 +265,9 @@ const EntryRemovalTable = () => {
   const COLUMNS = [
     {
       label: "Item",
-      renderCell: (item) => <span style={{ fontWeight: 500 }}>item.item </span>,
+      renderCell: (item) => (
+        <span style={{ fontWeight: 500 }}>{item.item} </span>
+      ),
     },
     {
       label: (
@@ -310,7 +313,6 @@ const EntryRemovalTable = () => {
               }}
             >
               <FaCircleMinus color="red" style={{ marginLeft: "10px" }} />{" "}
-
             </div>
           </>
         ),
@@ -376,7 +378,7 @@ const EntryRemovalTable = () => {
             style={{
               display: "flex",
               alignItems: "center",
-              fontWeight: "400",
+              fontWeight: "550",
               borderRadius: "5px",
               color: "#000000",
               fontSize: "20px",
@@ -490,6 +492,8 @@ export function ExportDateModal() {
         <Button
           leftIcon={<AiOutlineExport />}
           w={"100%"}
+          background={dividerColorLight}
+          color={"#8a8a8a"}
           onClick={() => {
             onOpen();
           }}
