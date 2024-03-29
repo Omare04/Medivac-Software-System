@@ -127,7 +127,10 @@ function Personele() {
               justifyContent: "space-between",
               alignItems: "center",
               height: "100%",
-              width: "15%",
+              background: dividerColorLight,
+              padding: "10px",
+              borderRadius: "5px",
+              width: "25%",
             }}
           >
             <PersoneleListComponent />
@@ -141,7 +144,6 @@ function Personele() {
               }}
             >
               <CreatePersoneleRolesModal />
-              <CreatePersoneleEventModal />
             </div>
           </div>
 
@@ -167,7 +169,13 @@ function PersoneleListComponent() {
 
   return (
     <>
-      <UnorderedList listStyleType={"none"} ml={0} pl={0} overflow={"auto"}>
+      <UnorderedList
+        listStyleType={"none"}
+        ml={1}
+        pl={0}
+        overflow={"auto"}
+        w={"100%"}
+      >
         {personeleLinks.map((item, key) => (
           <ListItem
             key={key}
@@ -297,7 +305,8 @@ function AccordianItemComponent({ key, name, role }) {
                 >
                   {name}
                   <Stack direction={"row"} fontSize={13} color={"red"}>
-                    <Badge colorScheme={roleColors[role]}>{role}</Badge>
+                    {/* <Badge colorScheme={roleColors[role]}>{role}</Badge> */}
+                    <Badge>{role}</Badge>
                   </Stack>
                 </div>
               </WrapItem>

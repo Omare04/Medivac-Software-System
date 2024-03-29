@@ -128,7 +128,7 @@ function OrderPageMain() {
                 style={{ background: "#f5f5f589" }}
                 height={"100%"}
                 borderRadius={2}
-                overflow={"auto"}
+                // overflow={"auto"}
               >
                 <MedicalEquipmentOrders />
               </TabPanel>

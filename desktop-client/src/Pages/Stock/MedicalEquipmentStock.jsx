@@ -48,12 +48,11 @@ function MedicalEquipmentStock() {
             justifyContent: "flex-start",
             width: "100%",
             height: "100%",
-            // background: "#f5f5f5",
             borderRadius: "5px",
           }}
         >
           <MedicalStockTable />
-          <div
+          {/* <div
             style={{
               margin: " 0px 0px 10px 10px",
               width: "50%",
@@ -64,7 +63,7 @@ function MedicalEquipmentStock() {
            
             
               <EntryRemovalTable />
-          </div>
+          </div> */}
         </div>
         <Drawer
           onClose={onClose}

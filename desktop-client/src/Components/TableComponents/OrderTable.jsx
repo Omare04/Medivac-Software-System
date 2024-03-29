@@ -297,6 +297,7 @@ export function OrderTable({ nodes }) {
           />
         </Box>
         <br />
+      </div>
         <HStack justify="flex-end" width="100%" position={"sticky"}>
           <IconButton
             aria-label="previous page"
@@ -333,7 +334,6 @@ export function OrderTable({ nodes }) {
             onClick={() => pagination.fns.onSetPage(pagination.state.page + 1)}
           />
         </HStack>
-      </div>
     </>
   );
 }

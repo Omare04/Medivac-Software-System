@@ -22,6 +22,7 @@ import {
 import Select from "react-select";
 import { FaPlus } from "react-icons/fa";
 import makeAnimated from "react-select/animated";
+import { dividerColor, dividerColorLight } from "../../Colors";
 
 export function AddToStockModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -107,6 +108,8 @@ export function AddToStockModal() {
         <Button
           aria-label="Add item"
           leftIcon={<FaPlus />}
+          background={dividerColorLight}
+          color={"#8a8a8a"}
           ml={2}
           onClick={() => {
             onOpen();

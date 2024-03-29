@@ -9,32 +9,69 @@ import {
   Text,
   StackDivider,
   Button,
+  Tag,
 } from "@chakra-ui/react";
 import { FaEllipsisH } from "react-icons/fa";
 
 const checklistItems = [
   {
     id: 0,
-    title: "Zool Monthly Inspection",
-    type: "Medical Equipment Inspection",
+    title: "MRI Machine Inspection",
+    type: "Inspection",
     date: "02/04/2024",
   },
   {
     id: 1,
-    title: "Zool Monthly Inspection",
-    type: "Medical Equipment Inspection",
+    title: "X-ray Machine Inspection",
+    type: "Checkup",
     date: "02/04/2024",
   },
   {
     id: 2,
-    title: "Zool Monthly Inspection",
-    type: "Medical Equipment Inspection",
+    title: "Ultrasound Scanner Inspection",
+    type: "Sanitization",
     date: "02/04/2024",
   },
   {
     id: 3,
-    title: "Zool Monthly Inspection",
-    type: "Medical Equipment Inspection",
+    title: "Defibrillator Inspection",
+    type: "Inspection",
+    date: "02/04/2024",
+  },
+  {
+    id: 4,
+    title: "ECG Machine Inspection",
+    type: "Checkup",
+    date: "02/04/2024",
+  },
+  {
+    id: 5,
+    title: "Anesthesia Machine Inspection",
+    type: "Sanitization",
+    date: "02/04/2024",
+  },
+  {
+    id: 6,
+    title: "Ventilator Inspection",
+    type: "Inspection",
+    date: "02/04/2024",
+  },
+  {
+    id: 7,
+    title: "Infusion Pump Inspection",
+    type: "Checkup",
+    date: "02/04/2024",
+  },
+  {
+    id: 8,
+    title: "Surgical Microscope Inspection",
+    type: "Sanitization",
+    date: "02/04/2024",
+  },
+  {
+    id: 9,
+    title: "Blood Gas Analyzer Inspection",
+    type: "Inspection",
     date: "02/04/2024",
   },
 ];
@@ -47,7 +84,6 @@ function StockCheckList() {
           width: "100%",
           borderRadius: "5px",
           height: "100%",
-          // overflow: "auto",
         }}
       >
         <Card height={"100%"} overflow={"auto"}>
@@ -70,7 +106,21 @@ function StockCheckList() {
                     display={"flex"}
                     justifyContent={"space-between"}
                   >
-                    {item.title}
+                    <Box display={"flex"} alignItems={"center"} gap={"10px"}>
+                      {item.title}
+                      <Tag
+                      // colorScheme={
+                      //   item.type == "Inspection"
+                      //     ? "green"
+                      //     : item.type == "Sanitization"
+                      //     ? "blue"
+                      //     : "red"
+                      // }
+                      >
+                        {item.type}
+                      </Tag>
+                    </Box>
+
                     <FaEllipsisH />
                   </Heading>
                   <Text pt="2" fontSize="sm">

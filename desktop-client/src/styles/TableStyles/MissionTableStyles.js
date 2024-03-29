@@ -14,8 +14,9 @@ export const MissionTableHeader = styled.th`
   position: sticky;
   top: 0;
   background-color: #f2f2f2;
-  padding-top: 5px;
-  text-align: left;
+  padding-right: 10px;
+  padding-top: 10px;
+  text-align: center;
   font-weight: 485;
   font-size: 15px;
   /* height: 100%; */
