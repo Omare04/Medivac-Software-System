@@ -19,7 +19,11 @@ export function CreateMissionTables() {
   return <div>CreateMissionTables</div>;
 }
 
-export const RenderAddedDrugsEquipmentTable = ({ items, setItems }) => {
+export const RenderAddedDrugsEquipmentTable = ({
+  items,
+  setItems,
+  editable,
+}) => {
   const handleIncreaseQuantity = (index) => {
     const updatedItems = [...items];
     updatedItems[index].quantity += 1;
@@ -34,7 +38,7 @@ export const RenderAddedDrugsEquipmentTable = ({ items, setItems }) => {
 
   return (
     <>
-      <TableContainer>
+      <TableContainer w={"100%"}>
         <Table variant="simple">
           <Thead>
             <Tr>
@@ -42,7 +46,7 @@ export const RenderAddedDrugsEquipmentTable = ({ items, setItems }) => {
               <Th>Item</Th>
               <Th>Category</Th>
               <Th>Pn</Th>
-              <Th isNumeric>Quantity</Th>
+              {editable ? <Th isNumeric>Quantity</Th> : null}
             </Tr>
           </Thead>
           <Tbody>
@@ -60,28 +64,30 @@ export const RenderAddedDrugsEquipmentTable = ({ items, setItems }) => {
                 <Td>{item.label}</Td>
                 <Td>{item.category}</Td>
                 <Td>{item.pn}</Td>
-                <Td isNumeric>
-                  <Button
-                    size="xs"
-                    colorScheme="blue"
-                    // ml={2}
-                    onClick={() => handleIncreaseQuantity(index)}
-                  >
-                    +
-                  </Button>
-                  <span style={{ paddingLeft: "10px", paddingRight: "10px" }}>
-                    {/* {item.quantity} */}
-                    {"1"}
-                  </span>
-                  <Button
-                    size="xs"
-                    colorScheme="blue"
-                    // ml={2}
-                    onClick={() => handleDecreaseQuantity(index)}
-                  >
-                    -
-                  </Button>
-                </Td>
+                {editable ? (
+                  <Td isNumeric>
+                    <Button
+                      size="xs"
+                      colorScheme="blue"
+                      // ml={2}
+                      onClick={() => handleIncreaseQuantity(index)}
+                    >
+                      +
+                    </Button>
+                    <span style={{ paddingLeft: "10px", paddingRight: "10px" }}>
+                      {/* {item.quantity} */}
+                      {"1"}
+                    </span>
+                    <Button
+                      size="xs"
+                      colorScheme="blue"
+                      // ml={2}
+                      onClick={() => handleDecreaseQuantity(index)}
+                    >
+                      -
+                    </Button>
+                  </Td>
+                ) : null}
               </Tr>
             ))}
           </Tbody>
@@ -102,11 +108,7 @@ export const RenderAddedDrugsEquipmentTable = ({ items, setItems }) => {
 export const CompanionTable = ({ items, removeRow }) => {
   return (
     <>
-      <TableContainer
-        borderRadius={"5px"}
-        height={"100%"}
-        overflowY={"auto"}
-      >
+      <TableContainer borderRadius={"5px"} height={"100%"} overflowY={"auto"}>
         <h2
           style={{
             fontSize: "20px",
@@ -118,12 +120,16 @@ export const CompanionTable = ({ items, removeRow }) => {
             display: "flex",
             alignItems: "center",
             // background: dividerColorLight,
-            padding: "10px"
+            padding: "10px",
           }}
         >
           Companions
         </h2>
-        <Table variant="simple" background={dividerColorLight} overflow={"auto"}>
+        <Table
+          variant="simple"
+          background={dividerColorLight}
+          overflow={"auto"}
+        >
           <Thead>
             <Tr>
               <Th>First Name</Th>
