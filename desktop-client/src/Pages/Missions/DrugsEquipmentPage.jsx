@@ -298,7 +298,7 @@ function DrugsEquipmentPage() {
             borderRadius: "5px",
           }}
         >
-          <RenderAddedDrugsEquipmentTable items={items} setItems={setItems} />
+          <RenderAddedDrugsEquipmentTable items={items} setItems={setItems} editable={true}/>
         </div>
       </div>
     </>
