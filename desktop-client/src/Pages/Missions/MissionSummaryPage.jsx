@@ -108,7 +108,7 @@ const infoTitleStyle = {
   fontWeight: "450",
 };
 
-function FlightInfoSummaryComponent() {
+export function FlightInfoSummaryComponent() {
   // Mock flight details object
   const flightDetails = {
     "Flight Number": FakeFlight[0].flightNo,
@@ -151,7 +151,7 @@ function FlightInfoSummaryComponent() {
         display={"flex"}
         flexDirection={"column"}
         p={0}
-        w={"40%"}
+        w={"50%"}
         overflow={"auto"}
         pr={4}
       >
@@ -166,13 +166,22 @@ function FlightInfoSummaryComponent() {
           {" "}
           Files <LuFiles />
         </Heading>
-        <FileCardComponent files={FakeFlight[0].files} />
+        <Box
+          display={"flex"}
+          flexDirection={"column"}
+          gap={1}
+          w={"100%"}
+          flexWrap={"wrap"}
+          overflow={"auto"}
+        >
+          <FileCardComponent files={FakeFlight[0].files} />
+        </Box>
       </Box>
     </div>
   );
 }
 
-function FlightCardComponent({ data, header }) {
+export function FlightCardComponent({ data, header }) {
   return (
     <Card w={"100%"} overflow={"auto"}>
       <CardBody p={4} w={"100%"}>
@@ -199,7 +208,7 @@ function FlightCardComponent({ data, header }) {
   );
 }
 
-function CrewInfoSummaryComponent() {
+export function CrewInfoSummaryComponent() {
   return (
     <div
       style={{
@@ -247,7 +256,7 @@ function CrewInfoSummaryComponent() {
   );
 }
 
-function DrugsAndEquipmentSummaryComponent() {
+export function DrugsAndEquipmentSummaryComponent() {
   return (
     <div id="drugs-equipment" style={wrapperStyle}>
       <RenderAddedDrugsEquipmentTable
@@ -259,7 +268,7 @@ function DrugsAndEquipmentSummaryComponent() {
   );
 }
 
-function PatientInfoSummaryComponent({ patient }) {
+export function PatientInfoSummaryComponent({ patient }) {
   return (
     <div
       id="patient-info"
@@ -271,7 +280,7 @@ function PatientInfoSummaryComponent({ patient }) {
         overflowY: "auto",
       }}
     >
-      <Card w={"60%"} h={"100%"} display={"flex"} overflow={"auto"}>
+      <Card w={"55%"} h={"100%"} display={"flex"} overflow={"auto"}>
         <CardBody p={4}>
           <CardHeader pl={0}>
             <Heading size={"md"}>Patient Info</Heading>
@@ -304,9 +313,17 @@ function PatientInfoSummaryComponent({ patient }) {
           </Stack>
         </CardBody>
       </Card>
-      <Box w={"40%"} display={"flex"} flexDirection={"column"}>
+      <Box w={"45%"} display={"flex"} flexDirection={"column"}>
         <CompanionListComponent companionList={Companions} />
-        <FileCardComponent files={patient.files} />
+        <Box
+          display={"flex"}
+          flexDirection={"column"}
+          alignItems={"center"}
+          flexWrap={"wrap"}
+          overflow={"auto"}
+        >
+          <FileCardComponent files={patient.files} />
+        </Box>
       </Box>
     </div>
   );
@@ -368,7 +385,7 @@ function CompanionListComponent({ companionList }) {
   );
 }
 
-function ArrivalInfoSummaryComponent({ arrivalInfo }) {
+export function ArrivalInfoSummaryComponent({ arrivalInfo }) {
   return (
     <>
       <div
@@ -491,7 +508,7 @@ function CardRenderHospital({ data, title, dataObject }) {
   );
 }
 
-function FileCardComponent({ files }) {
+export function FileCardComponent({ files }) {
   return (
     <>
       {Object.entries(files).map(([key, file]) => (
@@ -499,6 +516,7 @@ function FileCardComponent({ files }) {
           key={key}
           mt={4}
           p={4}
+          w={"250px"}
           display={"flex"}
           justifyContent={"space-between"}
         >

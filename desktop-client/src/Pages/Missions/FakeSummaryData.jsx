@@ -232,26 +232,6 @@ export const Companions = [
     visaNumber: "ABC789",
     phoneNumber: "+1987654321",
   },
-  {
-    name: {
-      first: "Daniel",
-      last: "Smith",
-    },
-    nationality: "American",
-    documentNumber: "654321987",
-    visaNumber: "ABC789",
-    phoneNumber: "+1987654321",
-  },
-  {
-    name: {
-      first: "Daniel",
-      last: "Smith",
-    },
-    nationality: "American",
-    documentNumber: "654321987",
-    visaNumber: "ABC789",
-    phoneNumber: "+1987654321",
-  },
 ];
 
 export const ArrivalInfo = {
