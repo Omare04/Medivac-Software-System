@@ -10,7 +10,15 @@ import {
   StyledSearchIcon,
   StyledSearchBox,
 } from "../../styles/TableStyles/MissionTableStyles";
-import { Center, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  ListItem,
+  UnorderedList,
+} from "@chakra-ui/react";
 import { IoMdSearch } from "react-icons/io";
 import { MdCompareArrows } from "react-icons/md";
 import {
@@ -35,7 +43,27 @@ import {
   Badge,
   Button,
   DrawerCloseButton,
+  Tabs,
+  Tab,
+  TabList,
+  TabPanels,
+  TabPanel,
+  Text,
 } from "@chakra-ui/react";
+import {
+  FlightInfoSummaryComponent,
+  FlightCardComponent,
+  CrewInfoSummaryComponent,
+  PatientInfoSummaryComponent,
+  DrugsAndEquipmentSummaryComponent,
+  ArrivalInfoSummaryComponent,
+  FileCardComponent,
+} from "../../Pages/Missions/MissionSummaryPage";
+import {
+  FakeFlight,
+  Patient,
+  ArrivalInfo,
+} from "../../Pages/Missions/FakeSummaryData";
 
 const columnHeaders = [
   "Status",
@@ -75,7 +103,6 @@ function mapTableRows(openMissionDrawer) {
 
     rows.push(
       <MissionTableRow key={index} onClick={() => openMissionDrawer(missionId)}>
-
         <MissionTableData>
           <Badge colorScheme={status === "Active" ? "green" : "red"}>
             {status}
@@ -104,6 +131,7 @@ function mapTableRows(openMissionDrawer) {
 function MissionTable() {
   const [drawer, setDrawer] = useState(false);
   const [missionId, setMissionId] = useState(null);
+  const [activeTab, setActiveTab] = useState(0);
 
   const openMissionDrawer = (missionId) => {
     setMissionId(missionId);
@@ -114,34 +142,103 @@ function MissionTable() {
     setDrawer(false);
   };
 
+  const handleTabClick = (index) => {
+    setActiveTab(index);
+  };
+
   return (
     <>
       <MissionTableWrapper>
-        {/* <MissionTableRow> */}
         {columnHeaders.map((data) => (
           <MissionTableHeader key={data}>{data}</MissionTableHeader>
         ))}
-        {/* </MissionTableRow> */}
+
         {mapTableRows(openMissionDrawer)}
       </MissionTableWrapper>
       <Drawer
         isOpen={drawer}
         placement="right"
         onClose={closeMissionDrawer}
-        size={"lg"}
+        size={"xl"}
       >
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader>{missionId}</DrawerHeader>
 
-          <DrawerBody>Body</DrawerBody>
+          <DrawerBody
+            display={"flex"}
+            flexDirection={"column"}
+            justifyContent={"space-between"}
+            p={0}
+          >
+            <Box p={5}>
+              <RenderDrawerBody page={activeTab} />
+            </Box>
+          </DrawerBody>
 
-          <DrawerFooter></DrawerFooter>
+          <DrawerFooter p={0}>
+            <Tabs isLazy pl={5} pr={5} w={"100%"} pb={2}>
+              <TabList
+                justifyContent={"center"}
+                display={"flex"}
+                gap={20}
+                w={"100%"}
+              >
+                <Tab
+                  onClick={() => handleTabClick(0)}
+                  isSelected={activeTab === 0}
+                >
+                  Flight
+                </Tab>
+                <Tab
+                  onClick={() => handleTabClick(1)}
+                  isSelected={activeTab === 1}
+                >
+                  Crew
+                </Tab>
+                <Tab
+                  onClick={() => handleTabClick(2)}
+                  isSelected={activeTab === 2}
+                >
+                  Drugs & Equipment
+                </Tab>
+                <Tab
+                  onClick={() => handleTabClick(3)}
+                  isSelected={activeTab === 3}
+                >
+                  Patient
+                </Tab>
+                <Tab
+                  onClick={() => handleTabClick(4)}
+                  isSelected={activeTab === 4}
+                >
+                  General
+                </Tab>
+              </TabList>
+            </Tabs>
+          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </>
   );
+}
+
+function RenderDrawerBody({ page }) {
+  switch (page) {
+    case 0:
+      return <FlightSummaryDrawerBody />;
+    case 1:
+      return <CrewSummaryDrawerBody />;
+    case 2:
+      return <DrugsEquipmentSummaryDrawerBody />;
+    case 3:
+      return <PatientSummaryDrawerBody />;
+    case 4:
+      return <GeneralSummaryDrawerBody />;
+    default:
+      return null;
+  }
 }
 
 function TableFilterBar() {
@@ -241,5 +338,62 @@ function TableFilterBar() {
       </StyledTableFilterBar>
     </>
   );
+}
+
+function FlightSummaryDrawerBody() {
+  const flightDetails = {
+    "Flight Number": FakeFlight[0].flightNo,
+    Aircraft: FakeFlight[0].aircraft,
+    "Block Time": FakeFlight[0].blockTime,
+    "Stop Over Time": FakeFlight[0].stopOverTime,
+    "Medivac Method": FakeFlight[0].medivacDetails.method,
+    "Medivac Type": FakeFlight[0].medivacDetails.type,
+    Urgency: FakeFlight[0].medivacDetails.urgency,
+  };
+
+  const flightDetailsLocation = {
+    "Airport Of Departure": FakeFlight[0].location.airportOfDeparture,
+    "Airport Of Arrival": FakeFlight[0].location.airportOfArrival,
+    "City Of Arrival": FakeFlight[0].location.cityOfArrival,
+    "City Of Departure": FakeFlight[0].location.cityOfDeparture,
+  };
+
+  return (
+    <>
+      <Box display={"flex"} flexDirection={"column"} gap={"10px"}>
+        <FlightCardComponent data={flightDetails} header={"Flight Details"} />
+        <FlightCardComponent
+          data={flightDetailsLocation}
+          header={"Location Details"}
+        />
+        <Box
+          display={"flex"}
+          p={0}
+          flexWrap={"wrap"}
+          w={"100%"}
+          gap={"10px"}
+          overflow={"auto"}
+        >
+          <FileCardComponent files={FakeFlight[0].files} />
+        </Box>
+      </Box>
+    </>
+  );
+}
+
+function CrewSummaryDrawerBody() {
+  return <CrewInfoSummaryComponent />;
+}
+
+function PatientSummaryDrawerBody() {
+  return <PatientInfoSummaryComponent patient={Patient} />;
+}
+
+function DrugsEquipmentSummaryDrawerBody() {
+  return <DrugsAndEquipmentSummaryComponent />;
+}
+
+function GeneralSummaryDrawerBody() {
+  return <ArrivalInfoSummaryComponent arrivalInfo={ArrivalInfo} />;
 }
 export default MissionTableComponent;
