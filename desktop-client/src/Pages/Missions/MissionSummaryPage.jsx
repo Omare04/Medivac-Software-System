@@ -442,7 +442,7 @@ export function ArrivalInfoSummaryComponent({ arrivalInfo }) {
   );
 }
 
-function CardRender({ data, title }) {
+export function CardRender({ data, title }) {
   return (
     <Card w={"100%"} h={"100%"} display={"flex"} overflow={"auto"}>
       <CardBody p={4}>
@@ -471,7 +471,7 @@ function CardRender({ data, title }) {
   );
 }
 
-function CardRenderHospital({ data, title, dataObject }) {
+export function CardRenderHospital({ data, title, dataObject }) {
   return (
     <Card w={"100%"} h={"100%"} display={"flex"} overflow={"auto"}>
       <CardBody p={4}>
@@ -500,8 +500,9 @@ function CardRenderHospital({ data, title, dataObject }) {
               <Text>{value}</Text>
             </Box>
           ))}
-
-          <FileCardComponent files={dataObject.files} />
+          <Box display={"flex"} flexWrap={"wrap"} gap={1}>
+            <FileCardComponent files={dataObject.files} />
+          </Box>
         </Stack>
       </CardBody>
     </Card>
@@ -516,7 +517,7 @@ export function FileCardComponent({ files }) {
           key={key}
           mt={4}
           p={4}
-          w={"250px"}
+          w={"49%"}
           display={"flex"}
           justifyContent={"space-between"}
         >

@@ -246,7 +246,7 @@ export const ArrivalInfo = {
     last: "Nash",
     phoneNumber: "+9081230920",
     clinic: "Rabat Health Clinic",
-    Speciality: "Cardiology"
+    Speciality: "Cardiology",
   },
   arrivalAmbulanceContact: {
     firstname: "Bouzaa",
@@ -321,3 +321,36 @@ export const Crew = {
     visaNumber: "N/A",
   },
 };
+
+export const RandomUsers = [
+  {
+    name: "John Doe",
+    dateOfBirth: "1990-05-15",
+    email: "john@example.com",
+    position: "Doctor",
+    profilePicUrl: "/tarik_elmasaoudi.png",
+  },
+  {
+    name: "Jane Smith",
+    dateOfBirth: "1985-10-25",
+    email: "jane@example.com",
+    position: "First Officer",
+    profilePicUrl: "https://bit.ly/sage-adebayo",
+  },
+  {
+    name: "Alex Johnson",
+    dateOfBirth: "1995-03-08",
+    email: "alex@example.com",
+    position: "Nurse",
+    profilePicUrl: "https://bit.ly/dan-abramov",
+  },
+  {
+    name: "Emily White",
+    dateOfBirth: "1988-12-20",
+    email: "emily@example.com",
+    position: "Captain",
+    profilePicUrl: "https://bit.ly/ryan-florence",
+  },
+
+
+];

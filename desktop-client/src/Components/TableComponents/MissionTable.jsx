@@ -56,6 +56,8 @@ import {
   CrewInfoSummaryComponent,
   PatientInfoSummaryComponent,
   DrugsAndEquipmentSummaryComponent,
+  CardRender,
+  CardRenderHospital,
   ArrivalInfoSummaryComponent,
   FileCardComponent,
 } from "../../Pages/Missions/MissionSummaryPage";
@@ -172,7 +174,7 @@ function MissionTable() {
             justifyContent={"space-between"}
             p={0}
           >
-            <Box p={5}>
+            <Box p={5} >
               <RenderDrawerBody page={activeTab} />
             </Box>
           </DrawerBody>
@@ -360,18 +362,21 @@ function FlightSummaryDrawerBody() {
 
   return (
     <>
-      <Box display={"flex"} flexDirection={"column"} gap={"10px"}>
-        <FlightCardComponent data={flightDetails} header={"Flight Details"} />
-        <FlightCardComponent
-          data={flightDetailsLocation}
-          header={"Location Details"}
-        />
+      <Box display={"flex"} gap={"10px"} flexDirection={"column"}>
+        <Box display={"flex"} gap={"10px"}>
+          <FlightCardComponent data={flightDetails} header={"Flight Details"} />
+          <FlightCardComponent
+            data={flightDetailsLocation}
+            header={"Location Details"}
+          />
+        </Box>
         <Box
           display={"flex"}
           p={0}
           flexWrap={"wrap"}
           w={"100%"}
           gap={"10px"}
+          justifyContent={"center"}
           overflow={"auto"}
         >
           <FileCardComponent files={FakeFlight[0].files} />
@@ -394,6 +399,43 @@ function DrugsEquipmentSummaryDrawerBody() {
 }
 
 function GeneralSummaryDrawerBody() {
-  return <ArrivalInfoSummaryComponent arrivalInfo={ArrivalInfo} />;
+  return (
+    <Box
+      display={"flex"}
+      w={"100%"}
+      gap={2}
+      flexDirection={"column"}
+      h={"100%"}
+    >
+      <Box w={"100%"} gap={2} display={"flex"}>
+        <CardRender
+          data={ArrivalInfo.departureAmbulanceContact}
+          title={"Ambulance On Departure Info"}
+        />
+        <CardRender
+          data={ArrivalInfo.physicianContactOnDeparture}
+          title={"Physician Contact On Departure"}
+        />
+      </Box>
+      <Box display={"flex"} w={"100%"} gap={2}>
+        <CardRender
+          data={ArrivalInfo.arrivalAmbulanceContact}
+          title={"Ambulance On Arrival Info"}
+        />
+
+        <CardRender
+          data={ArrivalInfo.physicianContactOnArrival}
+          title={"Physician Contact On Arrival"}
+        />
+      </Box>
+      <Box display={"flex"} w={"100%"} gap={2}>
+        <CardRenderHospital
+          data={ArrivalInfo.hostHospitalDestination}
+          title={"Hospital Info"}
+          dataObject={ArrivalInfo}
+        />
+      </Box>
+    </Box>
+  );
 }
 export default MissionTableComponent;
