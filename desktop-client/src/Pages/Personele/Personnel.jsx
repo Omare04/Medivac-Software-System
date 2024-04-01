@@ -19,6 +19,8 @@ import {
   ListIcon,
   OrderedList,
   UnorderedList,
+  SkeletonCircle,
+  Skeleton,
 } from "@chakra-ui/react";
 import { dividerColor, dividerColorLight } from "../../Colors";
 import { RiPlaneFill } from "react-icons/ri";
@@ -264,6 +266,18 @@ function PersoneleAccordion() {
 }
 
 function AccordianItemComponent({ key, name, role }) {
+  const [skeleton, setSkeleton] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSkeleton(true);
+    }, 700);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   const roleColors = {
     Doctor: "blue",
     Captain: "yellow",
@@ -275,6 +289,7 @@ function AccordianItemComponent({ key, name, role }) {
         borderBottom={`1px solid ${dividerColorLight}`}
         borderTop={`1px solid ${dividerColorLight}`}
         mr={2}
+        isDisabled={!skeleton}
       >
         <AccordionButton
           backgroundColor={"#ffffff"}
@@ -282,6 +297,7 @@ function AccordianItemComponent({ key, name, role }) {
           pl={4}
           cursor={"pointer"}
           pt={1}
+
         >
           <Flex
             as="span"
@@ -294,25 +310,29 @@ function AccordianItemComponent({ key, name, role }) {
           >
             <Box color={"black"}>
               <WrapItem display={"flex"} alignItems={"center"}>
-                <Avatar
-                  size={"sm"}
-                  name="Dan Abrahmov"
-                  src="https://bit.ly/dan-abramov"
-                />
-                <div
-                  style={{ paddingLeft: "10px" }}
-                  id="personele-name-and-badge-wrapper"
-                >
-                  {name}
-                  <Stack direction={"row"} fontSize={13} color={"red"}>
-                    {/* <Badge colorScheme={roleColors[role]}>{role}</Badge> */}
-                    <Badge>{role}</Badge>
-                  </Stack>
-                </div>
+                <SkeletonCircle isLoaded={skeleton}>
+                  <Avatar
+                    size={"sm"}
+                    name="Dan Abrahmov"
+                    src="https://bit.ly/dan-abramov"
+                  />
+                </SkeletonCircle>
+                <Skeleton width={"100%"} ml={3} isLoaded={skeleton}>
+                  <div
+                    style={{ paddingLeft: "10px" }}
+                    id="personele-name-and-badge-wrapper"
+                  >
+                    {name}
+                    <Stack direction={"row"} fontSize={13} color={"red"}>
+                      {/* <Badge colorScheme={roleColors[role]}>{role}</Badge> */}
+                      <Badge>{role}</Badge>
+                    </Stack>
+                  </div>
+                </Skeleton>
               </WrapItem>
             </Box>
           </Flex>
-          <AccordionIcon color={"grey"} fontSize={19} />
+          {skeleton ? <AccordionIcon color={"grey"} fontSize={19} /> : null}
         </AccordionButton>
 
         <AccordionPanel pl={5}>

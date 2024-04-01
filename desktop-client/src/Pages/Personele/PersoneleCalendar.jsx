@@ -4,6 +4,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import { dividerColorLight } from "../../Colors";
 import { CreatePersoneleEventModal } from "../../Components/Modals/PersoneleModals";
 import {
+  Box,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -12,7 +13,20 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Avatar,
+  Text,
+  Heading,
+  Badge,
+  Flex,
+  SkeletonCircle,
+  Skeleton,
 } from "@chakra-ui/react";
+import { RandomUsers } from "../Missions/FakeSummaryData";
+import { FakeFlight } from "../Missions/FakeSummaryData";
 
 const events = [
   { title: "AOM123", start: "2024-03-07", end: "2024-03-10" },
@@ -118,23 +132,113 @@ const PersoneleCalendar = () => {
 };
 
 const EventModal = ({ isOpen, onClose, id }) => {
-  // Assuming id is an object containing information about the event
-
-  const eventTitle = id ? id : "";
-  console.log(eventTitle);
+  useEffect(() => {
+    //Fetch Users that have the id associated to this event in the event table
+  }, []);
 
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>{eventTitle}</ModalHeader>
+          <ModalHeader pb={0}>{id}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody></ModalBody>
+          <ModalBody display={"flex"} flexDirection={"column"} gap={3}>
+            <EventDescriptionBody id={id} />
+            <Heading size={"sm"}> Crew</Heading>
+            <Box
+              display={"flex"}
+              flexDirection={"column"}
+              gap={3}
+              overflow={"auto"}
+              height={"300px"}
+              p={1}
+            >
+              {RandomUsers.map((user, key) => (
+                <EventUserCards
+                  name={user.name}
+                  position={user.position}
+                  pictureURL={user.profilePicUrl}
+                />
+              ))}
+            </Box>
+          </ModalBody>
           <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
     </>
+  );
+};
+
+const EventUserCards = ({ name, pictureURL, position }) => {
+  const [skeleton, setSkeleton] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSkeleton(true);
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  return (
+    <>
+      <Skeleton isLoaded={skeleton}>
+        <Card>
+          <CardBody p={2}>
+            <Box>
+              <Box display={"flex"} gap={2} flexDirection={"column"}>
+                <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
+                  <Avatar name="Segun Adebayo" src={pictureURL} />
+                  <Box>
+                    <Heading size="sm">{name}</Heading>
+                    <Badge>{position}</Badge>
+                  </Box>
+                </Flex>
+              </Box>
+            </Box>
+          </CardBody>
+        </Card>
+      </Skeleton>
+    </>
+  );
+};
+
+const EventDescriptionBody = ({ id }) => {
+  return (
+    <Box display={"flex"} flexDirection={"column"} pt={4}>
+      <Box
+        display={"flex"}
+        background={dividerColorLight}
+        flexDirection={"column"}
+        p={2}
+        borderRadius={4}
+        gap={2}
+      >
+        <Box display={"flex"} justifyContent={"space-between"}>
+          <Text fontWeight={"bold"}>Mission: </Text>
+          <Text fontWeight={500}>{id}</Text>
+        </Box>
+        <Box display={"flex"} justifyContent={"space-between"}>
+          <Text fontWeight={"bold"}>ADES: </Text>
+          <Text fontWeight={500}>
+            {FakeFlight[0].location.airportOfArrival}
+          </Text>
+        </Box>
+        <Box display={"flex"} justifyContent={"space-between"}>
+          <Text fontWeight={"bold"}>Evac Type:</Text>
+          <Text fontWeight={500}>{FakeFlight[0].medivacDetails.type}</Text>
+        </Box>
+        <Text background={"white"} p={2} borderRadius={5} mt={2}>
+          {" "}
+          Team, our medivac flight demands precision and teamwork. Let's
+          prioritize patient care, maintain clear communication, and execute our
+          roles with excellence. Together, we'll ensure a successful mission.
+        </Text>
+      </Box>
+    </Box>
   );
 };
 
