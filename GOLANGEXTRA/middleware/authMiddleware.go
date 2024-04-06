@@ -7,7 +7,6 @@ import (
 )
 
 func TestMiddle() {
-
 	err := godotenv.Load("../config/.env")
 	if err != nil {
 		fmt.Println("Error Loading ENV variables")

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import MedicalEquipmentOrders from "../Orders/MedicalEquipmentOrders";
 import PharamceuticalOrders from "../Orders/PharamceuticalOrders";
 import {
@@ -13,8 +13,19 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { FaEllipsisH, FaEllipsisV } from "react-icons/fa";
+import { AddRequestItemModal } from "../../Components/Modals/ChecklistRequestModals";
 
 function Requests() {
+  const [modalState, setModalState] = useState(false);
+
+  const handleOpenModal = () => {
+    setModalState(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalState(false);
+  };
+
   return (
     <>
       <div
@@ -41,7 +52,7 @@ function Requests() {
           <Heading size={"md"} as={"h3"} pl={4}>
             Stock Requests
           </Heading>
-          <Button variant="ghost" colorScheme="blue">
+          <Button variant="ghost" colorScheme="blue" onClick={() => handleOpenModal()}>
             Create A Request
           </Button>
         </div>
@@ -53,6 +64,7 @@ function Requests() {
         <RequestCard />
         <RequestCard />
       </div>
+      <AddRequestItemModal isOpen={modalState} onClose={handleCloseModal} />
     </>
   );
 }

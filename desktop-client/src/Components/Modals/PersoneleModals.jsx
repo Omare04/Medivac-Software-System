@@ -120,11 +120,13 @@ export function CreatePersoneleRolesModal() {
 }
 
 export function CreatePersoneleEventModal({ isOpen, onClose }) {
+
   const [eventName, setEventName] = useState("");
   const [eventDescription, setEventDiscription] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
+  
   const handleDescriptionChange = (event) => {
     setEventDiscription(event.target.value);
   };
