@@ -320,6 +320,7 @@ function MedivacDetailsComponent() {
             selectedOptions={methodOfTransfer}
             setSelectedOptions={setMethodOfTransfer}
             isTitle={true}
+            customStyles={null}
           />
           <ReactSelectComponent
             selectOptions={[

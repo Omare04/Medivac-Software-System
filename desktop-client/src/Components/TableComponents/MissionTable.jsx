@@ -138,6 +138,7 @@ function MissionTable() {
   const openMissionDrawer = (missionId) => {
     setMissionId(missionId);
     setDrawer(true);
+    setActiveTab(0);
   };
 
   const closeMissionDrawer = () => {
@@ -174,7 +175,7 @@ function MissionTable() {
             justifyContent={"space-between"}
             p={0}
           >
-            <Box p={5} >
+            <Box p={5}>
               <RenderDrawerBody page={activeTab} />
             </Box>
           </DrawerBody>
@@ -407,6 +408,13 @@ function GeneralSummaryDrawerBody() {
       flexDirection={"column"}
       h={"100%"}
     >
+      <Box display={"flex"} w={"100%"} gap={2}>
+        <CardRenderHospital
+          data={ArrivalInfo.hostHospitalDestination}
+          title={"Hospital Info"}
+          dataObject={ArrivalInfo}
+        />
+      </Box>
       <Box w={"100%"} gap={2} display={"flex"}>
         <CardRender
           data={ArrivalInfo.departureAmbulanceContact}
@@ -426,13 +434,6 @@ function GeneralSummaryDrawerBody() {
         <CardRender
           data={ArrivalInfo.physicianContactOnArrival}
           title={"Physician Contact On Arrival"}
-        />
-      </Box>
-      <Box display={"flex"} w={"100%"} gap={2}>
-        <CardRenderHospital
-          data={ArrivalInfo.hostHospitalDestination}
-          title={"Hospital Info"}
-          dataObject={ArrivalInfo}
         />
       </Box>
     </Box>

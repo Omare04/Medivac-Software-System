@@ -76,7 +76,7 @@ const checklistItems = [
   },
 ];
 
-function StockCheckList() {
+function StockCheckList({ onOpen }) {
   return (
     <>
       <div
@@ -90,7 +90,12 @@ function StockCheckList() {
           <CardHeader position={"sticky"}>
             <Heading size="md">
               Stock Checklist
-              <Button colorScheme="blue" variant="ghost" ml={4}>
+              <Button
+                colorScheme="blue"
+                variant="ghost"
+                ml={4}
+                onClick={() => onOpen()}
+              >
                 Create Checklist
               </Button>
             </Heading>

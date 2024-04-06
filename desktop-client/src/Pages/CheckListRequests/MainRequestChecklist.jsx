@@ -60,10 +60,6 @@ function RequestCheckListSummary() {
               <Box display={"flex"} flexWrap={"wrap"} gap={2}>
                 <Tag>R123M</Tag>
                 <Tag>R123M</Tag>
-                <Tag>R143P</Tag>
-                <Tag>R123M</Tag>
-                <Tag>R123M</Tag>
-                <Tag>R123M</Tag>
                 <Tag>R123M</Tag>
                 <Tag>R123M</Tag>
                 <Tag>R123M</Tag>
@@ -77,9 +73,6 @@ function RequestCheckListSummary() {
             <Heading size="sm">Checklist Items Approaching Due Date</Heading>
             <Text pt="2" fontSize="sm">
               <Box display={"flex"} flexWrap={"wrap"} gap={2}>
-                <Tag>MRI MAchine</Tag>
-                <Tag>MRI MAchine</Tag>
-                <Tag>MRI MAchine</Tag>
                 <Tag>MRI MAchine</Tag>
                 <Tag>MRI MAchine</Tag>
                 <Tag>MRI MAchine</Tag>

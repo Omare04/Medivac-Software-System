@@ -22,7 +22,7 @@ import {
   Heading,
   Badge,
   Flex,
-  SkeletonCircle,
+  SkeletonText,
   Skeleton,
 } from "@chakra-ui/react";
 import { RandomUsers } from "../Missions/FakeSummaryData";
@@ -34,7 +34,7 @@ const events = [
   { title: "AOM345", date: "2024-03-10" },
   { title: "AOM456", date: "2024-03-16", end: "2024-03-18" },
   { title: "AOM456", date: "2024-03-15", end: "2024-03-17" },
-  { title: "AOM567", date: "2024-03-18" },
+  { title: "Zool Annual Inspection", date: "2024-03-18" },
   { title: "AOM456", date: "2024-03-20", end: "2024-03-23" },
   { title: "AOM567", date: "2024-03-30" },
   { title: "AOM456", date: "2024-03-31" },
@@ -80,12 +80,21 @@ const PersoneleCalendar = () => {
     setEventInfo(info.event._def.title);
   };
 
-  const renderEventContent = (eventInfo) => {
-    return (
-      <div>
-        <p>{eventInfo.event.title} </p>
-      </div>
-    );
+  const eventTitleStyle = {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  };
+
+  const renderEventContent = ({ event }) => {
+    // Apply custom style for event title
+    const eventTitleStyle = {
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+    };
+
+    return <div style={eventTitleStyle}>{event.title}</div>;
   };
 
   return (
@@ -132,19 +141,18 @@ const PersoneleCalendar = () => {
 };
 
 const EventModal = ({ isOpen, onClose, id }) => {
-  useEffect(() => {
-    //Fetch Users that have the id associated to this event in the event table
-  }, []);
-
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader pb={0}>{id}</ModalHeader>
+          <ModalHeader pb={0}>
+            {id} <Badge ml={3}>{FakeFlight[0].medivacDetails.type}</Badge>{" "}
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody display={"flex"} flexDirection={"column"} gap={3}>
             <EventDescriptionBody id={id} />
+
             <Heading size={"sm"}> Crew</Heading>
             <Box
               display={"flex"}
@@ -156,6 +164,7 @@ const EventModal = ({ isOpen, onClose, id }) => {
             >
               {RandomUsers.map((user, key) => (
                 <EventUserCards
+                  key={key}
                   name={user.name}
                   position={user.position}
                   pictureURL={user.profilePicUrl}
@@ -163,7 +172,6 @@ const EventModal = ({ isOpen, onClose, id }) => {
               ))}
             </Box>
           </ModalBody>
-          <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
     </>
@@ -191,10 +199,11 @@ const EventUserCards = ({ name, pictureURL, position }) => {
             <Box>
               <Box display={"flex"} gap={2} flexDirection={"column"}>
                 <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                  <Avatar name="Segun Adebayo" src={pictureURL} />
+                  <Avatar name="Segun Adebayo" src={pictureURL} size={"sm"} />
                   <Box>
-                    <Heading size="sm">{name}</Heading>
-                    <Badge>{position}</Badge>
+                    <Heading size="sm">
+                      {name} <Badge ml={2}>{position}</Badge>
+                    </Heading>
                   </Box>
                 </Flex>
               </Box>
@@ -207,32 +216,48 @@ const EventUserCards = ({ name, pictureURL, position }) => {
 };
 
 const EventDescriptionBody = ({ id }) => {
+  // Define box style
+  const Style = {
+    display: "flex",
+    justifyContent: "space-between",
+    background: dividerColorLight,
+    padding: 6,
+    borderRadius: 5,
+  };
+
   return (
     <Box display={"flex"} flexDirection={"column"} pt={4}>
       <Box
         display={"flex"}
-        background={dividerColorLight}
         flexDirection={"column"}
         p={2}
         borderRadius={4}
         gap={2}
       >
-        <Box display={"flex"} justifyContent={"space-between"}>
-          <Text fontWeight={"bold"}>Mission: </Text>
-          <Text fontWeight={500}>{id}</Text>
+        <Box
+          display={"flex"}
+          w={"100%"}
+          gap={4}
+          id="mission_Ades_wrapper_calendar_event"
+        >
+          <Box style={Style} flexWrap={"wrap"} h={"100%"}>
+            {" "}
+            <Text fontWeight={"bold"}>Event: </Text>
+            <Text fontWeight={500} pl={2}>{id}</Text>
+          </Box>
+          <Box style={Style} h={"100%"}>
+            {" "}
+            <Text fontWeight={"bold"}>ADES: </Text>
+            <Text fontWeight={500} pl={2}>
+              {FakeFlight[0].location.airportOfArrival}
+            </Text>
+          </Box>
         </Box>
-        <Box display={"flex"} justifyContent={"space-between"}>
-          <Text fontWeight={"bold"}>ADES: </Text>
-          <Text fontWeight={500}>
-            {FakeFlight[0].location.airportOfArrival}
-          </Text>
-        </Box>
-        <Box display={"flex"} justifyContent={"space-between"}>
+        {/* <Box style={Style}>
           <Text fontWeight={"bold"}>Evac Type:</Text>
           <Text fontWeight={500}>{FakeFlight[0].medivacDetails.type}</Text>
-        </Box>
-        <Text background={"white"} p={2} borderRadius={5} mt={2}>
-          {" "}
+        </Box> */}
+        <Text p={2} borderRadius={5} mt={2} style={Style}>
           Team, our medivac flight demands precision and teamwork. Let's
           prioritize patient care, maintain clear communication, and execute our
           roles with excellence. Together, we'll ensure a successful mission.
