@@ -29,6 +29,7 @@ import { FaRegEye } from "react-icons/fa";
 import { Badge } from "@chakra-ui/react";
 import { FaChevronDown } from "react-icons/fa";
 import { useRowSelect } from "@table-library/react-table-library/select";
+import { IoEllipsisVerticalSharp } from "react-icons/io5";
 
 const exportRow = (OID) => {
   //Export order
@@ -97,7 +98,7 @@ export function OrderTable({ nodes }) {
     },
   ]);
 
-  const theme = useTheme([mantineTheme]);
+  const theme = useTheme([customTheme]);
 
   const [search, setSearch] = useState("");
 
@@ -130,7 +131,6 @@ export function OrderTable({ nodes }) {
       select: {
         renderHeaderCellSelect: () => (
           <Checkbox
-            colorScheme="#EBF8FF"
             isChecked={select.state.all}
             isIndeterminate={!select.state.all && !select.state.none}
             onChange={select.fns.onToggleAll}
@@ -138,9 +138,15 @@ export function OrderTable({ nodes }) {
         ),
         renderCellSelect: (item) => (
           <Checkbox
-            colorScheme={buttonBlue}
-            isChecked={select.state.ids.includes(item.id)}
-            onChange={() => select.fns.onToggleById(item.id)}
+            colorScheme="blue"
+            isChecked={select.state.ids.includes(item.po)}
+            onChange={(e) => {
+              if (e.target.checked) {
+                select.fns.onToggleById(item.po); // Toggle the current item if checked
+              } else {
+                select.fns.onToggleAll(); // Toggle all items if unchecked
+              }
+            }}
           />
         ),
       },
@@ -244,7 +250,20 @@ export function OrderTable({ nodes }) {
               color: "white",
             }}
           />
-          <FaRegEye
+          <IoEllipsisVerticalSharp
+            onClick={() => {
+              exportRow(item.po);
+            }}
+            size={30}
+            style={{
+              borderRadius: "5px",
+              marginLeft: "5px",
+              background: buttonBlue,
+              padding: "6px",
+              color: "white",
+            }}
+          />
+          {/* <FaRegEye
             size={30}
             style={{
               borderRadius: "5px",
@@ -253,7 +272,7 @@ export function OrderTable({ nodes }) {
               padding: "6px",
               color: "white",
             }}
-          />
+          /> */}
         </div>
       ),
       width: "10%", // Adjust the width here
@@ -298,13 +317,14 @@ export function OrderTable({ nodes }) {
         </Box>
         <br />
       </div>
-        <HStack justify="flex-end" width="100%" position={"sticky"}>
+      <Box display={"flex"} width="100%">
+        <HStack justify="flex-end" width="100%" pt={4}>
           <IconButton
             aria-label="previous page"
             icon={<FaChevronLeft size={13} />}
             colorScheme="blue"
             variant="ghost"
-            disabled={pagination.state.page === 0}
+            isDisabled={pagination.state.page === 0}
             height="30px"
             onClick={() => pagination.fns.onSetPage(pagination.state.page - 1)}
           />
@@ -327,15 +347,20 @@ export function OrderTable({ nodes }) {
             icon={<FaChevronRight size={13} />}
             colorScheme="blue"
             variant="ghost"
-            disabled={
+            isDisabled={
               pagination.state.page + 1 ===
               pagination.state.getTotalPages(data.nodes)
             }
             onClick={() => pagination.fns.onSetPage(pagination.state.page + 1)}
           />
         </HStack>
+      </Box>
     </>
   );
+}
+
+function FilterBar() {
+  return <></>;
 }
 
 export default OrderTable;

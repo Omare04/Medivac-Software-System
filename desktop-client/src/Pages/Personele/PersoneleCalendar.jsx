@@ -94,7 +94,9 @@ const PersoneleCalendar = () => {
       whiteSpace: "nowrap",
     };
 
-    return <div style={eventTitleStyle}>{event.title}</div>;
+    return <div style={eventTitleStyle}>
+      {event.title}
+      </div>;
   };
 
   return (

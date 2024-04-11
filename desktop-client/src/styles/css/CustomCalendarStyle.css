@@ -5,9 +5,33 @@
   --primary-button-color-active: #e6e6e6;
 }
 
-.fc-event:hover {
-  background-color: #215c99;
-  border-color: #215c99;
+.fc-event {
+  position: relative;
+  /* Set original background color and other styles */
+  /* background-color: #4f4f4f !important; */
+  /* border-color: #000000; */
+  border-radius: 0px;
+  transition: 0.1s background-color ease-in-out !important;
+}
+
+.fc-event::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: rgba(221, 221, 221, 0); */
+  transition: background-color 0.1s ease-in-out;
+  pointer-events: none;
+}
+
+.fc-event:hover::before {
+  background-color: rgba(229, 229, 229, 0.3);
+}
+
+.fc-event:active::before {
+  background-color: rgba(254, 254, 254, 0.222) !important;
 }
 
 .fc-prev-button,
@@ -54,10 +78,10 @@
 }
 
 .fc-header-toolbar {
-    background-color: rgba(183, 183, 183, 0.131);
-    border-radius: 5px;
-    padding: 5px;
-    margin-bottom: 10px !important;
+  background-color: rgba(183, 183, 183, 0.131);
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px !important;
 }
 
 .fc-event-main {
@@ -65,4 +89,13 @@
   font-weight: 600;
   border-radius: 0px !important;
   cursor: pointer;
+}
+
+.fc-timegrid-slot,
+.fc-day,
+.fc-daygrid-body {
+  border: 1px solid rgba(210, 210, 210, 0.449) !important;
+}
+.fc-day-today {
+  background-color: rgba(0, 119, 255, 0.074) !important;
 }

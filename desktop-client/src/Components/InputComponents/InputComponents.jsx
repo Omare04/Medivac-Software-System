@@ -228,7 +228,6 @@ export function ChakraSelectComponentIcon({
           placeholder={selectPlaceHolder}
           background={dividerColorLight}
           border={"none"}
-          // icon={icon}
           borderLeftRadius={0}
         >
           {selectItems.map((item, index) => (

@@ -77,7 +77,7 @@ export function AddToStockModal() {
                 title={"Product Type"}
                 value={productType}
                 onChange={(e) => setProductType(e.target.value)}
-                items={["View Only", "Admin", "Editor"]}
+                items={["Cardiological", "Neurological", "Respiratory"]}
               />
               <InputUnitNumber
                 title={"Quantity"}

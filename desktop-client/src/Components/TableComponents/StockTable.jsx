@@ -31,6 +31,7 @@ import {
   ChakraSelectComponentIcon,
 } from "../InputComponents/InputComponents";
 import { AiFillMedicineBox } from "react-icons/ai";
+import { MdNumbers } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa";
 
 class MedicalStock {
@@ -281,12 +282,7 @@ function MedicalStockTable() {
         <>
           <div style={{ display: "flex", alignItems: "center" }}>
             Product Name
-            <Icon
-              as={FaChevronDown}
-              boxSize={4}
-              ml={3}
-              style={{}}
-            />
+            <Icon as={FaChevronDown} boxSize={4} ml={3} style={{}} />
           </div>
         </>
       ),
@@ -318,12 +314,7 @@ function MedicalStockTable() {
         <>
           <div style={{ display: "flex", alignItems: "center" }}>
             Date Entered
-            <Icon
-              as={FaChevronDown}
-              boxSize={4}
-              ml={3}
-              style={{}}
-            />
+            <Icon as={FaChevronDown} boxSize={4} ml={3} style={{}} />
           </div>
         </>
       ),
@@ -361,7 +352,7 @@ function MedicalStockTable() {
               height: "100%",
             }}
           >
-            <InputGroup>
+            <InputGroup display={"flex"} gap={3}>
               <InputLeftElement
                 pointerEvents="none"
                 children={<FaSearch style={{ color: "#96989a" }} />}
@@ -374,9 +365,9 @@ function MedicalStockTable() {
                 onChange={handleSearch}
                 borderRadius={"sm"}
               />
+              <TableFilterBar />
+              <AddToStockModal />
             </InputGroup>
-            <TableFilterBar />
-            <AddToStockModal />
           </div>
         </Stack>
 
@@ -414,7 +405,7 @@ function MedicalStockTable() {
               icon={<FaChevronLeft size={13} />}
               colorScheme="blue"
               variant="ghost"
-              disabled={pagination.state.page === 0}
+              isDisabled={pagination.state.page === 0}
               height="30px"
               onClick={() =>
                 pagination.fns.onSetPage(pagination.state.page - 1)
@@ -439,7 +430,7 @@ function MedicalStockTable() {
               icon={<FaChevronRight size={13} />}
               colorScheme="blue"
               variant="ghost"
-              disabled={
+              isDisabled={
                 pagination.state.page + 1 ===
                 pagination.state.getTotalPages(data.nodes)
               }
@@ -470,41 +461,31 @@ function TableFilterBar() {
     }),
   };
 
-  const options = ["Option 1", "Option 2", "Option 3"];
+  const options = ["Cardiological", "Neurological", "Respiratory"];
+
+  const [partNumber, setPartNumber] = useState("");
+
+  const handlePartNumberChange = (event) => {
+    setPartNumber(event.target.value);
+  };
 
   return (
     <>
-      <div style={{ width: "100%", display: "flex", gap: "10px" }}>
-        {/* <ReactSelectComponent
-          selectOptions={[
-            { value: "CNTKC", label: "CN-TKC" },
-            { value: "CNTKV", label: "CN-TKV" },
-            { value: "CNTMV", label: "CN-TMV" },
-            { value: "CNTKX", label: "CN-TKX" },
-          ]}
-          placeholder={
-            <span
-              style={{ display: "flex", alignItems: "center", gap: "10px" }}
-            >
-              <Icon as={AiFillMedicineBox} /> Product Type
-            </span>
-          }
-          title={"Product Type"}
-          selectedOptions={itemType}
-          setSelectedOptions={setItemType}
+      <div style={{ width: "110%", display: "flex", gap: "10px" }}>
+        <InputComponentIcon
+          type={"number"}
+          value={partNumber}
+          onChange={handlePartNumberChange}
+          icon={<Icon as={MdNumbers} />}
           isTitle={false}
-          customStyles={customStyles}
-        /> */}
-        <ChakraSelectComponentIcon
-          icon={<Icon as={AiFillMedicineBox} />}
-          selectPlaceHolder="Select Type"
-          selectItems={options}
+          placeholder={"Part Number"}
         />
         <ChakraSelectComponentIcon
           icon={<Icon as={AiFillMedicineBox} />}
-          selectPlaceHolder="Select an option"
+          selectPlaceHolder="Product Type"
           selectItems={options}
         />
+        <Input type="date" placeholder="Date Entered" />
       </div>
     </>
   );

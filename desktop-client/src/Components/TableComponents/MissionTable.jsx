@@ -66,6 +66,7 @@ import {
   Patient,
   ArrivalInfo,
 } from "../../Pages/Missions/FakeSummaryData";
+import { Skeleton, SkeletonCircle, SkeletonText } from "@chakra-ui/react";
 
 const columnHeaders = [
   "Status",
@@ -130,7 +131,7 @@ function mapTableRows(openMissionDrawer) {
   return <>{rows}</>;
 }
 
-function MissionTable() {
+function MissionTable({ isMounted }) {
   const [drawer, setDrawer] = useState(false);
   const [missionId, setMissionId] = useState(null);
   const [activeTab, setActiveTab] = useState(0);
@@ -156,7 +157,7 @@ function MissionTable() {
           <MissionTableHeader key={data}>{data}</MissionTableHeader>
         ))}
 
-        {mapTableRows(openMissionDrawer)}
+        {mapTableRows(openMissionDrawer, isMounted)}
       </MissionTableWrapper>
       <Drawer
         isOpen={drawer}
@@ -227,7 +228,9 @@ function MissionTable() {
   );
 }
 
-function RenderDrawerBody({ page }) {
+function MissionSummaryDrawer() {}
+
+export function RenderDrawerBody({ page }) {
   switch (page) {
     case 0:
       return <FlightSummaryDrawerBody />;

@@ -5,7 +5,7 @@ export const HomeWrapperRight = styled.div`
   padding-left: 10px;
   height: 100%;
   overflow: hidden;
-  width: 40%;
+  width: 37%;
 `;
 
 export const HomeWrapperLeft = styled.div`

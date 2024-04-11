@@ -31,3 +31,9 @@ th,
 td {
   height: 38px;
 }
+
+.css-1x6w17f-getRowContainerStyle-Row.tr.tr-body.row-select.row-select-single-selected,
+.css-1x6w17f-getRowContainerStyle-Row.tr.tr-body.row-select.row-select-selected {
+  background-color: rgba(204, 217, 255, 0.22) !important;
+  border-bottom: none !important;
+}
