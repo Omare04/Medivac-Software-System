@@ -14,6 +14,8 @@ import {
 import { Select as ChakraSelect } from "@chakra-ui/react";
 import ReactFlagsSelect from "react-flags-select";
 import { dividerColor, dividerColorLight } from "../../Colors";
+import { FaSearch } from "react-icons/fa";
+import ReactSelect from "react-select"; // Import with alias
 
 export function InputComponentIcon({
   icon,
@@ -124,7 +126,7 @@ export function MultiSelectComponent({
     <>
       <div>
         <Text>{title}</Text>
-        <Select
+        <ChakraSelect
           isMulti
           name="colors"
           className="basic-multi-select"
@@ -145,6 +147,7 @@ export function ReactSelectComponent({
   selectedOptions,
   setSelectedOptions,
   isTitle,
+  isMulti,
   customStyles,
 }) {
   const handleChange = (selectedValues) => {
@@ -155,14 +158,23 @@ export function ReactSelectComponent({
     <>
       <div style={{ width: "100%" }}>
         {isTitle ? <Text>{title}</Text> : null}
-        <Select
-          name="colors"
+        <ReactSelect
+          // name="colors"
+          isMulti={isMulti}
           className="basic-multi-select"
           options={selectOptions}
           value={selectedOptions}
           onChange={handleChange}
           placeholder={placeholder}
-          styles={customStyles}
+          styles={{
+            control: (provided, state) => ({
+              ...provided,
+              // zIndex: 1,
+              borderColor: "#e2e8f0", // Change border color to red
+            }),
+            // Other style overrides...
+          }}
+          // styles={customStyles}
           components={{
             IndicatorSeparator: () => null,
           }}
@@ -224,10 +236,11 @@ export function ChakraSelectComponentIcon({
           border={"none"}
           color={"grey"}
         />
-        <Select
+        <ChakraSelect
           placeholder={selectPlaceHolder}
           background={dividerColorLight}
           border={"none"}
+          // icon={icon}
           borderLeftRadius={0}
         >
           {selectItems.map((item, index) => (
@@ -235,8 +248,31 @@ export function ChakraSelectComponentIcon({
               {item}
             </option>
           ))}
-        </Select>
+        </ChakraSelect>
       </InputGroup>
     </div>
+  );
+}
+export function SearchBarComponent({ onChange }) {
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+  return (
+    <InputGroup background={"white"} borderRadius={5}>
+      <InputLeftElement colorScheme="whiteAlpha" pointerEvents="none">
+        {" "}
+        <FaSearch style={{ color: "#96989a" }} />
+      </InputLeftElement>
+      <Input
+        background={"white"}
+        borderRadius={5}
+        colorScheme="whiteAlpha"
+        placeholder="Search Product Name"
+        value={search}
+        onChange={handleSearch}
+      />
+    </InputGroup>
   );
 }

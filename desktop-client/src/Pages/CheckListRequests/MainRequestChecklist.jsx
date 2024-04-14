@@ -13,6 +13,8 @@ import {
   Button,
 } from "@chakra-ui/react";
 
+
+
 function MainRequestChecklist() {
   return (
     <div
@@ -35,7 +37,7 @@ function MainRequestChecklist() {
           h={"100%"}
           gap={5}
         >
-          <RequestCheckListSummary />
+          {/* <RequestCheckListSummary /> */}
           <Requests />
         </Box>
         <CheckLists />
@@ -73,7 +75,7 @@ function RequestCheckListSummary() {
             <Heading size="sm">Checklist Items Approaching Due Date</Heading>
             <Text pt="2" fontSize="sm">
               <Box display={"flex"} flexWrap={"wrap"} gap={2}>
-                <Tag>MRI MAchine</Tag>
+                <Tag>MRI Machine INSP</Tag>
                 <Tag>MRI MAchine</Tag>
                 <Tag>MRI MAchine</Tag>
                 <Tag>MRI MAchine</Tag>

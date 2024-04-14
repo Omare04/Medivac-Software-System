@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 export const HomeWrapperRight = styled.div`
+  display: "flex";
+  flex-direction: "column";
   padding-left: 10px;
   height: 100%;
   overflow: hidden;
@@ -22,6 +24,7 @@ export const StyledLinkLogo = styled(FaExternalLinkAlt)`
 
 //DRUG REQUEST SECTION
 export const BoxWrapper = styled.div`
+  display: "flex";
   overflow-y: auto;
   height: 100%;
   width: 100%;

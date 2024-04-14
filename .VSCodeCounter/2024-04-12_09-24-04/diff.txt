@@ -1,0 +1,73 @@
+Date : 2024-04-12 09:24:04
+Directory : /Users/omarelmasaoudi/Desktop/medapp
+Total : 24 files,  734 codes, 45 comments, 78 blanks, all 857 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JavaScript JSX |         19 |        696 |         41 |         73 |        810 |
+| CSS            |          2 |         37 |          3 |          7 |         47 |
+| HTML           |          1 |          1 |          0 |          0 |          1 |
+| YAML           |          1 |          0 |          1 |         -1 |          0 |
+| Go             |          1 |          0 |          0 |         -1 |         -1 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                         | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                            |         24 |        734 |         45 |         78 |        857 |
+| . (Files)                                                                                                    |          1 |          0 |          1 |         -1 |          0 |
+| GOLANGEXTRA                                                                                                  |          1 |          0 |          0 |         -1 |         -1 |
+| GOLANGEXTRA/middleware                                                                                       |          1 |          0 |          0 |         -1 |         -1 |
+| desktop-client                                                                                               |         22 |        734 |         44 |         80 |        858 |
+| desktop-client (Files)                                                                                       |          2 |          6 |          0 |          1 |          7 |
+| desktop-client/src                                                                                           |         20 |        728 |         44 |         79 |        851 |
+| desktop-client/src/Components                                                                                |         10 |        456 |        -10 |         39 |        485 |
+| desktop-client/src/Components/ChecklistComponents                                                            |          1 |         47 |          0 |          0 |         47 |
+| desktop-client/src/Components/DrawerComponents                                                               |          1 |         80 |          0 |          8 |         88 |
+| desktop-client/src/Components/HomeComponents                                                                 |          1 |        204 |          1 |         14 |        219 |
+| desktop-client/src/Components/InputComponents                                                                |          1 |         22 |         -1 |          2 |         23 |
+| desktop-client/src/Components/Modals                                                                         |          3 |         99 |          0 |         11 |        110 |
+| desktop-client/src/Components/TableComponents                                                                |          3 |          4 |        -10 |          4 |         -2 |
+| desktop-client/src/Layout                                                                                    |          1 |         13 |          0 |         -1 |         12 |
+| desktop-client/src/Pages                                                                                     |          8 |        227 |         51 |         35 |        313 |
+| desktop-client/src/Pages (Files)                                                                             |          1 |         54 |         14 |         12 |         80 |
+| desktop-client/src/Pages/CheckListRequests                                                                   |          3 |          7 |         32 |          9 |         48 |
+| desktop-client/src/Pages/Missions                                                                            |          2 |         31 |          0 |          3 |         34 |
+| desktop-client/src/Pages/Personele                                                                           |          2 |        135 |          5 |         11 |        151 |
+| desktop-client/src/styles                                                                                    |          1 |         32 |          3 |          6 |         41 |
+| desktop-client/src/styles/css                                                                                |          1 |         32 |          3 |          6 |         41 |
++--------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                                     | language       | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| /Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/middleware/authMiddleware.go                                | Go             |          0 |          0 |         -1 |         -1 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/global.css                                               | CSS            |          5 |          0 |          1 |          6 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/index.html                                               | HTML           |          1 |          0 |          0 |          1 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/ChecklistComponents/StockCheckLists.jsx   | JavaScript JSX |         47 |          0 |          0 |         47 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/DrawerComponents/MissionSummaryDrawer.jsx | JavaScript JSX |         80 |          0 |          8 |         88 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/HomeComponents/TimeGridComponent.jsx      | JavaScript JSX |        204 |          1 |         14 |        219 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/InputComponents/InputComponents.jsx       | JavaScript JSX |         22 |         -1 |          2 |         23 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/Modals/ChecklistRequestModals.jsx         | JavaScript JSX |         99 |          0 |          8 |        107 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/Modals/DynamicModal.jsx                   | JavaScript JSX |          0 |          0 |          1 |          1 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/Modals/PersoneleModals.jsx                | JavaScript JSX |          0 |          0 |          2 |          2 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/TableComponents/MissionTable.jsx          | JavaScript JSX |          3 |          0 |          1 |          4 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/TableComponents/OrderTable.jsx            | JavaScript JSX |         14 |         10 |          1 |         25 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/TableComponents/StockTable.jsx            | JavaScript JSX |        -13 |        -20 |          2 |        -31 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Layout/FunctionalFooter.jsx                          | JavaScript JSX |         13 |          0 |         -1 |         12 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/CheckListRequests/CheckLists.jsx               | JavaScript JSX |         17 |          0 |          3 |         20 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/CheckListRequests/MainRequestChecklist.jsx     | JavaScript JSX |        -39 |         32 |          2 |         -5 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/CheckListRequests/Requests.jsx                 | JavaScript JSX |         29 |          0 |          4 |         33 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Home.jsx                                       | JavaScript JSX |         54 |         14 |         12 |         80 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Missions/FakeSummaryData.jsx                   | JavaScript JSX |         30 |          0 |          3 |         33 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Missions/FlightInfoPage.jsx                    | JavaScript JSX |          1 |          0 |          0 |          1 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Personele/PersoneleCalendar.jsx                | JavaScript JSX |        119 |          5 |          7 |        131 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Personele/Personnel.jsx                        | JavaScript JSX |         16 |          0 |          4 |         20 |
+| /Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/css/CustomCalendarStyle.css                   | CSS            |         32 |          3 |          6 |         41 |
+| /Users/omarelmasaoudi/Desktop/medapp/docker-compose.yml                                                      | YAML           |          0 |          1 |         -1 |          0 |
+| Total                                                                                                        |                |        734 |         45 |         78 |        857 |
++--------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

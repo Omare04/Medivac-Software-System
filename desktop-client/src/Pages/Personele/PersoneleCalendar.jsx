@@ -29,26 +29,26 @@ import { RandomUsers } from "../Missions/FakeSummaryData";
 import { FakeFlight } from "../Missions/FakeSummaryData";
 
 const events = [
-  { title: "AOM123", start: "2024-03-07", end: "2024-03-10" },
-  { title: "AOM234", date: "2024-03-10", end: "2024-03-12" },
-  { title: "AOM345", date: "2024-03-10" },
-  { title: "AOM456", date: "2024-03-16", end: "2024-03-18" },
-  { title: "AOM456", date: "2024-03-15", end: "2024-03-17" },
-  { title: "Zool Annual Inspection", date: "2024-03-18" },
-  { title: "AOM456", date: "2024-03-20", end: "2024-03-23" },
-  { title: "AOM567", date: "2024-03-30" },
-  { title: "AOM456", date: "2024-03-31" },
+  { title: "AOM123", start: "2024-04-07", end: "2024-04-10" },
+  { title: "AOM234", date: "2024-04-10", end: "2024-04-12" },
+  { title: "AOM345", date: "2024-04-10" },
+  { title: "AOM456", date: "2024-04-16", end: "2024-04-18" },
+  { title: "AOM456", date: "2024-04-15", end: "2024-04-17" },
+  { title: "Zool Annual Inspection", date: "2024-04-18" },
+  { title: "AOM456", date: "2024-04-20", end: "2024-04-23" },
+  { title: "AOM567", date: "2024-04-30" },
+  { title: "AOM456", date: "2024-04-31" },
   // { title: "AOM567", date: "2024-03-28" },
   // { title: "AOM456", date: "2024-03-25" },
   // { title: "AOM567", date: "2024-03-13" },
   { title: "AOM456", date: "2024-03-09", end: "2024-03-11" },
-  { title: "AOM567", date: "2024-03-03" },
-  { title: "AOM234", date: "2024-03-02" },
+  { title: "AOM567", date: "2024-04-03" },
+  { title: "AOM234", date: "2024-04-02" },
   // { title: "AOM234", date: "2024-03-10" },
   // { title: "AOM234", date: "2024-03-01" },
   // { title: "AOM234", date: "2024-03-01" },
-  { title: "AOM234", date: "2024-03-03" },
-  { title: "AOM234", date: "2024-03-04" },
+  { title: "AOM234", date: "2024-04-03" },
+  { title: "AOM234", date: "2024-04-04" },
 ];
 
 const PersoneleCalendar = () => {
@@ -94,9 +94,7 @@ const PersoneleCalendar = () => {
       whiteSpace: "nowrap",
     };
 
-    return <div style={eventTitleStyle}>
-      {event.title}
-      </div>;
+    return <div style={eventTitleStyle}>{event.title}</div>;
   };
 
   return (
@@ -123,9 +121,9 @@ const PersoneleCalendar = () => {
           height="100%"
           customButtons={customButtons}
           headerToolbar={{
-            left: "prev,next CreateEventButton", // Reference your custom button
+            right: "prev,next", 
             center: "title",
-            right: "dayGridMonth",
+            left: "CreateEventButton",
           }}
         />
       </div>
@@ -245,7 +243,9 @@ const EventDescriptionBody = ({ id }) => {
           <Box style={Style} flexWrap={"wrap"} h={"100%"}>
             {" "}
             <Text fontWeight={"bold"}>Event: </Text>
-            <Text fontWeight={500} pl={2}>{id}</Text>
+            <Text fontWeight={500} pl={2}>
+              {id}
+            </Text>
           </Box>
           <Box style={Style} h={"100%"}>
             {" "}

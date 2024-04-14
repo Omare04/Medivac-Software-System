@@ -19,22 +19,33 @@ import {
 import { RenderDrawerBody } from "../TableComponents/MissionTable";
 
 const events = [
-  { title: "AOM234", date: "2024-04-11", end: "2024-04-14", status: "active" },
-  { title: "AOM234", date: "2024-04-11", end: "2024-04-14", status: "active" },
-  { title: "AOM234", date: "2024-04-05", end: "2024-04-12", status: "active" },
+  { title: "AOM254", date: "2024-04-14", end: "2024-04-16", status: "active" },
+  { title: "AOM944", date: "2024-04-14", end: "2024-04-17", status: "active" },
+  { title: "AOM424", date: "2024-04-16", end: "2024-04-18", status: "active" },
   {
-    title: "AOM234",
-    date: "2024-04-08",
-    end: "2024-04-10",
+    title: "AOM214",
+    date: "2024-04-18",
+    end: "2024-04-20",
     status: "complete",
   },
   {
-    title: "AOM234",
+    title: "AOM288",
     date: "2024-04-07",
     end: "2024-04-09",
     status: "complete",
   },
-  { title: "AOM234", date: "2024-04-11", end: "2024-04-14", status: "active" },
+  {
+    title: "AOM201",
+    date: "2024-04-19",
+    end: "2024-04-21",
+    status: "complete",
+  },
+  {
+    title: "AOM201",
+    date: "2024-04-16",
+    end: "2024-04-18",
+    status: "complete",
+  },
 ];
 
 function TimeGridComponent() {
@@ -68,10 +79,13 @@ function TimeGridComponent() {
             alignItems={"flex-start"}
           >
             <Box fontSize={"16"} display={"flex"} gap={1}>
-              {event.title} <Text> (Neu)</Text>
+              <Box display={"flex"} alignItems={"center"} gap={1}>
+                {event.title} <Text fontSize={12}> (Neu)</Text>
+              </Box>
             </Box>
-            <Box display={"flex"} gap={2}>
+            <Box display={"flex"} gap={2} fontSize={13} alignItems={"center"}>
               <Badge
+                size={"xs"}
                 colorScheme={status == "active" ? "green" : "red"}
                 borderRadius={1}
               >
@@ -80,7 +94,7 @@ function TimeGridComponent() {
               {status == "active" ? <Text>10:11 - 14:32</Text> : null}
             </Box>
           </Box>
-          <Box display={"flex"} flexDirection={"column"} gap={1}>
+          <Box display={"flex"} flexDirection={"column"} gap={1} fontSize={13}>
             <Box>ADEP: CMN</Box>
             <Box>ADES: CDG</Box>
           </Box>

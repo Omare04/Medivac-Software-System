@@ -26,9 +26,16 @@ import {
   Skeleton,
   SkeletonCircle,
   SkeletonText,
+  Card,
   Box,
   Spinner,
   Stack,
+  Stat,
+  StatLabel,
+  StatNumber,
+  StatHelpText,
+  StatArrow,
+  StatGroup,
 } from "@chakra-ui/react";
 
 const TitleContainer = styled.div`
@@ -68,9 +75,7 @@ function DelayedComponentSwitch({ tableView }) {
     // Set the actual component after 1 second
     const timeout = setTimeout(() => {
       setRenderedComponent(
-        tableView ? 
-        
-        <MissionTableComponent /> : <TimeGridComponent />
+        tableView ? <MissionTableComponent /> : <TimeGridComponent />
       );
     }, 1000);
 
@@ -120,9 +125,10 @@ export function Home() {
     <>
       <Flex
         justifyContent="space-between"
+        display={"flex"}
         height="calc(100% - (40px))"
         id="home-wrapper-root"
-        alignItems="stretch"
+        // alignItems="stretch"
         // p={5}
       >
         <HomeWrapperLeft>
@@ -130,22 +136,24 @@ export function Home() {
            */}
           <DelayedComponentSwitch tableView={tableView} />
         </HomeWrapperLeft>
-        {tableView ? (
-          <HomeWrapperRight>
+
+        <HomeWrapperRight>
+          <Box h={"100%"}>
             <StatsTab />
-            <TitleContainer>
+              <Box display={"flex"} flexDirection={"column"}>
+              </Box>
+               <TitleContainer>
               <DrugRequestTitle>Requests & Orders</DrugRequestTitle>
             </TitleContainer>
-
-            <BoxWrapper>
               <DrugRequestsHomeComponents />
-            </BoxWrapper>
-            {/* <TitleContainer style={{ marginTop: "20px" }}>
+            </Box>
+          {/* <BoxWrapper> */}
+          {/* </BoxWrapper> */}
+          {/* <TitleContainer style={{ marginTop: "20px" }}>
             Monthly Flight Volume
           </TitleContainer> */}
-            {/* <HorizontalBarChartMission></HorizontalBarChartMission> */}
-          </HomeWrapperRight>
-        ) : null}
+          {/* <HorizontalBarChartMission></HorizontalBarChartMission> */}
+        </HomeWrapperRight>
         <FunctionalFooter view={switchView} viewState={tableView} />
       </Flex>
     </>

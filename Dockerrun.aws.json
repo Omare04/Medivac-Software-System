@@ -1,0 +1,20 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "omare23/med-desktop-client",
+      "hostname": "client",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "reverse-proxy-nginx",
+      "image": "omare23/med-nginx",
+      "essential": true,
+      "portMappings": [{ "hostPort": 80, "containerPort": 80 }],
+      "links": ["client"],
+      "memory": 128
+    }
+  ]
+}

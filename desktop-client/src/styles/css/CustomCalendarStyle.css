@@ -9,7 +9,7 @@
   position: relative;
   /* Set original background color and other styles */
   /* background-color: #4f4f4f !important; */
-  /* border-color: #000000; */
+  border-color: #e9e9e999 !important;
   border-radius: 0px;
   transition: 0.1s background-color ease-in-out !important;
 }
@@ -21,6 +21,7 @@
   left: 0;
   right: 0;
   bottom: 0;
+
   /* background-color: rgba(221, 221, 221, 0); */
   transition: background-color 0.1s ease-in-out;
   pointer-events: none;

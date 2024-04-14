@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import StockCheckList from "../../Components/ChecklistComponents/StockCheckLists";
 import { AddChecklistItemModal } from "../../Components/Modals/ChecklistRequestModals";
+import { SearchBarComponent } from "../../Components/InputComponents/InputComponents";
+import { Radio, RadioGroup, Stack } from '@chakra-ui/react'
+
 
 function CheckLists() {
   const [modalState, setModalState] = useState(false);
@@ -26,5 +29,13 @@ function CheckLists() {
     </div>
   );
 }
+
+const FilterBar = () => {
+  return (
+    <Box display={"flex"} w={"100%"} gap={2}>
+      <SearchBarComponent />
+    </Box>
+  );
+};
 
 export default CheckLists;

@@ -306,4 +306,43 @@ export function OrderItemsTable({ items }) {
   );
 }
 
+export function CheckListProceduresTable({ items }) {
+  useEffect(() => {
+    console.log(items);
+  }, [items]);
+
+  const handleSubmit = () => {
+    console.log("submitted");
+  };
+
+  return (
+    <TableContainer overflow={"auto"}>
+      <Table variant="simple">
+        <Thead>
+          <Tr>
+            <Th>Procedure</Th>
+            <Th>Procedure Name</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {items.map((item, index) => (
+            <Tr key={index}>
+              <Td>{item.numberOfProcedures}</Td>
+              <Td>{item.itemName}</Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-end",
+        }}
+      ></div>
+    </TableContainer>
+  );
+}
+
 export default MedicalEquipmentOrders;

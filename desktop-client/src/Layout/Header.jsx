@@ -24,20 +24,26 @@ import {
   PopoverTrigger,
   PopoverContent,
   PopoverHeader,
+  Text,
   PopoverBody,
   PopoverFooter,
   PopoverArrow,
   UnorderedList,
+  Badge,
+  Box,
   ListItem,
   PopoverCloseButton,
   PopoverAnchor,
   Button,
+  AvatarBadge,
   Icon,
+  Card,
   Portal,
 } from "@chakra-ui/react";
-import { dividerColor, dividerColorLight } from "../Colors";
+import { buttonBlue, dividerColor, dividerColorLight } from "../Colors";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { MdOutlineSettings } from "react-icons/md";
+import { IoEllipsisVerticalSharp } from "react-icons/io5";
 
 const universalStyle = {
   size: 16,
@@ -102,12 +108,9 @@ const personeleLinks = [
 function Header() {
   return (
     <>
-      <StyledHeader>
+      <StyledHeader zIndex={1001}>
         <StyledHeaderLogoLink to={"/"}>
-          <img
-            src="/aomlogo.png"
-            style={{ height: "45px", width: "47px" }}
-          />
+          <img src="/aomlogo.png" style={{ height: "45px", width: "47px" }} />
           {/* <GiAirplaneDeparture size={30} /> */}
         </StyledHeaderLogoLink>
         {HeaderNavData.map((value, index) => (
@@ -126,24 +129,50 @@ function Header() {
           </StyledNavItemLinks>
         ))}
         <StyledRightSideNavItem>
-          <Popover>
-            <PopoverTrigger>
-              <Icon
-                boxSize={7}
-                mr={15}
-                mt={2}
-                display={"flex"}
-                alignItems={"center"}
-              >
-                <StyledBellIcon />
-              </Icon>
-            </PopoverTrigger>
-            <Portal>
-              <PopoverContent minHeight={20}>
+          <Popover zIndex={1001}>
+            <Box display={"flex"} alignItems={"center"} mr={15} gap={0}>
+              <Text color={"green"} borderRadius={100} p={2} pb={1} pt={1}>
+                +4
+              </Text>
+              <PopoverTrigger>
+                <Icon boxSize={7} mt={2} display={"flex"} alignItems={"center"}>
+                  <StyledBellIcon />
+                </Icon>
+              </PopoverTrigger>
+            </Box>
+            <Portal zIndex={1001}>
+              <PopoverContent minHeight={20} w={400} zIndex={1001}>
                 <PopoverHeader>Notifications</PopoverHeader>
                 <PopoverArrow />
                 <PopoverCloseButton />
-                <PopoverBody>This is the meat</PopoverBody>
+                <PopoverBody>
+                  <Box display={"flex"} flexDirection={"column"} gap={2} >
+                    <RequestsNoticationCard
+                      imageURL="./tarik_elmasaoudi.png"
+                      name={"Tarik Elmasaoudi"}
+                      type={"order"}
+                      date={"A Day Ago"}
+                    />
+                    <RequestsNoticationCard
+                      imageURL="https://bit.ly/kent-c-dodds"
+                      name={"Billy Bob"}
+                      type={"Pharmaceutical Request"}
+                      date={"2 Days Ago"}
+                    />
+                    <RequestsNoticationCard
+                      imageURL="https://bit.ly/code-beast"
+                      name={"Bouzza El masaoudi"}
+                      type={"order"}
+                      date={"Last Week"}
+                    />
+                    <RequestsNoticationCard
+                      imageURL="https://bit.ly/kent-c-dodds"
+                      name={"Omar Elmasaoudi"}
+                      type={"Equipment"}
+                      date={"Last Week"}
+                    />
+                  </Box>
+                </PopoverBody>
               </PopoverContent>
             </Portal>
           </Popover>
@@ -154,7 +183,9 @@ function Header() {
                   name="Dan Abrahmov"
                   src="/tarik_elmasaoudi.png"
                   size={"sm"}
-                />
+                >
+                  <AvatarBadge boxSize="1.25em" bg="green.500" />
+                </Avatar>
               </WrapItem>
             </PopoverTrigger>
             <Portal>
@@ -212,6 +243,54 @@ function Header() {
           </Popover>
         </StyledRightSideNavItem>
       </StyledHeader>
+    </>
+  );
+}
+
+function RequestsNoticationCard({ type, name, imageURL, date }) {
+  return (
+    <>
+      <Card
+        variant={"unstyled"}
+        background={dividerColorLight}
+        p={2}
+        cursor={"pointer"}
+      >
+        <Box
+          display={"flex"}
+          alignItems={"center"}
+          justifyContent={"space-between"}
+        >
+          <Box display={"flex"} alignItems={"flex-start"}>
+            <Avatar name={name} src={imageURL} size={"sm"}>
+              {" "}
+              <AvatarBadge
+                boxSize="1.25em"
+                bg={type == "order" ? "green.500" : "red.500"}
+              />
+            </Avatar>
+            <Box pl={2} display={"flex"} flexDirection={"column"}>
+              <Box display={"flex"} gap={2}>
+                <Text fontSize={14}>{name}</Text>
+                <Badge
+                  display={"flex"}
+                  alignItems={"center"}
+                  color="grey"
+                  size={"xs"}
+                >
+                  {date}
+                </Badge>
+              </Box>
+              {type == "order" ? (
+                <Text fontSize={12}>Created An Order</Text>
+              ) : (
+                <Text fontSize={12}>Created A {type}</Text>
+              )}
+            </Box>
+          </Box>
+          <IoEllipsisVerticalSharp />
+        </Box>
+      </Card>
     </>
   );
 }

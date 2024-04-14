@@ -10,7 +10,8 @@ services:
     depends_on:
       - stock-management-service
       - desktop-client
-      - postgres 
+      - postgres
+       
   postgres: 
     image: 'postgres:13'  
     env_file:

@@ -20,6 +20,7 @@ import {
   Badge,
   Checkbox,
   Icon,
+  ChakraProvider,
 } from "@chakra-ui/react";
 import { FaSearch, FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { AddToStockModal } from "../Modals/AddStockModal";
@@ -33,7 +34,8 @@ import {
 import { AiFillMedicineBox } from "react-icons/ai";
 import { MdNumbers } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa";
-
+import { SearchBarComponent } from "../InputComponents/InputComponents";
+import { IconDropDown } from "../InputComponents/DropdownComponents";
 class MedicalStock {
   constructor(id, name, type, pn, date) {
     this.id = id;
@@ -206,54 +208,8 @@ function MedicalStockTable() {
     // console.log(action, state);
   }
 
-  const [horizontalSpacing, setHorizontalSpacing] = React.useState(
-    DEFAULT_OPTIONS.horizontalSpacing
-  );
-  const [verticalSpacing, setVerticalSpacing] = React.useState(4);
-  const [striped, setStriped] = React.useState(true);
-  const [hasFooter, setFooter] = React.useState(true);
-  const [caption, setCaption] = React.useState("");
-
-  const mantineTheme = getTheme({
-    horizontalSpacing,
-    verticalSpacing,
-    // striped,
-    hasFooter,
-  });
-
-  const customTheme = useTheme([
-    getTheme(),
-    {
-      HeaderRow: `
-      background-color: #f2f2f2;
-      position: sticky;
-      top: 0;
-      `,
-      Row: `
-      background-color: #ffffff;
-      color: #383838; 
-      height: 20px;
-      font-weight: 470;
-      cursor: pointer; 
-      transition: background-color 0.1s ease; 
-      
-      &:nth-of-type(even) {
-        background-color: ${dividerColorLight};
-      }
-      
-      &:hover {
-        color: #383838; 
-        background-color: ${dividerColorLight};
-      }
-      
-      &:hover:nth-of-type(even) {
-        background-color: #ffffff;
-      }
-      `,
-    },
-  ]);
-
-  const theme = useTheme([customTheme]);
+  const chakraTheme = getTheme(DEFAULT_OPTIONS);
+  const theme = useTheme(chakraTheme);
 
   const [search, setSearch] = useState("");
   const [addStockModalState, setAddStockModalState] = useState(false);
@@ -342,34 +298,7 @@ function MedicalStockTable() {
           height: "100%",
         }}
       >
-        <Stack spacing={0} pb={2} w={"100%"}>
-          <div
-            style={{
-              display: "flex",
-              width: "100%",
-              alignItems: "center",
-              paddingLeft: "10px",
-              height: "100%",
-            }}
-          >
-            <InputGroup display={"flex"} gap={3}>
-              <InputLeftElement
-                pointerEvents="none"
-                children={<FaSearch style={{ color: "#96989a" }} />}
-              />
-              <Input
-                borderColor={"white"}
-                background={dividerColorLight}
-                placeholder="Search Product Name"
-                value={search}
-                onChange={handleSearch}
-                borderRadius={"sm"}
-              />
-              <TableFilterBar />
-              <AddToStockModal />
-            </InputGroup>
-          </div>
-        </Stack>
+        <TableFilterBar />
 
         <div
           style={{
@@ -380,18 +309,12 @@ function MedicalStockTable() {
             paddingRight: "5px",
           }}
         >
-          <Box
-            borderWidth="1px"
-            borderRadius="sm"
-            width={"100%"}
-            overflow="auto"
-          >
+          <Box p={3} borderWidth="1px" borderRadius="lg">
             <CompactTable
               columns={COLUMNS}
               data={data}
               theme={theme}
-              pagination={pagination}
-              layout={{ fixedHeader: true }}
+              // layout={{ custom: true }}
             />
           </Box>
           <br />
@@ -471,22 +394,57 @@ function TableFilterBar() {
 
   return (
     <>
-      <div style={{ width: "110%", display: "flex", gap: "10px" }}>
-        <InputComponentIcon
-          type={"number"}
-          value={partNumber}
-          onChange={handlePartNumberChange}
-          icon={<Icon as={MdNumbers} />}
-          isTitle={false}
-          placeholder={"Part Number"}
-        />
-        <ChakraSelectComponentIcon
-          icon={<Icon as={AiFillMedicineBox} />}
-          selectPlaceHolder="Product Type"
-          selectItems={options}
-        />
-        <Input type="date" placeholder="Date Entered" />
-      </div>
+      <Box
+        display={"flex"}
+        justifyContent={"space-between"}
+        w={"100%"}
+        pr={5}
+        p={3}
+      >
+        <div
+          style={{
+            display: "flex",
+            gap: "10px",
+            width: "50%",
+            background: dividerColorLight,
+            borderRadius: "5px",
+            padding: "5px",
+          }}
+        >
+          <Box display={"flex"} w={"100%"} gap={3}>
+            <SearchBarComponent />
+            <Box>
+              <InputComponentIcon
+                type={"number"}
+                value={partNumber}
+                onChange={handlePartNumberChange}
+                icon={<Icon as={MdNumbers} />}
+                isTitle={false}
+                placeholder={"Part Number"}
+              />
+            </Box>
+          </Box>
+          <Box display={"flex"} w={"35%"} gap={3}>
+            <Box w={"100%"} zIndex={1000}>
+              <ReactSelectComponent
+                selectOptions={[
+                  { value: "Respiratory", label: "Respiratory" },
+                  { value: "Cardiological", label: "Cardiological" },
+                  { value: "Neurological", label: "Neurological" },
+                  { value: "Dermatologic", label: "Dermatologic" },
+                ]}
+                placeholder={"Product Type"}
+                title={"Item Type"}
+                selectedOptions={itemType}
+                setSelectedOptions={setItemType}
+                isTitle={false}
+                customStyles={null}
+              />
+            </Box>
+          </Box>
+        </div>
+        <AddToStockModal />
+      </Box>
     </>
   );
 }

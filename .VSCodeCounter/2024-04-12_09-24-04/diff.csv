@@ -1,0 +1,26 @@
+"filename", "language", "JavaScript JSX", "CSS", "HTML", "YAML", "Go", "comment", "blank", "total"
+"/Users/omarelmasaoudi/Desktop/medapp/GOLANGEXTRA/middleware/authMiddleware.go", "Go", 0, 0, 0, 0, 0, 0, -1, -1
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/global.css", "CSS", 0, 5, 0, 0, 0, 0, 1, 6
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/index.html", "HTML", 0, 0, 1, 0, 0, 0, 0, 1
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/ChecklistComponents/StockCheckLists.jsx", "JavaScript JSX", 47, 0, 0, 0, 0, 0, 0, 47
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/DrawerComponents/MissionSummaryDrawer.jsx", "JavaScript JSX", 80, 0, 0, 0, 0, 0, 8, 88
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/HomeComponents/TimeGridComponent.jsx", "JavaScript JSX", 204, 0, 0, 0, 0, 1, 14, 219
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/InputComponents/InputComponents.jsx", "JavaScript JSX", 22, 0, 0, 0, 0, -1, 2, 23
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/Modals/ChecklistRequestModals.jsx", "JavaScript JSX", 99, 0, 0, 0, 0, 0, 8, 107
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/Modals/DynamicModal.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/Modals/PersoneleModals.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 0, 2, 2
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/TableComponents/MissionTable.jsx", "JavaScript JSX", 3, 0, 0, 0, 0, 0, 1, 4
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/TableComponents/OrderTable.jsx", "JavaScript JSX", 14, 0, 0, 0, 0, 10, 1, 25
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Components/TableComponents/StockTable.jsx", "JavaScript JSX", -13, 0, 0, 0, 0, -20, 2, -31
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Layout/FunctionalFooter.jsx", "JavaScript JSX", 13, 0, 0, 0, 0, 0, -1, 12
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/CheckListRequests/CheckLists.jsx", "JavaScript JSX", 17, 0, 0, 0, 0, 0, 3, 20
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/CheckListRequests/MainRequestChecklist.jsx", "JavaScript JSX", -39, 0, 0, 0, 0, 32, 2, -5
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/CheckListRequests/Requests.jsx", "JavaScript JSX", 29, 0, 0, 0, 0, 0, 4, 33
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Home.jsx", "JavaScript JSX", 54, 0, 0, 0, 0, 14, 12, 80
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Missions/FakeSummaryData.jsx", "JavaScript JSX", 30, 0, 0, 0, 0, 0, 3, 33
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Missions/FlightInfoPage.jsx", "JavaScript JSX", 1, 0, 0, 0, 0, 0, 0, 1
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Personele/PersoneleCalendar.jsx", "JavaScript JSX", 119, 0, 0, 0, 0, 5, 7, 131
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/Pages/Personele/Personnel.jsx", "JavaScript JSX", 16, 0, 0, 0, 0, 0, 4, 20
+"/Users/omarelmasaoudi/Desktop/medapp/desktop-client/src/styles/css/CustomCalendarStyle.css", "CSS", 0, 32, 0, 0, 0, 3, 6, 41
+"/Users/omarelmasaoudi/Desktop/medapp/docker-compose.yml", "YAML", 0, 0, 0, 0, 0, 1, -1, 0
+"Total", "-", 696, 37, 1, 0, 0, 45, 78, 857
