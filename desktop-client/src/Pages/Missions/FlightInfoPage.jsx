@@ -8,7 +8,7 @@ import { dividerColorLight, dividerColor, buttonBlue } from "../../Colors";
 import { IoAirplaneSharp } from "react-icons/io5";
 import {
   InputComponentIcon,
-  InputComponentSelectRight,
+  // InputComponentSelectRight,
 } from "../../Components/InputComponents/InputComponents";
 import {
   FaPlaneArrival,
@@ -194,7 +194,7 @@ function FlightDetailsComponent() {
                   value={flightNumber}
                   onChange={handleFlightNumberChange}
                 />
-                <InputComponentSelectRight
+                {/* <InputComponentSelectRight
                   icon={<FaClock />}
                   placeholder={"ETA"}
                   title={"ETA"}
@@ -203,7 +203,7 @@ function FlightDetailsComponent() {
                   selectItems={timeZones}
                   selectPlaceHolder={"TZ"}
                   onChange={handleETAChange}
-                />
+                /> */}
               </div>
               <div
                 id="flight_hours_wrapper"

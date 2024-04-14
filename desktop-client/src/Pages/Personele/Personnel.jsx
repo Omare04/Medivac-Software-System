@@ -213,17 +213,48 @@ function PersoneleListComponent() {
 ////////////////////////////////// ACCORDION ITEMS //////////////////////////////////
 
 const roles = ["Doctor", "First Officer", "Captain", "Nurse"];
+const names = [
+  "Alice",
+  "Bob",
+  "Charlie",
+  "Diana",
+  "Eva",
+  "Frank",
+  "Grace",
+  "Henry",
+  "Ivy",
+  "Jack",
+];
+const url = [
+  "https://bit.ly/dan-abramov",
+  "https://bit.ly/kent-c-dodds",
+  "https://bit.ly/prosper-baba",
+  "https://bit.ly/code-beast",
+  "https://bit.ly/sage-adebayo",
+];
 
 function getRandomRole() {
   const randomIndex = Math.floor(Math.random() * roles.length);
   return roles[randomIndex];
 }
 
+function getRandomName() {
+  const randomIndex = Math.floor(Math.random() * roles.length);
+  return names[randomIndex];
+}
+
+function getRandomURL() {
+  const randomIndex = Math.floor(Math.random() * roles.length);
+  return url[randomIndex];
+}
+
 function PersoneleAccordion() {
-  const accordianItems = Array.from({ length: 15 }, (_, index) => ({
-    name: `Person ${index + 1}`,
+  const accordianItems = Array.from({ length: 20 }, (_, index) => ({
+    name: getRandomName(),
     role: getRandomRole(),
+    url: getRandomURL(),
   }));
+
   return (
     <>
       <div
@@ -231,8 +262,7 @@ function PersoneleAccordion() {
         style={{
           width: "40%",
           height: "100%",
-          marginLeft: "20px",
-          borderLeft: `1px solid #ededed`,
+          marginLeft: "5px",
           paddingLeft: "10px",
           display: "flex",
           flexDirection: "column",
@@ -256,6 +286,7 @@ function PersoneleAccordion() {
                 key={index}
                 name={item.name}
                 role={item.role}
+                url={item.url}
               />
             ))}
           </Accordion>
@@ -265,7 +296,7 @@ function PersoneleAccordion() {
   );
 }
 
-function AccordianItemComponent({ key, name, role }) {
+function AccordianItemComponent({ key, name, role, url }) {
   const [skeleton, setSkeleton] = useState(false);
 
   useEffect(() => {
@@ -297,7 +328,6 @@ function AccordianItemComponent({ key, name, role }) {
           pl={4}
           cursor={"pointer"}
           pt={1}
-
         >
           <Flex
             as="span"
@@ -311,11 +341,7 @@ function AccordianItemComponent({ key, name, role }) {
             <Box color={"black"}>
               <WrapItem display={"flex"} alignItems={"center"}>
                 <SkeletonCircle isLoaded={skeleton}>
-                  <Avatar
-                    size={"sm"}
-                    name="Dan Abrahmov"
-                    src="https://bit.ly/dan-abramov"
-                  />
+                  <Avatar size={"sm"} name="Dan Abrahmov" src={url} />
                 </SkeletonCircle>
                 <Skeleton width={"100%"} ml={3} isLoaded={skeleton}>
                   <div

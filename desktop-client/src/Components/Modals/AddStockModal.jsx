@@ -77,7 +77,7 @@ export function AddToStockModal() {
                 title={"Product Type"}
                 value={productType}
                 onChange={(e) => setProductType(e.target.value)}
-                items={["View Only", "Admin", "Editor"]}
+                items={["Cardiological", "Neurological", "Respiratory"]}
               />
               <InputUnitNumber
                 title={"Quantity"}
@@ -108,8 +108,7 @@ export function AddToStockModal() {
         <Button
           aria-label="Add item"
           leftIcon={<FaPlus />}
-          background={dividerColorLight}
-          color={"#8a8a8a"}
+          colorScheme="blue"
           ml={2}
           onClick={() => {
             onOpen();

@@ -9,13 +9,13 @@ app.use(cors())
 const port = 3000;
 
 app.get('/hi', async (req, res) => {
-    try {
-      const result = await pool.query('SELECT * FROM companion');
-      res.json(result.rows);
-    } catch (error) {
-      console.error('Error executing query:', error);
-      res.status(500).send('Internal Server Error');
-    }
+    // try {
+    //   const result = await pool.query('SELECT * FROM companion');
+    //   res.json(result.rows);
+    // } catch (error) {
+    //   console.error('Error executing query:', error);
+    //   res.status(500).send('Internal Server Error');
+    // }
   });
 
 app.get('/', (req, res) => {

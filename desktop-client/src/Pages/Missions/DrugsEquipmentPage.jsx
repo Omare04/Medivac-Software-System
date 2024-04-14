@@ -3,6 +3,7 @@ import { MultiSelectComponent } from "../../Components/InputComponents/InputComp
 import { Button } from "@chakra-ui/react";
 import { RenderAddedDrugsEquipmentTable } from "../../Components/TableComponents/CreateMissionTables";
 import { dividerColorLight } from "../../Colors";
+import { ReactSelectComponent } from "../../Components/InputComponents/InputComponents";
 
 const drugOptions = [
   {
@@ -271,15 +272,17 @@ function DrugsEquipmentPage() {
             // overflow: "auto", //
           }}
         >
-          <MultiSelectComponent
+          <ReactSelectComponent
             selectOptions={drugOptions}
             placeHolder={"Drugs"}
             title={"Select Drugs"}
             selectedOptions={selectedDrugs}
+            isMulti={true}
             setSelectedOptions={setSelectedDrugs} // Pass setSelectedDrugs here
           />
-          <MultiSelectComponent
+          <ReactSelectComponent
             selectOptions={options}
+            isMulti={true}
             placeHolder={"Medical Equipment"}
             title={"Select Medical Equipment"}
             selectedOptions={selectedEquipment}
@@ -298,7 +301,11 @@ function DrugsEquipmentPage() {
             borderRadius: "5px",
           }}
         >
-          <RenderAddedDrugsEquipmentTable items={items} setItems={setItems} editable={true}/>
+          <RenderAddedDrugsEquipmentTable
+            items={items}
+            setItems={setItems}
+            editable={true}
+          />
         </div>
       </div>
     </>
