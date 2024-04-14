@@ -1,0 +1,53 @@
+name: 'Beanstalk Deploy'
+description: 'Deploy a zip file to AWS Elastic Beanstalk'
+author: 'Einar Egilsson'
+runs:
+  using: 'node20'
+  main: 'beanstalk-deploy.js'
+inputs:
+  aws_access_key:
+    description: 'AWS Access Key'
+    required: true
+  aws_secret_key:
+    description: 'AWS Secret Key'
+    required: true
+  aws_session_token:
+    description: 'AWS Session Token when using temporary security credentials such as when assuming a role in AWS through STS'
+    required: false  
+  region:
+    description: 'AWS Region'
+    required: true
+  application_name:
+    description: 'Beanstalk application name'
+    required: true
+  environment_name:
+    description: 'Beanstalk environment name. If empty a version will be created but not deployed anywhere.'
+    required: false
+  version_label:
+    description: 'Version label for new Beanstalk version'
+    required: true
+  version_description:
+    description: 'Version description for the new Beanstalk version'
+    required: false
+  deployment_package:
+    description: 'Zip file with the version to deploy. If skipped the action will deploy existing version.'
+    required: false
+  existing_bucket_name:
+    description: 'Whether the action should skip creating a new bucket and use the given one to upload the deployment package to instead. When omitted the actions will (try to) create a new one during deployment.'
+    required: false
+  use_existing_version_if_available:
+    description: 'If set to "true" then the action will deploy an existing version with the given version_label if it already exists, but otherwise create the version and deploy it. If set to true for an action with no environment name it will upload a version if it does not exist already, but do nothing if the version already exists.'
+    required: false
+  wait_for_deployment:
+    description: 'Whether the action should wait for the deployment to finish and log status messages during the wait. Default is "true". If set to "false" the action will start the deployment on Beanstalk and then exit.'
+    required: false
+  wait_for_environment_recovery:
+    description: 'How many seconds to wait for the environment to return to Green state after deployment is finished. Default is 30 seconds.'
+    required: false
+  max_backoff_retries:
+    description: 'How many times to exponentially back-off on Throttling exceptions. Default: 10'
+    required: false
+
+branding:
+  icon: 'arrow-up'  
+  color: 'green'

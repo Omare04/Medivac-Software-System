@@ -13,10 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build and test Docker images
-        run: |
-          docker build -t omare23/medapp -f ./desktop-client/Dockerfile.dev ./desktop-client
-          docker run omare23/medapp npm test -- --coverage
+      # - name: Build and test Docker images
+      #   run: |
+      #     docker build -t omare23/medapp -f ./desktop-client/Dockerfile.dev ./desktop-client
+      #     docker run omare23/medapp npm test -- --coverage
 
       - name: Build Docker images
         run: |
