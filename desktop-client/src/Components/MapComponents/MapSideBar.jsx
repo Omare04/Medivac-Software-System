@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   SideNavWrapper,
   StyledSideNavCardItemList,
@@ -19,183 +19,139 @@ import {
   AccordionPanel,
   AccordionIcon,
   Box,
+  Skeleton,
   Flex,
+  Text,
+  Badge,
 } from "@chakra-ui/react";
 import { dividerColor, dividerColorLight } from "../../Colors";
-import { RiPlaneFill } from "react-icons/ri";
+import { IoIosAirplane } from "react-icons/io";
 
 function MapSideBar() {
   return (
-    <SideNavWrapper>
-      {/* <StyledTableFilterBar
-        style={{
-          height: " 30px",
-          backgroundColor: "white",
-          color: "white",
-        }}
-      >
-        <StyledSearchIconWrap style={{ color: "#6f6f6f" }}>
-          <StyledSearchIcon />
-        </StyledSearchIconWrap>
-        <StyledSearchBox
-          style={{ width: "100%", backgroundColor: "white", color: "white" }}
-        >
-          <StyledSearch
-            type="search"
-            placeholder="Filter"
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-          ></StyledSearch>
-        </StyledSearchBox>
-      </StyledTableFilterBar> */}
+    <Box
+      display={"flex"}
+      w={"100%"}
+      flexDirection={"column"}
+      justifyContent={"center"}
+    >
+      {/* <Box w={"100%"} justifyContent={"center"} display={"flex"} pb={2}>
+        <Text fontWeight={600} fontSize={23}>
+          Aircrafts
+        </Text>
+      </Box> */}
       <MapSideBarCardItem />
-    </SideNavWrapper>
+    </Box>
   );
 }
 
 function MapSideBarCardItem() {
+  const [showSkeleton, setShowSkeleton] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSkeleton(true);
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, []); // Run once when component mounts
+
+  const accordionItems = [
+    { status: "active", colorProp: "purple", callSign: "CN-TME" },
+    { status: "inactive", colorProp: "red", callSign: "CN-TKV" },
+    { status: "active", colorProp: "blue", callSign: "CN-TMV" },
+    { status: "active", colorProp: "green", callSign: "CN-TMH" },
+    { status: "inactive", colorProp: "brown", callSign: "CN-TKC" },
+    { status: "inactive", colorProp: "orange", callSign: "CN-TKD" },
+  ];
+
   return (
     <>
-      <div
-        id="map-card-item-wrapper"
-        style={{
-          width: "100%",
-          paddingLeft: "0px",
-          overflow: "auto",
-        }}
-      >
-        <Accordion allowToggle pt={0} mb={0} >
-          <AccordianItemComponent colorProp={"#323297"} />
-          <AccordianItemComponent colorProp={"#bb2222"} />
-          <AccordianItemComponent colorProp={"#399732"} />
+      <Box display={"flex"} w={"100%"} mr={4}>
+        <Accordion allowToggle pt={0} mb={0} pr={0} color={"black"} w={"100%"}>
+          {accordionItems.map((item, index) => (
+            <Box key={index} mt={index > 0 ? 4 : 0}>
+              <Skeleton isLoaded={showSkeleton}>
+                <AccordionItemComponent
+                  status={item.status}
+                  colorProp={item.colorProp}
+                  callSign={item.callSign}
+                />
+              </Skeleton>
+            </Box>
+          ))}
         </Accordion>
-      </div>
+      </Box>
+    </>
+  );
+}
+function AccordionItemComponent({ colorProp, status, callSign }) {
+  return (
+    <>
+      <AccordionItem
+        mb={0}
+        background={dividerColorLight}
+        border={"1px solid #f0f0f0b6"}
+        borderRadius={5}
+        // borderTop={"none"}
+        // borderBottom={"none"}
+        borderLeft={`5px solid ${colorProp}`}
+      >
+        <AccordionButton
+          display={"flex"}
+          justifyContent={"space-between"}
+          p={1}
+        >
+          <Box
+            as="span"
+            display={"flex"}
+            alignItems={"center"}
+            // flexDirection={"column"}
+          >
+            <Box pl={1}>
+              <IoIosAirplane size={25} color={colorProp} />
+            </Box>
+            <Box
+              pl={2}
+              display={"flex"}
+              flexDirection={"column"}
+              justifyContent={"flex-start"}
+            >
+              <Box display={"flex"} gap={3} alignItems={"center"}>
+                <Text fontSize={15} fontWeight={550}>
+                  {callSign}{" "}
+                </Text>{" "}
+                <Badge
+                  colorScheme={status == "active" ? "green" : "red"}
+                  fontSize={10}
+                >
+                  {status}
+                </Badge>
+              </Box>
+              <Box display={"flex"} justifyContent={"flex-start"}>
+                <Text fontSize={12}>2023/12/12</Text>
+              </Box>
+            </Box>
+          </Box>
+          <AccordionIcon />
+        </AccordionButton>
+
+        <AccordionPanel pb={4}>
+          <AccordianBodyComponent />
+        </AccordionPanel>
+      </AccordionItem>
     </>
   );
 }
 
-function AccordianItemComponent({ colorProp }) {
+function AccordianBodyComponent({ data }) {
   return (
-    <>
-      <AccordionItem mb={0}>
-          <AccordionButton
-            backgroundColor={"#1e1e25"}
-            border={"none"}
-            pl={3}
-            borderLeft={`4px solid ${colorProp}`}
-            cursor={"pointer"}
-            // pt={10}
-            // pb={10}
-          >
-            <Flex
-              as="span"
-              flex="1"
-              textAlign="left"
-              flexDirection={"column"}
-              color={dividerColorLight}
-              fontSize={16}
-            >
-              <Box
-                display={"flex"}
-                alignItems={"center"}
-                justifyContent={"flex-start"}
-              >
-                <RiPlaneFill
-                  color={colorProp}
-                  style={{ paddingRight: "8px" }}
-                  size={30}
-                />
-                CNTKC
-              </Box>
-              <Box fontSize={11} color={dividerColor}>
-                Recent: AOM012K
-              </Box>
-            </Flex>
-            <AccordionIcon color={dividerColorLight} fontSize={19} />
-          </AccordionButton>
-        <AccordionPanel
-
-          // mb={7}
-          pl={4}
-          borderLeft={`4px solid ${colorProp}`}
-        >
-          <Box
-            fontSize={13}
-            pt={2}
-            pb={2}
-
-            backgroundColor={"#4949493d"}
-            display={"flex"}
-            alignItems={"center"}
-            justifyContent={"center"}
-          >
-            AOM012B
-          </Box>
-          <Box
-            fontSize={12.5}
-
-            pb={2}
-            pt={2}
-            color={dividerColor}
-            display={"flex"}
-            justifyContent={"space-between"}
-            borderBottom={`1px solid #323232`}
-          >
-            Baro Alt:
-            <span>19500 ft</span>
-          </Box>
-          <Box
-            fontSize={12.5}
-            pb={2}
-            pt={2}
-            color={dividerColor}
-            display={"flex"}
-            justifyContent={"space-between"}
-            borderBottom={`1px solid #323232`}
-          >
-            Ground Speed:
-            <span>441 kt</span>
-          </Box>
-          <Box
-            fontSize={12.5}
-            pb={2}
-            pt={2}
-            color={dividerColor}
-            display={"flex"}
-            justifyContent={"space-between"}
-            borderBottom={`1px solid #323232`}
-          >
-            Position:
-            <span>31.12° , -89.1°</span>
-          </Box>
-          <Box
-            fontSize={12.5}
-            pb={2}
-            pt={2}
-            color={dividerColor}
-            display={"flex"}
-            justifyContent={"space-between"}
-            borderBottom={`1px solid #323232`}
-          >
-            Distance:
-            <span>3123 nm</span>
-          </Box>
-          <Box
-            fontSize={12.5}
-            pb={2}
-            pt={2}
-            color={dividerColor}
-            display={"flex"}
-            justifyContent={"space-between"}
-            borderBottom={`1px solid #323232`}
-          >
-            Baro rate:
-            <span>-24 ft/min</span>
-          </Box>
-        </AccordionPanel>
-      </AccordionItem>
-    </>
+    <Text>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </Text>
   );
 }
 export default MapSideBar;

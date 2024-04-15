@@ -61,19 +61,19 @@ export function ProtectedRoutes() {
       ) : (
         <>
           <Header />
-          <div style={{ height: "calc(100% - 50px)", padding: "10px" }}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/Inventory" element={<MedicalEquipmentStock />} />
-              <Route path="/orders" element={<OrderPageMain />} />
-              <Route path="/personnel" element={<Personele />} />
-              <Route path="/Missions" element={<Missions />} />
-              <Route
-                path="/checklistsRequests"
-                element={<MainRequestChecklist />}
-              />
-            </Routes>
-          </div>
+
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Inventory" element={<MedicalEquipmentStock />} />
+            <Route path="/orders" element={<OrderPageMain />} />
+            <Route path="/personnel" element={<Personele />} />
+            <Route path="/Missions" element={<Missions />} />
+            <Route path="/Map" element={<Map />} />
+            <Route
+              path="/checklistsRequests"
+              element={<MainRequestChecklist />}
+            />
+          </Routes>
         </>
       )}
     </>

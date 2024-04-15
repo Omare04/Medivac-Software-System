@@ -38,21 +38,22 @@ function MedicalEquipmentStock() {
   const btnRef = React.useRef();
   return (
     <>
-      <div
-        id="Medical_equipment_stock_root_wrapper"
-        style={{ height: "100%", padding: "5px" }}
-      >
+      <div style={{ height: "calc(100% - 50px)", padding: "10px" }}>
         <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-start",
-            width: "100%",
-            height: "100%",
-            borderRadius: "5px",
-          }}
+          id="Medical_equipment_stock_root_wrapper"
+          style={{ height: "100%", padding: "5px" }}
         >
-          <MedicalStockTable />
-          {/* <div
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              width: "100%",
+              height: "100%",
+              borderRadius: "5px",
+            }}
+          >
+            <MedicalStockTable />
+            {/* <div
             style={{
               margin: " 0px 0px 10px 10px",
               width: "50%",
@@ -64,20 +65,21 @@ function MedicalEquipmentStock() {
             
               <EntryRemovalTable />
           </div> */}
+          </div>
+          <Drawer
+            onClose={onClose}
+            isOpen={isOpen}
+            size={"xl"}
+            finalFocusRef={btnRef}
+          >
+            <DrawerOverlay />
+            <DrawerContent>
+              <DrawerCloseButton />
+              <DrawerHeader>{`Create A New Order`}</DrawerHeader>
+              <DrawerBody>{/* <DrawerBodyContent /> */}</DrawerBody>
+            </DrawerContent>
+          </Drawer>
         </div>
-        <Drawer
-          onClose={onClose}
-          isOpen={isOpen}
-          size={"xl"}
-          finalFocusRef={btnRef}
-        >
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader>{`Create A New Order`}</DrawerHeader>
-            <DrawerBody>{/* <DrawerBodyContent /> */}</DrawerBody>
-          </DrawerContent>
-        </Drawer>
       </div>
     </>
   );

@@ -11,10 +11,6 @@ function FunctionalFooter({ view, viewState }) {
     <FunctionalFooterWrapper>
       <AddMissionPage />
       <IconButton
-        Title={"View Map"}
-        Icon={<IoMap style={{ marginRight: "10px" }} />}
-      />
-      <IconButton
         Title={"Switch View"}
         Icon={
           viewState ? (
