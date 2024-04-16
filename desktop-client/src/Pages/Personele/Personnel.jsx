@@ -96,11 +96,12 @@ function Personele() {
 
   return (
     <>
-      <div
-        id="personele-root-wrapper"
-        style={{ height: "100%", padding: "10px" }}
-      >
-        {/* <p
+      <div style={{ height: "calc(100% - 50px)", padding: "10px" }}>
+        <div
+          id="personele-root-wrapper"
+          style={{ height: "100%", padding: "10px" }}
+        >
+          {/* <p
           style={{
             fontWeight: "350",
             borderBottom: `1px solid #ededed`,
@@ -115,42 +116,43 @@ function Personele() {
           <PiUsersThreeBold style={{ marginRight: "15px" }} size={30} />
           Personele
         </p> */}
-        <div
-          style={{
-            display: "flex",
-            width: "100%",
-            height: "100%",
-          }}
-        >
           <div
             style={{
               display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              alignItems: "center",
+              width: "100%",
               height: "100%",
-              background: dividerColorLight,
-              padding: "10px",
-              borderRadius: "5px",
-              width: "25%",
             }}
           >
-            <PersoneleListComponent />
             <div
-              className="button_wrapper"
               style={{
                 display: "flex",
-                width: "100%",
-                gap: "10px",
                 flexDirection: "column",
+                justifyContent: "space-between",
+                alignItems: "center",
+                height: "100%",
+                background: dividerColorLight,
+                padding: "10px",
+                borderRadius: "5px",
+                width: "25%",
               }}
             >
-              <CreatePersoneleRolesModal />
+              <PersoneleListComponent />
+              <div
+                className="button_wrapper"
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  gap: "10px",
+                  flexDirection: "column",
+                }}
+              >
+                <CreatePersoneleRolesModal />
+              </div>
             </div>
-          </div>
 
-          <PersoneleAccordion />
-          <PersoneleCalendar />
+            <PersoneleAccordion />
+            <PersoneleCalendar />
+          </div>
         </div>
       </div>
     </>

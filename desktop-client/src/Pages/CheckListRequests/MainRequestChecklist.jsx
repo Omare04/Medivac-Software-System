@@ -13,34 +13,34 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-
-
 function MainRequestChecklist() {
   return (
-    <div
-      className="main_request_checklist_root_wrapper"
-      style={{ width: "100%", height: "100%" }}
-    >
+    <div style={{ height: "calc(100% - 50px)", padding: "10px" }}>
       <div
-        style={{
-          display: "flex",
-          width: "100%",
-          gap: "10px",
-          height: "100%",
-          padding: "10px",
-        }}
+        className="main_request_checklist_root_wrapper"
+        style={{ width: "100%", height: "100%" }}
       >
-        <Box
-          display={"flex"}
-          flexDirection={"column"}
-          w={"50%"}
-          h={"100%"}
-          gap={5}
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            gap: "10px",
+            height: "100%",
+            padding: "10px",
+          }}
         >
-          {/* <RequestCheckListSummary /> */}
-          <Requests />
-        </Box>
-        <CheckLists />
+          <Box
+            display={"flex"}
+            flexDirection={"column"}
+            w={"50%"}
+            h={"100%"}
+            gap={5}
+          >
+            {/* <RequestCheckListSummary /> */}
+            <Requests />
+          </Box>
+          <CheckLists />
+        </div>
       </div>
     </div>
   );

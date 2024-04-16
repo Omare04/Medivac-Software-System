@@ -38,7 +38,8 @@ const personeleLinks = [
 function OrderPageMain() {
   return (
     <>
-      {/* <div
+      <div style={{ height: "calc(100% - 50px)", padding: "10px" }}>
+        {/* <div
         style={{
           fontWeight: "450",
           borderBottom: `1px solid #ededed`,
@@ -52,16 +53,16 @@ function OrderPageMain() {
       >
         Orders
       </div> */}
-      <div
-        id="order_page_root_wrapper"
-        style={{
-          display: "flex",
-          justifyContent: "flex-start",
-          padding: "10px",
-          height: "100%",
-        }}
-      >
-        {/* <div
+        <div
+          id="order_page_root_wrapper"
+          style={{
+            display: "flex",
+            justifyContent: "flex-start",
+            padding: "10px",
+            height: "100%",
+          }}
+        >
+          {/* <div
           id="order_page_left_wrapper"
           style={{
             height: "100%",
@@ -104,36 +105,37 @@ function OrderPageMain() {
             ))}
           </Accordion>
         </div> */}
-        <div
-          id="order_page_right_wrapper"
-          style={{ height: "100%", width: "100%" }}
-        >
-          <Tabs size="md" variant="enclosed" height="calc(100% - (53.2px))">
-            <TabList>
-              <Tab>Pharmaceuticals</Tab>
-              <Tab>Medical Equipment</Tab>
-            </TabList>
-            <TabPanels height={"100%"}>
-              <TabPanel
-                mt={3}
-                style={{ background: "#f5f5f589" }}
-                height={"100%"}
-                borderRadius={2}
-                overflow={"auto"}
-              >
-                <PharamceuticalOrders />
-              </TabPanel>
-              <TabPanel
-                mt={3}
-                style={{ background: "#f5f5f589" }}
-                height={"100%"}
-                borderRadius={2}
-                // overflow={"auto"}
-              >
-                <MedicalEquipmentOrders />
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
+          <div
+            id="order_page_right_wrapper"
+            style={{ height: "100%", width: "100%" }}
+          >
+            <Tabs size="md" variant="enclosed" height="calc(100% - (53.2px))">
+              <TabList>
+                <Tab>Pharmaceuticals</Tab>
+                <Tab>Medical Equipment</Tab>
+              </TabList>
+              <TabPanels height={"100%"}>
+                <TabPanel
+                  mt={3}
+                  style={{ background: "#f5f5f589" }}
+                  height={"100%"}
+                  borderRadius={2}
+                  overflow={"auto"}
+                >
+                  <PharamceuticalOrders />
+                </TabPanel>
+                <TabPanel
+                  mt={3}
+                  style={{ background: "#f5f5f589" }}
+                  height={"100%"}
+                  borderRadius={2}
+                  // overflow={"auto"}
+                >
+                  <MedicalEquipmentOrders />
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
+          </div>
         </div>
       </div>
     </>

@@ -123,39 +123,40 @@ export function Home() {
 
   return (
     <>
-      <Flex
-        justifyContent="space-between"
-        display={"flex"}
-        height="calc(100% - (40px))"
-        id="home-wrapper-root"
-        // alignItems="stretch"
-        // p={5}
-      >
-        <HomeWrapperLeft>
-          {/* {tableView ? <MissionTableComponent /> : <TimeGridComponent />}
-           */}
-          <DelayedComponentSwitch tableView={tableView} />
-        </HomeWrapperLeft>
+      <div style={{ height: "calc(100% - 50px)", padding: "10px" }}>
+        <Flex
+          justifyContent="space-between"
+          display={"flex"}
+          height="calc(100% - (40px))"
+          id="home-wrapper-root"
+          // alignItems="stretch"
+          // p={5}
+        >
+          <HomeWrapperLeft>
+            {/* {tableView ? <MissionTableComponent /> : <TimeGridComponent />}
+             */}
+            <DelayedComponentSwitch tableView={tableView} />
+          </HomeWrapperLeft>
 
-        <HomeWrapperRight>
-          <Box h={"100%"}>
-            <StatsTab />
-              <Box display={"flex"} flexDirection={"column"}>
-              </Box>
-               <TitleContainer>
-              <DrugRequestTitle>Requests & Orders</DrugRequestTitle>
-            </TitleContainer>
+          <HomeWrapperRight>
+            <Box h={"100%"}>
+              <StatsTab />
+              <Box display={"flex"} flexDirection={"column"}></Box>
+              <TitleContainer>
+                <DrugRequestTitle>Requests & Orders</DrugRequestTitle>
+              </TitleContainer>
               <DrugRequestsHomeComponents />
             </Box>
-          {/* <BoxWrapper> */}
-          {/* </BoxWrapper> */}
-          {/* <TitleContainer style={{ marginTop: "20px" }}>
+            {/* <BoxWrapper> */}
+            {/* </BoxWrapper> */}
+            {/* <TitleContainer style={{ marginTop: "20px" }}>
             Monthly Flight Volume
           </TitleContainer> */}
-          {/* <HorizontalBarChartMission></HorizontalBarChartMission> */}
-        </HomeWrapperRight>
-        <FunctionalFooter view={switchView} viewState={tableView} />
-      </Flex>
+            {/* <HorizontalBarChartMission></HorizontalBarChartMission> */}
+          </HomeWrapperRight>
+          <FunctionalFooter view={switchView} viewState={tableView} />
+        </Flex>
+      </div>
     </>
   );
 }
