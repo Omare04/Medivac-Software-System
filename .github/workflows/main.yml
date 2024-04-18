@@ -39,7 +39,7 @@ jobs:
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
 
-      - name: Deploy to EB
+      - name: Deploy to EBS
         uses: einaregilsson/beanstalk-deploy@v18
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
@@ -47,6 +47,6 @@ jobs:
           application_name: docker-gh
           environment_name: Dockergh-env
           existing_bucket_name: elasticbeanstalk-us-east-1-923445559289
-          region: us-east-1
+          region: us-east-2
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
