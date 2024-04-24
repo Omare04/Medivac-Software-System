@@ -36,6 +36,17 @@ import { MdNumbers } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa";
 import { SearchBarComponent } from "../InputComponents/InputComponents";
 import { IconDropDown } from "../InputComponents/DropdownComponents";
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from "@chakra-ui/react";
 class MedicalStock {
   constructor(id, name, type, pn, date) {
     this.id = id;
@@ -44,6 +55,179 @@ class MedicalStock {
     this.pn = pn;
     this.date = date;
   }
+}
+
+const headers = ["Name", "Date", "Type", "Pn", "Qty"];
+
+function MedicalStockTable() {
+  let data = { nodes };
+  const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [itemType, setItemType] = useState("");
+
+  const pagination = usePagination(data, {
+    state: {
+      page: 0,
+      size: 13,
+    },
+  });
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+
+  return (
+    <>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <TableFilterBar
+          itemType={itemType}
+          setItemType={setItemType}
+          search={search}
+          handleSearch={handleSearch}
+        />
+        <div
+          style={{
+            width: "100%",
+            borderRadius: "3px",
+            background: "white",
+            overflow: "auto",
+            paddingRight: "5px",
+          }}
+        >
+          <Box p={1} borderWidth="1px" borderRadius="lg">
+            <TableComponent
+              pagination={pagination}
+              search={search}
+              itemType={itemType}
+              totalItems={data.nodes.length}
+              itemsPerPage={pagination.state.size}
+              currentPage={pagination.state.page}
+              nodes={data.nodes}
+              headers={["Name", "Date", "Type", "PN", "Qty"]}
+            />
+          </Box>
+          <br />
+
+          {/* FOOTER */}
+        </div>
+        <Box display={"flex"} width="100%">
+          <HStack justify="flex-end" width="100%" pt={4}>
+            <IconButton
+              aria-label="previous page"
+              icon={<FaChevronLeft size={13} />}
+              colorScheme="blue"
+              variant="ghost"
+              isDisabled={pagination.state.page === 0}
+              height="30px"
+              onClick={() =>
+                pagination.fns.onSetPage(pagination.state.page - 1)
+              }
+            />
+
+            {pagination.state.getPages(data.nodes).map((_, index) => (
+              <Button
+                height="30px"
+                key={index}
+                colorScheme="blue"
+                variant={pagination.state.page === index ? "solid" : "ghost"}
+                onClick={() => pagination.fns.onSetPage(index)}
+              >
+                {index + 1}
+              </Button>
+            ))}
+
+            <IconButton
+              height="30px"
+              aria-label="next page"
+              icon={<FaChevronRight size={13} />}
+              colorScheme="blue"
+              variant="ghost"
+              isDisabled={
+                pagination.state.page + 1 ===
+                pagination.state.getTotalPages(data.nodes)
+              }
+              onClick={() =>
+                pagination.fns.onSetPage(pagination.state.page + 1)
+              }
+            />
+          </HStack>
+        </Box>
+      </div>
+    </>
+  );
+}
+
+function TableFilterBar({ itemType, setItemType, search, handleSearch }) {
+  const handlePartNumberChange = (event) => {
+    setItemType(event.target.value);
+  };
+
+  return (
+    <>
+      <Box
+        display={"flex"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        w={"100%"}
+        pr={5}
+        p={2}
+      >
+        <div
+          style={{
+            display: "flex",
+            gap: "10px",
+            width: "60%",
+            borderRadius: "5px",
+          }}
+        >
+          <Box display={"flex"} w={"100%"} gap={3}>
+            <Box display={"flex"} w={"80%"} gap={3}>
+              <InputGroup background={"white"} borderRadius={5}>
+                <InputLeftElement colorScheme="whiteAlpha" pointerEvents="none">
+                  {" "}
+                  <FaSearch style={{ color: "#96989a" }} />
+                </InputLeftElement>
+                <Input
+                  height={"99.3%"}
+                  background={"white"}
+                  borderRadius={5}
+                  colorScheme="whiteAlpha"
+                  placeholder="Search Product Name"
+                  value={search}
+                  onChange={handleSearch}
+                />
+              </InputGroup>
+              <Box w={"50%"} zIndex={1000}>
+                <ReactSelectComponent
+                  selectOptions={[
+                    { value: "Respiratory", label: "Respiratory	" },
+                    { value: "Cardiological", label: "Cardiological" },
+                    { value: "Neurological", label: "Neurological" },
+                    { value: "Dermatologic", label: "Dermatologic" },
+                  ]}
+                  placeholder={"Type"}
+                  title={"Item Type"}
+                  selectedOptions={itemType}
+                  setSelectedOptions={setItemType}
+                  isTitle={false}
+                  customStyles={null}
+                />
+              </Box>
+            </Box>
+          </Box>
+        </div>
+        <AddToStockModal />
+      </Box>
+    </>
+  );
 }
 
 const nodes = [
@@ -183,269 +367,87 @@ const nodes = [
     pn: 12314124,
     qty: 1,
   },
-  {
-    id: "9",
-    name: "Blood Gas Analyzer",
-    date: new Date(2020, 1, 15),
-    type: "Cardiology",
-    pn: 12314124,
-    qty: 1,
-  },
 ];
 
-function MedicalStockTable() {
-  let data = { nodes };
+function TableComponent({
+  pagination,
+  totalItems,
+  itemsPerPage,
+  currentPage,
+  nodes,
+  search,
+  itemType,
+  headers,
+}) {
+  const [displayedNodes, setDisplayedNodes] = useState([]);
 
-  const pagination = usePagination(data, {
-    state: {
-      page: 0,
-      size: 30,
-    },
-    onChange: onPaginationChange,
-  });
+  //Pagination Logic
+  useEffect(() => {
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const paginationCount =
+      totalPages - currentPage >= 5 ? 5 : totalPages - currentPage;
+    const startPage =
+      currentPage - Math.floor(paginationCount / 2) > 0
+        ? currentPage - Math.floor(paginationCount / 2)
+        : 1;
 
-  function onPaginationChange(action, state) {
-    // console.log(action, state);
-  }
+    const startIndex = currentPage * itemsPerPage;
+    const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+    const displayed = nodes.slice(startIndex, endIndex);
 
-  const chakraTheme = getTheme(DEFAULT_OPTIONS);
-  const theme = useTheme(chakraTheme);
+    setDisplayedNodes(displayed);
+  }, [totalItems, itemsPerPage, currentPage]);
 
-  const [search, setSearch] = useState("");
-  const [addStockModalState, setAddStockModalState] = useState(false);
-
-  const handleSearch = (event) => {
-    setSearch(event.target.value);
+  const handleRowClick = (id) => {
+    console.log(id);
   };
 
-  data = {
-    nodes: data.nodes.filter((item) =>
-      item.name.toLowerCase().includes(search.toLowerCase())
-    ),
-  };
-
-  const select = useRowSelect(data, {
-    onChange: onSelectChange,
-  });
-
-  function onSelectChange(action, state) {
-    console.log(action, state);
-  }
-
-  const COLUMNS = [
-    {
-      label: (
-        <>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            Product Name
-            <Icon as={FaChevronDown} boxSize={4} ml={3} style={{}} />
-          </div>
-        </>
-      ),
-      renderCell: (item) => (
-        <>
-          <span style={{}}>{item.name}</span>
-        </>
-      ),
-      select: {
-        renderCellSelect: (item) => (
-          <Checkbox
-            isChecked={select.state.ids.includes(item.id)}
-            onChange={() => select.fns.onToggleById(item.id)}
-          />
-        ),
-      },
-    },
-    {
-      label: "Product Type",
-      renderCell: (item) => (
-        <Badge cursor={"pointer"} p={1}>
-          {item.type}
-        </Badge>
-      ),
-    },
-    { label: "Pn", renderCell: (item) => item.pn },
-    {
-      label: (
-        <>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            Date Entered
-            <Icon as={FaChevronDown} boxSize={4} ml={3} style={{}} />
-          </div>
-        </>
-      ),
-      renderCell: (item) =>
-        item.date.toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-        }),
-    },
-
-    {
-      label: "Quantity",
-      renderCell: (item) => <>{item.qty}</>,
-    },
-  ];
+  useEffect(() => {
+    const filteredNodes = nodes.filter(
+      (node) =>
+        node.name.toLowerCase().includes(search.toLowerCase()) &&
+        (itemType.value ? node.type === itemType.value : true)
+    );
+    setDisplayedNodes(filteredNodes);
+  }, [search, itemType, nodes]);
 
   return (
-    <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        <TableFilterBar />
-
-        <div
-          style={{
-            width: "100%",
-            borderRadius: "3px",
-            background: "white",
-            overflow: "auto",
-            paddingRight: "5px",
-          }}
-        >
-          <Box p={3} borderWidth="1px" borderRadius="lg">
-            <CompactTable
-              columns={COLUMNS}
-              data={data}
-              theme={theme}
-              // layout={{ custom: true }}
-            />
-          </Box>
-          <br />
-
-          {/* FOOTER */}
-        </div>
-        <Box display={"flex"} width="100%">
-          <HStack justify="flex-end" width="100%" pt={4}>
-            <IconButton
-              aria-label="previous page"
-              icon={<FaChevronLeft size={13} />}
-              colorScheme="blue"
-              variant="ghost"
-              isDisabled={pagination.state.page === 0}
-              height="30px"
-              onClick={() =>
-                pagination.fns.onSetPage(pagination.state.page - 1)
-              }
-            />
-
-            {pagination.state.getPages(data.nodes).map((_, index) => (
-              <Button
-                height="30px"
-                key={index}
-                colorScheme="blue"
-                variant={pagination.state.page === index ? "solid" : "ghost"}
-                onClick={() => pagination.fns.onSetPage(index)}
-              >
-                {index + 1}
-              </Button>
-            ))}
-
-            <IconButton
-              height="30px"
-              aria-label="next page"
-              icon={<FaChevronRight size={13} />}
-              colorScheme="blue"
-              variant="ghost"
-              isDisabled={
-                pagination.state.page + 1 ===
-                pagination.state.getTotalPages(data.nodes)
-              }
-              onClick={() =>
-                pagination.fns.onSetPage(pagination.state.page + 1)
-              }
-            />
-          </HStack>
-        </Box>
-      </div>
-    </>
-  );
-}
-
-function TableFilterBar() {
-  const [itemType, setItemType] = useState("");
-
-  const customStyles = {
-    control: (provided, state) => ({
-      ...provided,
-      border: "none",
-      borderRadius: "4px",
-      background: dividerColorLight,
-      boxShadow: state.isFocused ? "0 0 0 1px #c4c4c4" : provided.boxShadow,
-      "&:active": {
-        boxShadow: "0 0 0 1px #c4c4c4",
-      },
-    }),
-  };
-
-  const options = ["Cardiological", "Neurological", "Respiratory"];
-
-  const [partNumber, setPartNumber] = useState("");
-
-  const handlePartNumberChange = (event) => {
-    setPartNumber(event.target.value);
-  };
-
-  return (
-    <>
-      <Box
-        display={"flex"}
-        justifyContent={"space-between"}
-        w={"100%"}
-        pr={5}
-        p={3}
-      >
-        <div
-          style={{
-            display: "flex",
-            gap: "10px",
-            width: "50%",
-            background: dividerColorLight,
-            borderRadius: "5px",
-            padding: "5px",
-          }}
-        >
-          <Box display={"flex"} w={"100%"} gap={3}>
-            <SearchBarComponent />
-            <Box>
-              <InputComponentIcon
-                type={"number"}
-                value={partNumber}
-                onChange={handlePartNumberChange}
-                icon={<Icon as={MdNumbers} />}
-                isTitle={false}
-                placeholder={"Part Number"}
-              />
-            </Box>
-          </Box>
-          <Box display={"flex"} w={"35%"} gap={3}>
-            <Box w={"100%"} zIndex={1000}>
-              <ReactSelectComponent
-                selectOptions={[
-                  { value: "Respiratory", label: "Respiratory" },
-                  { value: "Cardiological", label: "Cardiological" },
-                  { value: "Neurological", label: "Neurological" },
-                  { value: "Dermatologic", label: "Dermatologic" },
-                ]}
-                placeholder={"Product Type"}
-                title={"Item Type"}
-                selectedOptions={itemType}
-                setSelectedOptions={setItemType}
-                isTitle={false}
-                customStyles={null}
-              />
-            </Box>
-          </Box>
-        </div>
-        <AddToStockModal />
-      </Box>
-    </>
+    <TableContainer>
+      <Table variant="simple" size={"sm"}>
+        <Thead>
+          <Tr>
+            {headers.map((value, index) =>
+              value === "Qty" ? (
+                <Th key={index} isNumeric>
+                  {value}
+                </Th>
+              ) : (
+                <Th key={index}>{value}</Th>
+              )
+            )}
+          </Tr>
+        </Thead>
+        <Tbody>
+          {displayedNodes.map((node, i) => (
+            <Tr
+              key={i}
+              onClick={() => handleRowClick(node?.id)}
+              _hover={{
+                cursor: "pointer",
+                backgroundColor: "gray.50",
+                transition: "background-color 0.3s ease",
+              }}
+            >
+              <Td>{node?.name}</Td>
+              <Td>{node?.date.toLocaleDateString("en-US")}</Td>
+              <Td>{node?.type}</Td>
+              <Td>{node?.pn}</Td>
+              <Td isNumeric>{node?.qty}</Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
+    </TableContainer>
   );
 }
 

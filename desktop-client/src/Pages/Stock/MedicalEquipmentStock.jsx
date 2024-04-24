@@ -41,7 +41,7 @@ function MedicalEquipmentStock() {
       <div style={{ height: "calc(100% - 50px)", padding: "10px" }}>
         <div
           id="Medical_equipment_stock_root_wrapper"
-          style={{ height: "100%", padding: "5px" }}
+          style={{ height: "100%"}}
         >
           <div
             style={{
@@ -53,18 +53,17 @@ function MedicalEquipmentStock() {
             }}
           >
             <MedicalStockTable />
-            {/* <div
-            style={{
-              margin: " 0px 0px 10px 10px",
-              width: "50%",
-              height: "100%",
-              borderRadius: "5px",
-            }}
-          >
-           
-            
+            <div
+              style={{
+                margin: " 0px 0px 10px 10px",
+                width: "50%",
+                height: "100%",
+                borderRadius: "5px",
+              }}
+            >
+
               <EntryRemovalTable />
-          </div> */}
+            </div>
           </div>
           <Drawer
             onClose={onClose}

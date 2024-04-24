@@ -20,7 +20,7 @@ import {
   InputUnitSelect,
 } from "../../Pages/Orders/MedicalEquipmentOrders";
 import Select from "react-select";
-import { FaPlus } from "react-icons/fa";
+import { GoPlus } from "react-icons/go";
 import makeAnimated from "react-select/animated";
 import { dividerColor, dividerColorLight } from "../../Colors";
 
@@ -107,9 +107,13 @@ export function AddToStockModal() {
       <div style={{ display: "flex" }}>
         <Button
           aria-label="Add item"
-          leftIcon={<FaPlus />}
-          colorScheme="blue"
+          color={"grey"}
+          leftIcon={<GoPlus size={"24px"}/>}
+          colorScheme="gray.100"
+          variant="outline"
+          borderColor={"#e2e8f0"}
           ml={2}
+          fontWeight={450}
           onClick={() => {
             onOpen();
           }}

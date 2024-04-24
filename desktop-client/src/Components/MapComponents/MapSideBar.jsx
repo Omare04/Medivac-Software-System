@@ -23,6 +23,10 @@ import {
   Flex,
   Text,
   Badge,
+  Stack,
+  Card,
+  CardBody,
+  CardHeader,
 } from "@chakra-ui/react";
 import { dividerColor, dividerColorLight } from "../../Colors";
 import { IoIosAirplane } from "react-icons/io";
@@ -146,12 +150,42 @@ function AccordionItemComponent({ colorProp, status, callSign }) {
 
 function AccordianBodyComponent({ data }) {
   return (
-    <Text>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
-    </Text>
+    <Box>
+      <Box display={"flex"} pt={1}>
+        <Card
+          display={"flex"}
+          w={"100%"}
+          variant={"unstyled"}
+          p={"6px"}
+          background={"#fafafa"}
+        >
+          <CardHeader pb={4}>
+            {" "}
+            <Text w={"100%"} display={"flex"} justifyContent={"center"}>
+              Flight Details
+            </Text>
+          </CardHeader>
+          <CardBody display={"flex"} gap={3} flexDirection={"column"}>
+            <Box display={"flex"} justifyContent={"space-between"} w={"100%"}>
+              <Text>Altitude</Text>
+              <Text>1244ft</Text>
+            </Box>
+            <Box display={"flex"} justifyContent={"space-between"} w={"100%"}>
+              <Text>Altitude</Text>
+              <Text>1244ft</Text>
+            </Box>
+            <Box display={"flex"} justifyContent={"space-between"} w={"100%"}>
+              <Text>Altitude</Text>
+              <Text>1244ft</Text>
+            </Box>
+            <Box display={"flex"} justifyContent={"space-between"} w={"100%"}>
+              <Text>Altitude</Text>
+              <Text>1244ft</Text>
+            </Box>
+          </CardBody>
+        </Card>
+      </Box>
+    </Box>
   );
 }
 export default MapSideBar;

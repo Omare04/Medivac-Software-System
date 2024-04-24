@@ -17,16 +17,22 @@ import {
   ModalContent,
   ModalHeader,
   ModalCloseButton,
+  Box,
   ModalBody,
   ModalFooter,
+  Text,
+  Stack,
+  Avatar,
 } from "@chakra-ui/react";
 import { AiOutlineExport } from "react-icons/ai";
 import { dividerColorLight } from "../../Colors";
+import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
 import {
   ReactSelectComponent,
   InputComponentIcon,
 } from "../InputComponents/InputComponents";
 import { LuCalendarDays } from "react-icons/lu";
+
 import makeAnimated from "react-select/animated";
 
 const nodes = [
@@ -250,160 +256,94 @@ const nodes = [
 
 const EntryRemovalTable = () => {
   const data = { nodes };
-  const theme = useTheme(getTheme());
-  const [ids, setIds] = useState([]);
-  const [itemType, setItemType] = useState("");
-
-  const handleExpand = (item) => {
-    if (ids.includes(item.id)) {
-      setIds(ids.filter((id) => id !== item.id));
-    } else {
-      setIds(ids.concat(item.id));
-    }
-  };
-
-  const COLUMNS = [
-    {
-      label: "Item",
-      renderCell: (item) => (
-        <span style={{ fontWeight: 500 }}>{item.item} </span>
-      ),
-    },
-    {
-      label: (
-        <>
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            Date
-            <Icon
-              as={FaChevronDown}
-              color="#181d1f"
-              boxSize={4}
-              ml={1}
-              // style={{}}
-            />
-          </div>
-        </>
-      ),
-      renderCell: (item) => (
-        <span style={{ fontWeight: 500 }}>
-          {item.date.toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-          })}
-        </span>
-      ),
-    },
-    {
-      label: "Type",
-      renderCell: (item) =>
-        item.type == "entry" ? (
-          <>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <FaPlusCircle color="green" style={{ marginLeft: "10px" }} />{" "}
-            </div>
-          </>
-        ) : (
-          <>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                color: "red",
-              }}
-            >
-              <FaCircleMinus color="red" style={{ marginLeft: "10px" }} />{" "}
-            </div>
-          </>
-        ),
-    },
-  ];
-
-  const ROW_PROPS = {
-    onClick: handleExpand,
-  };
-
-  const ROW_OPTIONS = {
-    renderAfterRow: (item) => (
-      <>
-        {ids.includes(item.id) && (
-          <tr style={{ display: "flex", gridColumn: "1 / -1" }}>
-            <td style={{ flex: "1" }}>
-              <ul
-                style={{
-                  margin: "0",
-                  padding: "8px",
-                  backgroundColor: "#efefef",
-                  borderRadius: " 5px",
-                }}
-              >
-                <li>
-                  <strong>Comments:</strong> {item.comments}
-                </li>
-                <li>
-                  <strong>By:</strong> {item.user}
-                </li>
-              </ul>
-            </td>
-          </tr>
-        )}
-      </>
-    ),
-  };
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "94%",
-          marginBottom: "10px",
-          borderRadius: "5px",
-          background: "white",
-        }}
-      >
-        <div
-          className="toolbar_wrapper"
-          style={{
-            display: "flex",
-            width: "100%",
-            alignItems: "center",
-            padding: "0px 15px 15px 5px",
-            justifyContent: "space-between",
-            gap: "10px",
-          }}
+      <Box h={"100%"} pt={2}>
+        <Box display={"flex"} justifyContent={"space-between"} pb={2}>
+          <ExportDateModal />
+        </Box>
+        <Stack
+          overflow={"auto"}
+          h={"90%"}
+          p={2}
+          borderRadius={5}
+          border={"1px solid #e2e8f0"}
         >
-          <h1
-            style={{
-              display: "flex",
-              alignItems: "center",
-              fontWeight: "550",
-              borderRadius: "5px",
-              color: "#000000",
-              fontSize: "20px",
-            }}
-          >
-            Monthly Entry Removal History
-          </h1>
-          <div style={{}}>
-            <ExportDateModal />
-          </div>
-        </div>
-        <div style={{ overflow: "auto", height: "100%" }}>
-          <CompactTable
-            columns={COLUMNS}
-            rowProps={ROW_PROPS}
-            rowOptions={ROW_OPTIONS}
-            data={data}
-            theme={theme}
-          />
-        </div>
-      </div>
+          <Box display={"flex"} flexDirection={"column"} gap={2}>
+            <ErTableCardComponent
+              name={"MRI Scanner"}
+              pn={1231231}
+              date={"2022/02/05 14:92 UTC/E"}
+              ErType={"removal"}
+              qty={3}
+              user={"Clinal manager"}
+            />
+            <ErTableCardComponent
+              name={"MRI Scanner"}
+              pn={1231231}
+              date={"2022/02/05 14:92 UTC/E"}
+              ErType={"removal"}
+              qty={3}
+              user={"Clinal manager"}
+            />
+            <ErTableCardComponent
+              name={"MRI Scanner"}
+              pn={1231231}
+              date={"2022/02/05 14:92 UTC/E"}
+              ErType={"removal"}
+              qty={3}
+              user={"Clinal manager"}
+            />
+            <ErTableCardComponent
+              name={"MRI Scanner"}
+              pn={1231231}
+              date={"2022/02/05 14:92 UTC/E"}
+              ErType={"removal"}
+              qty={3}
+              user={"Clinal manager"}
+            />
+          </Box>
+        </Stack>
+      </Box>
     </>
   );
 };
 
+function ErTableCardComponent({ name, pn, date, ErType, qty, user }) {
+  return (
+    <Card variant={"outline"} borderColor={dividerColorLight}>
+      <CardBody p={2} display={"flex"} justifyContent={"space-between"}>
+        <Box display={"flex"} flexDirection={"column"}>
+          <Box display={"flex"} gap={2}>
+            <Avatar
+              size="xs"
+              name="Dan Abrahmov"
+              src="https://bit.ly/dan-abramov"
+            />
+
+            <Box display={"flex"} flexDirection={"column"}>
+              <Text fontSize={"14px"}> {user}</Text>
+              <Text fontSize={"12px"} fontWeight={500}>
+                {date}
+              </Text>
+            </Box>
+          </Box>
+        </Box>
+
+        <Box>
+          <Box display={"flex"} alignItems={"center"} gap={2}>
+            <Text fontSize={"14px"}>{name}</Text>
+            <Text fontSize={"12px"}>({pn})</Text>
+          </Box>
+          <Text fontSize={"12px"} color={ErType == "removal" ? "red" : "green"}>
+            {ErType} {ErType == "removal" ? `-${qty}` : `+${qty}`}
+          </Text>
+        </Box>
+      </CardBody>
+    </Card>
+  );
+}
 export function ExportDateModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [month, setMonth] = useState("");
@@ -490,15 +430,17 @@ export function ExportDateModal() {
 
       <div style={{ display: "flex" }}>
         <Button
+          variant={"outline"}
           leftIcon={<AiOutlineExport />}
           w={"100%"}
-          background={dividerColorLight}
-          color={"#8a8a8a"}
+          // background={dividerColorLight}
+          color={"#807f7f"}
+          fontWeight={450}
           onClick={() => {
             onOpen();
           }}
         >
-          Export
+          Export Entries Or Removals
         </Button>
       </div>
     </>

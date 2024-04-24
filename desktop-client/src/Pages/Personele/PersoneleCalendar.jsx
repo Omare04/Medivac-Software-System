@@ -104,7 +104,7 @@ const PersoneleCalendar = () => {
           width: "80%",
           height: "100%",
           background: `${dividerColorLight}`,
-          padding: "10px",
+          padding: "5px",
           marginLeft: "10px",
           borderRadius: "5px",
         }}
