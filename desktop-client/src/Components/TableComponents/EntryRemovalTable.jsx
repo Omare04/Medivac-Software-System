@@ -259,18 +259,91 @@ const EntryRemovalTable = () => {
 
   return (
     <>
-      <Box h={"100%"} pt={2}>
-        <Box display={"flex"} justifyContent={"space-between"} pb={2}>
+      <Box h={"100%"} pt={"4px"}>
+        <Box
+          display={"flex"}
+          justifyContent={"space-between"}
+          alignItems={"center"}
+          pb={2}
+          pl={1}
+        >
+          <Text color={"grey"} fontSize={"17px"}>
+            Recent Stock Entries/Removals
+          </Text>
           <ExportDateModal />
         </Box>
         <Stack
           overflow={"auto"}
-          h={"90%"}
+          h={"93%"}
           p={2}
           borderRadius={5}
           border={"1px solid #e2e8f0"}
         >
           <Box display={"flex"} flexDirection={"column"} gap={2}>
+            <ErTableCardComponent
+              name={"MRI Scanner"}
+              pn={1231231}
+              date={"2022/02/05 14:92 UTC/E"}
+              ErType={"removal"}
+              qty={3}
+              user={"Clinal manager"}
+            />
+            <ErTableCardComponent
+              name={"MRI Scanner"}
+              pn={1231231}
+              date={"2022/02/05 14:92 UTC/E"}
+              ErType={"removal"}
+              qty={3}
+              user={"Clinal manager"}
+            />
+            <ErTableCardComponent
+              name={"MRI Scanner"}
+              pn={1231231}
+              date={"2022/02/05 14:92 UTC/E"}
+              ErType={"removal"}
+              qty={3}
+              user={"Clinal manager"}
+            />
+            <ErTableCardComponent
+              name={"MRI Scanner"}
+              pn={1231231}
+              date={"2022/02/05 14:92 UTC/E"}
+              ErType={"removal"}
+              qty={3}
+              user={"Clinal manager"}
+            />
+            <ErTableCardComponent
+              name={"MRI Scanner"}
+              pn={1231231}
+              date={"2022/02/05 14:92 UTC/E"}
+              ErType={"removal"}
+              qty={3}
+              user={"Clinal manager"}
+            />
+            <ErTableCardComponent
+              name={"MRI Scanner"}
+              pn={1231231}
+              date={"2022/02/05 14:92 UTC/E"}
+              ErType={"removal"}
+              qty={3}
+              user={"Clinal manager"}
+            />
+            <ErTableCardComponent
+              name={"MRI Scanner"}
+              pn={1231231}
+              date={"2022/02/05 14:92 UTC/E"}
+              ErType={"removal"}
+              qty={3}
+              user={"Clinal manager"}
+            />
+            <ErTableCardComponent
+              name={"MRI Scanner"}
+              pn={1231231}
+              date={"2022/02/05 14:92 UTC/E"}
+              ErType={"removal"}
+              qty={3}
+              user={"Clinal manager"}
+            />
             <ErTableCardComponent
               name={"MRI Scanner"}
               pn={1231231}
@@ -431,7 +504,9 @@ export function ExportDateModal() {
       <div style={{ display: "flex" }}>
         <Button
           variant={"outline"}
+          colorScheme="grey.100"
           leftIcon={<AiOutlineExport />}
+          borderColor={"#e2e8f0"}
           w={"100%"}
           // background={dividerColorLight}
           color={"#807f7f"}
@@ -440,7 +515,7 @@ export function ExportDateModal() {
             onOpen();
           }}
         >
-          Export Entries Or Removals
+          Export
         </Button>
       </div>
     </>

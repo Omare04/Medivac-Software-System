@@ -16,6 +16,7 @@ import { Divider, Flex } from "@chakra-ui/react";
 import OrderPageMain from "../Pages/Orders/OrderPageMain";
 import MainRequestChecklist from "../Pages/CheckListRequests/MainRequestChecklist";
 import { Progress } from "@chakra-ui/react";
+import NotificationsCenter from "../Pages/NotificationsCenter";
 
 export function ProtectedRoutes() {
   const [state, setState] = useState(true);
@@ -73,6 +74,7 @@ export function ProtectedRoutes() {
               path="/checklistsRequests"
               element={<MainRequestChecklist />}
             />
+            <Route path="/Notifications" element={<NotificationsCenter />} />
           </Routes>
         </>
       )}

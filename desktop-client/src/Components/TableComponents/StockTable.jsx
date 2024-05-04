@@ -1,41 +1,26 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { dividerColorLight } from "../../Colors";
-import { useTree } from "@table-library/react-table-library/tree";
-import { CompactTable } from "@table-library/react-table-library/compact";
-import { useTheme } from "@table-library/react-table-library/theme";
-import {
-  DEFAULT_OPTIONS,
-  getTheme,
-} from "@table-library/react-table-library/chakra-ui";
 import {
   Box,
-  Stack,
   Input,
   InputGroup,
   InputLeftElement,
   HStack,
   Button,
   IconButton,
-  Badge,
-  Checkbox,
-  Icon,
-  ChakraProvider,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverArrow,
+  PopoverCloseButton,
 } from "@chakra-ui/react";
-import { FaSearch, FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { AddToStockModal } from "../Modals/AddStockModal";
 import { usePagination } from "@table-library/react-table-library/pagination";
-import { useRowSelect } from "@table-library/react-table-library/select";
-import {
-  ReactSelectComponent,
-  InputComponentIcon,
-  ChakraSelectComponentIcon,
-} from "../InputComponents/InputComponents";
-import { AiFillMedicineBox } from "react-icons/ai";
-import { MdNumbers } from "react-icons/md";
-import { FaChevronDown } from "react-icons/fa";
-import { SearchBarComponent } from "../InputComponents/InputComponents";
-import { IconDropDown } from "../InputComponents/DropdownComponents";
+import { ReactSelectComponent } from "../InputComponents/InputComponents";
+import { PiMagnifyingGlass } from "react-icons/pi";
 import {
   Table,
   Thead,
@@ -44,9 +29,10 @@ import {
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
 } from "@chakra-ui/react";
+import { IoFilterOutline } from "react-icons/io5";
+import { dividerColorLight } from "../../Colors";
 class MedicalStock {
   constructor(id, name, type, pn, date) {
     this.id = id;
@@ -84,6 +70,7 @@ function MedicalStockTable() {
           display: "flex",
           flexDirection: "column",
           width: "100%",
+          overflow: "hidden",
           height: "100%",
         }}
       >
@@ -93,16 +80,17 @@ function MedicalStockTable() {
           search={search}
           handleSearch={handleSearch}
         />
-        <div
-          style={{
-            width: "100%",
-            borderRadius: "3px",
-            background: "white",
-            overflow: "auto",
-            paddingRight: "5px",
-          }}
+        <Box
+          p={1}
+          borderRadius="lg"
+          overflow={"hidden"}
+          border={`1px solid #e2e8f0`}
+          pr={2}
+          h={"100%"}
+          display="flex"
+          flexDirection="column" // Set flex-direction to column
         >
-          <Box p={1} borderWidth="1px" borderRadius="lg">
+          <Box flex="1" overflow={"auto"}>
             <TableComponent
               pagination={pagination}
               search={search}
@@ -114,51 +102,49 @@ function MedicalStockTable() {
               headers={["Name", "Date", "Type", "PN", "Qty"]}
             />
           </Box>
-          <br />
-
-          {/* FOOTER */}
-        </div>
-        <Box display={"flex"} width="100%">
-          <HStack justify="flex-end" width="100%" pt={4}>
-            <IconButton
-              aria-label="previous page"
-              icon={<FaChevronLeft size={13} />}
-              colorScheme="blue"
-              variant="ghost"
-              isDisabled={pagination.state.page === 0}
-              height="30px"
-              onClick={() =>
-                pagination.fns.onSetPage(pagination.state.page - 1)
-              }
-            />
-
-            {pagination.state.getPages(data.nodes).map((_, index) => (
-              <Button
-                height="30px"
-                key={index}
+          {/* Pagination Wrapper */}
+          <Box pt={4}>
+            <HStack justify="flex-end">
+              <IconButton
+                aria-label="previous page"
+                icon={<FaChevronLeft size={13} />}
                 colorScheme="blue"
-                variant={pagination.state.page === index ? "solid" : "ghost"}
-                onClick={() => pagination.fns.onSetPage(index)}
-              >
-                {index + 1}
-              </Button>
-            ))}
+                variant="ghost"
+                isDisabled={pagination.state.page === 0}
+                size={"sm"}
+                onClick={() =>
+                  pagination.fns.onSetPage(pagination.state.page - 1)
+                }
+              />
 
-            <IconButton
-              height="30px"
-              aria-label="next page"
-              icon={<FaChevronRight size={13} />}
-              colorScheme="blue"
-              variant="ghost"
-              isDisabled={
-                pagination.state.page + 1 ===
-                pagination.state.getTotalPages(data.nodes)
-              }
-              onClick={() =>
-                pagination.fns.onSetPage(pagination.state.page + 1)
-              }
-            />
-          </HStack>
+              {pagination.state.getPages(data.nodes).map((_, index) => (
+                <Button
+                  size={"sm"}
+                  key={index}
+                  colorScheme="blue"
+                  variant={pagination.state.page === index ? "solid" : "ghost"}
+                  onClick={() => pagination.fns.onSetPage(index)}
+                >
+                  {index + 1}
+                </Button>
+              ))}
+
+              <IconButton
+                size={"sm"}
+                aria-label="next page"
+                icon={<FaChevronRight size={13} />}
+                colorScheme="blue"
+                variant="ghost"
+                isDisabled={
+                  pagination.state.page + 1 ===
+                  pagination.state.getTotalPages(data.nodes)
+                }
+                onClick={() =>
+                  pagination.fns.onSetPage(pagination.state.page + 1)
+                }
+              />
+            </HStack>
+          </Box>
         </Box>
       </div>
     </>
@@ -178,7 +164,7 @@ function TableFilterBar({ itemType, setItemType, search, handleSearch }) {
         alignItems={"center"}
         w={"100%"}
         pr={5}
-        p={2}
+        pb ={2}
       >
         <div
           style={{
@@ -189,11 +175,14 @@ function TableFilterBar({ itemType, setItemType, search, handleSearch }) {
           }}
         >
           <Box display={"flex"} w={"100%"} gap={3}>
-            <Box display={"flex"} w={"80%"} gap={3}>
+            <Box display={"flex"} w={"100%"} gap={3}>
               <InputGroup background={"white"} borderRadius={5}>
                 <InputLeftElement colorScheme="whiteAlpha" pointerEvents="none">
                   {" "}
-                  <FaSearch style={{ color: "#96989a" }} />
+                  <PiMagnifyingGlass
+                    style={{ color: "#96989a" }}
+                    size={"20px"}
+                  />
                 </InputLeftElement>
                 <Input
                   height={"99.3%"}
@@ -206,20 +195,38 @@ function TableFilterBar({ itemType, setItemType, search, handleSearch }) {
                 />
               </InputGroup>
               <Box w={"50%"} zIndex={1000}>
-                <ReactSelectComponent
-                  selectOptions={[
-                    { value: "Respiratory", label: "Respiratory	" },
-                    { value: "Cardiological", label: "Cardiological" },
-                    { value: "Neurological", label: "Neurological" },
-                    { value: "Dermatologic", label: "Dermatologic" },
-                  ]}
-                  placeholder={"Type"}
-                  title={"Item Type"}
-                  selectedOptions={itemType}
-                  setSelectedOptions={setItemType}
-                  isTitle={false}
-                  customStyles={null}
-                />
+                <Popover>
+                  <PopoverTrigger>
+                    <IconButton
+                      icon={<IoFilterOutline />}
+                      variant={"outline"}
+                      borderColor={"#e2e8f0"}
+                      color={"grey"}
+                    />
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <PopoverArrow />
+                    <PopoverCloseButton />
+                    <PopoverHeader>Filters</PopoverHeader>
+                    <PopoverBody>
+                      <ReactSelectComponent
+                        selectOptions={[
+                          { value: "Respiratory", label: "Respiratory	" },
+                          { value: "Cardiology", label: "Cardiological" },
+                          { value: "Neurological", label: "Neurological" },
+                          { value: "Dermatologic", label: "Dermatologic" },
+                        ]}
+                        isMulti={true}
+                        placeholder={"Type"}
+                        title={"Item Type"}
+                        selectedOptions={itemType}
+                        setSelectedOptions={setItemType}
+                        isTitle={false}
+                        customStyles={null}
+                      />
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
               </Box>
             </Box>
           </Box>
@@ -370,7 +377,6 @@ const nodes = [
 ];
 
 function TableComponent({
-  pagination,
   totalItems,
   itemsPerPage,
   currentPage,
@@ -409,12 +415,17 @@ function TableComponent({
         (itemType.value ? node.type === itemType.value : true)
     );
     setDisplayedNodes(filteredNodes);
-  }, [search, itemType, nodes]);
+  }, [search, itemType.value, nodes]);
 
   return (
-    <TableContainer>
-      <Table variant="simple" size={"sm"}>
-        <Thead>
+    <TableContainer overflow={"auto"} position={"relative"} pr={1}>
+      <Table variant="simple" size="sm" position={"relative"}>
+        <Thead
+          top={0}
+          position={"sticky"}
+          zIndex={1}
+          background={dividerColorLight}
+        >
           <Tr>
             {headers.map((value, index) =>
               value === "Qty" ? (

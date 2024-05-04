@@ -108,8 +108,8 @@ export function AddToStockModal() {
         <Button
           aria-label="Add item"
           color={"grey"}
-          leftIcon={<GoPlus size={"24px"}/>}
-          colorScheme="gray.100"
+          // height={"99.3%"}
+          leftIcon={<GoPlus size={"24px"} />}
           variant="outline"
           borderColor={"#e2e8f0"}
           ml={2}

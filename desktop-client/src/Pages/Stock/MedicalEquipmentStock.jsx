@@ -50,12 +50,13 @@ function MedicalEquipmentStock() {
               width: "100%",
               height: "100%",
               borderRadius: "5px",
+              paddingTop: "15px"
             }}
           >
             <MedicalStockTable />
             <div
               style={{
-                margin: " 0px 0px 10px 10px",
+                margin: " 0px 0px 0px 10px",
                 width: "50%",
                 height: "100%",
                 borderRadius: "5px",

@@ -4,6 +4,9 @@ import { Button, Select, Text } from "@chakra-ui/react";
 import {
   Tabs,
   TabList,
+  Box,
+  HStack,
+  IconButton,
   Tab,
   Drawer,
   DrawerBody,
@@ -30,6 +33,7 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 import { FaPlus } from "react-icons/fa";
+import { usePagination } from "@table-library/react-table-library/pagination";
 
 const nodes = [
   {
@@ -47,6 +51,7 @@ const nodes = [
     po: "456",
     date: new Date(2020, 3, 20),
     status: "Delivered",
+    address: "123 ave NE, London, UK, T4K 1Tk",
     country: "UK",
     supplier: "ABC Corp",
     quantity: 20,
@@ -56,6 +61,117 @@ const nodes = [
     po: "456",
     date: new Date(2020, 3, 20),
     status: "Delivered",
+    address: "123 ave NE, London, UK, T4K 1Tk",
+    country: "UK",
+    supplier: "ABC Corp",
+    quantity: 20,
+  },
+  {
+    id: 2,
+    po: "456",
+    date: new Date(2020, 3, 20),
+    status: "Delivered",
+    address: "123 ave NE, London, UK, T4K 1Tk",
+    country: "UK",
+    supplier: "ABC Corp",
+    quantity: 20,
+  },
+  {
+    id: 2,
+    po: "456",
+    date: new Date(2020, 3, 20),
+    status: "Delivered",
+    address: "123 ave NE, London, UK, T4K 1Tk",
+    country: "UK",
+    supplier: "ABC Corp",
+    quantity: 20,
+  },
+  {
+    id: 2,
+    po: "456",
+    date: new Date(2020, 3, 20),
+    status: "Delivered",
+    address: "123 ave NE, London, UK, T4K 1Tk",
+    country: "UK",
+    supplier: "ABC Corp",
+    quantity: 20,
+  },
+  {
+    id: 2,
+    po: "456",
+    date: new Date(2020, 3, 20),
+    status: "Delivered",
+    address: "123 ave NE, London, UK, T4K 1Tk",
+    country: "UK",
+    supplier: "ABC Corp",
+    quantity: 20,
+  },
+  {
+    id: 2,
+    po: "456",
+    date: new Date(2020, 3, 20),
+    status: "Delivered",
+    address: "123 ave NE, London, UK, T4K 1Tk",
+    country: "UK",
+    supplier: "ABC Corp",
+    quantity: 20,
+  },
+  {
+    id: 2,
+    po: "456",
+    date: new Date(2020, 3, 20),
+    status: "Delivered",
+    address: "123 ave NE, London, UK, T4K 1Tk",
+    country: "UK",
+    supplier: "ABC Corp",
+    quantity: 20,
+  },
+  {
+    id: 2,
+    po: "456",
+    date: new Date(2020, 3, 20),
+    status: "Delivered",
+    address: "123 ave NE, London, UK, T4K 1Tk",
+    country: "UK",
+    supplier: "ABC Corp",
+    quantity: 20,
+  },
+  {
+    id: 2,
+    po: "456",
+    date: new Date(2020, 3, 20),
+    status: "Delivered",
+    address: "123 ave NE, London, UK, T4K 1Tk",
+    country: "UK",
+    supplier: "ABC Corp",
+    quantity: 20,
+  },
+  {
+    id: 2,
+    po: "456",
+    date: new Date(2020, 3, 20),
+    status: "Delivered",
+    address: "123 ave NE, London, UK, T4K 1Tk",
+    country: "UK",
+    supplier: "ABC Corp",
+    quantity: 20,
+  },
+  {
+    id: 2,
+    po: "456",
+    date: new Date(2020, 3, 20),
+    status: "Delivered",
+    address: "123 ave NE, London, UK, T4K 1Tk",
+    country: "UK",
+    supplier: "ABC Corp",
+    quantity: 20,
+  },
+  {
+    id: 2,
+    po: "456",
+    date: new Date(2020, 3, 20),
+    status: "Delivered",
+    address: "123 ave NE, London, UK, T4K 1Tk",
     country: "UK",
     supplier: "ABC Corp",
     quantity: 20,
@@ -68,45 +184,30 @@ function MedicalEquipmentOrders() {
 
   return (
     <>
-      <div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "5px",
-            borderRadius: "5px",
-            width: "100%",
-            marginBottom: "10px",
-          }}
-          id="add_items_wrapper"
-        >
-          <Button
-            colorScheme="blue"
-            ref={btnRef}
-            leftIcon={<FaPlus size={15} />}
-            onClick={onOpen}
-          >
-            Create New Order
-          </Button>
-        </div>
-        <OrderTable nodes={nodes} />
-        <Drawer
-          onClose={onClose}
-          isOpen={isOpen}
-          size={"xl"}
-          finalFocusRef={btnRef}
-        >
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader>{`Create A New Order`}</DrawerHeader>
-            <DrawerBody>
-              <DrawerBodyContent />
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
-      </div>
+      <Box h={"100%"}>
+        <OrderTable
+          values={["po", "status", "date", "country", "supplier", "quantity"]}
+          nodes={nodes}
+          itemsPerPage={15}
+          headers={["PO", "Status", "Date", "Country", "Supplier", "Quantity"]}
+          openDrawer={onOpen}
+        />
+      </Box>
+      <Drawer
+        onClose={onClose}
+        isOpen={isOpen}
+        size={"xl"}
+        finalFocusRef={btnRef}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>{`Create A New Order`}</DrawerHeader>
+          <DrawerBody>
+            <DrawerBodyContent />
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </>
   );
 }
@@ -342,6 +443,49 @@ export function CheckListProceduresTable({ items }) {
         }}
       ></div>
     </TableContainer>
+  );
+}
+
+export function PaginationComponent({ state }) {
+  return (
+    <Box display={"flex"} width="100%">
+      <HStack justify="flex-end" width="100%" pt={4}>
+        <IconButton
+          aria-label="previous page"
+          icon={<FaChevronLeft size={13} />}
+          colorScheme="blue"
+          variant="ghost"
+          isDisabled={pagination.state.page === 0}
+          height="30px"
+          onClick={() => pagination.fns.onSetPage(pagination.state.page - 1)}
+        />
+
+        {pagination.state.getPages(data.nodes).map((_, index) => (
+          <Button
+            height="30px"
+            key={index}
+            colorScheme="blue"
+            variant={pagination.state.page === index ? "solid" : "ghost"}
+            onClick={() => pagination.fns.onSetPage(index)}
+          >
+            {index + 1}
+          </Button>
+        ))}
+
+        <IconButton
+          height="30px"
+          aria-label="next page"
+          icon={<FaChevronRight size={13} />}
+          colorScheme="blue"
+          variant="ghost"
+          isDisabled={
+            pagination.state.page + 1 ===
+            pagination.state.getTotalPages(data.nodes)
+          }
+          onClick={() => pagination.fns.onSetPage(pagination.state.page + 1)}
+        />
+      </HStack>
+    </Box>
   );
 }
 
