@@ -18,7 +18,7 @@ function CheckLists() {
   return (
     <div
       style={{
-        width: "50%",
+        width: "100%",
         height: "100%",
         // border: "1px solid grey",
         borderRadius: "5px",

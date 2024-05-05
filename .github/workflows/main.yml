@@ -36,6 +36,7 @@ jobs:
           docker push omare23/med-nginx
           docker push omare23/med-stock-management-service
 
+          //!!! Generating a .zip file for the entire repo ??  
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
 

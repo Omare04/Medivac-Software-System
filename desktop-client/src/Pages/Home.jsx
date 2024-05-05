@@ -143,7 +143,7 @@ export function Home() {
               <StatsTab />
               <Box display={"flex"} flexDirection={"column"}></Box>
               <TitleContainer>
-                <DrugRequestTitle>Requests & Orders</DrugRequestTitle>
+                <DrugRequestTitle>Active Requests & Orders</DrugRequestTitle>
               </TitleContainer>
               <DrugRequestsHomeComponents />
             </Box>
@@ -160,5 +160,4 @@ export function Home() {
     </>
   );
 }
-
 export default Home;

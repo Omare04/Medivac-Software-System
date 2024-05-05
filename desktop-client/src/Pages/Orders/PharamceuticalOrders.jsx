@@ -17,6 +17,7 @@ import {
   NumberInput,
   NumberInputField,
   NumberInputStepper,
+  Box,
   NumberIncrementStepper,
   NumberDecrementStepper,
   Table,
@@ -38,123 +39,61 @@ import {
 
 const nodes = [
   {
-    po: "123",
+    id: 0,
+    po: "PO02302",
     date: new Date(2020, 1, 15),
     status: "Pending",
-    country: "UK",
-    supplier: "INC INC",
     quantity: 34,
+    createdBy: "Clinical Manager",
+    orderItems: [
+      { itemId: 1, itemName: "Item 1", pn: "12394AM",itemType: "Cardiology", quantity: 10 },
+      { itemId: 2, itemName: "Item 2", itemType: "Cardiology", quantity: 24 },
+      { itemId: 3, itemName: "Item 2", itemType: "Cardiology", quantity: 24 },
+      { itemId: 4, itemName: "Item 2", itemType: "Cardiology", quantity: 24 },
+      { itemId: 5, itemName: "Item 2", itemType: "Cardiology", quantity: 24 },
+      { itemId: 6, itemName: "Item 2", itemType: "Cardiology", quantity: 24 },
+      { itemId: 7, itemName: "Item 2", itemType: "Cardiology", quantity: 24 },
+      { itemId: 7, itemName: "Item 2", itemType: "Cardiology", quantity: 24 },
+      { itemId: 7, itemName: "Item 2", itemType: "Cardiology", quantity: 24 },
+      { itemId: 7, itemName: "Item 2", itemType: "Cardiology", quantity: 24 },
+      { itemId: 7, itemName: "Item 2", itemType: "Cardiology", quantity: 24 },
+    ],
   },
   {
+    id: 1,
     po: "456",
     date: new Date(2020, 3, 20),
     status: "Delivered",
-    country: "UK",
-    supplier: "ABC Corp",
     quantity: 20,
   },
   {
+    id: 99,
     po: "789",
     date: new Date(2020, 5, 10),
     status: "On The Way",
-    country: "UK",
-    supplier: "XYZ Corp",
+
     quantity: 50,
   },
   {
+    id: 1233,
     po: "101",
     date: new Date(2020, 7, 5),
     status: "Pending",
-    country: "UK",
-    supplier: "DEF Inc",
     quantity: 15,
   },
   {
+    id: 12,
     po: "101",
     date: new Date(2020, 7, 5),
     status: "Pending",
-    country: "UK",
-    supplier: "DEF Inc",
     quantity: 15,
   },
   {
+    id: 6,
     po: "101",
     date: new Date(2020, 7, 5),
     status: "Pending",
-    country: "UK",
-    supplier: "DEF Inc",
-    quantity: 15,
-  },
-  {
-    po: "101",
-    date: new Date(2020, 7, 5),
-    status: "Pending",
-    country: "UK",
-    supplier: "DEF Inc",
-    quantity: 15,
-  },
-  {
-    po: "101",
-    date: new Date(2020, 7, 5),
-    status: "Pending",
-    country: "UK",
-    supplier: "DEF Inc",
-    quantity: 15,
-  },
-  {
-    po: "101",
-    date: new Date(2020, 7, 5),
-    status: "Pending",
-    country: "UK",
-    supplier: "DEF Inc",
-    quantity: 15,
-  },
-  {
-    po: "101",
-    date: new Date(2020, 7, 5),
-    status: "Pending",
-    country: "UK",
-    supplier: "DEF Inc",
-    quantity: 15,
-  },
-  {
-    po: "101",
-    date: new Date(2020, 7, 5),
-    status: "Pending",
-    country: "UK",
-    supplier: "DEF Inc",
-    quantity: 15,
-  },
-  {
-    po: "101",
-    date: new Date(2020, 7, 5),
-    status: "Pending",
-    country: "UK",
-    supplier: "DEF Inc",
-    quantity: 15,
-  },
-  {
-    po: "101",
-    date: new Date(2020, 7, 5),
-    status: "Pending",
-    country: "UK",
-    supplier: "DEF Inc",
-    quantity: 15,
-  },
-  {
-    po: "101",
-    date: new Date(2020, 7, 5),
-    status: "Pending",
-    country: "UK",
-    supplier: "DEF Inc",
-    quantity: 15,
-  },
-  {
-    po: "101",
-    date: new Date(2020, 7, 5),
-    status: "Pending",
-    country: "UK",
-    supplier: "DEF Inc",
+
     quantity: 15,
   },
 ];
@@ -165,45 +104,30 @@ function PharamceuticalOrders() {
 
   return (
     <>
-      <div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "5px",
-            borderRadius: "5px",
-            width: "100%",
-            marginBottom: "10px",
-          }}
-          id="add_items_wrapper"
-        >
-          <Button
-            colorScheme="blue"
-            ref={btnRef}
-            leftIcon={<FaPlus size={15} />}
-            onClick={onOpen}
-          >
-            Create New Order
-          </Button>
-        </div>
-        <OrderTable nodes={nodes} />
-        <Drawer
-          onClose={onClose}
-          isOpen={isOpen}
-          size={"xl"}
-          finalFocusRef={btnRef}
-        >
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader>{`Create A New Order`}</DrawerHeader>
-            <DrawerBody>
-              <DrawerBodyContent />
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
-      </div>
+      <Box h={"100%"}>
+        <OrderTable
+          values={["po", "status", "date", "quantity"]}
+          nodes={nodes}
+          itemsPerPage={15}
+          headers={["PO", "Status", "Date", "Quantity"]}
+          openDrawer={onOpen}
+        />
+      </Box>
+      <Drawer
+        onClose={onClose}
+        isOpen={isOpen}
+        size={"xl"}
+        finalFocusRef={btnRef}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>{`Create A New Order`}</DrawerHeader>
+          <DrawerBody>
+            <DrawerBodyContent />
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </>
   );
 }

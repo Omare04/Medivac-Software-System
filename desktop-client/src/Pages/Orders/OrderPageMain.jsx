@@ -38,21 +38,7 @@ const personeleLinks = [
 function OrderPageMain() {
   return (
     <>
-      <div style={{ height: "calc(100% - 50px)", padding: "10px" }}>
-        {/* <div
-        style={{
-          fontWeight: "450",
-          borderBottom: `1px solid #ededed`,
-          paddingBottom: "5px",
-          marginBottom: "8px",
-          width: "100%",
-          paddingLeft: "5px",
-          color: "#000000",
-          fontSize: "22px",
-        }}
-      >
-        Orders
-      </div> */}
+      <div style={{ height: "calc(100% - 70px)", padding: "10px" }}>
         <div
           id="order_page_root_wrapper"
           style={{
@@ -62,50 +48,7 @@ function OrderPageMain() {
             height: "100%",
           }}
         >
-          {/* <div
-          id="order_page_left_wrapper"
-          style={{
-            height: "100%",
-            background: "#eeeeee86",
-            color: "black",
-            marginRight: "10px",
-            borderRadius: "3px",
-          }}
-        >
-          <Accordion w={"200px"} allowToggle>
-            {personeleLinks.map((item, key) => (
-              <AccordionItem
-                key={key}
-                cursor={"pointer"}
-                whiteSpace="pre-wrap"
-                overflow="hidden"
-                textOverflow="ellipsis"
-                fontWeight={400}
-                fontSize={15}
-                transition="all 0.1s"
-                onClick={() => {
-                  setRoute(item.route);
-                }}
-                borderBottom={"none"}
-              >
-                <AccordionButton p={3} fontSize={"15px"} color={"black"}>
-                  <Box
-                    display={"flex"}
-                    alignItems={"center"}
-                    flex="1"
-                    textAlign="left"
-                  >
-                    {item.icon}
-                    {item.title}
-                  </Box>
-                  <AccordionIcon />
-                </AccordionButton>
-                <AccordionPanel>Hi</AccordionPanel>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div> */}
-          <div
+         <div
             id="order_page_right_wrapper"
             style={{ height: "100%", width: "100%" }}
           >
@@ -117,7 +60,6 @@ function OrderPageMain() {
               <TabPanels height={"100%"}>
                 <TabPanel
                   mt={3}
-                  style={{ background: "#f5f5f589" }}
                   height={"100%"}
                   borderRadius={2}
                   overflow={"auto"}
@@ -126,7 +68,6 @@ function OrderPageMain() {
                 </TabPanel>
                 <TabPanel
                   mt={3}
-                  style={{ background: "#f5f5f589" }}
                   height={"100%"}
                   borderRadius={2}
                   // overflow={"auto"}

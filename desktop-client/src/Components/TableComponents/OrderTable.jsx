@@ -1,366 +1,389 @@
-import React from "react";
+import React, { Children } from "react";
 import { useState, useEffect } from "react";
-import { buttonBlue, dividerColorLight } from "../../Colors";
-import { useTree } from "@table-library/react-table-library/tree";
-import { CompactTable } from "@table-library/react-table-library/compact";
-import { useTheme } from "@table-library/react-table-library/theme";
-import {
-  DEFAULT_OPTIONS,
-  getTheme,
-} from "@table-library/react-table-library/chakra-ui";
 import {
   Box,
-  Stack,
+  Badge,
   Input,
   InputGroup,
   InputLeftElement,
   HStack,
   Button,
   IconButton,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverArrow,
   Tooltip,
-  Tag,
-  Checkbox,
+  PopoverCloseButton,
 } from "@chakra-ui/react";
-import { FaSearch, FaChevronRight, FaChevronLeft } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { AddToStockModal } from "../Modals/AddStockModal";
 import { usePagination } from "@table-library/react-table-library/pagination";
-import { IoShareOutline } from "react-icons/io5";
-import { FaRegEye } from "react-icons/fa";
-import { Badge } from "@chakra-ui/react";
-import { FaChevronDown } from "react-icons/fa";
-import { useRowSelect } from "@table-library/react-table-library/select";
-import { IoEllipsisVerticalSharp } from "react-icons/io5";
+import { ReactSelectComponent } from "../InputComponents/InputComponents";
+import { PiMagnifyingGlass } from "react-icons/pi";
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableContainer,
+} from "@chakra-ui/react";
+import { IoFilterOutline, IoLogoNodejs } from "react-icons/io5";
+import { OrderItemModal } from "../Modals/OrderModals";
 
-const exportRow = (OID) => {
-  //Export order
-};
+import { FaPlus } from "react-icons/fa";
+import { buttonBlue, dividerColorLight } from "../../Colors";
 
-export function OrderTable({ nodes }) {
+function OrderTable({ nodes, headers, values, openDrawer }) {
   let data = { nodes };
+  const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [itemType, setItemType] = useState("");
 
   const pagination = usePagination(data, {
     state: {
       page: 0,
       size: 15,
     },
-    onChange: onPaginationChange,
   });
-
-  function onPaginationChange(action, state) {
-    console.log(action, state);
-  }
-
-  function onTreeChange(action, state) {
-    console.log(action, state);
-  }
-
-  const [horizontalSpacing, setHorizontalSpacing] = React.useState(
-    DEFAULT_OPTIONS.horizontalSpacing
-  );
-
-  const [verticalSpacing, setVerticalSpacing] = React.useState(5);
-  const [striped, setStriped] = React.useState(DEFAULT_OPTIONS.striped);
-  const [hasFooter, setFooter] = React.useState(false);
-  const [caption, setCaption] = React.useState("");
-
-  const mantineTheme = getTheme({
-    horizontalSpacing,
-    verticalSpacing,
-    striped,
-  });
-
-  const customTheme = useTheme([
-    getTheme(),
-    {
-      HeaderRow: `
-            background-color: ${dividerColorLight};
-            color: #000000;
-            `,
-      Row: `
-            background-color: #ffffff;
-            color: #383838; 
-            cursor: pointer; 
-            transition: background-color 0.3s ease; 
-            
-            &:nth-of-type(even) {
-              background-color: ${dividerColorLight};
-            }
-            
-            &:hover {
-              color: #383838; 
-              background-color: ${dividerColorLight};
-            }
-            
-            &:hover:nth-of-type(even) {
-              background-color: #ffffff;
-            }
-            `,
-    },
-  ]);
-
-  const theme = useTheme([customTheme]);
-
-  const [search, setSearch] = useState("");
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
   };
 
-  data = {
-    nodes: data.nodes.filter((item) =>
-      item.po.toLowerCase().includes(search.toLowerCase())
-    ),
-  };
-
-  const select = useRowSelect(data, {
-    onChange: onSelectChange,
-  });
-
-  function onSelectChange(action, state) {
-    console.log(action, state);
-  }
-
-  const COLUMNS = [
-    {
-      label: "Order ID / PO",
-      renderCell: (item) => (
-        <>
-          <strong style={{ textDecoration: "underline" }}>#{item.po}</strong>
-        </>
-      ),
-      select: {
-        renderHeaderCellSelect: () => (
-          <Checkbox
-            isChecked={select.state.all}
-            isIndeterminate={!select.state.all && !select.state.none}
-            onChange={select.fns.onToggleAll}
-          />
-        ),
-        renderCellSelect: (item) => (
-          <Checkbox
-            colorScheme="blue"
-            isChecked={select.state.ids.includes(item.po)}
-            onChange={(e) => {
-              if (e.target.checked) {
-                select.fns.onToggleById(item.po); // Toggle the current item if checked
-              } else {
-                select.fns.onToggleAll(); // Toggle all items if unchecked
-              }
-            }}
-          />
-        ),
-      },
-    },
-    {
-      label: "Date/Time",
-      renderCell: (item) =>
-        item.date.toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-        }),
-    },
-    {
-      label: "Status",
-      renderCell: (item) => (
-        <Tooltip
-          label={
-            <>
-              <div style={{ borderBottom: "1px solid grey" }}>
-                {item.status}
-              </div>
-              {item.status == "Delivered"
-                ? "Order Delivered On: "
-                : "Order Created: "}
-              {item.date.toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit",
-              })}
-            </>
-          }
-        >
-          <Badge
-            cursor={"pointer"}
-            colorScheme={
-              item.status === "Delivered"
-                ? "green"
-                : item.status === "Pending"
-                ? "yellow"
-                : "blue"
-            }
-            p={1}
-          >
-            {item.status}
-          </Badge>
-        </Tooltip>
-      ),
-    },
-    {
-      label: "Supplier",
-      renderCell: (item) => (
-        <>
-          <Tooltip
-            label={
-              <>
-                <div style={{ borderBottom: "1px solid grey" }}>
-                  {item.supplier}
-                </div>
-                {item.address}
-              </>
-            }
-          >
-            <Tag size={"sm"} variant="solid" color="white" cursor={"pointer"}>
-              <span style={{ paddingRight: "5px" }}> {item.supplier} </span>
-              <span
-                style={{ paddingLeft: "5px", borderLeft: "1px solid #c9c9c9" }}
-              >
-                {item.country}
-              </span>
-            </Tag>
-          </Tooltip>
-        </>
-      ),
-    },
-    {
-      label: "Items",
-      renderCell: (item) => item.quantity,
-    },
-    { label: "Payment Terms", renderCell: (item) => item.quantity },
-    {
-      label: "",
-      renderCell: (item) => (
-        <div
-          style={{
-            // width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-end",
-          }}
-        >
-          <IoShareOutline
-            onClick={() => {
-              exportRow(item.po);
-            }}
-            size={30}
-            style={{
-              borderRadius: "5px",
-              background: buttonBlue,
-              padding: "6px",
-              color: "white",
-            }}
-          />
-          <IoEllipsisVerticalSharp
-            onClick={() => {
-              exportRow(item.po);
-            }}
-            size={30}
-            style={{
-              borderRadius: "5px",
-              marginLeft: "5px",
-              background: buttonBlue,
-              padding: "6px",
-              color: "white",
-            }}
-          />
-          {/* <FaRegEye
-            size={30}
-            style={{
-              borderRadius: "5px",
-              marginLeft: "15px",
-              background: "grey",
-              padding: "6px",
-              color: "white",
-            }}
-          /> */}
-        </div>
-      ),
-      width: "10%", // Adjust the width here
-    },
-  ];
-
   return (
     <>
       <div
         style={{
+          display: "flex",
+          flexDirection: "column",
           width: "100%",
-          borderRadius: "3px",
-          background: "white",
-          overflow: "auto",
-          paddingBottom: "15px",
+          height: "100%",
         }}
       >
-        <Stack spacing={0} pb={3}>
-          <InputGroup>
-            <InputLeftElement
-              pointerEvents="none"
-              children={<FaSearch style={{ color: "#96989a" }} />}
-            />
-            <Input
-              background={"white"}
-              placeholder="Search Task"
-              value={search}
-              onChange={handleSearch}
-              borderRadius={"sm"}
-            />
-          </InputGroup>
-        </Stack>
-
-        <Box borderWidth="1px" borderRadius="sm" width={"100%"} overflow="auto">
-          <CompactTable
-            columns={COLUMNS}
-            data={data}
-            theme={theme}
+        <TableFilterBar
+          itemType={itemType}
+          setItemType={setItemType}
+          search={search}
+          handleSearch={handleSearch}
+          openDrawer={openDrawer}
+        />
+        <Box
+          p={1}
+          borderWidth="1px"
+          borderRadius="lg"
+          overflow={"auto"}
+          background={"white"}
+        >
+          <OrderTableComponent
             pagination={pagination}
-            select={select}
+            search={search}
+            itemType={itemType}
+            totalItems={data.nodes.length}
+            itemsPerPage={pagination.state.size}
+            currentPage={pagination.state.page}
+            nodes={data.nodes}
+            headers={headers}
+            values={values}
           />
         </Box>
-        <br />
-      </div>
-      <Box display={"flex"} width="100%">
-        <HStack justify="flex-end" width="100%" pt={4}>
-          <IconButton
-            aria-label="previous page"
-            icon={<FaChevronLeft size={13} />}
-            colorScheme="blue"
-            variant="ghost"
-            isDisabled={pagination.state.page === 0}
-            height="30px"
-            onClick={() => pagination.fns.onSetPage(pagination.state.page - 1)}
-          />
-
-          {pagination.state.getPages(data.nodes).map((_, index) => (
-            <Button
-              height="30px"
-              key={index}
+        {/* Pagination logic */}
+        <Box display={"flex"} width="100%">
+          <HStack justify="flex-end" width="100%" pt={4}>
+            <IconButton
+              aria-label="previous page"
+              icon={<FaChevronLeft size={13} />}
               colorScheme="blue"
-              variant={pagination.state.page === index ? "solid" : "ghost"}
-              onClick={() => pagination.fns.onSetPage(index)}
-            >
-              {index + 1}
-            </Button>
-          ))}
+              variant="ghost"
+              isDisabled={pagination.state.page === 0}
+              height="30px"
+              onClick={() =>
+                pagination.fns.onSetPage(pagination.state.page - 1)
+              }
+            />
 
-          <IconButton
-            height="30px"
-            aria-label="next page"
-            icon={<FaChevronRight size={13} />}
-            colorScheme="blue"
-            variant="ghost"
-            isDisabled={
-              pagination.state.page + 1 ===
-              pagination.state.getTotalPages(data.nodes)
-            }
-            onClick={() => pagination.fns.onSetPage(pagination.state.page + 1)}
-          />
-        </HStack>
+            {pagination.state.getPages(data.nodes).map((_, index) => (
+              <Button
+                height="30px"
+                key={index}
+                colorScheme="blue"
+                variant={pagination.state.page === index ? "solid" : "ghost"}
+                onClick={() => pagination.fns.onSetPage(index)}
+              >
+                {index + 1}
+              </Button>
+            ))}
+
+            <IconButton
+              height="30px"
+              aria-label="next page"
+              icon={<FaChevronRight size={13} />}
+              colorScheme="blue"
+              variant="ghost"
+              isDisabled={
+                pagination.state.page + 1 ===
+                pagination.state.getTotalPages(data.nodes)
+              }
+              onClick={() =>
+                pagination.fns.onSetPage(pagination.state.page + 1)
+              }
+            />
+          </HStack>
+        </Box>
+      </div>
+    </>
+  );
+}
+
+function TableFilterBar({
+  itemType,
+  setItemType,
+  search,
+  handleSearch,
+  openDrawer,
+}) {
+  const handlePartNumberChange = (event) => {
+    setItemType(event.target.value);
+  };
+
+  return (
+    <>
+      <Box
+        display={"flex"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        w={"100%"}
+        pr={5}
+        pb={2}
+      >
+        <div
+          style={{
+            display: "flex",
+            gap: "10px",
+            width: "60%",
+            borderRadius: "5px",
+          }}
+        >
+          <Box display={"flex"} w={"100%"} gap={3}>
+            <Box display={"flex"} w={"100%"} gap={3}>
+              <InputGroup background={"white"} borderRadius={5}>
+                <InputLeftElement colorScheme="whiteAlpha" pointerEvents="none">
+                  {" "}
+                  <PiMagnifyingGlass
+                    style={{ color: "#96989a" }}
+                    size={"20px"}
+                  />
+                </InputLeftElement>
+                <Input
+                  height={"99.3%"}
+                  background={"white"}
+                  borderRadius={5}
+                  colorScheme="whiteAlpha"
+                  placeholder="Search Product Name"
+                  value={search}
+                  onChange={handleSearch}
+                />
+              </InputGroup>
+              <Box w={"50%"} zIndex={1000}>
+                <Popover>
+                  <PopoverTrigger>
+                    <IconButton
+                      background={"white"}
+                      icon={<IoFilterOutline />}
+                      variant={"outline"}
+                      borderColor={"#e2e8f0"}
+                      color={"grey"}
+                    />
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <PopoverArrow />
+                    <PopoverCloseButton />
+                    <PopoverHeader>Filters</PopoverHeader>
+                    <PopoverBody>
+                      <ReactSelectComponent
+                        selectOptions={[
+                          { value: "Pending", label: "Pending" },
+                          { value: "Delivered", label: "Delivered" },
+                          { value: "On The Way", label: "On The Way" },
+                        ]}
+                        placeholder={"Type"}
+                        title={"Item Type"}
+                        selectedOptions={itemType}
+                        setSelectedOptions={setItemType}
+                        isTitle={false}
+                        customStyles={null}
+                      />
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
+              </Box>
+            </Box>
+          </Box>
+        </div>
+        <Button
+          colorScheme="blackAlpha"
+          leftIcon={<FaPlus size={15} />}
+          onClick={openDrawer}
+          variant="ghost"
+        >
+          Create New Order
+        </Button>
       </Box>
     </>
   );
 }
 
-function FilterBar() {
-  return <></>;
+function OrderTableComponent({
+  totalItems,
+  itemsPerPage,
+  currentPage,
+  nodes,
+  search,
+  itemType,
+  headers,
+  values,
+}) {
+  const [displayedNodes, setDisplayedNodes] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
+  const [modalItem, setModalItem] = useState({});
+
+  const openItemModal = (index) => {
+    setModalItem(nodes[index]);
+    setOpenModal(true);
+  };
+
+  const closeModal = () => {
+    setOpenModal(false);
+  };
+
+  //Pagination Logic
+  useEffect(() => {
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const paginationCount =
+      totalPages - currentPage >= 5 ? 5 : totalPages - currentPage;
+    const startPage =
+      currentPage - Math.floor(paginationCount / 2) > 0
+        ? currentPage - Math.floor(paginationCount / 2)
+        : 1;
+
+    const startIndex = currentPage * itemsPerPage;
+    const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+    const displayed = nodes.slice(startIndex, endIndex);
+
+    setDisplayedNodes(displayed);
+  }, [totalItems, itemsPerPage, currentPage]);
+
+  useEffect(() => {
+    const filteredNodes = nodes.filter(
+      (node) => node.po.includes(search.toLowerCase())
+      // (itemType.value ? node.type === itemType.value : true)
+    );
+    setDisplayedNodes(filteredNodes);
+  }, [search, itemType.value, nodes]);
+
+  return (
+    <>
+      <TableContainer borderRadius={5}>
+        <Table
+          variant="simple"
+          size={"sm"}
+          position={"relative"}
+          overflow={"auto"}
+        >
+          <Thead top={0} position={"sticky"} background={dividerColorLight}>
+            <Tr>
+              {headers.map((value, index) =>
+                value === "Quantity" ? (
+                  <Th key={index} isNumeric>
+                    {value}
+                  </Th>
+                ) : (
+                  <Th key={index}>{value}</Th>
+                )
+              )}
+            </Tr>
+          </Thead>
+          <Tbody>
+            {displayedNodes.map((node, i) => (
+              <Tr
+                key={i}
+                _hover={{
+                  cursor: "pointer",
+                  backgroundColor: "gray.50",
+                  transition: "background-color 0.3s ease",
+                }}
+                onClick={() => openItemModal(i)}
+              >
+                {values.map((key, index) =>
+                  (key !== "id" && key === "status") || key === "supplier" ? (
+                    <TooltipComponent
+                      key={index}
+                      text={
+                        key === "supplier" &&
+                        displayedNodes[i].hasOwnProperty("address") != " "
+                          ? node["address"]
+                          : node[key]
+                      }
+                    >
+                      {RenderStatusColumn({ index, node, key })}
+                    </TooltipComponent>
+                  ) : key === "quantity" ? (
+                    <Td key={index} isNumeric>
+                      <Badge>{node[key]}</Badge>
+                    </Td>
+                  ) : (
+                    <Td key={index}>
+                      {node[key] instanceof Date
+                        ? node[key].toLocaleDateString("en-US")
+                        : node[key]}
+                    </Td>
+                  )
+                )}
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      </TableContainer>
+      <OrderItemModal
+        isOpen={openModal}
+        onClose={closeModal}
+        item={modalItem}
+      />
+    </>
+  );
 }
 
+const TooltipComponent = ({ text, children }) => {
+  return (
+    <Tooltip label={text} aria-label={text} bg={"gray.400"}>
+      {children}
+    </Tooltip>
+  );
+};
+
+const RenderStatusColumn = ({ index, node, key }) => {
+  return (
+    <Td key={index}>
+      <Badge
+        colorScheme={
+          node[key] == "Pending"
+            ? "yellow"
+            : node[key] == "Delivered"
+            ? "green"
+            : key == "supplier"
+            ? "grey"
+            : "green"
+        }
+      >
+        {node[key]}
+      </Badge>
+    </Td>
+  );
+};
 export default OrderTable;

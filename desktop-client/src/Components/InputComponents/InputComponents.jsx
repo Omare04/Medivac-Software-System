@@ -253,12 +253,15 @@ export function ChakraSelectComponentIcon({
     </div>
   );
 }
+
 export function SearchBarComponent({ onChange }) {
   const [search, setSearch] = useState("");
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
+    onChange(event.target.value);
   };
+
   return (
     <InputGroup background={"white"} borderRadius={5}>
       <InputLeftElement colorScheme="whiteAlpha" pointerEvents="none">

@@ -18,14 +18,19 @@ import {
   ListItem,
   ListIcon,
   OrderedList,
+  Text,
   UnorderedList,
   SkeletonCircle,
   Skeleton,
+  Card,
+  CardBody,
+  Icon,
+  Button,
 } from "@chakra-ui/react";
-import { dividerColor, dividerColorLight } from "../../Colors";
+import { buttonBlue, dividerColor, dividerColorLight } from "../../Colors";
 import { RiPlaneFill } from "react-icons/ri";
 import axios from "axios";
-import { FaHandHoldingMedical } from "react-icons/fa";
+import { FaHandHoldingMedical, FaLeaf } from "react-icons/fa";
 import { IoMedicalSharp } from "react-icons/io5";
 import { MdMedicalServices } from "react-icons/md";
 import StyledLinkButton from "../../styles/ButtonStyles/TransparentLinks";
@@ -33,10 +38,14 @@ import { IoMdSearch } from "react-icons/io";
 import {
   CreatePersoneleRolesModal,
   CreatePersoneleEventModal,
+  AddUserModal,
 } from "../../Components/Modals/PersoneleModals";
 import PersoneleCalendar from "./PersoneleCalendar";
 import { PiUsersThreeBold } from "react-icons/pi";
-
+import { IoMdAirplane } from "react-icons/io";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { MdOutlineSanitizer } from "react-icons/md";
+import { ViewUserInfoModal } from "../../Components/Modals/UserModals";
 export const StockServiceApi = axios.create({
   baseURL: "/stock-management-service", // Set your API base URL here
   timeout: 5000, // Set a timeout if needed
@@ -95,27 +104,13 @@ function Personele() {
   }, []);
 
   return (
+  
     <>
-      <div style={{ height: "calc(100% - 50px)", padding: "10px" }}>
+      <div style={{ height: "calc(100% - 50px)", padding: "5px" }}>
         <div
           id="personele-root-wrapper"
-          style={{ height: "100%", padding: "10px" }}
+          style={{ height: "100%", padding: "5px" }}
         >
-          {/* <p
-          style={{
-            fontWeight: "350",
-            borderBottom: `1px solid #ededed`,
-            paddingBottom: "10px",
-            width: "95%",
-            color: "#5f5f5f",
-            fontSize: "22px",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <PiUsersThreeBold style={{ marginRight: "15px" }} size={30} />
-          Personele
-        </p> */}
           <div
             style={{
               display: "flex",
@@ -123,34 +118,11 @@ function Personele() {
               height: "100%",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                alignItems: "center",
-                height: "100%",
-                background: dividerColorLight,
-                padding: "10px",
-                borderRadius: "5px",
-                width: "25%",
-              }}
-            >
-              <PersoneleListComponent />
-              <div
-                className="button_wrapper"
-                style={{
-                  display: "flex",
-                  width: "100%",
-                  gap: "10px",
-                  flexDirection: "column",
-                }}
-              >
-                <CreatePersoneleRolesModal />
-              </div>
-            </div>
+            <Box display={"flex"} flexDirection={"column"} w={"35%"} h={"100%"}>
+              <PersoneleAccordion />
+            </Box>
 
-            <PersoneleAccordion />
+            <UserEventComponent />
             <PersoneleCalendar />
           </div>
         </div>
@@ -188,7 +160,7 @@ function PersoneleListComponent() {
             mt={key === 0 ? 0 : 15}
             cursor={"pointer"}
             whiteSpace="pre-wrap"
-            overflow="hidden"
+            overfloww="hidden"
             textOverflow="ellipsis"
             fontWeight={400}
             fontSize={15}
@@ -251,55 +223,165 @@ function getRandomURL() {
 }
 
 function PersoneleAccordion() {
-  const accordianItems = Array.from({ length: 20 }, (_, index) => ({
+  const accordianItems = Array.from({ length: 2 }, (_, index) => ({
     name: getRandomName(),
     role: getRandomRole(),
     url: getRandomURL(),
   }));
+
+  const [filter, setFilter] = useState("");
+  const filteredItems = accordianItems.filter((item) =>
+    item.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  const users = [
+    {
+      id: 1,
+      name: "John Doe",
+      email: "john@example.com",
+      phoneNumber: "+1234567890",
+      pfpURL: "https://example.com/profile1.jpg",
+      position: "Software Engineer",
+      nationality: "American",
+      documents: [
+        {
+          title: "clinical_manager_passport.png",
+          type: "image",
+          extension: "png",
+          dateCreated: new Date(2024, 0, 1),
+          size: "33mb",
+        },
+        {
+          title: "clinical_manager_passport.png",
+          type: "image",
+          extension: "png",
+          dateCreated: new Date(2024, 0, 1),
+          size: "33mb",
+        },
+      ],
+    },
+    {
+      id: 2,
+      name: "Jane Smith",
+      email: "jane@example.com",
+      phoneNumber: "+9876543210",
+      pfpURL: "https://example.com/profile2.jpg",
+      position: "Product Manager",
+      nationality: "Canadian",
+      documentNumber: "123456789",
+      documents: [
+        {
+          title: "clinical_manager_passport.png",
+          type: "image",
+          extension: "png",
+          dateCreated: new Date(2024, 0, 1),
+          size: "33mb",
+        },
+        {
+          title: "clinical_manager_passport.png",
+          type: "image",
+          extension: "png",
+          dateCreated: new Date(2024, 0, 1),
+          size: "33mb",
+        },
+      ],
+    },
+    {
+      id: 3,
+      name: "Alice Johnson",
+      email: "alice@example.com",
+      phoneNumber: "+1122334455",
+      pfpURL: "https://example.com/profile3.jpg",
+      position: "Data Analyst",
+      nationality: "British",
+      documentNumber: "987654321",
+      documents: [
+        {
+          title: "clinical_manager_passport.png",
+          type: "image",
+          extension: "png",
+          dateCreated: new Date(2024, 0, 1),
+          size: "33mb",
+        },
+        {
+          title: "clinical_manager_passport.png",
+          type: "image",
+          extension: "png",
+          dateCreated: new Date(2024, 0, 1),
+          size: "33mb",
+        },
+      ],
+    },
+    {
+      id: 4,
+      name: "Bob Brown",
+      email: "bob@example.com",
+      phoneNumber: "+9988776655",
+      pfpURL: "https://example.com/profile4.jpg",
+      position: "UI/UX Designer",
+      nationality: "German",
+      documents: [
+        {
+          title: "clinical_manager_passport.png",
+          type: "image",
+          extension: "png",
+          dateCreated: new Date(2024, 0, 1),
+          size: "33mb",
+        },
+        {
+          title: "clinical_manager_passport.png",
+          type: "image",
+          extension: "png",
+          dateCreated: new Date(2024, 0, 1),
+          size: "33mb",
+        },
+      ],
+    },
+  ];
 
   return (
     <>
       <div
         id="map-card-item-wrapper"
         style={{
-          width: "40%",
+          width: "100%",
           height: "100%",
-          marginLeft: "5px",
-          paddingLeft: "10px",
           display: "flex",
           flexDirection: "column",
         }}
       >
-        <InputGroup pr={3} width={"100%"} pb={2}>
-          <InputLeftElement pointerEvents="none" height={"33px"}>
+        <InputGroup pr={3} width={"100%"} pb={3} pt={"1.5px"}>
+          <InputLeftElement pointerEvents="none" h={"45px"}>
             <IoMdSearch />
           </InputLeftElement>
           <Input
-            type="tel"
             placeholder="Search"
-            borderRadius={2}
-            height={"33px"}
+            borderRadius={5}
+            h={"43.7px"}
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
           />
         </InputGroup>
         <div style={{ flex: 1, overflow: "auto", width: "100%" }}>
-          <Accordion allowToggle>
-            {accordianItems.map((item, index) => (
-              <AccordianItemComponent
-                key={index}
-                name={item.name}
-                role={item.role}
-                url={item.url}
-              />
+          <Accordion allowMultiple>
+            {users.map((item, index) => (
+              <AccordianItemComponent key={index} user={item} />
             ))}
           </Accordion>
         </div>
+        <Box display={"flex"} flexDirection={"column"} gap={1} pt={2}></Box>
       </div>
     </>
   );
 }
 
-function AccordianItemComponent({ key, name, role, url }) {
+function AccordianItemComponent({ key, user }) {
   const [skeleton, setSkeleton] = useState(false);
+  const [modal, setModal] = useState(false);
+
+  const closeModal = () => {
+    setModal(false);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -311,11 +393,6 @@ function AccordianItemComponent({ key, name, role, url }) {
     };
   }, []);
 
-  const roleColors = {
-    Doctor: "blue",
-    Captain: "yellow",
-    Nurse: "red",
-  };
   return (
     <>
       <AccordionItem
@@ -343,17 +420,16 @@ function AccordianItemComponent({ key, name, role, url }) {
             <Box color={"black"}>
               <WrapItem display={"flex"} alignItems={"center"}>
                 <SkeletonCircle isLoaded={skeleton}>
-                  <Avatar size={"sm"} name="Dan Abrahmov" src={url} />
+                  <Avatar size={"sm"} name={user.name} src={name.pfpURL} />
                 </SkeletonCircle>
                 <Skeleton width={"100%"} ml={3} isLoaded={skeleton}>
                   <div
                     style={{ paddingLeft: "10px" }}
                     id="personele-name-and-badge-wrapper"
                   >
-                    {name}
+                    {user.name}
                     <Stack direction={"row"} fontSize={13} color={"red"}>
-                      {/* <Badge colorScheme={roleColors[role]}>{role}</Badge> */}
-                      <Badge>{role}</Badge>
+                      <Badge>{user.position}</Badge>
                     </Stack>
                   </div>
                 </Skeleton>
@@ -363,7 +439,7 @@ function AccordianItemComponent({ key, name, role, url }) {
           {skeleton ? <AccordionIcon color={"grey"} fontSize={19} /> : null}
         </AccordionButton>
 
-        <AccordionPanel pl={5}>
+        <AccordionPanel pl={5} allowMultiple>
           <Box
             fontSize={12.5}
             pb={1}
@@ -373,7 +449,7 @@ function AccordianItemComponent({ key, name, role, url }) {
             borderBottom={`1px solid ${dividerColorLight}`}
           >
             email:
-            <span> something@gmail.com</span>
+            <span> {user.email}</span>
           </Box>
           <Box
             fontSize={12.5}
@@ -385,7 +461,7 @@ function AccordianItemComponent({ key, name, role, url }) {
             borderBottom={`1px solid ${dividerColorLight}`}
           >
             Phone Number:
-            <span>203-111-9201</span>
+            <span>{user.phoneNumber}</span>
           </Box>
           <Box
             fontSize={12.5}
@@ -397,7 +473,7 @@ function AccordianItemComponent({ key, name, role, url }) {
             borderBottom={`1px solid ${dividerColorLight}`}
           >
             Nationality:
-            <span>Morrocan </span>
+            <span>{user.nationality}</span>
           </Box>
           <Box
             fontSize={12.5}
@@ -409,7 +485,9 @@ function AccordianItemComponent({ key, name, role, url }) {
             borderBottom={`1px solid ${dividerColorLight}`}
           >
             Document number:
-            <span>12312331</span>
+            <span>
+              {user.documentNumber == undefined ? "N/A" : user.documentNumber}
+            </span>
           </Box>
           <Box
             fontSize={12.5}
@@ -422,9 +500,165 @@ function AccordianItemComponent({ key, name, role, url }) {
             Position:
             <span>MD</span>
           </Box>
+          <Box
+            fontSize={12.5}
+            marginTop={3}
+            pb={1}
+            color={"black"}
+            display={"flex"}
+            justifyContent={"space-between"}
+          >
+            <Button
+              w={"100%"}
+              variant={"ghost"}
+              colorScheme="blue"
+              size={"sm"}
+              onClick={() => setModal(true)}
+            >
+              See more
+            </Button>
+          </Box>
         </AccordionPanel>
       </AccordionItem>
+      <ViewUserInfoModal
+        isOpen={modal}
+        onClose={() => closeModal()}
+        user={user}
+      />
     </>
+  );
+}
+
+function UserEventComponent({ icon, eventName, eventDate, eventType }) {
+  return (
+    <Box
+      ml={3}
+      w={"39%"}
+      display={"flex"}
+      flexDirection={"column"}
+      gap={1}
+      h={"100%"}
+      overflow={"hidden"}
+    >
+      <Box
+        w={"100%"}
+        display={"flex"}
+        justifyContent={"center"}
+        background={"#eaeaea44"}
+        p={2}
+        mt={"1px"}
+        borderRadius={5}
+        color={"#2d2d2d"}
+      >
+        <Text fontSize={19}>Bob's Events</Text>
+      </Box>
+      <Box
+        display={"flex"}
+        flexDirection={"column"}
+        h={"calc(100% - 55px)"}
+        alignItems={"space-between"}
+        justifyContent={"space-between"}
+      >
+        <Box
+          overflow={"auto"}
+          h={"100%"}
+          pr={1}
+          p={1}
+          display={"flex"}
+          flexDirection={"column"}
+          gap={1}
+        >
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-123"} />
+          <UserEventCardComponent
+            eventType={"Inspection"}
+            eventName={"Zool Software Inspection"}
+          />
+          <UserEventCardComponent
+            eventType={"Sanitization"}
+            eventName={"CNTKC Sanitization"}
+          />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+          <UserEventCardComponent eventType={"medivac"} eventName={"AOM-444"} />
+        </Box>
+        <Box display={"flex"} flexDirection={"column"} gap={1} pt={3}>
+          <CreatePersoneleRolesModal />
+          <AddUserModal />
+        </Box>
+      </Box>
+    </Box>
+  );
+}
+
+function UserEventCardComponent({ eventName, eventDate, eventType }) {
+  const [modal, setModal] = useState(false);
+
+  const closeModal = () => {
+    setModal(false);
+  };
+  return (
+    <Card
+      variant={"outline"}
+      borderColor={"whitesmoke"}
+      cursor={"pointer"}
+      onClick={() => {
+        setModal(true);
+      }}
+    >
+      <CardBody p={"7px"} display={"flex"}>
+        <Box display={"flex"} justifyContent={"space-between"} w={"100%"}>
+          <Box display={"flex"} alignItems={"center"} gap={3}>
+            <Icon
+              as={
+                eventType == "medivac"
+                  ? IoMdAirplane
+                  : eventType == "Sanitization"
+                  ? MdOutlineSanitizer
+                  : FaMagnifyingGlass
+              }
+              color={
+                eventType == "medivac"
+                  ? buttonBlue
+                  : eventType == "Sanitization"
+                  ? "red"
+                  : "green"
+              }
+              boxSize={27}
+              pl={2}
+            />
+            <Box display={"flex"} flexDirection={"column"} gap={0} w={"100%"}>
+              {" "}
+              <Text fontSize={14}> {eventName}</Text>{" "}
+              <Text fontSize={12}>{eventType}</Text>
+            </Box>
+          </Box>
+          <Text fontSize={13} fontWeight={"550"}>
+            (2023/03/03)
+          </Text>
+        </Box>
+      </CardBody>
+    </Card>
   );
 }
 
