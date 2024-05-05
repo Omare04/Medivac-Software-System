@@ -208,10 +208,9 @@ function TableFilterBar({
                     <PopoverBody>
                       <ReactSelectComponent
                         selectOptions={[
-                          { value: "Respiratory", label: "Respiratory	" },
-                          { value: "Cardiological", label: "Cardiological" },
-                          { value: "Neurological", label: "Neurological" },
-                          { value: "Dermatologic", label: "Dermatologic" },
+                          { value: "Pending", label: "Pending" },
+                          { value: "Delivered", label: "Delivered" },
+                          { value: "On The Way", label: "On The Way" },
                         ]}
                         placeholder={"Type"}
                         title={"Item Type"}
@@ -387,5 +386,4 @@ const RenderStatusColumn = ({ index, node, key }) => {
     </Td>
   );
 };
-
 export default OrderTable;

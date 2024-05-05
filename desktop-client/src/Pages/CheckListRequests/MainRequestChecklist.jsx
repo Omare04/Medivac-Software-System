@@ -29,16 +29,16 @@ function MainRequestChecklist() {
             padding: "10px",
           }}
         >
-          <Box
+          {/* <Box
             display={"flex"}
             flexDirection={"column"}
             w={"50%"}
             h={"100%"}
             gap={5}
-          >
-            {/* <RequestCheckListSummary /> */}
-            <Requests />
-          </Box>
+          > */}
+            <RequestCheckListSummary />
+            {/* <Requests /> */}
+          {/* </Box> */}
           <CheckLists />
         </div>
       </div>

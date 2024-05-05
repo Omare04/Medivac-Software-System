@@ -48,54 +48,7 @@ function OrderPageMain() {
             height: "100%",
           }}
         >
-          <div
-          id="order_page_left_wrapper"
-          style={{
-            height: "100%",
-            color: "black",
-            marginRight: "10px",
-            borderRadius: "5px",
-          }}
-        >
-          <Accordion w={"300px"} allowToggle>
-            {personeleLinks.map((item, key) => (
-              <>
-              <AccordionItem
-                key={key}
-                cursor={"pointer"}
-                whiteSpace="pre-wrap"
-                overflow="hidden"
-                textOverflow="ellipsis"
-                background= "#eeeeee7b"
-                borderRadius={5}
-                fontWeight={400}
-                fontSize={15}
-                transition="all 0.1s"
-                onClick={() => {
-                  setRoute(item.route);
-                }}
-                border={"none"}
-                >
-                <AccordionButton p={3} fontSize={"15px"} color={"black"}>
-                  <Box
-                    display={"flex"}
-                    alignItems={"center"}
-                    flex="1"
-                    textAlign="left"
-                    >
-                    {item.icon}
-                    {item.title}
-                  </Box>
-                  <AccordionIcon />
-                </AccordionButton>
-                <AccordionPanel>Hi</AccordionPanel>
-              </AccordionItem>
-              
-                    </>
-            ))}
-          </Accordion>
-        </div>
-          <div
+         <div
             id="order_page_right_wrapper"
             style={{ height: "100%", width: "100%" }}
           >

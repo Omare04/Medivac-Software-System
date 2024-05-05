@@ -104,6 +104,7 @@ function Personele() {
   }, []);
 
   return (
+  
     <>
       <div style={{ height: "calc(100% - 50px)", padding: "5px" }}>
         <div
@@ -159,7 +160,7 @@ function PersoneleListComponent() {
             mt={key === 0 ? 0 : 15}
             cursor={"pointer"}
             whiteSpace="pre-wrap"
-            overflow="hidden"
+            overfloww="hidden"
             textOverflow="ellipsis"
             fontWeight={400}
             fontSize={15}
@@ -228,8 +229,7 @@ function PersoneleAccordion() {
     url: getRandomURL(),
   }));
 
-  const [filter, setFilter] = useState("");a
-
+  const [filter, setFilter] = useState("");
   const filteredItems = accordianItems.filter((item) =>
     item.name.toLowerCase().includes(filter.toLowerCase())
   );
@@ -362,8 +362,8 @@ function PersoneleAccordion() {
             onChange={(e) => setFilter(e.target.value)}
           />
         </InputGroup>
-        <div style={{ flex: 1, overflow: "auto", width: "100%"}}>
-          <Accordion allowMultiple >
+        <div style={{ flex: 1, overflow: "auto", width: "100%" }}>
+          <Accordion allowMultiple>
             {users.map((item, index) => (
               <AccordianItemComponent key={index} user={item} />
             ))}

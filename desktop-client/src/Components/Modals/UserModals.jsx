@@ -31,8 +31,7 @@ export function ViewUserInfoModal({ isOpen, onClose, user }) {
   useEffect(() => {
     // Ensure you have access to the value object
     user.documents.forEach((value) => {
-      const year = value.dateCreated.getFullYear();
-      const month = (value.dateCreated.getMonth() + 1)
+      const year = value.dateCreated.getFullYear(); const month = (value.dateCreated.getMonth() + 1)
         .toString()
         .padStart(2, "0");
       const date = value.dateCreated.getDate();
@@ -91,9 +90,8 @@ export function ViewUserInfoModal({ isOpen, onClose, user }) {
             allowMultiple
             border={"none"}
             borderRadius={5}
-            background={dividerColorLight}
           >
-            <AccordionButton borderRadius={5} p={3}>
+            <AccordionButton borderRadius={5} p={3} mb={1}>
               <Box as="span" flex={"1"} textAlign="left">
                 <Box display={"flex"} alignItems={"center"} gap={2}>
                   <IoDocumentSharp size={18} />
@@ -102,7 +100,7 @@ export function ViewUserInfoModal({ isOpen, onClose, user }) {
               </Box>
               <AccordionIcon />
             </AccordionButton>
-            <AccordionPanel pb={4} p={2}>
+            <AccordionPanel pb={4} p={"1px"}>
               <Box display={"flex"} flexDirection={"column"} gap={2}>
                 {user.documents.map((value, i) => (
                   <DocumentDownLoadComponent value={value} />
@@ -119,7 +117,7 @@ export function ViewUserInfoModal({ isOpen, onClose, user }) {
 function DocumentDownLoadComponent({ value }) {
   return (
     <>
-      <Card variant={"outline"}>
+      <Card >
         <CardBody p={2}>
           <Box
             display={"flex"}
@@ -127,15 +125,15 @@ function DocumentDownLoadComponent({ value }) {
             alignItems={"center"}
           >
             <Box display={"flex"} flexDirection={"column"}>
-              <Text fontSize={15}>{value.title}</Text>
-              <Text fontSize={13} fontWeight={"bold"}>
+              <Text fontSize={14}>{value.title}</Text>
+              <Text fontSize={12} fontWeight={550}>
                 Created On: {value.dateCreated.getFullYear()}/
                 {(value.dateCreated.getMonth() + 1).toString().padStart(2, "0")}
                 /{value.dateCreated.getDate()}
               </Text>
             </Box>
             <IconButton
-              colorScheme="blue"
+              colorScheme="gray"
               size={"sm"}
               aria-label="download"
               icon={<FaDownload />}
@@ -146,7 +144,6 @@ function DocumentDownLoadComponent({ value }) {
     </>
   );
 }
-
 export function ViewAccountInfoModal() {
   return <></>;
 }

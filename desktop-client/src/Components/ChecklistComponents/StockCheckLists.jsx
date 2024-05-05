@@ -137,7 +137,7 @@ function StockCheckList({ onOpen }) {
           alignItems={"center"}
           p={"5px"}
         >
-          <Heading size="md">Stock Checklist</Heading>
+          <Heading size="md">Checklist</Heading>
           <Button
             colorScheme="blue"
             variant="ghost"

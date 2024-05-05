@@ -138,7 +138,6 @@ function RequestsNoticationCard({ type, name, imageURL, date }) {
         variant={"unstyled"}
         background={dividerColorLight}
         p={2}
-        cursor={"pointer"}
       >
         <Box
           display={"flex"}
@@ -172,7 +171,6 @@ function RequestsNoticationCard({ type, name, imageURL, date }) {
               )}
             </Box>
           </Box>
-          <IoEllipsisVerticalSharp />
         </Box>
       </Card>
     </>

@@ -41,11 +41,7 @@ export function OrderItemModal({ isOpen, onClose, item }) {
               justifyContent={"space-between"}
             >
               <Box>{item?.po}</Box>
-              <Button
-                size={"sm"}
-                leftIcon={<FaDownload />}
-                colorScheme="gray"
-              >
+              <Button size={"sm"} leftIcon={<FaDownload />} colorScheme="gray">
                 Export File
               </Button>
             </Box>
@@ -79,7 +75,6 @@ export function OrderItemModal({ isOpen, onClose, item }) {
                 })}
               </Stack>
             </Card>
-
             <OrderItems items={item["orderItems"]} />
           </DrawerBody>
         </DrawerContent>
@@ -100,13 +95,14 @@ function OrderItems({ items }) {
         h={"100%"}
         w={"100%"}
       >
+        <Text pl={1} fontWeight={"bold"} fontSize={18}>
+          Order Items:{" "}
+        </Text>
         {items &&
           items.map((item, index) => (
             <Card
               p={"8px"}
               display={"flex"}
-              variant={"outline"}
-              borderColor={dividerColorLight}
             >
               <Box
                 display={"flex"}
