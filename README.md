@@ -1,4 +1,5 @@
 # Medivac Mission Management and Deployment project overview 🛩️ 💊
+(POs)**![medivac-app-wireframe](https://github.com/user-attachments/assets/324efedc-66cf-4b9a-8c03-ae2d6c506388)
 
 This project is a comprehensive platform designed to streamline all aspects of medivac missions, including stock management, personnel coordination, purchase order management, and patient data handling. It enables efficient tracking of medical supplies and equipment, facilitates scheduling and management of personnel roles and availability, and allows operators to generate and manage purchase orders seamlessly. Doctors can store and access patient data and medical documentation, ensuring global accessibility for effective patient care. Optionally, a built-in flight tracker provides real-time updates on flight status, enhancing operational efficiency and enabling timely responses to medical emergencies.
 
@@ -13,7 +14,8 @@ This project is a comprehensive platform designed to streamline all aspects of m
    - Categorize equipment and assign serial numbers.
    - Track equipment entry and exit history, including purpose and personnel involved.
 
-**Drug and Medical Equipment Purchase Orders (POs)**
+**Drug and Medical Equipment Purchase Orders 
+
    - Generate POs for drugs and equipment.
    - Record serial numbers upon arrival of items.
    - Include PDF documents for signature and approval.
