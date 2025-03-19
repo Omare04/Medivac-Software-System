@@ -14,8 +14,7 @@ This project is a comprehensive platform designed to streamline all aspects of m
    - Categorize equipment and assign serial numbers.
    - Track equipment entry and exit history, including purpose and personnel involved.
 
-**Drug and Medical Equipment Purchase Orders 
-
+**Drug and Medical Equipment Purchase Orders**
    - Generate POs for drugs and equipment.
    - Record serial numbers upon arrival of items.
    - Include PDF documents for signature and approval.
@@ -35,7 +34,11 @@ This project is a comprehensive platform designed to streamline all aspects of m
    - Determine flight feasibility based on logistics and performance parameters.
    - Allow insurance companies to review flight offers in the marketplace.
 
-6. Inspection Information:
+**Inspection Information**
    - Maintain aircraft disinfection checklist and monitoring.
    - Track disinfection schedules, aircraft registration, and operator signatures.
    - Manage medical equipment inspection dates, operator signatures, and upcoming inspection dates.
+
+**Database Schema**
+
+![medivac-app-ddl-image](https://github.com/user-attachments/assets/103c71b2-4f61-4097-8250-a469a653797d)
